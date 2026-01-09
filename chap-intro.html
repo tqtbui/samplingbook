@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Overview | A Concise Introduction to Survey Sampling</title>
+  <meta name="description" content="1 Overview | A Concise Introduction to Survey Sampling" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Overview | A Concise Introduction to Survey Sampling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Overview | A Concise Introduction to Survey Sampling" />
+  
+  
+  
+
+
+
+<meta name="date" content="2026-01-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="app-dataset.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Latex macros for html output
+
+A few very common things you should use:
+
+- $\bm{}$: Bold math.  Use bold for everything except scalars.
+- $\tx{}$: Text within math.  Use for abbreviating words, e.g., $A_{\tx{miss}}$.
+- $\xx, \YY$: Default macro convention for bold letters (small and capital case).
+- $\aal, \TTh$: Default macro convention for bold symbols (first two letters of symbol name, i.e., $\bm{\alpha}$ and $\bm{\Theta}$).
+- common stats symbols e.g., $\var$, $\cov$, $\iid$, $\N, defined below.
+-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+	  Macros: {
+	      bm: ["\\boldsymbol{#1}",1], <!--bold math-->
+	      tx: ["\\textrm{#1}",1], <!--text within math-->
+	      rv: ["#2_{#1},\\ldots,#2_{#3}",3,"1"], <!--random variable \rv{X}{n}: X_1, ..., X_n-->
+	      iid: ["\\overset{\\;\\tx{iid}\\;}{\\sim}"], <!--iid follows-->
+	      ind: ["\\overset{\\:\\tx{ind}\\:}{\\sim}"], <!--ind follows-->
+	      var: ["\\operatorname{var}"], <!--variance-->
+	      cov: ["\\operatorname{cov}"], <!--coveraince-->
+	      cor: ["\\operatorname{cor}"], <!--correlation-->
+	      std: ["\\operatorname{se}"], <!--standard error-->
+	      diag: ["\\operatorname{diag}"], <!--diagonal matrix-->
+	      logit: ["\\operatorname{logit}"], <!--logit function-->
+	      N: ["\\mathcal{N}"], <!--normal distribution-->
+	      E: ["{\\mathbb{E}}"], <!--expectation-->
+	      R: ["{\\mathbb{R}}"], <!--real set-->
+	      P: ["{\\mathbb{P}}"], <!--probability-->
+	      unif: ["\\operatorname{Unif}"], <!--Uniform distribution-->
+	      ud: ["\\mathop{}\\!\\mathrm{d}"], <!--d in tegeral-->
+	      der: ["\\frac{\\ud^{#1}}{\\ud{#2}^{#1}}", 2, ""], <!--\der{x}{f} d/dx f--> 
+	      del: ["\\frac{\\partial^{#1}}{\\partial{#2}^{#1}}", 2, ""], <!--\del{x}{f} d/dx f-->
+	      fder: ["\\frac{\\ud^{#1}#3}{\\ud{#2}^{#1}}", 3, ""], <!--\fder{x}{f} df/dx -->
+	      fdel: ["\\frac{\\partial^{#1}#3}{\\partial{#2}^{#1}}", 3, ""], <!--\fdel{x}{f} df/dx -->
+	      hess: ["\\frac{\\partial^2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 1], <!--\hess{x} d/dxdx -->
+	      fhess: ["\\frac{\\partial^2#2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 2], <!--\fhess{x}{f} df/dxdx -->
+	      eps: ["\\varepsilon"], <!--epsilon-->
+	      L: ["{\\mathcal{L}}"], <!--curl L likelihood-->
+	      <!-- \ell is used for curl l log likelihood -->
+	      bz: ["{\\bm{0}}"], <!--boldface 0-->
+	      bu: ["{\\bm{1}}"], <!--boldface 1-->
+	      xx: ["{\\bm{x}}"], <!--boldface x-->
+	      yy: ["{\\bm{y}}"], <!--boldface y-->
+	      zz: ["{\\bm{z}}"], <!--boldface z-->
+	      II: ["{\\bm{I}}"], <!--boldface I-->
+	      HH: ["{\\bm{H}}"], <!--boldface H-->
+	      XX: ["{\\bm{X}}"], <!--boldface X-->
+	      YY: ["{\\bm{Y}}"], <!--boldface Y-->
+	      ZZ: ["{\\bm{Z}}"], <!--boldface Z-->
+	      WW: ["{\\bm{W}}"], <!--boldface Z-->
+	      aal: ["{\\bm{\\alpha}}"], <!--boldface alpha-->
+	      bbe: ["{\\bm{\\beta}}"], <!--boldface beta-->
+	      gga: ["{\\bm{\\gamma}}"], <!--boldface gamma-->
+	      eet: ["{\\bm{\\eta}}"], <!--boldface eta-->
+	      lla: ["{\\bm{\\lambda}}"], <!--boldface lambda-->
+	      mmu: ["{\\bm{\\mu}}"], <!--boldface mu-->
+	      pph: ["{\\bm{\\phi}}"], <!--boldface phi-->
+	      pps: ["{\\bm{\\psi}}"], <!--boldface psi-->
+	      rrh: ["{\\bm{\\rho}}"], <!--boldface rho-->
+	      ssi: ["{\\bm{\\sigma}}"], <!--boldface sigma-->
+	      tta: ["{\\bm{\\tau}}"], <!--boldface tau-->
+	      tth: ["{\\bm{\\theta}}"], <!--boldface theta-->
+	      eeps: ["{\\bm{\\varepsilon}}"], <!--boldface varepsilon-->
+	      GGa: ["{\\bm{\\Gamma}}"], <!--boldface Gamma-->
+	      SSi: ["{\\bm{\\Sigma}}"], <!--boldface Sigma-->
+	      TTh: ["{\\bm{\\Theta}}"], <!--boldface Theta-->
+	      rx: ["{\\tx{x}}"], <!--text x-->
+	      ry: ["{\\tx{y}}"], <!--text y-->
+	      rz: ["{\\tx{z}}"], <!--text z-->
+	      I: ["{\\mathcal{I}}"], <!--I curl-->
+	      H: ["{\\mathcal{H}}"], <!--H curl-->
+	      kl: ["{\\operatorname{KL}}"], <!--KL divergence-->
+	      sfT: ["{\\mathsf{T}}"], <!--sf T-->
+	      argmin: ["\\operatorname{arg\\,min}"], <!--argmin-->
+	      argmax: ["\\operatorname{arg\\,max}"], <!--argmax-->
+	      indep: ["\\perp \\!\\!\\! \\perp"] <!--independent-->
+	  }
+     }
+  });
+</script>
+
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Main Content</b></span></li>
+<li class="chapter" data-level="1" data-path="chap-intro.html"><a href="chap-intro.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-intro.html"><a href="chap-intro.html#survey-sampling"><i class="fa fa-check"></i><b>1.1</b> Survey Sampling</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-intro.html"><a href="chap-intro.html#census-vs.-samples"><i class="fa fa-check"></i><b>1.2</b> Census vs. Samples</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-intro.html"><a href="chap-intro.html#census"><i class="fa fa-check"></i><b>1.2.1</b> Census</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-intro.html"><a href="chap-intro.html#samples"><i class="fa fa-check"></i><b>1.2.2</b> Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-intro.html"><a href="chap-intro.html#variability-and-bias"><i class="fa fa-check"></i><b>1.3</b> Variability and Bias</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-intro.html"><a href="chap-intro.html#variability"><i class="fa fa-check"></i><b>1.3.1</b> Variability</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-intro.html"><a href="chap-intro.html#bias"><i class="fa fa-check"></i><b>1.3.2</b> Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-intro.html"><a href="chap-intro.html#sources-of-bias"><i class="fa fa-check"></i><b>1.4</b> Sources of Bias</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-intro.html"><a href="chap-intro.html#selection-bias"><i class="fa fa-check"></i><b>1.4.1</b> Selection Bias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-intro.html"><a href="chap-intro.html#measurement-errors"><i class="fa fa-check"></i><b>1.4.2</b> Measurement Errors</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Concise Introduction to Survey Sampling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Overview<a href="chap-intro.html#chap-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="survey-sampling" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Survey Sampling<a href="chap-intro.html#survey-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To evolve and adapt, human make observations and identify patterns, from animal behaviors to hunt in our early days, to physical laws of the universe in the modern world. In these processes, we collect data from instances and try to generalize them into principles or conclusions that can be used in other instances. Statistics is the branch of mathematics that studies such a process, namely data collection, analysis, and interpretation.</p>
+<p><strong>Survey sampling</strong> is one of the fundamental subjects in statistics. In survey sampling, we are often interested in learning about a parameter of a target population. To understand what this means, we introduce some definitions:</p>
+<ul>
+<li><p><strong>Observation unit</strong>: An object on which a measurement is taken.</p></li>
+<li><p><strong>Variable of interest</strong>: The types of measurement taken on observation units that we want to study.</p></li>
+<li><p><strong>Target population</strong>: The complete collection of observation units we want to study. This is also the collection of units that we want to make conclusions about.</p></li>
+<li><p><strong>Parameter</strong>: A quantity that can be calculated from the variable of interest of the <em>target population</em>.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent" class="example"><strong>Example 1.1  </strong></span>To better understand the above terminologies, let us consider an example where we are interested in how much students pay for rent. We will use this example throughout the book to illustrate different concepts in survey sampling.</p>
+<p>In this example, the <em>variable of interest</em> is the monthly rent expense. The <em>observation units</em> are students because we will “measure” their rent expenses.</p>
+<p>If we want to study the rent expense of all students in Canada, then our <em>target population</em> is all students who enroll in a Canadian university. A less ambitious target population is the student body of University of Saskatchewan.</p>
+<p>The <em>parameter</em> of our interest can be the average rent expense or the total dollar amount of rent paid by all students in the target population.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-crop" class="example"><strong>Example 1.2  </strong></span>Another example is when an agricultural researcher want to estimate the yield of a crop. To do this, the researcher may want to grow that crop on multiple plots of land. The <em>observation units</em> are plots of land because we will “measure” the yield of a crop on those plots.</p>
+<p>Because the crop may have different yields at different environmental conditions, the possible <em>target populations</em> can be defined by locations. The researcher may want to get an estimate of the yield in the city of Saskatoon, or they want to get an estimate of the yield in the province of Saskatchewan, or a more ambitious goal will be the whole Canada.
+The <em>parameter</em> of our interest can be the average crop yield per acre.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>In survey sampling, we often assume that the population is finite<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, and consists of <span class="math inline">\(N &lt; \infty\)</span> observation units. The population size <span class="math inline">\(N\)</span> is also assumed to be fixed, although this assumption rarely holds in reality.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-finite-pop" class="example"><strong>Example 1.3  </strong></span>In <a href="chap-intro.html#exm:ex-intro-rent">1.1</a>, the USask student body may change every semester as current students graduate and new students enroll.</p>
+</div>
+</div>
+</div>
+<div id="census-vs.-samples" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Census vs. Samples<a href="chap-intro.html#census-vs.-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="census" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Census<a href="chap-intro.html#census" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To understand about the parameter of interest, we may try to collect data about every single observation unit in the target population. This is called a <strong>census</strong>.</p>
+<ul>
+<li><p>With a census, you can calculate the parameter of interest directly.</p></li>
+<li><p>A census also provides information on every subpopulation, no matter how small.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-census" class="example"><strong>Example 1.4  </strong></span>If we know the rent expense of every single student at USask, we will be able to calculate their average monthly rent expense directly. We will also be able calculate the average rent expense of every groups of students, for example, we will know the average students’ rent in every department.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> Many countries have censuses of birth and death records. In particular, Canada collect census data about its population every five years, often by sending invitation letters to all dwellings in Canada. Check out more information about Canadian censuses <a href="https://www12.statcan.gc.ca/census-recensement/index-eng.cfm">here</a>.</p>
+</div>
+</div>
+<div id="samples" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Samples<a href="chap-intro.html#samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many cases, due to constraints in cost, time, and other reasons, a census may not be possible. In this case, we may collect <strong>sample</strong> data.</p>
+<ul>
+<li><p><strong>Sample</strong>: A subset of a population.</p></li>
+<li><p><strong>Sampled population</strong>: The collection of <em>all possible</em> observation units that might have been chosen in a sample. This is the population from which the sample was taken.</p>
+<ul>
+<li>In practice, the sampled population rarely coincide with the target population (see Figure <a href="chap-intro.html#fig:intro-population-sample">1.1</a>).</li>
+</ul></li>
+<li><p><strong>Sampling unit</strong>: The unit that can be selected for a sample.</p>
+<ul>
+<li>Sometimes we want to study individuals but do not have a list of all individuals in the target distributions. In this case, the sampling unit may differ from the observation unit.</li>
+</ul></li>
+<li><p><strong>Sampling frame</strong>: A list, map, or other specification of sampling units in the population from which a sample may be selected.</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:intro-population-sample"></span>
+<img src="data/images/chap-intro/population_sample.png" alt="Population and sample, from Figure 1.1. of @lohr2021sampling." width="500" />
+<p class="caption">
+Figure 1.1: Population and sample, from Figure 1.1. of <span class="citation">Lohr (<a href="references.html#ref-lohr2021sampling">2021</a>)</span>.
+</p>
+</div>
+<ul>
+<li><p><strong>Statistic</strong>: A quantity that can be calculated from the sample.</p>
+<ul>
+<li><p>We can use statistics to <strong>estimate</strong> or make conclusions about the population parameter. This process is called <strong>inference</strong>.</p></li>
+<li><p>In the next few chapters, we will consider (i) different sampling methods, then learn about (ii) how to make inferences in each of those sampling cases.</p></li>
+</ul></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-sample" class="example"><strong>Example 1.5  </strong></span>In the students’ rent example, we may decide to go to several randomly chosen classes on campus to interview students about their rent expenses. Here, the <em>sampling frame</em> is the list of all USask classes held this semester, and the <em>sampling units</em> are USask classes, instead of individual students.</p>
+<p>The <em>sampled population</em> are students who attend classes on the day we conduct our interviews. This excludes remote students, or thesis-writing students, for example.</p>
+<p>The <em>sample</em> is the actual students who were interviewed by us. The <em>statistic</em> can be the average rent payments made by these specific students.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Since samples are much smaller than censuses, data collection for samples are often conducted with more care. Thus, if samples are collected in an appropriate manner, inferences from samples can be more reliable than censuses.</p>
+</div>
+</div>
+<div id="variability-and-bias" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Variability and Bias<a href="chap-intro.html#variability-and-bias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <strong>sampling protocol</strong> is a plan to collect sample data. Before learning different sampling method to devise a sampling protocol, we introduce the the concepts of variability and bias to identify what makes a good sampling protocol.</p>
+<div id="variability" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Variability<a href="chap-intro.html#variability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In most cases, the list of observation units included in a sample is random, intentionally or not. The sample-to-sample difference (under the same sampling protocol) is called the variability of the sampling protocol. A sampling protocol with <strong>low variability</strong> is a sampling protocol with <strong>high precision</strong>.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-variability" class="example"><strong>Example 1.6  </strong></span>Suppose I randomly choose <strong>one</strong> region in Saskatoon and then ask students in that region about their rent. In this case, my sampling protocol will have a <strong>high variability</strong> or a <strong>low precision</strong>.</p>
+<p>This is because if I <strong>repeat</strong> this same sample collecting method for many times, <strong>every time</strong> I will interview students living in a different region. Since rent will depend on specific regions and their distances to school, the rent data I collect will tend to be substantially different from one sample to another.</p>
+</div>
+</div>
+</div>
+<div id="bias" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Bias<a href="chap-intro.html#bias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>difference</strong> between the <strong>population data</strong> and the <strong>average</strong> of different samples (coming from the same sampling protocol) is called the <strong>bias</strong> of the sampling protocol. <strong>Small bias</strong> means <strong>high accuracy</strong>. Bias is often caused by systematic differences between the target population and sample.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-bias" class="example"><strong>Example 1.7  </strong></span>Suppose I only interview female students. Even if I repeat this same sample collection method many times, I will only get the data that tells me about the rent expense for female students. This data will likely be <strong>different</strong> from the rent expense for <strong>all</strong> students. Hence I say the <strong>bias</strong> is high and <strong>accuracy</strong> is low.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Figure <a href="chap-intro.html#fig:intro-accuracy-precision">1.2</a> summarizes concepts about bias, variance, accuracy and precision.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:intro-accuracy-precision"></span>
+<img src="data/images/chap-intro/accuracy_precision.png" alt="Accuracy and precision." width="500" />
+<p class="caption">
+Figure 1.2: Accuracy and precision.
+</p>
+</div>
+<p>Because we want to get an accurate and precise estimation of the population parameter, good sampling protocol should have low variance and low bias. You will learn from this course that we are usually able to reduce the variability by choosing an appropriate sampling method. On the other hand, bias is a much harder and more subtle problem to deal with. In practice, it can be even impossible to avoid bias.</p>
+</div>
+</div>
+<div id="sources-of-bias" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Sources of Bias<a href="chap-intro.html#sources-of-bias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="selection-bias" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Selection Bias<a href="chap-intro.html#selection-bias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Selection bias</strong> occurs when</p>
+<ul>
+<li><p>the target population does not coincide with the sampled population, or</p></li>
+<li><p>when some population units are sampled at a different rate than intended by the investigator.</p></li>
+</ul>
+<p>Some ways in which selection bias can occur are:</p>
+<ul>
+<li><p><strong>convenience samples</strong>: when researchers conduct surveys on the first subset of population units they encounter;</p></li>
+<li><p><strong>judgement samples</strong>: when researchers deliberately and intentionally select a “representative” sample;</p></li>
+<li><p><strong>self-selected samples</strong>: when the sample only consists of volunteer;</p></li>
+<li><p><strong>undercoverage</strong>: when the sampling frame fails to include some members of the target population;</p></li>
+<li><p><strong>overcoverage</strong>: when units not in the target population can end up in the sample;</p></li>
+<li><p><strong>nonresponse</strong>: when responses from some members of the chosen samples are not collected.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-rent-selection-bias" class="example"><strong>Example 1.8  </strong></span>If we choose to interview our friends on their rent, because they are easier to interview, we are collecting a <em>convenience sample</em>. If we look at people walking on the street and use our judgement to determine who we think are spending the average rent and go to interview them, we are collecting a <em>judgement sample</em>. If we hang on posters around school to let students to come to us by themselves, we are collecting a <em>self-selected</em> sample. In all these cases, there can be systematic differences between students in our sample compared to students in the population. Our friends may have a similar spending patterns as us while other students may have different opinions. Our judgement can easily be misleading regarding who we think are paying the average rent. Finally, volunteers are usually more motivated by rewards and may have a different spending behavior compared to the rest of the students.</p>
+<p>When we interview students by visiting classes, we may miss people who do not come to class, remote students, students who are on medical leaves, and so on. This induces <em>undercoverage</em>. We may also end up interviewing visiting friends and scholars who are not USask students, which leads us to the <em>overcoverage</em> problem.</p>
+<p>Even when we actually get to interview a student, they may choose not to disclose their information. These students can be more private and have a different rent selection than the one who reply to our interviews. Here, we run into a <em>nonresponse</em> problem.</p>
+</div>
+</div>
+</div>
+<div id="measurement-errors" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Measurement Errors<a href="chap-intro.html#measurement-errors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Measurement errors</strong> occur when the survey response has a tendency to differ from the true value, especially when the tendency is in one direction. This can be due to</p>
+<ul>
+<li><p>inaccuracy of measurement tools or devices</p></li>
+<li><p>unreliable respondents:</p>
+<ul>
+<li>people sometimes do not tell the truth</li>
+<li>people forget</li>
+<li>people do not always understand the questions</li>
+</ul></li>
+<li><p>etc.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-intro-crop-measurement-error" class="example"><strong>Example 1.9  </strong></span>In the crop yield case of Example <a href="chap-intro.html#exm:ex-intro-crop">1.2</a>, plants on adjacent plots can be counted twice, inducing measurement errors.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Therefore, when conducting surveys, we should pay attention to our sampling protocol so that we get responses or measurements as accurate as possible.</p>
+<ul>
+<li><p>For surveys that require a measurement tool or device, such an equipment needs to get a thorough reliability check.</p></li>
+<li><p>When designing questionnaires to survey individuals, we should pay attention to details that may influence respondents’ responses, such as the order and wording of the questions, the list of options provided, the attitude of the interviewers, etc. For a quick guide on <strong>questionnaire design</strong>, check <a href="https://scsru.github.io/Modules/introduction-to-questionnaire-design.html">this tutorial</a>.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This is called the finite population assumption<a href="chap-intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

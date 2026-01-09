@@ -1,0 +1,70 @@
+.myExample {
+  padding: 1em 1em 0em 1em;
+  background: #e6f4ea;
+  color: black;
+  border: 2px solid #008c2d;
+  border-radius: 10px;
+}
+
+.myExercise {
+  padding: 1em 1em 0em 1em;
+  background: #e8e6f4;
+  color: black;
+  border: 2px solid #17008c;
+  border-radius: 10px;
+}
+
+.myDefinition {
+  padding: 1em 1em 0em 1em;
+  background: #fdf2e9;
+  color: black;
+  border: 2px solid #e87f23;
+  border-radius: 10px;
+}
+
+.myNote {
+  padding: 1em 1em 1em 1em;
+  background: #e5e5e5;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-style: italic;
+  /*font-size: 9pt;*/
+}
+
+.myEquation {
+  padding: 1em 1em 0em 1em;
+  background: white;
+  color: black;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+
+.small {
+  padding: 1em 1em 0em 1em;
+  font-size: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.empty {
+  padding-bottom: 1em;
+}
+
+.empty0 {
+  padding-bottom: 0.1em;
+}
+
+.blue {
+  color: blue;
+}
+
+.highlight {
+  border: 2px solid red;
+  box-shadow: 2px 2px 2px 2px #888888;
+  /*width:fit-content;*/
+  display: inline-block;
+  position: relative;
+}
