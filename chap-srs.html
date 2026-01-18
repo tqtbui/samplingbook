@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Simple Probability Sampling | A Concise Introduction to Survey Sampling</title>
+  <meta name="description" content="2 Simple Probability Sampling | A Concise Introduction to Survey Sampling" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Simple Probability Sampling | A Concise Introduction to Survey Sampling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Simple Probability Sampling | A Concise Introduction to Survey Sampling" />
+  
+  
+  
+
+
+
+<meta name="date" content="2026-01-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-intro.html"/>
+<link rel="next" href="app-dataset.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Latex macros for html output
+
+A few very common things you should use:
+
+- $\bm{}$: Bold math.  Use bold for everything except scalars.
+- $\tx{}$: Text within math.  Use for abbreviating words, e.g., $A_{\tx{miss}}$.
+- $\xx, \YY$: Default macro convention for bold letters (small and capital case).
+- $\aal, \TTh$: Default macro convention for bold symbols (first two letters of symbol name, i.e., $\bm{\alpha}$ and $\bm{\Theta}$).
+- common stats symbols e.g., $\var$, $\cov$, $\iid$, $\N, defined below.
+-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+	  Macros: {
+	      bm: ["\\boldsymbol{#1}",1], <!--bold math-->
+	      tx: ["\\textrm{#1}",1], <!--text within math-->
+	      rv: ["#2_{#1},\\ldots,#2_{#3}",3,"1"], <!--random variable \rv{X}{n}: X_1, ..., X_n-->
+	      iid: ["\\overset{\\;\\tx{iid}\\;}{\\sim}"], <!--iid follows-->
+	      ind: ["\\overset{\\:\\tx{ind}\\:}{\\sim}"], <!--ind follows-->
+	      var: ["\\operatorname{var}"], <!--variance-->
+	      cov: ["\\operatorname{cov}"], <!--coveraince-->
+	      cor: ["\\operatorname{cor}"], <!--correlation-->
+	      std: ["\\operatorname{se}"], <!--standard error-->
+	      diag: ["\\operatorname{diag}"], <!--diagonal matrix-->
+	      logit: ["\\operatorname{logit}"], <!--logit function-->
+	      N: ["\\mathcal{N}"], <!--normal distribution-->
+	      E: ["{\\mathbb{E}}"], <!--expectation-->
+	      R: ["{\\mathbb{R}}"], <!--real set-->
+	      P: ["{\\mathbb{P}}"], <!--probability-->
+	      unif: ["\\operatorname{Unif}"], <!--Uniform distribution-->
+	      ud: ["\\mathop{}\\!\\mathrm{d}"], <!--d in tegeral-->
+	      der: ["\\frac{\\ud^{#1}}{\\ud{#2}^{#1}}", 2, ""], <!--\der{x}{f} d/dx f--> 
+	      del: ["\\frac{\\partial^{#1}}{\\partial{#2}^{#1}}", 2, ""], <!--\del{x}{f} d/dx f-->
+	      fder: ["\\frac{\\ud^{#1}#3}{\\ud{#2}^{#1}}", 3, ""], <!--\fder{x}{f} df/dx -->
+	      fdel: ["\\frac{\\partial^{#1}#3}{\\partial{#2}^{#1}}", 3, ""], <!--\fdel{x}{f} df/dx -->
+	      hess: ["\\frac{\\partial^2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 1], <!--\hess{x} d/dxdx -->
+	      fhess: ["\\frac{\\partial^2#2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 2], <!--\fhess{x}{f} df/dxdx -->
+	      eps: ["\\varepsilon"], <!--epsilon-->
+	      L: ["{\\mathcal{L}}"], <!--curl L likelihood-->
+	      <!-- \ell is used for curl l log likelihood -->
+	      bz: ["{\\bm{0}}"], <!--boldface 0-->
+	      bu: ["{\\bm{1}}"], <!--boldface 1-->
+	      xx: ["{\\bm{x}}"], <!--boldface x-->
+	      yy: ["{\\bm{y}}"], <!--boldface y-->
+	      zz: ["{\\bm{z}}"], <!--boldface z-->
+	      II: ["{\\bm{I}}"], <!--boldface I-->
+	      HH: ["{\\bm{H}}"], <!--boldface H-->
+	      XX: ["{\\bm{X}}"], <!--boldface X-->
+	      YY: ["{\\bm{Y}}"], <!--boldface Y-->
+	      ZZ: ["{\\bm{Z}}"], <!--boldface Z-->
+	      WW: ["{\\bm{W}}"], <!--boldface Z-->
+	      aal: ["{\\bm{\\alpha}}"], <!--boldface alpha-->
+	      bbe: ["{\\bm{\\beta}}"], <!--boldface beta-->
+	      gga: ["{\\bm{\\gamma}}"], <!--boldface gamma-->
+	      eet: ["{\\bm{\\eta}}"], <!--boldface eta-->
+	      lla: ["{\\bm{\\lambda}}"], <!--boldface lambda-->
+	      mmu: ["{\\bm{\\mu}}"], <!--boldface mu-->
+	      pph: ["{\\bm{\\phi}}"], <!--boldface phi-->
+	      pps: ["{\\bm{\\psi}}"], <!--boldface psi-->
+	      rrh: ["{\\bm{\\rho}}"], <!--boldface rho-->
+	      ssi: ["{\\bm{\\sigma}}"], <!--boldface sigma-->
+	      tta: ["{\\bm{\\tau}}"], <!--boldface tau-->
+	      tth: ["{\\bm{\\theta}}"], <!--boldface theta-->
+	      eeps: ["{\\bm{\\varepsilon}}"], <!--boldface varepsilon-->
+	      GGa: ["{\\bm{\\Gamma}}"], <!--boldface Gamma-->
+	      SSi: ["{\\bm{\\Sigma}}"], <!--boldface Sigma-->
+	      TTh: ["{\\bm{\\Theta}}"], <!--boldface Theta-->
+	      rx: ["{\\tx{x}}"], <!--text x-->
+	      ry: ["{\\tx{y}}"], <!--text y-->
+	      rz: ["{\\tx{z}}"], <!--text z-->
+	      I: ["{\\mathcal{I}}"], <!--I curl-->
+	      H: ["{\\mathcal{H}}"], <!--H curl-->
+	      kl: ["{\\operatorname{KL}}"], <!--KL divergence-->
+	      sfT: ["{\\mathsf{T}}"], <!--sf T-->
+	      argmin: ["\\operatorname{arg\\,min}"], <!--argmin-->
+	      argmax: ["\\operatorname{arg\\,max}"], <!--argmax-->
+	      indep: ["\\perp \\!\\!\\! \\perp"] <!--independent-->
+	  }
+     }
+  });
+</script>
+
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Main Content</b></span></li>
+<li class="chapter" data-level="1" data-path="chap-intro.html"><a href="chap-intro.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-intro.html"><a href="chap-intro.html#survey-sampling"><i class="fa fa-check"></i><b>1.1</b> Survey Sampling</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-intro.html"><a href="chap-intro.html#census-vs.-samples"><i class="fa fa-check"></i><b>1.2</b> Census vs. Samples</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-intro.html"><a href="chap-intro.html#census"><i class="fa fa-check"></i><b>1.2.1</b> Census</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-intro.html"><a href="chap-intro.html#intro-sample"><i class="fa fa-check"></i><b>1.2.2</b> Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-intro.html"><a href="chap-intro.html#intro-bias-var"><i class="fa fa-check"></i><b>1.3</b> Variability and Bias</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-intro.html"><a href="chap-intro.html#variability"><i class="fa fa-check"></i><b>1.3.1</b> Variability</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-intro.html"><a href="chap-intro.html#bias"><i class="fa fa-check"></i><b>1.3.2</b> Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-intro.html"><a href="chap-intro.html#sources-of-bias"><i class="fa fa-check"></i><b>1.4</b> Sources of Bias</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-intro.html"><a href="chap-intro.html#selection-bias"><i class="fa fa-check"></i><b>1.4.1</b> Selection Bias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-intro.html"><a href="chap-intro.html#measurement-errors"><i class="fa fa-check"></i><b>1.4.2</b> Measurement Errors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-srs.html"><a href="chap-srs.html"><i class="fa fa-check"></i><b>2</b> Simple Probability Sampling</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-srs.html"><a href="chap-srs.html#mathematical-framework"><i class="fa fa-check"></i><b>2.1</b> Mathematical Framework</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chap-srs.html"><a href="chap-srs.html#simplifying-assumptions"><i class="fa fa-check"></i><b>2.1.1</b> Simplifying Assumptions</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chap-srs.html"><a href="chap-srs.html#population-and-sample"><i class="fa fa-check"></i><b>2.1.2</b> Population and Sample</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chap-srs.html"><a href="chap-srs.html#variables"><i class="fa fa-check"></i><b>2.1.3</b> Variables</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chap-srs.html"><a href="chap-srs.html#srs-param-stat"><i class="fa fa-check"></i><b>2.1.4</b> Population Parameter and Sample Statistic</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chap-srs.html"><a href="chap-srs.html#srs-design-based"><i class="fa fa-check"></i><b>2.1.5</b> Design-based Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chap-srs.html"><a href="chap-srs.html#sampling-distribution"><i class="fa fa-check"></i><b>2.2</b> Sampling Distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-srs.html"><a href="chap-srs.html#probability-refresh"><i class="fa fa-check"></i><b>2.2.1</b> Probability Refresh</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-srs.html"><a href="chap-srs.html#sampling-distribution-1"><i class="fa fa-check"></i><b>2.2.2</b> Sampling Distribution</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-srs.html"><a href="chap-srs.html#probabilistic-mean"><i class="fa fa-check"></i><b>2.2.3</b> Probabilistic Mean</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap-srs.html"><a href="chap-srs.html#unbiased-estimator"><i class="fa fa-check"></i><b>2.3</b> Unbiased Estimator</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-srs.html"><a href="chap-srs.html#bias-1"><i class="fa fa-check"></i><b>2.3.1</b> Bias</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-srs.html"><a href="chap-srs.html#bias-of-sample-total"><i class="fa fa-check"></i><b>2.3.2</b> Bias of Sample Total</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-srs.html"><a href="chap-srs.html#probability-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability Sampling</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Concise Introduction to Survey Sampling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-srs" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Simple Probability Sampling<a href="chap-srs.html#chap-srs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="mathematical-framework" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Mathematical Framework<a href="chap-srs.html#mathematical-framework" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simplifying-assumptions" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Simplifying Assumptions<a href="chap-srs.html#simplifying-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mathematics is ideal and beautiful and the world is messy. However, to study the world better, we must start with ideal, most simple cases, then build our theories upon that. From now on, we will assume that</p>
+<ul>
+<li><p>the <strong>sampled population</strong> is the <em>same</em> as the <strong>target population</strong>, and</p></li>
+<li><p>the <strong>sampling frame</strong> is <em>complete</em>.</p></li>
+</ul>
+<p>This implies that we assume that there is no nonresponse or missing data, no measurement error and no selection bias.</p>
+</div>
+<div id="population-and-sample" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Population and Sample<a href="chap-srs.html#population-and-sample" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We represent the population by the sampling frame <span class="math inline">\(U = \{1, 2, ..., N\}\)</span>, where each index represents an observation unit. Then <span class="math inline">\(U\)</span> is called the <strong>population index set</strong>. The letter <span class="math inline">\(U\)</span> is used because the population can also be thought of as the <strong>universe</strong> that we are working on.</p>
+<p>As discussed in Section <a href="chap-intro.html#intro-sample">1.2.2</a>, a <strong>sample</strong> is a <em>subset</em> of the population. The sample is denoted by <span class="math inline">\(S\)</span>, where <span class="math inline">\(S\)</span> stands for sample. Then <span class="math inline">\(S \subseteq U\)</span>.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-pop-sample" class="example"><strong>Example 2.1  </strong></span>Suppose our population has 3 observation units. Then <span class="math inline">\(U = \{1, 2, 3\}\)</span>. The index <span class="math inline">\(1\)</span> represents the first unit, the index <span class="math inline">\(2\)</span> represents the second unit, and the index <span class="math inline">\(3\)</span> represents the third unit.</p>
+<p>A sample <span class="math inline">\(S\)</span> can be any subset of <span class="math inline">\(U\)</span>, so <span class="math inline">\(S\)</span> can be <span class="math inline">\(\{1\}, \{1, 2\}, \{1, 2, 3\}\)</span>, or <span class="math inline">\(\{\emptyset\}\)</span>, etc.</p>
+</div>
+</div>
+</div>
+<div id="variables" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Variables<a href="chap-srs.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>variable</strong> is a characteristic or quantity of the observation unit which can take different values. In the students’ rent Example <a href="chap-intro.html#exm:ex-intro-rent">1.1</a>, variables can be the monthly rent payment, age, department, etc. of students.</p>
+<ul>
+<li><p><strong>General variables</strong> are often denoted by uppercase letters, for example, <span class="math inline">\(X, Y, Z\)</span>.</p></li>
+<li><p><strong>Variables of a specific unit</strong>, say unit <span class="math inline">\(i\)</span>, is denoted by the uppercase letter accompanied by a subscript, e.g., <span class="math inline">\(X_i, Y_i, Z_i\)</span>.</p></li>
+<li><p><strong>Actual values</strong> are denoted by lowercase letters <span class="math inline">\(x_i, y_i, z_i\)</span>.</p></li>
+</ul>
+<p>In survey sampling, there are often three types of variables:</p>
+<ul>
+<li><p>the <strong>variable of interest</strong> is often denoted by <span class="math inline">\(Y\)</span>. So in the population, we have <span class="math inline">\(Y_1, Y_2, ..., Y_N\)</span> denote the variable of interest measured on each unit.</p></li>
+<li><p><strong>explanatory</strong> (or <strong>auxiliary</strong>) <strong>variables</strong>: some additional variables that can be helpful, but are not the variable of interest. They are often denoted by <span class="math inline">\(X\)</span> (<span class="math inline">\(X\)</span> can be a vector of different variables). Thus, in the population we have <span class="math inline">\(X_1, ..., X_N\)</span>.</p></li>
+<li><p><strong>inclusion variable</strong>, often denoted by <span class="math inline">\(Z\)</span>, in which <span class="math inline">\(Z_i\)</span> indicates whether unit <span class="math inline">\(i\)</span> is included in the sample, that is
+<span class="math display">\[
+Z_i = \begin{cases} 1 &amp; \text{if } i \in S \\ 0 &amp; \text{otherwise} \end{cases}
+\]</span>
+The set <span class="math inline">\(\{Z_1, ..., Z_N\}\)</span> uniquely determines the set <span class="math inline">\(S\)</span>. Or equivalently, we can say that there is a 1-1 correspondence between <span class="math inline">\(\{Z_1, ..., Z_N\}\)</span> and <span class="math inline">\(S\)</span>.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-notation" class="example"><strong>Example 2.2  </strong></span>In the students’ rent Example <a href="chap-intro.html#exm:ex-intro-rent">1.1</a>, the monthly rent payment is the variable of interest, so it is denoted by <span class="math inline">\(Y\)</span>. Then, <span class="math inline">\(Y_1, Y_2, ..., Y_N\)</span> denote the monthly rent payment of the first, the second, …, the last student in the population, respectively. If the <span class="math inline">\(i\)</span>-th student pays <span class="math inline">\(\$1,000\)</span> monthly for rent, then <span class="math inline">\(y_i = 1,000\)</span>. We use <span class="math inline">\(y_i\)</span> to represent an actual number, but it can be any number.</p>
+<p>The explanatory variables can be a collection of information such as department, age, height, weight, etc. and are represented by <span class="math inline">\(X\)</span>. Finally, <span class="math inline">\(Z_i\)</span> denotes whether the <span class="math inline">\(i\)</span>-th student is included in our sample.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-inclusion" class="example"><strong>Example 2.3  </strong></span>For each possible sample <span class="math inline">\(S\)</span> from the population <span class="math inline">\(U\)</span>, we have a specific set of values for <span class="math inline">\(\{Z_1, ..., Z_N\}\)</span>. Continue from Example <a href="chap-srs.html#exm:ex-srs-pop-sample">2.1</a>, if <span class="math inline">\(U = \{1, 2, 3\}\)</span> then <span class="math inline">\(S\)</span> and <span class="math inline">\(Z_1, ..., Z_N\)</span> can take values:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="srs-param-stat" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Population Parameter and Sample Statistic<a href="chap-srs.html#srs-param-stat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall from Chapter <a href="chap-intro.html#chap-intro">1</a>, the <strong>parameter</strong> is a quantity that can be calculated from the population, and the <strong>statistic</strong> is a quantity that can be calculated from the sample. The <strong>goal</strong> of survey sampling is to <strong>estimate</strong> a population parameter using a sample statistic.</p>
+<p>For a collection of numbers <span class="math inline">\(x_1, ..., x_m\)</span>, common <strong>descriptive statistics</strong> that we can calculate are the <strong>mean</strong> and the <strong>variance</strong>, which is defined respectively as
+<span class="math display">\[
+\bar{x} = \frac{1}{m}(x_1 + x_2 + ... + x_m) = \frac{1}{m}\sum_{i=1}^m x_i
+\]</span></p>
+<p><span class="math display">\[
+s^2 = \frac{1}{m-1}\sum_{i=1}^m (x_i - \bar{x})^2
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-mean-variance" class="example"><strong>Example 2.4  </strong></span>Consider 3 numbers <span class="math inline">\(4,10,7\)</span>. Then the mean is
+<span class="math display">\[
+\bar{x} = \frac{1}{3}(4+10+7) = 7
+\]</span>
+The variance is
+<span class="math display">\[
+s^2 = \frac{1}{3-1} \left[(4-7)^2 + (10-7)^2 + (7-7)^2\right] = 9
+\]</span>
+The <strong>standard deviation</strong> is <span class="math inline">\(s = \sqrt{s^2} = 3\)</span>.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Similarly, we can use these definitions to define our population parameters and sample statistics.</p>
+<ul>
+<li><p><strong>Population parameters</strong> are <em>functions</em> of the variables of interest <span class="math inline">\(Y_1, ..., Y_N\)</span>.</p>
+<ul>
+<li><p>Often, we are interested in the <strong>population mean</strong>:
+<span class="math display">\[
+  \bar{Y}_U = \frac{1}{N}\sum_{i=1}^N Y_i
+  \]</span></p></li>
+<li><p>When <span class="math inline">\(Y_i\)</span> is an indicator i.e., a binary variable, then <span class="math inline">\(\bar{Y}_U\)</span> can the called the <strong>population proportion</strong>. For example, if <span class="math inline">\(Y_i\)</span> indicates whether the <span class="math inline">\(i\)</span>-th student has a private bathroom with <span class="math inline">\(Y_i = 1\)</span> meaning the student has a private bathroom and <span class="math inline">\(Y_i = 0\)</span> meaning the student does <em>not</em> have a private bathroom, then <span class="math inline">\(\bar{Y}_U\)</span> indicates the proportion of USask students who have a private bathroom.</p></li>
+<li><p>Or the <strong>population total</strong>
+<span class="math display">\[
+  T_U = \sum_{i=1}^N Y_i = N\bar{Y}_U
+  \]</span></p></li>
+</ul></li>
+<li><p><strong>Sample statistics</strong> can be calculated from a sample, therefore, they are functions of <span class="math inline">\(Z_iY_i\)</span>, and possibly <span class="math inline">\(Z_iX_i\)</span> for <span class="math inline">\(i = 1, ..., N\)</span>.</p>
+<ul>
+<li><p>Note here that we use <span class="math inline">\(Z_iY_i\)</span> because, when unit <span class="math inline">\(i\)</span> is included in our sample, <span class="math inline">\(Z_i = 1\)</span> and <span class="math inline">\(Z_iY_i = Y_i\)</span> so <span class="math inline">\(Y_i\)</span> is incorporated in our sample statistic. On the other hand, if <span class="math inline">\(Z_i = 0\)</span>, unit <span class="math inline">\(i\)</span> is not included in our sample, then <span class="math inline">\(Z_iY_i = 0\)</span> contributes 0 to our sample statistic.</p></li>
+<li><p>Corresponding to the population parameters, we also have the <strong>sample mean</strong>. Suppose the sample we collected consists of <span class="math inline">\(n\)</span> unit:
+<span class="math display">\[
+  \bar{Y}_S = \frac{1}{n}\sum_{i\in S}Y_i = \frac{1}{n}\sum_{i=1}^N Z_iY_i = \frac{\sum_{i=1}^N Z_iY_i}{\sum_{i=1}^N Z_i}
+  \]</span></p></li>
+<li><p>We also have the <strong>sample total</strong>:
+<span class="math display">\[
+  T_S = \sum_{i\in S}Y_i = \sum_{i=1}^N Z_iY_i
+  \]</span></p></li>
+</ul></li>
+</ul>
+</div>
+<div id="srs-design-based" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Design-based Inference<a href="chap-srs.html#srs-design-based" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In survey sampling, we usually use a mathematical framework called <strong>design-based</strong>, which consists of the following assumptions</p>
+<ul>
+<li><p>The population size (the number of units in the population) <span class="math inline">\(N\)</span> is <strong>fixed</strong> and <strong>finite</strong>.</p></li>
+<li><p>For each <span class="math inline">\(i = 1, 2,..., N\)</span>, <span class="math inline">\(Y_i, X_i\)</span> is <strong>fixed</strong>, but possibly <strong>unknown</strong> to us. Therefore, <span class="math inline">\(Y_i, X_i\)</span> can be replaced by lowercase letters <span class="math inline">\(y_i, x_i\)</span>.</p></li>
+<li><p>The sample <span class="math inline">\(S\)</span> is <strong>random</strong>. Therefore <span class="math inline">\(Z_1, ..., Z_N\)</span> are random.</p>
+<ul>
+<li><p>To differentiate with fixed quantities, we denote random quantities with uppercase letters.</p></li>
+<li><p>So <span class="math inline">\(Z\)</span> is the <strong>only</strong> source of randomness in this framework.</p></li>
+<li><p>Since <span class="math inline">\(Z\)</span> determines which unit is selected, the specification of <span class="math inline">\(Z\)</span> is called the <strong>design</strong> of the sampling process. Thus, this framework is called the <em>design-based</em> framework<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p></li>
+<li><p>The design-based framework is gaining its popularity back in fields beyond survey sampling, such as causal inference or economics.</p></li>
+</ul></li>
+</ul>
+<p>To understand the difference between <strong>fixed</strong> and <strong>random</strong>, we introduce the notion of a <strong>probabilistic experiment</strong>. A probabilistic experiment is a process in which the complexity of the underlying system leads to an outcome that <strong>cannot be known ahead of time</strong>. We say that the outcome of such a probabilistic experiment is <strong>random</strong>. Thus, the outcomes can be <strong>different</strong> each time the probabilistic experiment is <strong>repeated</strong>.</p>
+<p>In the design-based framework, we assume that there is only one probabilistic experiment, which is the <strong>sample selection process</strong>. That is, we do not know which unit will end up in our sample ahead of time, and if we repeat the sample selection process, we will probably get a different actual list <span class="math inline">\(s\)</span> of units in our sample.</p>
+<ul>
+<li><p>Since <span class="math inline">\(Z\)</span> is related to <span class="math inline">\(S\)</span>, <span class="math inline">\(Z\)</span> is assumed to be <strong>random</strong>.</p></li>
+<li><p>Since <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> is not related to the probabilistic experiment, they are assumed to be <strong>fixed</strong>.</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> can be thought of as being inherent for our sampling units (think about the height and weight of a student). However, they are unknown to us because we did not collect our survey data about all units in the population.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="sampling-distribution" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Sampling Distribution<a href="chap-srs.html#sampling-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="probability-refresh" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Probability Refresh<a href="chap-srs.html#probability-refresh" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Although there are different views of what a <strong>probability</strong> means, in this course, we will use the empirical (or frequentist) view, in which the probability of an outcome of a probabilistic experiment is the frequency that we obtain such an outcome, if we are to <strong>repeat</strong> the probabilistic experiment for an <strong>infinitely large</strong> number of times.</p>
+<p>In our case, the <strong>probabilistic experiment</strong> is the <strong>sample selection process</strong>, the outcome is the sample index set <span class="math inline">\(S\)</span>. So the probability that we obtain a <strong>specific</strong> value <span class="math inline">\(s\)</span> of <span class="math inline">\(S\)</span> is
+<span class="math display">\[
+\mathbb{P}(S = s) = \lim_{\text{number of repetitions} \to \infty} \frac{\text{number times outcome } s \text{ is obtained}}{\text{number of repetitions}}
+\]</span></p>
+<p>A <strong>random variable</strong> <span class="math inline">\(Z\)</span> is a function of the <strong>experimental outcome</strong>. The probability that the random variable <span class="math inline">\(Z\)</span> attain a specific value <span class="math inline">\(z\)</span> is the sum of probabilities of possible experimental outcomes <span class="math inline">\(s\)</span> in which <span class="math inline">\(Z = z\)</span>, that is:
+<span class="math display">\[
+\mathbb{P}(Z = z) = \sum_{s \text{ so that when }S=s, \text{ then }Z=z}\mathbb{P}(S=s)
+\]</span></p>
+<p>Check out <a href="https://tqtbui.github.io/introbook/chap-prob.html">this letcure</a> to learn more about probability and its laws.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-probs" class="example"><strong>Example 2.5  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-inclusion">2.3</a>, suppose we repeat the sample selection process for a large amount of times, obtaining results
+<span class="math display">\[
+\{1\}, \{2,3\}, \{1,2\}, \{2,3\}, \{1,2\}, \{2\}, \{2\}, \{1,2\}, \{1\}, ...
+\]</span>
+We then calculate the frequency of the possible outcomes obtained, then obtain the probability for each possible outcomes of <span class="math inline">\(S\)</span>, namely <span class="math inline">\(\{\emptyset\}, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\)</span> as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>From here, we can calculate <span class="math inline">\(\mathbb{P}(Z_1 = 1)\)</span>, i.e., the probability that unit 1 is in our sample, by summing up the probabilities of sample index sets that contain 1:
+<span class="math display">\[\begin{align*}
+\mathbb{P}(Z_1 = 1) &amp; = \mathbb{P}(S = \{1\}) + \mathbb{P}(S = \{1,2\}) + \mathbb{P}(S = \{1,3\}) + \mathbb{P}(\{1,2,3\}) \\
+&amp; = 1/6 + 1/3 + 0 + 0 = 1/2
+\end{align*}\]</span></p>
+<p>Similarly, the probability that unit 1 is <em>not</em> in our sample can be calculated by summing up the probabilities of possible sample index sets that do not contain 1:
+<span class="math display">\[\begin{align*}
+\mathbb{P}(Z_1 = 0) &amp; = \mathbb{P}(S = \{2\}) + \mathbb{P}(S = \{3\}) + \mathbb{P}(S = \{2,3\}) + \mathbb{P}(\{\emptyset\}) \\
+&amp; = 1/3 + 0 + 1/6 + 0 = 1/2
+\end{align*}\]</span>
+Since <span class="math inline">\(Z_1\)</span> is a binary variable that can only takes 2 possible values: 1 or 0, so we can also use the probability law of complement to calculate <span class="math inline">\(\mathbb{P}(Z_1 = 0)\)</span>:
+<span class="math display">\[
+\mathbb{P}(Z_1 = 0) = 1 - \mathbb{P}(Z_1 = 1) = 1 - 1/2 = 1/2.
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="sampling-distribution-1" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Sampling Distribution<a href="chap-srs.html#sampling-distribution-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall that in survey sampling, we try to use a sample statistic to <strong>estimate</strong> a population <strong>parameter</strong>, say <span class="math inline">\(\theta\)</span>. In Section <a href="chap-srs.html#srs-param-stat">2.1.4</a>, we discussed that <span class="math inline">\(\theta\)</span> is a function of <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i=1,...,N\)</span> and it can be, for example, the population sample or the population mean. Under the design-based framework discussed in Section <a href="chap-srs.html#srs-design-based">2.1.5</a>, <span class="math inline">\(Y_i\)</span> is assumed to be fixed, and <span class="math inline">\(\theta\)</span> is a function of <span class="math inline">\(Y_i\)</span>. As a consequence, <span class="math inline">\(\theta\)</span> is also assumed to be <strong>fixed</strong>. Thus, we can use lowercase letters to denote <span class="math inline">\(\theta\)</span>. For example, the <strong>population</strong> total:
+<span class="math display" id="eq:srs-pop-total">\[\begin{equation}
+  t_U = \sum_{i=1}^N y_i
+  \tag{2.1}
+\end{equation}\]</span>
+The <strong>population mean</strong> is
+<span class="math display" id="eq:srs-pop-mean">\[\begin{equation}
+  \bar{y}_S = \frac{1}{N}t_U = \frac{1}{N}\sum_{i=1}^N y_i
+  \tag{2.2}
+\end{equation}\]</span></p>
+<p>An <strong>estimator</strong> of <span class="math inline">\(\theta\)</span> is usually denoted with a <strong>hat</strong>: <span class="math inline">\(\hat{\theta}\)</span>. In Section <a href="chap-srs.html#srs-param-stat">2.1.4</a>, <span class="math inline">\(\hat{\theta}\)</span> is a statistic calculated from the sample, so it is a function of <span class="math inline">\(Z_iY_i\)</span> and possibly <span class="math inline">\(Z_iX_i\)</span>. In the design-based framework of Section <a href="chap-srs.html#srs-design-based">2.1.5</a>, <span class="math inline">\(Z_i\)</span> is assumed to be random, so <span class="math inline">\(\hat{\theta}\)</span> is also <strong>random</strong>. Recall that we use lowercase letters to denote fixed and uppercase letters to denote random. So we write the <strong>sample total* as
+<span class="math display" id="eq:srs-samp-total">\[\begin{equation}
+  T_S = \sum_{i \in S} y_i = \sum_{i=1}^N Z_iy_i
+  \tag{2.3}
+\end{equation}\]</span>
+and write the </strong>sample mean** as (if we have <span class="math inline">\(n\)</span> units in our sample)
+<span class="math display" id="eq:srs-samp-mean">\[\begin{equation}
+  \bar{Y}_S = \frac{1}{n}\sum_{i\in S}y_i = \frac{1}{n}\sum_{i=1}^N Z_iy_i = \frac{\sum_{i=1}^N Z_iy_i}{\sum_{i=1}^N Z_i}
+  \tag{2.4}
+\end{equation}\]</span>
+We can see that the sample mean is a division of two random quantities, so it is more difficult than the sample total. So we will study the <strong>sample total</strong> and <strong>population total</strong> <em>first</em>.</p>
+<p>Again, <span class="math inline">\(\hat{\theta}\)</span> is <strong>random</strong> due to the randomness from the sample selection probabilistic experiment. This implies that each time the probabilistic experiment is repeated, we will probably get a different value of <span class="math inline">\(\hat{\theta}\)</span>. The distribution formed by the frequency of possible values of <span class="math inline">\(\hat{\theta}\)</span> when we <strong>repeat</strong> the sample selection processes infinitely many times is called the <strong>sampling distribution</strong> of <span class="math inline">\(\hat{\theta}\)</span>. The sampling distribution tells us about the probabilities that certain values/range of values of <span class="math inline">\(\hat{\theta}\)</span> is obtained.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-sampling-dist" class="example"><strong>Example 2.6  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-probs">2.5</a>. Suppose that <span class="math inline">\(Y_1 = 4\)</span>, <span class="math inline">\(Y_2 = 10\)</span>, <span class="math inline">\(Y_3 = 7\)</span>. The population total is
+<span class="math display">\[
+t_U = \sum_{i=1}^3 Y_i = Y_1 + Y_2 + Y_3 = 4 + 10 + 7 = 21.
+\]</span>
+Consider the sample total <span class="math inline">\(T_S = \sum_{i=1}^N Z_i Y_i\)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+<th align="center"><span class="math inline">\(T_S\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+<td align="center"><span class="math inline">\(10\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(7\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+<td align="center"><span class="math inline">\(14\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(11\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+<td align="center"><span class="math inline">\(17\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(21\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can see that, depending on the actual sample we obtain from our sample selection process, <span class="math inline">\(T_S\)</span> can have different values. Since the result of the sample selection process cannot be known beforehand and is random, the actual value of <span class="math inline">\(T_S\)</span> as a result of the sample selection process, is also random.</p>
+<p>To visualize the sampling distribution of <span class="math inline">\(T_S\)</span>, we can draw a plot of the probabilities of different actual values of <span class="math inline">\(T_S\)</span>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-srs.html#cb1-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">14</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">21</span>), </span>
+<span id="cb1-2"><a href="chap-srs.html#cb1-2" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">0</span>), </span>
+<span id="cb1-3"><a href="chap-srs.html#cb1-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;probability&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;possible values of T_S&quot;</span>, </span>
+<span id="cb1-4"><a href="chap-srs.html#cb1-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Sampling distribution of T_S&quot;</span>, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">lwd =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/srs-sampling-dist-1.png" alt="" width="50%" style="display: block; margin: auto;" /></p>
+<p>From the plot, we can see that</p>
+<p><span class="math display">\[
+\mathbb{P}(T_S = 4) = 1/6; \hspace{5mm} \mathbb{P}(T_S = 10) = 1/3; \hspace{5mm} \mathbb{P}(T_S = 14) = 1/3; \hspace{5mm} \mathbb{P}(T_S = 17) = 1/6.
+\]</span>
+and the probability that <span class="math inline">\(T_S\)</span> has other values outside of <span class="math inline">\(4, 10, 14, 17\)</span> is 0.</p>
+</div>
+</div>
+</div>
+<div id="probabilistic-mean" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Probabilistic Mean<a href="chap-srs.html#probabilistic-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The (probabilistic) <strong>mean</strong> of a numerical-valued random variable is defined as
+<span class="math display">\[
+\mathbb{E}[Z] = \sum_{\text{possible values }z \text{ of }Z} z \times \mathbb{P}(Z = z)
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-mean" class="example"><strong>Example 2.7  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, the mean of random variable <span class="math inline">\(Z_1\)</span> is
+<span class="math display">\[
+\mathbb{E}[Z_1] = 1 \times \mathbb{P}(Z_1 = 1) + 0 \times \mathbb{P}(Z_1 = 0) = 1 \times 1/2 + 0 \times 1/2 = 1/2.
+\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Note here that for a binary random variable <span class="math inline">\(Z\)</span> having only two possible outcomes <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>, we always have
+<span class="math display" id="eq:srs-binary-mean">\[\begin{equation}
+  \mathbb{E}[Z] = 1 \times \mathbb{P}(Z = 1) + 0 \times \mathbb{P}(Z = 0) = \mathbb{P}(Z = 1).
+  \tag{2.5}
+\end{equation}\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-mean-2" class="example"><strong>Example 2.8  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, we have
+<span class="math display">\[\begin{align*}
+\mathbb{E}[Z_2] = \mathbb{P}(Z_2 = 1) &amp; = \mathbb{P}(S = \{2\}) + \mathbb{P}(S = \{1,2\})
++ \mathbb{P}(S = \{2,3\}) + \mathbb{P}(S = \{1,2,3\}) \\
+&amp; = 1/3 + 1/3 + 1/6 + 0 = 5/6.
+\end{align*}\]</span>
+and
+<span class="math display">\[
+\mathbb{E}[Z_3] = \mathbb{P}(Z_3 = 1) = 0 + 0 + 1/6 + 0 = 1/6.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div id="unbiased-estimator" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Unbiased Estimator<a href="chap-srs.html#unbiased-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="bias-1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Bias<a href="chap-srs.html#bias-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Since sample statistics are random, which means it can obtain different values at different repetition of the sampling selection, we need to use the concepts of bias and variance in Section <a href="chap-intro.html#intro-bias-var">1.3</a> to <strong>evaluate</strong> estimators.</p>
+<p>We will first look at bias. Mathematically, <strong>bias</strong> is defined as
+<span class="math display">\[
+\text{Bias}(\hat{\theta}) = \mathbb{E}[\hat{\theta}] - \theta
+\]</span>
+If <span class="math inline">\(\text{Bias}(\hat{\theta}) = 0\)</span>, we say <span class="math inline">\(\hat{\theta}\)</span> is <strong>unbiased</strong> for <span class="math inline">\(\theta\)</span>. Otherwise, we say that <span class="math inline">\(\hat{\theta}\)</span> is <strong>biased</strong> for <span class="math inline">\(\theta\)</span>.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-bias" class="example"><strong>Example 2.9  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, the mean of the sample total <span class="math inline">\(T_S\)</span> is
+<span class="math display">\[
+\mathbb{E}[T_S] = 4 \times 1/6 + 10 \times 1/3 + 14 \times 1/3 + 17 \times 1/6 = 11.5
+\]</span>
+However, we want to estimate the population total, <span class="math inline">\(t_U = 21\)</span>. So the bias of <span class="math inline">\(T_S\)</span> for <span class="math inline">\(t_U\)</span> is
+<span class="math display">\[
+\mathbb{E}[T_S] - t_U = 11.5 - 21 = -9.5.
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="bias-of-sample-total" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Bias of Sample Total<a href="chap-srs.html#bias-of-sample-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To calculate the bias formula of the sample total <span class="math inline">\(T_S\)</span>, we need to calculate its mean. In doing so, we use the following <strong>property</strong>:</p>
+<div class="myDefinition">
+<div class="proposition">
+<p><span id="prp:prop-srs-linearity-of-means" class="proposition"><strong>Proposition 2.1  (Linearity of Means) </strong></span>For random variables <span class="math inline">\(Z_1\)</span>, <span class="math inline">\(Z_2\)</span>, and constants (fixed numbers) <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we have
+<span class="math display">\[
+\mathbb{E}[aZ_1 + bZ_2] = a\mathbb{E}[Z_1] + b\mathbb{E}[Z_2].
+\]</span>
+In general, if we have <span class="math inline">\(N\)</span> random variables <span class="math inline">\(Z_1, ..., Z_N\)</span> and <span class="math inline">\(N\)</span> constants <span class="math inline">\(a_1, ..., a_N\)</span>, we have
+<span class="math display">\[
+\mathbb{E}\left[\sum_{i=1}^N a_iZ_i\right] = \sum_{i=1}^N a_i\mathbb{E}\big[Z_i\big].
+\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Basically, the <strong>linearity property of the means</strong> says that expectation (i.e., mean) of a linear combination of random variables equals the linear combination of the expectations (i.e., means) of the corresponding random variables.</p>
+<p>Applying Property <a href="chap-srs.html#prp:prop-srs-linearity-of-means">2.1</a> to the sample total, we have
+<span class="math display">\[
+\mathbb{E}\big[T_S\big] = \mathbb{E}\left[\sum_{i=1}^N Z_iy_i\right] = \sum_{i=1}^N\mathbb{E}\big[Z_i\big]y_i
+\]</span>
+where the first equation is from the definition in Equation <a href="chap-srs.html#eq:srs-samp-total">(2.3)</a>, the second equation is from the linearity property of the mean and the design-based framework, which assumes that <span class="math inline">\(y_i\)</span>, <span class="math inline">\(i=1, ..., N\)</span> are fixed (constants).</p>
+<p>So, the <strong>bias of the sample total</strong> <span class="math inline">\(T_S\)</span> when estimating the population <span class="math inline">\(t_U\)</span> is
+<span class="math display">\[
+\mathbb{E}\big[T_S\big] - t_U = \sum_{i=1}^N\mathbb{E}\big[Z_i\big]y_i - \sum_{i=1}^Ny_i = \sum_{i=1}^N\Big\{\big(\mathbb{E}[Z_i] - 1\big)y_i\Big\}
+\]</span>
+which is often <strong>non-zero</strong>, meaning that <span class="math inline">\(T_S\)</span> is often <strong>biased</strong> for <span class="math inline">\(t_U\)</span>.</p>
+<p>Furthermore, note that <span class="math inline">\(Z_i\)</span>, <span class="math inline">\(i = 1, ..., N\)</span> are binary random variables which can only take one of two values, either 1 or 0, so from Equation <a href="chap-srs.html#eq:srs-binary-mean">(2.5)</a>, we have
+<span class="math display">\[
+\mathbb{E}\big[Z_i\big] = \mathbb{P}(Z_i = 1) \le 1
+\]</span>
+Now, if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>, for example, when <span class="math inline">\(Y\)</span> is the monthly rent payment, then
+<span class="math display">\[
+\mathbb{E}\big[T_S\big] - t_U = \sum_{i=1}^N\Big\{\big(\mathbb{E}[Z_i] - 1\big)y_i\Big\} = \sum_{i=1}^N\Big\{\big[\mathbb{P}(Z_i = 1) - 1\big]y_i\Big\} \le 0
+\]</span>
+that is, <span class="math inline">\(T_S\)</span> tends to <strong>underestimate</strong> <span class="math inline">\(t_U\)</span> if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This is what we have seen in Example <a href="chap-srs.html#exm:ex-srs-bias">2.9</a>.</p>
+<p>The only case where <span class="math inline">\(T_S\)</span> is unbiased for <span class="math inline">\(t_U\)</span> is when <span class="math inline">\(\Pr(Z_i = 1)\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This means that all units <span class="math inline">\(i\)</span> in the population are included in our sample with certainty, implying that we are taking a <em>census</em>!</p>
+</div>
+<div id="horvitz-thompson-estimator" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Horvitz-Thompson Estimator<a href="chap-srs.html#horvitz-thompson-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From the previous section, we notice that the sample total <span class="math inline">\(T_S\)</span> is unbiased for the population total <span class="math inline">\(t_U\)</span> only if we are taking a census. However, as discussed in Section <a href="chap-intro.html#intro-sample">1.2.2</a>, a census is usually impossible due to constraints in time, cost and other administrative issues. Thus, we cannot use the sample total to estimate the population total and we have to <strong>modify</strong> the sample total so that it become <strong>unbiased</strong>!</p>
+<p>For this, in 1952, the <strong>Horvitz-Thompson estimator</strong> is proposed:
+<span class="math display" id="eq:srs-ht-estimator">\[\begin{equation}
+\hat{\bar{T}}_{HT} = \sum_{i \in S}\frac{y_i}{\mathbb{P}(Z_i = 1)} = \sum_{i=1}^N \frac{Z_iy_i}{\mathbb{P}(Z_i = 1)}.
+\tag{2.6}
+\end{equation}\]</span></p>
+<p>Now, this estimator is <strong>unbiased</strong>:
+<span class="math display">\[
+\mathbb{E}\big[\hat{\bar{T}}_{HT}\big] = \mathbb{E}\left[\sum_{i=1}^N \frac{Z_iy_i}{\mathbb{P}(Z_i = 1)}\right] = \sum_{i=1}^N\mathbb{E}[Z_i] \frac{y_i}{\mathbb{P}(Z_i = 1)} = \sum_{i=1}^N y_i = t_U
+\]</span>
+since <span class="math inline">\(\mathbb{E}[Z_i] = \Pr(Z_i = 1)\)</span>, <span class="math inline">\(i = 1, ..., N\)</span> by Equation <a href="chap-srs.html#eq:srs-binary-mean">(2.5)</a>.</p>
+<p>The Horvitz-Thompson estimator is an important mathematical discovery and is the basis for many methods in not only survey sampling but also missing data, causal inference, domain adaptation, etc.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-sampling-dist" class="example"><strong>Example 2.6  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-probs">2.5</a>. Suppose that <span class="math inline">\(Y_1 = 4\)</span>, <span class="math inline">\(Y_2 = 10\)</span>, <span class="math inline">\(Y_3 = 7\)</span>. The population total is
+<span class="math display">\[
+t_U = \sum_{i=1}^3 Y_i = Y_1 + Y_2 + Y_3 = 4 + 10 + 7 = 21.
+\]</span>
+From Examples <a href="chap-srs.html#exm:ex-srs-mean">2.7</a> and <a href="chap-srs.html#exm:ex-srs-mean-2">2.8</a>, we also know that
+<span class="math display">\[
+\mathbb{P}(Z_1 = 1) = 1/2; \hspace{5mm} \mathbb{P}(Z_2 = 1) = 5/6; \hspace{5mm} \mathbb{P}(Z_3 = 1) = 1/6
+\]</span></p>
+<p>so we can calculate</p>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+<th align="center"><span class="math inline">\(T_S\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\bar{T}}_{HT}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(4/(1/2) = 8\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+<td align="center"><span class="math inline">\(10\)</span></td>
+<td align="center"><span class="math inline">\(10/(5/6) = 12\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(7\)</span></td>
+<td align="center"><span class="math inline">\(7/(1/6) = 42\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+<td align="center"><span class="math inline">\(14\)</span></td>
+<td align="center"><span class="math inline">\(8+12= 20\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(11\)</span></td>
+<td align="center"><span class="math inline">\(8+42=50\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1/6\)</span></td>
+<td align="center"><span class="math inline">\(17\)</span></td>
+<td align="center"><span class="math inline">\(12+42 = 54\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(21\)</span></td>
+<td align="center"><span class="math inline">\(8+12+42 = 62\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The mean of the Horvitz-Thompson estimator is
+<span class="math display">\[
+\mathbb{E}\big[\hat{\bar{T}}_{HT}\big] = 8 \times \frac{1}{6} + 12 \times \frac{1}{3} + 20 \times \frac{1}{3} + 54 \times \frac{1}{6} = 21 = t_U.
+\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>So we can see that although the
+Horvitz-Thompson estimator <span class="math inline">\(\hat{\bar{T}}_{HT}\)</span> also results in different values at different sample index set, but on average, it is unbiased for <span class="math inline">\(t_U\)</span>. This is like throwing darts, although the dart may land at different places, but the locations of the landings still surround the bullseye. On the other hand, the sample total <span class="math inline">\(T_S\)</span> is biased (except for special cases). This is similar to throwing darts but the locations of the landings do not surround the bullseye. Check Figure <a href="chap-srs.html#fig:srs-biases">2.1</a> for a visual illustration.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:srs-biases"></span>
+<img src="data/images/chap-srs/biases.png" alt="Visual illustration of biases of different estimators" width="80%" />
+<p class="caption">
+Figure 2.1: Visual illustration of biases of different estimators
+</p>
+</div>
+</div>
+</div>
+<div id="probability-sampling" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Probability Sampling<a href="chap-srs.html#probability-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+
+
+
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>There are other frameworks, such as the model-based framework, but it will not be the focus of this book.<a href="chap-srs.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
