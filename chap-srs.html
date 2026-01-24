@@ -1423,7 +1423,7 @@ Figure 2.2: Visual illustration of interval-based SRS technique
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
 <p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 27 28  1  4</code></pre>
+<pre><code>## [1] 27  6 12  2</code></pre>
 </div>
 </div>
 <div id="variance" class="section level2 hasAnchor" number="2.7">
@@ -1479,7 +1479,6 @@ To derive this variance, we use the <strong>variance formula for a linear combin
   Var\left(\sum_{i=1}^Na_iZ_i\right) = \sum_{i=1}^N a_i^2 Var(Z_i) + 2\sum_{i \ne j}a_ia_j Cov(Z_i,Z_j).
   \tag{2.10}
   \end{equation}\]</span>
-.
 </summary>
 <div class="myDefinition">
 <div class="proof">
@@ -1534,7 +1533,6 @@ Plugging the above formulas for <span class="math inline">\(\pi_i\)</span> and <
   Var(\hat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n}.
   \tag{2.13}
   \end{equation}\]</span>
-.
 </summary>
 <div class="myDefinition">
 <div class="proof">
@@ -1575,7 +1573,6 @@ Var(\hat{T}_{HT}) &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\su
 <details>
 <summary>
 In fact, <strong>under SRS</strong>, the <strong>sample variance</strong> <span class="math inline">\(S_S^2 = \frac{1}{n-1}\sum_{i\in S}(y_i - \bar{Y}_S)^2\)</span> is an <strong>unbiased</strong> estimator of the population variance <span class="math inline">\(s_U^2\)</span>.
-.
 </summary>
 <div class="myDefinition">
 <div class="proof">
@@ -1604,7 +1601,7 @@ where the 7th equation is because under SRS, <span class="math inline">\(\bar{Y}
 <div class="empty">
 
 </div>
-<p>Therefore, we can <strong>estimate</strong> the variance of the HT estimators <span class="math inline">\(\hat{T}_{HT}\)</span> and <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> by
+<p>Therefore, <strong>under SRS</strong>, we can <strong>estimate</strong> the variance of the HT estimators <span class="math inline">\(\hat{T}_{HT}\)</span> and <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> by
 <span class="math display" id="eq:srs-var-ht-srs-estimator">\[\begin{equation}
 \hat{Var}(\hat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
 \tag{2.15}
@@ -1614,6 +1611,15 @@ and
 \hat{Var}(\bar{Y}_S) = \frac{1}{N^2}Var(\hat{T}_{HT}) = \left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
 \tag{2.16}
 \end{equation}\]</span></p>
+<div class="myExercise">
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 2.2  </strong></span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Derive the variance formula for the HT estimators under Poisson sampling, using the fact that if <span class="math inline">\(Z_i\)</span> and <span class="math inline">\(Z_j\)</span> are independent, then <span class="math inline">\(Cov(Z_i, Z_j) = 0\)</span>.</p></li>
+<li><p>Suggest an estimator for the variance of the HT estimators under Poisson sampling. <em>Hint:</em> using an HT estimator for the variance itself!</p></li>
+</ol>
+</div>
+</div>
 
 </div>
 </div>

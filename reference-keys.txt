@@ -43,6 +43,7 @@ eq:srs-var-ht-srs
 eq:srs-var-ht-srs-mean
 eq:srs-var-ht-srs-estimator
 eq:srs-var-ht-srs-mean-estimator
+exr:unlabeled-div-2
 chap-intro
 survey-sampling
 census-vs.-samples
