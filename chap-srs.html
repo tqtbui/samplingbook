@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-01-18" />
+<meta name="date" content="2026-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="chap-intro.html"><a href="chap-intro.html#sources-of-bias"><i class="fa fa-check"></i><b>1.4</b> Sources of Bias</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="chap-intro.html"><a href="chap-intro.html#selection-bias"><i class="fa fa-check"></i><b>1.4.1</b> Selection Bias</a></li>
+<li class="chapter" data-level="1.4.1" data-path="chap-intro.html"><a href="chap-intro.html#intro-selection-bias"><i class="fa fa-check"></i><b>1.4.1</b> Selection Bias</a></li>
 <li class="chapter" data-level="1.4.2" data-path="chap-intro.html"><a href="chap-intro.html#measurement-errors"><i class="fa fa-check"></i><b>1.4.2</b> Measurement Errors</a></li>
 </ul></li>
 </ul></li>
@@ -284,8 +284,27 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="chap-srs.html"><a href="chap-srs.html#bias-1"><i class="fa fa-check"></i><b>2.3.1</b> Bias</a></li>
 <li class="chapter" data-level="2.3.2" data-path="chap-srs.html"><a href="chap-srs.html#bias-of-sample-total"><i class="fa fa-check"></i><b>2.3.2</b> Bias of Sample Total</a></li>
 <li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="2.3.4" data-path="chap-srs.html"><a href="chap-srs.html#sampling-weights"><i class="fa fa-check"></i><b>2.3.4</b> Sampling Weights</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="chap-srs.html"><a href="chap-srs.html#probability-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability Sampling</a></li>
+<li class="chapter" data-level="2.5" data-path="chap-srs.html"><a href="chap-srs.html#poisson-sampling"><i class="fa fa-check"></i><b>2.5</b> Poisson Sampling</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-srs.html"><a href="chap-srs.html#the-design"><i class="fa fa-check"></i><b>2.5.1</b> The Design</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-srs.html"><a href="chap-srs.html#the-estimator"><i class="fa fa-check"></i><b>2.5.2</b> The Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-srs.html"><a href="chap-srs.html#srs-srs"><i class="fa fa-check"></i><b>2.6</b> Simple Random Sampling</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-srs.html"><a href="chap-srs.html#definition"><i class="fa fa-check"></i><b>2.6.1</b> Definition</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-srs.html"><a href="chap-srs.html#the-estimator-1"><i class="fa fa-check"></i><b>2.6.2</b> The Estimator</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-srs.html"><a href="chap-srs.html#the-design-1"><i class="fa fa-check"></i><b>2.6.3</b> The Design</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="chap-srs.html"><a href="chap-srs.html#variance"><i class="fa fa-check"></i><b>2.7</b> Variance</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="chap-srs.html"><a href="chap-srs.html#definition-1"><i class="fa fa-check"></i><b>2.7.1</b> Definition</a></li>
+<li class="chapter" data-level="2.7.2" data-path="chap-srs.html"><a href="chap-srs.html#variance-of-horvitz-thompson-estimators"><i class="fa fa-check"></i><b>2.7.2</b> Variance of Horvitz-Thompson Estimators</a></li>
+<li class="chapter" data-level="2.7.3" data-path="chap-srs.html"><a href="chap-srs.html#variance-under-simple-random-sampling"><i class="fa fa-check"></i><b>2.7.3</b> Variance under Simple Random Sampling</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-srs.html"><a href="chap-srs.html#variance-estimators"><i class="fa fa-check"></i><b>2.7.4</b> Variance Estimators</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -510,11 +529,11 @@ The <strong>standard deviation</strong> is <span class="math inline">\(s = \sqrt
 <p>Although there are different views of what a <strong>probability</strong> means, in this course, we will use the empirical (or frequentist) view, in which the probability of an outcome of a probabilistic experiment is the frequency that we obtain such an outcome, if we are to <strong>repeat</strong> the probabilistic experiment for an <strong>infinitely large</strong> number of times.</p>
 <p>In our case, the <strong>probabilistic experiment</strong> is the <strong>sample selection process</strong>, the outcome is the sample index set <span class="math inline">\(S\)</span>. So the probability that we obtain a <strong>specific</strong> value <span class="math inline">\(s\)</span> of <span class="math inline">\(S\)</span> is
 <span class="math display">\[
-\mathbb{P}(S = s) = \lim_{\text{number of repetitions} \to \infty} \frac{\text{number times outcome } s \text{ is obtained}}{\text{number of repetitions}}
+\P(S = s) = \lim_{\text{number of repetitions} \to \infty} \frac{\text{number times outcome } s \text{ is obtained}}{\text{number of repetitions}}
 \]</span></p>
 <p>A <strong>random variable</strong> <span class="math inline">\(Z\)</span> is a function of the <strong>experimental outcome</strong>. The probability that the random variable <span class="math inline">\(Z\)</span> attain a specific value <span class="math inline">\(z\)</span> is the sum of probabilities of possible experimental outcomes <span class="math inline">\(s\)</span> in which <span class="math inline">\(Z = z\)</span>, that is:
 <span class="math display">\[
-\mathbb{P}(Z = z) = \sum_{s \text{ so that when }S=s, \text{ then }Z=z}\mathbb{P}(S=s)
+\P(Z = z) = \sum_{s \text{ so that when }S=s, \text{ then }Z=z}\P(S=s)
 \]</span></p>
 <p>Check out <a href="https://tqtbui.github.io/introbook/chap-prob.html">this letcure</a> to learn more about probability and its laws.</p>
 <div class="myExample">
@@ -531,7 +550,7 @@ We then calculate the frequency of the possible outcomes obtained, then obtain t
 <th align="center"><span class="math inline">\(Z_1\)</span></th>
 <th align="center"><span class="math inline">\(Z_2\)</span></th>
 <th align="center"><span class="math inline">\(Z_3\)</span></th>
-<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+<th align="center"><span class="math inline">\(\P(S=s)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -593,19 +612,19 @@ We then calculate the frequency of the possible outcomes obtained, then obtain t
 </tr>
 </tbody>
 </table>
-<p>From here, we can calculate <span class="math inline">\(\mathbb{P}(Z_1 = 1)\)</span>, i.e., the probability that unit 1 is in our sample, by summing up the probabilities of sample index sets that contain 1:
+<p>From here, we can calculate <span class="math inline">\(\P(Z_1 = 1)\)</span>, i.e., the probability that unit 1 is in our sample, by summing up the probabilities of sample index sets that contain 1:
 <span class="math display">\[\begin{align*}
-\mathbb{P}(Z_1 = 1) &amp; = \mathbb{P}(S = \{1\}) + \mathbb{P}(S = \{1,2\}) + \mathbb{P}(S = \{1,3\}) + \mathbb{P}(\{1,2,3\}) \\
+\P(Z_1 = 1) &amp; = \P(S = \{1\}) + \P(S = \{1,2\}) + \P(S = \{1,3\}) + \P(\{1,2,3\}) \\
 &amp; = 1/6 + 1/3 + 0 + 0 = 1/2
 \end{align*}\]</span></p>
 <p>Similarly, the probability that unit 1 is <em>not</em> in our sample can be calculated by summing up the probabilities of possible sample index sets that do not contain 1:
 <span class="math display">\[\begin{align*}
-\mathbb{P}(Z_1 = 0) &amp; = \mathbb{P}(S = \{2\}) + \mathbb{P}(S = \{3\}) + \mathbb{P}(S = \{2,3\}) + \mathbb{P}(\{\emptyset\}) \\
+\P(Z_1 = 0) &amp; = \P(S = \{2\}) + \P(S = \{3\}) + \P(S = \{2,3\}) + \P(\{\emptyset\}) \\
 &amp; = 1/3 + 0 + 1/6 + 0 = 1/2
 \end{align*}\]</span>
-Since <span class="math inline">\(Z_1\)</span> is a binary variable that can only takes 2 possible values: 1 or 0, so we can also use the probability law of complement to calculate <span class="math inline">\(\mathbb{P}(Z_1 = 0)\)</span>:
+Since <span class="math inline">\(Z_1\)</span> is a binary variable that can only takes 2 possible values: 1 or 0, so we can also use the probability law of complement to calculate <span class="math inline">\(\P(Z_1 = 0)\)</span>:
 <span class="math display">\[
-\mathbb{P}(Z_1 = 0) = 1 - \mathbb{P}(Z_1 = 1) = 1 - 1/2 = 1/2.
+\P(Z_1 = 0) = 1 - \P(Z_1 = 1) = 1 - 1/2 = 1/2.
 \]</span></p>
 </div>
 </div>
@@ -648,7 +667,7 @@ Consider the sample total <span class="math inline">\(T_S = \sum_{i=1}^N Z_i Y_i
 <th align="center"><span class="math inline">\(Z_1\)</span></th>
 <th align="center"><span class="math inline">\(Z_2\)</span></th>
 <th align="center"><span class="math inline">\(Z_3\)</span></th>
-<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+<th align="center"><span class="math inline">\(\P(S=s)\)</span></th>
 <th align="center"><span class="math inline">\(T_S\)</span></th>
 </tr>
 </thead>
@@ -728,7 +747,7 @@ Consider the sample total <span class="math inline">\(T_S = \sum_{i=1}^N Z_i Y_i
 <p><img src="_main_files/figure-html/srs-sampling-dist-1.png" alt="" width="50%" style="display: block; margin: auto;" /></p>
 <p>From the plot, we can see that</p>
 <p><span class="math display">\[
-\mathbb{P}(T_S = 4) = 1/6; \hspace{5mm} \mathbb{P}(T_S = 10) = 1/3; \hspace{5mm} \mathbb{P}(T_S = 14) = 1/3; \hspace{5mm} \mathbb{P}(T_S = 17) = 1/6.
+\P(T_S = 4) = 1/6; \hspace{5mm} \P(T_S = 10) = 1/3; \hspace{5mm} \P(T_S = 14) = 1/3; \hspace{5mm} \P(T_S = 17) = 1/6.
 \]</span>
 and the probability that <span class="math inline">\(T_S\)</span> has other values outside of <span class="math inline">\(4, 10, 14, 17\)</span> is 0.</p>
 </div>
@@ -738,13 +757,13 @@ and the probability that <span class="math inline">\(T_S\)</span> has other valu
 <h3><span class="header-section-number">2.2.3</span> Probabilistic Mean<a href="chap-srs.html#probabilistic-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The (probabilistic) <strong>mean</strong> of a numerical-valued random variable is defined as
 <span class="math display">\[
-\mathbb{E}[Z] = \sum_{\text{possible values }z \text{ of }Z} z \times \mathbb{P}(Z = z)
+\E[Z] = \sum_{\text{possible values }z \text{ of }Z} z \times \P(Z = z)
 \]</span></p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-srs-mean" class="example"><strong>Example 2.7  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, the mean of random variable <span class="math inline">\(Z_1\)</span> is
 <span class="math display">\[
-\mathbb{E}[Z_1] = 1 \times \mathbb{P}(Z_1 = 1) + 0 \times \mathbb{P}(Z_1 = 0) = 1 \times 1/2 + 0 \times 1/2 = 1/2.
+\E[Z_1] = 1 \times \P(Z_1 = 1) + 0 \times \P(Z_1 = 0) = 1 \times 1/2 + 0 \times 1/2 = 1/2.
 \]</span></p>
 </div>
 </div>
@@ -753,20 +772,20 @@ and the probability that <span class="math inline">\(T_S\)</span> has other valu
 </div>
 <p>Note here that for a binary random variable <span class="math inline">\(Z\)</span> having only two possible outcomes <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>, we always have
 <span class="math display" id="eq:srs-binary-mean">\[\begin{equation}
-  \mathbb{E}[Z] = 1 \times \mathbb{P}(Z = 1) + 0 \times \mathbb{P}(Z = 0) = \mathbb{P}(Z = 1).
+  \E[Z] = 1 \times \P(Z = 1) + 0 \times \P(Z = 0) = \P(Z = 1).
   \tag{2.5}
 \end{equation}\]</span></p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-srs-mean-2" class="example"><strong>Example 2.8  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, we have
 <span class="math display">\[\begin{align*}
-\mathbb{E}[Z_2] = \mathbb{P}(Z_2 = 1) &amp; = \mathbb{P}(S = \{2\}) + \mathbb{P}(S = \{1,2\})
-+ \mathbb{P}(S = \{2,3\}) + \mathbb{P}(S = \{1,2,3\}) \\
+\E[Z_2] = \P(Z_2 = 1) &amp; = \P(S = \{2\}) + \P(S = \{1,2\})
++ \P(S = \{2,3\}) + \P(S = \{1,2,3\}) \\
 &amp; = 1/3 + 1/3 + 1/6 + 0 = 5/6.
 \end{align*}\]</span>
 and
 <span class="math display">\[
-\mathbb{E}[Z_3] = \mathbb{P}(Z_3 = 1) = 0 + 0 + 1/6 + 0 = 1/6.
+\E[Z_3] = \P(Z_3 = 1) = 0 + 0 + 1/6 + 0 = 1/6.
 \]</span></p>
 </div>
 </div>
@@ -779,18 +798,18 @@ and
 <p>Since sample statistics are random, which means it can obtain different values at different repetition of the sampling selection, we need to use the concepts of bias and variance in Section <a href="chap-intro.html#intro-bias-var">1.3</a> to <strong>evaluate</strong> estimators.</p>
 <p>We will first look at bias. Mathematically, <strong>bias</strong> is defined as
 <span class="math display">\[
-\text{Bias}(\hat{\theta}) = \mathbb{E}[\hat{\theta}] - \theta
+\text{Bias}(\hat{\theta}) = \E[\hat{\theta}] - \theta
 \]</span>
 If <span class="math inline">\(\text{Bias}(\hat{\theta}) = 0\)</span>, we say <span class="math inline">\(\hat{\theta}\)</span> is <strong>unbiased</strong> for <span class="math inline">\(\theta\)</span>. Otherwise, we say that <span class="math inline">\(\hat{\theta}\)</span> is <strong>biased</strong> for <span class="math inline">\(\theta\)</span>.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-srs-bias" class="example"><strong>Example 2.9  </strong></span>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, the mean of the sample total <span class="math inline">\(T_S\)</span> is
 <span class="math display">\[
-\mathbb{E}[T_S] = 4 \times 1/6 + 10 \times 1/3 + 14 \times 1/3 + 17 \times 1/6 = 11.5
+\E[T_S] = 4 \times 1/6 + 10 \times 1/3 + 14 \times 1/3 + 17 \times 1/6 = 11.5
 \]</span>
 However, we want to estimate the population total, <span class="math inline">\(t_U = 21\)</span>. So the bias of <span class="math inline">\(T_S\)</span> for <span class="math inline">\(t_U\)</span> is
 <span class="math display">\[
-\mathbb{E}[T_S] - t_U = 11.5 - 21 = -9.5.
+\E[T_S] - t_U = 11.5 - 21 = -9.5.
 \]</span></p>
 </div>
 </div>
@@ -802,11 +821,11 @@ However, we want to estimate the population total, <span class="math inline">\(t
 <div class="proposition">
 <p><span id="prp:prop-srs-linearity-of-means" class="proposition"><strong>Proposition 2.1  (Linearity of Means) </strong></span>For random variables <span class="math inline">\(Z_1\)</span>, <span class="math inline">\(Z_2\)</span>, and constants (fixed numbers) <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we have
 <span class="math display">\[
-\mathbb{E}[aZ_1 + bZ_2] = a\mathbb{E}[Z_1] + b\mathbb{E}[Z_2].
+\E[aZ_1 + bZ_2] = a\E[Z_1] + b\E[Z_2].
 \]</span>
 In general, if we have <span class="math inline">\(N\)</span> random variables <span class="math inline">\(Z_1, ..., Z_N\)</span> and <span class="math inline">\(N\)</span> constants <span class="math inline">\(a_1, ..., a_N\)</span>, we have
 <span class="math display">\[
-\mathbb{E}\left[\sum_{i=1}^N a_iZ_i\right] = \sum_{i=1}^N a_i\mathbb{E}\big[Z_i\big].
+\E\left[\sum_{i=1}^N a_iZ_i\right] = \sum_{i=1}^N a_i\E\big[Z_i\big].
 \]</span></p>
 </div>
 </div>
@@ -816,21 +835,21 @@ In general, if we have <span class="math inline">\(N\)</span> random variables <
 <p>Basically, the <strong>linearity property of the means</strong> says that expectation (i.e., mean) of a linear combination of random variables equals the linear combination of the expectations (i.e., means) of the corresponding random variables.</p>
 <p>Applying Property <a href="chap-srs.html#prp:prop-srs-linearity-of-means">2.1</a> to the sample total, we have
 <span class="math display">\[
-\mathbb{E}\big[T_S\big] = \mathbb{E}\left[\sum_{i=1}^N Z_iy_i\right] = \sum_{i=1}^N\mathbb{E}\big[Z_i\big]y_i
+\E\big[T_S\big] = \E\left[\sum_{i=1}^N Z_iy_i\right] = \sum_{i=1}^N\E\big[Z_i\big]y_i
 \]</span>
 where the first equation is from the definition in Equation <a href="chap-srs.html#eq:srs-samp-total">(2.3)</a>, the second equation is from the linearity property of the mean and the design-based framework, which assumes that <span class="math inline">\(y_i\)</span>, <span class="math inline">\(i=1, ..., N\)</span> are fixed (constants).</p>
 <p>So, the <strong>bias of the sample total</strong> <span class="math inline">\(T_S\)</span> when estimating the population <span class="math inline">\(t_U\)</span> is
 <span class="math display">\[
-\mathbb{E}\big[T_S\big] - t_U = \sum_{i=1}^N\mathbb{E}\big[Z_i\big]y_i - \sum_{i=1}^Ny_i = \sum_{i=1}^N\Big\{\big(\mathbb{E}[Z_i] - 1\big)y_i\Big\}
+\E\big[T_S\big] - t_U = \sum_{i=1}^N\E\big[Z_i\big]y_i - \sum_{i=1}^Ny_i = \sum_{i=1}^N\Big\{\big(\E[Z_i] - 1\big)y_i\Big\}
 \]</span>
 which is often <strong>non-zero</strong>, meaning that <span class="math inline">\(T_S\)</span> is often <strong>biased</strong> for <span class="math inline">\(t_U\)</span>.</p>
 <p>Furthermore, note that <span class="math inline">\(Z_i\)</span>, <span class="math inline">\(i = 1, ..., N\)</span> are binary random variables which can only take one of two values, either 1 or 0, so from Equation <a href="chap-srs.html#eq:srs-binary-mean">(2.5)</a>, we have
 <span class="math display">\[
-\mathbb{E}\big[Z_i\big] = \mathbb{P}(Z_i = 1) \le 1
+\E\big[Z_i\big] = \P(Z_i = 1) \le 1
 \]</span>
 Now, if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>, for example, when <span class="math inline">\(Y\)</span> is the monthly rent payment, then
 <span class="math display">\[
-\mathbb{E}\big[T_S\big] - t_U = \sum_{i=1}^N\Big\{\big(\mathbb{E}[Z_i] - 1\big)y_i\Big\} = \sum_{i=1}^N\Big\{\big[\mathbb{P}(Z_i = 1) - 1\big]y_i\Big\} \le 0
+\E\big[T_S\big] - t_U = \sum_{i=1}^N\Big\{\big(\E[Z_i] - 1\big)y_i\Big\} = \sum_{i=1}^N\Big\{\big[\P(Z_i = 1) - 1\big]y_i\Big\} \le 0
 \]</span>
 that is, <span class="math inline">\(T_S\)</span> tends to <strong>underestimate</strong> <span class="math inline">\(t_U\)</span> if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This is what we have seen in Example <a href="chap-srs.html#exm:ex-srs-bias">2.9</a>.</p>
 <p>The only case where <span class="math inline">\(T_S\)</span> is unbiased for <span class="math inline">\(t_U\)</span> is when <span class="math inline">\(\Pr(Z_i = 1)\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This means that all units <span class="math inline">\(i\)</span> in the population are included in our sample with certainty, implying that we are taking a <em>census</em>!</p>
@@ -840,14 +859,14 @@ that is, <span class="math inline">\(T_S\)</span> tends to <strong>underestimate
 <p>From the previous section, we notice that the sample total <span class="math inline">\(T_S\)</span> is unbiased for the population total <span class="math inline">\(t_U\)</span> only if we are taking a census. However, as discussed in Section <a href="chap-intro.html#intro-sample">1.2.2</a>, a census is usually impossible due to constraints in time, cost and other administrative issues. Thus, we cannot use the sample total to estimate the population total and we have to <strong>modify</strong> the sample total so that it become <strong>unbiased</strong>!</p>
 <p>For this, in 1952, the <strong>Horvitz-Thompson estimator</strong> is proposed:
 <span class="math display" id="eq:srs-ht-estimator">\[\begin{equation}
-\hat{\bar{T}}_{HT} = \sum_{i \in S}\frac{y_i}{\mathbb{P}(Z_i = 1)} = \sum_{i=1}^N \frac{Z_iy_i}{\mathbb{P}(Z_i = 1)}.
+\hat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\P(Z_i = 1)} = \sum_{i=1}^N \frac{Z_iy_i}{\P(Z_i = 1)}.
 \tag{2.6}
 \end{equation}\]</span></p>
 <p>Now, this estimator is <strong>unbiased</strong>:
 <span class="math display">\[
-\mathbb{E}\big[\hat{\bar{T}}_{HT}\big] = \mathbb{E}\left[\sum_{i=1}^N \frac{Z_iy_i}{\mathbb{P}(Z_i = 1)}\right] = \sum_{i=1}^N\mathbb{E}[Z_i] \frac{y_i}{\mathbb{P}(Z_i = 1)} = \sum_{i=1}^N y_i = t_U
+\E\big[\hat{T}_{HT}\big] = \E\left[\sum_{i=1}^N \frac{Z_iy_i}{\P(Z_i = 1)}\right] = \sum_{i=1}^N\E[Z_i] \frac{y_i}{\P(Z_i = 1)} = \sum_{i=1}^N y_i = t_U
 \]</span>
-since <span class="math inline">\(\mathbb{E}[Z_i] = \Pr(Z_i = 1)\)</span>, <span class="math inline">\(i = 1, ..., N\)</span> by Equation <a href="chap-srs.html#eq:srs-binary-mean">(2.5)</a>.</p>
+since <span class="math inline">\(\E[Z_i] = \Pr(Z_i = 1)\)</span>, <span class="math inline">\(i = 1, ..., N\)</span> by Equation <a href="chap-srs.html#eq:srs-binary-mean">(2.5)</a>.</p>
 <p>The Horvitz-Thompson estimator is an important mathematical discovery and is the basis for many methods in not only survey sampling but also missing data, causal inference, domain adaptation, etc.</p>
 <div class="myExample">
 <div class="example">
@@ -857,28 +876,19 @@ t_U = \sum_{i=1}^3 Y_i = Y_1 + Y_2 + Y_3 = 4 + 10 + 7 = 21.
 \]</span>
 From Examples <a href="chap-srs.html#exm:ex-srs-mean">2.7</a> and <a href="chap-srs.html#exm:ex-srs-mean-2">2.8</a>, we also know that
 <span class="math display">\[
-\mathbb{P}(Z_1 = 1) = 1/2; \hspace{5mm} \mathbb{P}(Z_2 = 1) = 5/6; \hspace{5mm} \mathbb{P}(Z_3 = 1) = 1/6
+\P(Z_1 = 1) = 1/2; \hspace{5mm} \P(Z_2 = 1) = 5/6; \hspace{5mm} \P(Z_3 = 1) = 1/6
 \]</span></p>
 <p>so we can calculate</p>
-<table style="width:100%;">
-<colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th align="center"><span class="math inline">\(S\)</span></th>
 <th align="center"><span class="math inline">\(Z_1\)</span></th>
 <th align="center"><span class="math inline">\(Z_2\)</span></th>
 <th align="center"><span class="math inline">\(Z_3\)</span></th>
-<th align="center"><span class="math inline">\(\mathbb{P}(S=s)\)</span></th>
+<th align="center"><span class="math inline">\(\P(S=s)\)</span></th>
 <th align="center"><span class="math inline">\(T_S\)</span></th>
-<th align="center"><span class="math inline">\(\hat{\bar{T}}_{HT}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{T}_{HT}\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -958,7 +968,7 @@ From Examples <a href="chap-srs.html#exm:ex-srs-mean">2.7</a> and <a href="chap-
 </table>
 <p>The mean of the Horvitz-Thompson estimator is
 <span class="math display">\[
-\mathbb{E}\big[\hat{\bar{T}}_{HT}\big] = 8 \times \frac{1}{6} + 12 \times \frac{1}{3} + 20 \times \frac{1}{3} + 54 \times \frac{1}{6} = 21 = t_U.
+\E\big[\hat{T}_{HT}\big] = 8 \times \frac{1}{6} + 12 \times \frac{1}{3} + 20 \times \frac{1}{3} + 54 \times \frac{1}{6} = 21 = t_U.
 \]</span></p>
 </div>
 </div>
@@ -966,18 +976,646 @@ From Examples <a href="chap-srs.html#exm:ex-srs-mean">2.7</a> and <a href="chap-
 
 </div>
 <p>So we can see that although the
-Horvitz-Thompson estimator <span class="math inline">\(\hat{\bar{T}}_{HT}\)</span> also results in different values at different sample index set, but on average, it is unbiased for <span class="math inline">\(t_U\)</span>. This is like throwing darts, although the dart may land at different places, but the locations of the landings still surround the bullseye. On the other hand, the sample total <span class="math inline">\(T_S\)</span> is biased (except for special cases). This is similar to throwing darts but the locations of the landings do not surround the bullseye. Check Figure <a href="chap-srs.html#fig:srs-biases">2.1</a> for a visual illustration.</p>
+Horvitz-Thompson estimator <span class="math inline">\(\hat{T}_{HT}\)</span> also results in different values at different sample index set, but on average, it is unbiased for <span class="math inline">\(t_U\)</span>. This is like throwing darts, although the dart may land at different places, but the locations of the landings still surround the bullseye. On the other hand, the sample total <span class="math inline">\(T_S\)</span> is biased (except for special cases). This is similar to throwing darts but the locations of the landings do not surround the bullseye. Check Figure <a href="chap-srs.html#fig:srs-biases">2.1</a> for a visual illustration.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:srs-biases"></span>
 <img src="data/images/chap-srs/biases.png" alt="Visual illustration of biases of different estimators" width="80%" />
 <p class="caption">
 Figure 2.1: Visual illustration of biases of different estimators
 </p>
 </div>
+<p>Based on the unbiased estimator <span class="math inline">\(\hat{T}_{HT}\)</span> of the population total, the <strong>population mean</strong> can also be estimated <strong>unbiasedly</strong> using the estimator
+<span class="math display" id="eq:srs-ht-estimator-mean">\[\begin{equation}
+\hat{\bar{Y}}_{HT} = \frac{1}{N}\hat{T}_{HT} = \frac{1}{N}\sum_{i=1}^N\frac{Z_iy_i}{\P(Z_i = 1)}
+\tag{2.7}
+\end{equation}\]</span></p>
+<div class="myExercise">
+<div class="exercise">
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 2.1  </strong></span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Prove that <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> is unbiased for the population mean <span class="math inline">\(\bar{y}_U\)</span>.</p></li>
+<li><p>Continue with Example <a href="chap-srs.html#exm:ex-srs-sampling-dist">2.6</a>, calculate <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> for each possible value <span class="math inline">\(s\)</span> of <span class="math inline">\(S\)</span>. Then calculate <span class="math inline">\(\E\big[\hat{\bar{Y}}_{HT}\big]\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="sampling-weights" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Sampling Weights<a href="chap-srs.html#sampling-weights" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An important element of the Horvitz-Thompson estimator in Equation <a href="chap-srs.html#eq:srs-ht-estimator">(2.6)</a> is the probability <span class="math inline">\(\P(Z_i = 1)\)</span> for <span class="math inline">\(i = 1, ..., n\)</span>. We will use this probability a lot, so it will be convenient to give it a shorter notation.</p>
+<ul>
+<li><p>Denote <span class="math inline">\(\pi_i = \P(Z_i = 1)\)</span> and call this the <strong>selection probability</strong> of unit <span class="math inline">\(i\)</span>.</p></li>
+<li><p>Denote <span class="math inline">\(w_i = 1/\pi_i\)</span> and call this the <strong>sampling weight</strong> of unit <span class="math inline">\(i\)</span>.</p></li>
+</ul>
+<p>Now we can write the Horvitz-Thompson estimator as</p>
+<p><span class="math display">\[
+\hat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\pi_i} = \sum_{i\in S}w_iy_i
+\]</span></p>
+<p>So, to estimate the population total, each response <span class="math inline">\(y_i\)</span> of unit <span class="math inline">\(i\)</span> is weighted by <span class="math inline">\(w_i\)</span>, that is, unit <span class="math inline">\(i\)</span> needs to <strong>represent</strong> <span class="math inline">\(w_i\)</span> units in the population.</p>
+<p>The Horvitz-Thompson estimator for the mean is then
+<span class="math display">\[
+\hat{\bar{Y}}_{HT} = \frac{1}{N}\hat{T}_{HT} = \frac{1}{N}\sum_{i \in S}\frac{y_i}{\pi_i} = \frac{1}{N}\sum_{i\in S}w_iy_i
+\]</span></p>
 </div>
 </div>
 <div id="probability-sampling" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Probability Sampling<a href="chap-srs.html#probability-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Section <a href="chap-srs.html#srs-design-based">2.1.5</a>, we discuss that <span class="math inline">\(Z\)</span> determines how the sample is obtained and is called the sampling design. In survey sampling, if we can design the sampling process, we can <strong>specify</strong> and <strong>know</strong> the probabilities <span class="math inline">\(\pi_i\)</span>, <span class="math inline">\(i=1, ..., N\)</span>. As a result, we can use the Horvitz-Thompson estimator to obtain unbiased estimates!</p>
+<ul>
+<li><p>We call sampling designs in which we know the sampling probabilities <span class="math inline">\(\pi_i\)</span> for all units <span class="math inline">\(i\)</span> in the population <strong>probability sampling</strong>.</p></li>
+<li><p><strong>Non-probability sampling</strong> happens when we do not know the sampling probabilities for some (or all) of <span class="math inline">\(\pi_i\)</span>. Examples include self-selection sampling, convenience sampling, and judgement sampling of Section <a href="chap-intro.html#intro-selection-bias">1.4.1</a>.</p></li>
+</ul>
+<p>Note also that, the Horvitz-Thompson will <strong>not</strong> work if <span class="math inline">\(\pi_i = 0\)</span> for some <span class="math inline">\(i \in U\)</span> because we cannot divide by 0 when we calculate the expectation for <span class="math inline">\(\hat{T}_{HT}\)</span>!</p>
+<ul>
+<li><p>In that case, we cannot use the Horvitz-Thompson estimator to correct for bias and need other (often stronger) assumptions.</p></li>
+<li><p>Note that <span class="math inline">\(\pi_i = 0\)</span> for some <span class="math inline">\(i \in U\)</span> means that there are some units in the population that we cannot reach at all. This implies we have <strong>undercoverage</strong> (refer to Section <a href="chap-intro.html#intro-selection-bias">1.4.1</a>).</p></li>
+</ul>
+</div>
+<div id="poisson-sampling" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Poisson Sampling<a href="chap-srs.html#poisson-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-design" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> The Design<a href="chap-srs.html#the-design" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The easiest way to design a sampling scheme is to <strong>independently assign</strong> a probability <span class="math inline">\(\frac{n^*}{N}\)</span> of selection for each unit <span class="math inline">\(i\)</span> in the population. To do so, we</p>
+<ol style="list-style-type: decimal">
+<li><p>Determine a number <span class="math inline">\(0 &lt; n^* \le N\)</span>.</p></li>
+<li><p>For each unit <span class="math inline">\(i\)</span>, <strong>independently</strong><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> toss a biased coin with <span class="math inline">\(\frac{n^*}{N}\)</span> chance of resulting in heads.</p></li>
+<li><p>If the result is head, then we select unit <span class="math inline">\(i\)</span> in our sample. If not, we leave unit <span class="math inline">\(i\)</span> out of our sample<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p></li>
+</ol>
+<p>This design is called <strong>Poisson sampling</strong><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> in survey sampling context.</p>
+<p>In practice, we do not have a biased coin. But we can still do Poisson sampling using a <strong>computational software</strong> which has a <strong>random number generator</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Determine a number <span class="math inline">\(0 &lt; n^* \le N\)</span>.</p></li>
+<li><p>For each unit <span class="math inline">\(i\)</span>, <strong>independently</strong> generate a random variable between <span class="math inline">\([0,1]\)</span>, call this number <span class="math inline">\(R\)</span>.</p></li>
+<li><p>If <span class="math inline">\(R \le \frac{n^*}{N}\)</span>, then we select unit <span class="math inline">\(i\)</span> in our sample. Otherwise, we leave unit <span class="math inline">\(i\)</span> out of our sample.</p></li>
+</ol>
+</div>
+<div id="the-estimator" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> The Estimator<a href="chap-srs.html#the-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Under Poisson sampling, we <strong>know</strong> that <span class="math inline">\(\pi_i = \frac{n^*}{N}\)</span>, so we can use this to plug in the Horvitz-Thompson estimator formula in Equation <a href="chap-srs.html#eq:srs-ht-estimator">(2.6)</a> and get the <strong>estimator for population total</strong>:
+<span class="math display">\[
+\hat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\pi_i} = \sum_{i \in S}\frac{y_i}{n^*/N} = \frac{N}{n^*}\sum_{i\in S}y_i
+\]</span></p>
+<p>and the <strong>estimator for population mean</strong>:
+<span class="math display">\[
+\hat{\bar{Y}}_{HT} = \frac{1}{N}\hat{T}_{HT} = \frac{1}{n^*}\sum_{i\in S}y_i
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-poisson-sampling" class="example"><strong>Example 2.10  </strong></span>Suppose we design a Poisson sampling with <span class="math inline">\(n^* = 2\)</span> for a population of 3 units <span class="math inline">\(\{U = 1, 2, 3\}\)</span>. Suppose <span class="math inline">\(Y_1 = 4\)</span>, <span class="math inline">\(Y_2 = 10\)</span> and <span class="math inline">\(Y_3 = 7\)</span>. Then using the above formulas for <span class="math inline">\(\hat{T}_{HT}\)</span> and <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(\hat{T}_{HT}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(4/(2/3) = 6\)</span></td>
+<td align="center"><span class="math inline">\(6/3 = 4/2 = 2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(10/(2/3) = 15\)</span></td>
+<td align="center"><span class="math inline">\(15/3 = 10/2 = 5\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(7/(2/3) = 21/2\)</span></td>
+<td align="center"><span class="math inline">\((21/2)/3 = 7/2 = 7/2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(6+15 = 21\)</span></td>
+<td align="center"><span class="math inline">\(21/3 = 14/2 = 7\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(6+21/2 = 33/2\)</span></td>
+<td align="center"><span class="math inline">\((33/2)/3 = 11/2 = 11/2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(15+21/2 = 51/2\)</span></td>
+<td align="center"><span class="math inline">\((51/2)/3 = 17/2 = 17/2\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(6+15+21/2 = 63/2\)</span></td>
+<td align="center"><span class="math inline">\((63/2)/3 = 21/2 = 21/2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="empty">
 
+</div>
+<p>The difference between between Examples <a href="chap-srs.html#exm:ex-srs-probs">2.5</a> and <a href="chap-srs.html#exm:ex-srs-poisson-sampling">2.10</a> is that we did not know the probabilities <span class="math inline">\(\P(S = s)\)</span> for each possible realized sample index set <span class="math inline">\(s\)</span>. To calculate these probabilities, note that each <span class="math inline">\(s\)</span> corresponds to a specific value <span class="math inline">\(\{z_1, ..., z_N\}\)</span> of <span class="math inline">\(\{Z_1, ..., Z_N\}\)</span>. And we will also need to use the <strong>independence property of probabilities</strong>:</p>
+<div class="myDefinition">
+<div class="proposition">
+<p><span id="prp:prop-srs-independence" class="proposition"><strong>Proposition 2.2  (Independence) </strong></span>If <span class="math inline">\(Z_1, ..., Z_N\)</span> are independent from one another,
+<span class="math display">\[\begin{align*}
+\P(Z_1 = z_1, Z_2 = z_2, ..., Z_N = z_n) &amp; = \P(Z_1 = z_1)\times \P(Z_2 = z_2) \times ... \times \P(Z_n = z_n) \\
+&amp; = \prod_{i=1}^N \P(Z_1 = z_1).
+\end{align*}\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>We can apply this to Example <a href="chap-srs.html#exm:ex-srs-poisson-sampling">2.10</a>.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-poisson-sampling-2" class="example"><strong>Example 2.11  </strong></span>Under Poisson sampling with <span class="math inline">\(n^* = 2\)</span> and <span class="math inline">\(N = 3\)</span>, we have
+<span class="math display">\[
+\P(Z_1 = 1) = \frac{2}{3}, \hspace{5mm} \P(Z_1 = 0) = 1 - \frac{2}{3} = \frac{1}{3}
+\]</span>
+Similarly,
+<span class="math display">\[
+\P(Z_2 = 1) = \frac{2}{3}, \hspace{5mm} \P(Z_2 = 0) = \frac{1}{3}
+\]</span>
+and
+<span class="math display">\[
+\P(Z_3 = 1) = \frac{2}{3}, \hspace{5mm} \P(Z_3 = 0) = 1 - \frac{2}{3} = \frac{1}{3}
+\]</span>
+Therefore, we can calculate:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+<th align="center"><span class="math inline">\(\P(S = s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{3} \times \frac{1}{3} \times \frac{1}{3} = \frac{1}{27}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{3} \times \frac{1}{3} \times \frac{1}{3} = \frac{2}{27}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{3} \times \frac{2}{3} \times \frac{1}{3} = \frac{2}{27}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{3} \times \frac{1}{3} \times \frac{2}{3} = \frac{2}{27}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{3} \times \frac{2}{3} \times \frac{1}{3} = \frac{4}{27}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{3} \times \frac{1}{3} \times \frac{2}{3} = \frac{4}{27}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{3} \times \frac{2}{3} \times \frac{2}{3} = \frac{4}{27}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{3} \times \frac{2}{3} \times \frac{2}{3} = \frac{8}{27}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>From Examples <a href="chap-srs.html#exm:ex-srs-poisson-sampling">2.10</a> and <a href="chap-srs.html#exm:ex-srs-poisson-sampling-2">2.11</a>, we can see that all possible subsets <span class="math inline">\(s\)</span> of <span class="math inline">\(U\)</span> have non-zero probability of realization. That is, using Poisson sampling, all possible sizes, from <span class="math inline">\(0\)</span> to <span class="math inline">\(N\)</span>, have some chance to occur. Thus, <span class="math inline">\(n^*\)</span> does <strong>not necessarily</strong> equal to the actual number of units in the sample (i.e., <span class="math inline">\(n \ne n^*\)</span>), therefore
+<span class="math display">\[
+\hat{\bar{Y}}_{HT} = \frac{1}{n^*}\sum_{i\in S}y_i \ne \frac{1}{n}\sum_{i\in S}y_i.
+\]</span></p>
+<p>Instead, <span class="math inline">\(n^*\)</span> is the <strong>expected value of the sample size</strong>:
+<span class="math display">\[
+\E\left[\sum_{i=1}^NZ_i\right] = \sum_{i=1}^N \E[Z_i] = \sum_{i=1}^N \frac{n^*}{N} = N\times \frac{n^*}{N} = n^*.
+\]</span></p>
+</div>
+</div>
+<div id="srs-srs" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Simple Random Sampling<a href="chap-srs.html#srs-srs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="definition" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Definition<a href="chap-srs.html#definition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From Example <a href="chap-srs.html#exm:ex-srs-poisson-sampling-2">2.11</a>, we can see that using Poisson sampling, we still have positive probabilities of sampling no one from the population (<span class="math inline">\(S = \emptyset\)</span>), or having to sample everyone from the population (<span class="math inline">\(S = U\)</span>), which are not ideal. It would be better if we are able to set a fixed sample size <span class="math inline">\(n\)</span> based on our budget constraints, for example. Furthermore, the HT estimator <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> does not necessary equal the sample mean <span class="math inline">\(\bar{Y}_S\)</span>, which is not convenient.</p>
+<p>This motivates us to use <strong>simple random sampling</strong> (or simple random sampling without replacement), denoted as <strong>SRS</strong> a sampling method in which we</p>
+<ul>
+<li><p>select a predetermined sample size <span class="math inline">\(n\)</span>, then</p></li>
+<li><p>assign every possible subset of <strong><span class="math inline">\(n\)</span> distinct units</strong> in the population the
+<strong>same probability</strong> of happening.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-srs" class="example"><strong>Example 2.12  </strong></span>Again, consider a population of 3 units, i.e., <span class="math inline">\(U = \{1,2,3\}\)</span> in which <span class="math inline">\(Y_1 = 4, Y_2 = 10\)</span> and <span class="math inline">\(Y_3 = 7\)</span>. Now, under simple random sampling, if we decide that our sample size should be <span class="math inline">\(n = 2\)</span>, then we have</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(S\)</span></th>
+<th align="center"><span class="math inline">\(Z_1\)</span></th>
+<th align="center"><span class="math inline">\(Z_2\)</span></th>
+<th align="center"><span class="math inline">\(Z_3\)</span></th>
+<th align="center"><span class="math inline">\(\P(S = s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{\emptyset\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{1,2\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\{2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1/3\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>That is, there are three possible subsets <span class="math inline">\(s \subseteq U\)</span> that contain 2 units, so we assign a probability of <span class="math inline">\(1/3\)</span> to each of them, and assign <span class="math inline">\(0\)</span> probability to any other possible subsets.</p>
+<p>In this case, we have
+<span class="math display">\[
+\pi_1 = P(Z_1 = 1) = P(S = \{1,2\}) + P(S = \{1,3\}) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+\]</span></p>
+<p><span class="math display">\[
+\pi_2 = P(Z_2 = 1) = P(S = \{1,2\}) + P(S = \{2,3\}) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+\]</span></p>
+<p><span class="math display">\[
+\pi_3 = P(Z_3 = 1) = P(S = \{1,3\}) + P(S = \{2,3\}) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>We can see that, in Example <a href="chap-srs.html#exm:ex-srs-srs">2.12</a>, <span class="math inline">\(\pi_i\)</span> are the same for every unit <span class="math inline">\(i \in U\)</span>. This is not a coincidence. In fact, in simple random sampling, the selection probability is</p>
+<p><span class="math display" id="eq:srs-srs-prob">\[\begin{equation}
+\pi_i = \frac{n}{N}, \hspace{5mm} \text{for all } i = 1, 2, ..., N
+\tag{2.8}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is our pre-specified sample size. As a result, the weights <span class="math inline">\(w_i = 1/\pi_i\)</span> are also the same for all units <span class="math inline">\(i = 1, ..., N\)</span>. Therefore, simple random sampling is also <strong>self-weighting</strong>.</p>
+<details>
+<summary>
+We can <strong>prove</strong> that <span class="math inline">\(\pi_i = n/N\)</span> for any <span class="math inline">\(i = 1, ..., N\)</span> and arbitrary <span class="math inline">\(N\)</span> and <span class="math inline">\(n \le N\)</span>.
+</summary>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="srs-prob" class="proof"><em>Proof</em>. </span>First, we notice that there are <span class="math inline">\(\left( \begin{array}{c} N \\ n \end{array} \right)\)</span> possible subsets of <span class="math inline">\(n\)</span> <em>distinct</em> units from a population of <span class="math inline">\(N\)</span> units. This is because we are choosing <span class="math inline">\(n\)</span> units without replacement from a set of <span class="math inline">\(N\)</span> units<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<p>Under simple random sampling, we assign equal probabilities to these subsets, so we have
+<span class="math display">\[
+P(S = s) = \begin{cases} 1/\left( \begin{array}{c} N \\ n \end{array} \right) &amp; \text{if } s \text{ has } n \text{ units} \\ 0 &amp; \text{otherwise} \end{cases}
+\]</span></p>
+<p>There are <span class="math inline">\(\left( \begin{array}{c} N-1 \\ n-1 \end{array} \right)\)</span> possible subsets of <span class="math inline">\(n\)</span> units that contain unit <span class="math inline">\(i\)</span>. This is because, to create a subset of size <span class="math inline">\(n\)</span> that contains unit <span class="math inline">\(i\)</span>, we first choose unit <span class="math inline">\(i\)</span> and put it into our subset. We are then left with <span class="math inline">\(N-1\)</span> units from the population to choose from, and <span class="math inline">\(n-1\)</span> empty places in our subset. So the number of ways to choose units for the remaining <span class="math inline">\(n-1\)</span> places is <span class="math inline">\(\left( \begin{array}{c} N-1 \\ n-1 \end{array} \right)\)</span>. This is also the number of possible subsets of <span class="math inline">\(n\)</span> distinct units that contain unit <span class="math inline">\(i\)</span>.</p>
+<p>In summary, we have <span class="math inline">\(\left( \begin{array}{c} N \\ n \end{array} \right)\)</span> possible subsets of <span class="math inline">\(n\)</span> distinct units, each having <span class="math inline">\(1/\left( \begin{array}{c} N \\ n \end{array} \right)\)</span> chance of happening. Among those subsets, there are <span class="math inline">\(\left( \begin{array}{c} N-1 \\ n-1 \end{array} \right)\)</span> subsets that contain unit <span class="math inline">\(i\)</span>. Therefore,
+<span class="math display">\[
+P(Z_i = 1) = \left( \begin{array}{c} N-1 \\ n-1 \end{array} \right) \times \frac{1}{\left( \begin{array}{c} N \\ n \end{array} \right)} = \frac{n}{N}
+\]</span></p>
+<p>This applies to any unit <span class="math inline">\(i\)</span> in the population. So <span class="math inline">\(\pi_i = n/N\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>.</p>
+</div>
+</div>
+</details>
+</div>
+<div id="the-estimator-1" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> The Estimator<a href="chap-srs.html#the-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using the results for <span class="math inline">\(\pi_i\)</span>, we can derive the <strong>HT estimators</strong> for the population mean and population total under simple random sampling:
+<span class="math display">\[
+\hat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\pi_i} = \sum_{i \in S}\frac{y_i}{n/N} = \frac{N}{n}\sum_{i\in S}y_i
+\]</span></p>
+<p><span class="math display">\[
+\hat{\bar{Y}}_{HT} = \frac{1}{N}\hat{T}_{HT} = \frac{1}{n}\sum_{i\in S}y_i = \bar{Y}_S
+\]</span></p>
+<p>So, using simple random sampling, the Horvitz-Thompson estimator for the population mean is the <strong>sample mean</strong> itself! This is more intuitive and convenient, compared to Poisson sampling!</p>
+</div>
+<div id="the-design-1" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> The Design<a href="chap-srs.html#the-design-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are multiple ways to obtain a simple random sample, say, of sample size <span class="math inline">\(n\)</span>.</p>
+<p><strong>The first method</strong> is called <strong>systematic sampling</strong>, which proceeds as follows:</p>
+<ul>
+<li><p>shuffle the population index set <span class="math inline">\(U\)</span>,</p></li>
+<li><p>calculate <span class="math inline">\(k = \lceil N/n \rceil\)</span>, called the ceiling of <span class="math inline">\(N/n\)</span>, which is the smallest integer that is greater or equal to <span class="math inline">\(N/n\)</span>,</p></li>
+<li><p>Find a random integer <span class="math inline">\(R\)</span> between 1 and <span class="math inline">\(k\)</span></p></li>
+<li><p>Choose units <span class="math inline">\(R, R+k, R+2k, ..., R+(n-1)k\)</span> into our sample. That is, from the starting point of <span class="math inline">\(R\)</span>, the sampled units will be <strong>equally spaced</strong> by <span class="math inline">\(k\)</span> from each other in the shuffled index set.</p></li>
+</ul>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-srs-systematic" class="example"><strong>Example 2.13  </strong></span>Suppose we are interested in obtain an SRS sample of <span class="math inline">\(n=4\)</span> units from a population of <span class="math inline">\(N=30\)</span> units.</p>
+<ul>
+<li><p>First, we shuffle the index set <span class="math inline">\(U = \{1, 2, ..., 30\}\)</span>, and obtain, for example,</p>
+<p><span class="math display">\[\begin{equation}
+  4,16,13,17,24,26,30,22,6,1,18,27,12,23,14,\\
+  25,29,5,10,15,21,11,9,20,7,28,3,8,19,2
+  \end{equation}\]</span></p></li>
+<li><p>Since <span class="math inline">\(N/n = 30/4 = 7.5\)</span>, the smallest integer that is greater or equal to <span class="math inline">\(7.5\)</span> is 8, so <span class="math inline">\(k = 8\)</span>.</p></li>
+<li><p>We then find a random integer <span class="math inline">\(R\)</span> between <span class="math inline">\(1\)</span> and <span class="math inline">\(k\)</span>. Suppose we randomize and get <span class="math inline">\(R = 5\)</span>.</p></li>
+<li><p>From the shuffled index set, we first choose the <span class="math inline">\(R = 5\)</span>th index, then the <span class="math inline">\(R+k = 13\)</span>th index, the <span class="math inline">\(R+2k = 21\)</span> index, and finally the <span class="math inline">\(R+(n-1)k = 5 + (4-1)8 = 29\)</span>th index, which is
+<span class="math display">\[\begin{equation}
+  4,16,13,17,\color{red}{24},26,30,22,6,1,18,27,\color{red}{12},23,14,\\
+  25,29,5,10,15,\color{red}{21},11,9,20,7,28,3,8,\color{red}{19},2
+  \end{equation}\]</span></p></li>
+</ul>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p><strong>The second method</strong>, which is more computer friendly, is to</p>
+<ul>
+<li><p>generate <span class="math inline">\(n\)</span> random numbers in <span class="math inline">\([0,1]\)</span></p></li>
+<li><p>Multiply each number by <span class="math inline">\(N\)</span></p></li>
+<li><p>Round the result up to the next integer</p></li>
+<li><p>If there are duplicates, re-generate a new random number!</p></li>
+</ul>
+<p>Basically, what this does is to divide the range <span class="math inline">\([0,1]\)</span> into <span class="math inline">\(N\)</span> equally spaced intervals. We then randomize a number to see which interval contains that number. If the number falls into the <span class="math inline">\(i\)</span>th interval, then we select that unit into our sample. If two random numbers both fall into the <span class="math inline">\(i\)</span>th interval, we can select unit <span class="math inline">\(i\)</span> into our sample, and generate another random number, which may fall into another interval that we did not add into our sample.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:srs-interval-sampling"></span>
+<img src="data/images/chap-srs/interval-srs.png" alt="Visual illustration of interval-based SRS technique" width="80%" />
+<p class="caption">
+Figure 2.2: Visual illustration of interval-based SRS technique
+</p>
+</div>
+<p><strong>The third method</strong>, which is very convenient in <strong>R</strong>, is to use the function <code>sample()</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
+<p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 27 28  1  4</code></pre>
+</div>
+</div>
+<div id="variance" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Variance<a href="chap-srs.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="definition-1" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Definition<a href="chap-srs.html#definition-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So far, we have discussed about biases and how we can use the Horvitz-Thompson-estimator to obtain <strong>unbiased estimators</strong> of the population mean and population total.</p>
+<p>Looking at Figure<a href="chap-intro.html#fig:intro-accuracy-precision">1.2</a>, another aspect of estimators that we need to consider is <strong>variance</strong>. Variance tells us how each run of an experiment is different from the overall average. Mathematically, it is defined as
+<span class="math display">\[
+Var(Z) = \E[(Z - \E[Z])^2],
+\]</span></p>
+<p>for any random variable <span class="math inline">\(Z\)</span>.</p>
+<p>Besides, we also have the definition of the <strong>covariance</strong> between two random variables <span class="math inline">\(Z_1, Z_2\)</span>:</p>
+<p><span class="math display">\[
+Cov(Z_1, Z_2) = \E[(Z_1 - \E[Z_1])(Z_2 - \E[Z_2])].
+\]</span></p>
+<p>Therefore,
+<span class="math display">\[
+Var(Z_1) = Cov(Z_1, Z_1).
+\]</span></p>
+<details>
+<summary>
+We can <strong>prove</strong> that for any random variables <span class="math inline">\(Z_1, Z_2\)</span>:
+<span class="math display" id="eq:srs-cov-formula">\[\begin{equation}
+  Cov(Z_1, Z_2) = \E[Z_1Z_2] - \E[Z_1]\E[Z_2].
+  \tag{2.9}
+  \end{equation}\]</span>
+.
+</summary>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="srs-cov-formula" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+Cov(Z_1, Z_2) &amp; = \E[(Z_1 - \E[Z_1])(Z_2 - \E[Z_2])] \\
+&amp; = \E[(Z_1Z_2 - Z_1\E[Z_2] - \E[Z_1]Z_2 + \E[Z_1]\E[Z_2])] \\
+&amp; = \E[Z_1Z_2] - \E[Z_1]\E[Z_2] - \E[Z_1]\E[Z_2] + \E[Z_1]\E[Z_2] \\
+&amp; = \E[Z_1Z_2] - \E[Z_1]\E[Z_2].
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Therefore <span class="math inline">\(Var(Z_1) = Cov(Z_1, Z_1) = \E[Z_1^2] - (\E[Z_1])^2\)</span> for any random variable <span class="math inline">\(Z_1\)</span>.</p>
+</div>
+<div id="variance-of-horvitz-thompson-estimators" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Variance of Horvitz-Thompson Estimators<a href="chap-srs.html#variance-of-horvitz-thompson-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we will start with the Horvitz-Thompson (HT) estimator <span class="math inline">\(\hat{T}_{HT}\)</span> for the population total.</p>
+<details>
+<summary>
+To derive this variance, we use the <strong>variance formula for a linear combination of random variables</strong>:
+<span class="math display" id="eq:srs-var-linear-comb">\[\begin{equation}
+  Var\left(\sum_{i=1}^Na_iZ_i\right) = \sum_{i=1}^N a_i^2 Var(Z_i) + 2\sum_{i \ne j}a_ia_j Cov(Z_i,Z_j).
+  \tag{2.10}
+  \end{equation}\]</span>
+.
+</summary>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="srs-var-linear-comb" class="proof"><em>Proof</em>. </span>For two random variables <span class="math inline">\(Z_1\)</span> and <span class="math inline">\(Z_2\)</span> and constants <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span>:
+<span class="math display">\[\begin{align*}
+&amp; Var(a_1Z_1 + a_2Z_2) \\
+&amp; = \E\Big[\big\{(a_1Z_1 +a_2Z_2) - \E[a_1Z_1 + a_2Z_2]\big\}^2\Big] \\
+&amp; = \E\Big[\big\{(a_1Z_1 - \E[a_1Z_1]) + (a_2Z_2 - \E[a_2Z_2])\big\}^2\Big] \\
+&amp; = \E\Big[\big\{(a_1Z_1 - \E[a_1Z_1])^2 + 2(a_1Z_1 - \E[a_1Z_1])(a_2Z_2 - \E[a_2Z_2]) + (a_2Z_2 - \E[a_2Z_2])^2\big\}\Big] \\
+&amp; = \E\Big[(a_1Z_1 - \E[a_1Z_1])^2\Big] + 2\E\Big[(a_1Z_1 - \E[a_1Z_1])(a_2Z_2 - \E[a_2Z_2])] + \E\Big[(a_2Z_2 - \E[a_2Z_2])^2\Big] \\
+&amp; = a_1^2Var(Z_1) + 2a_1a_2Cov(Z_1,Z_2) + a_2^2Var(Z_2)
+\end{align*}\]</span>
+We can then use mathematical induction to prove the case for a linear combination of <span class="math inline">\(N\)</span> random variables.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Here, <span class="math inline">\(\sum_{i \ne j} \equiv \sum_{i=1}^N\sum_{j=i+1}^N\)</span>, meaning we are summing over all pairs <span class="math inline">\(i, j\)</span> so that <span class="math inline">\(i \ne j\)</span>.</p>
+<p>Now, we apply Equations <a href="chap-srs.html#eq:srs-var-linear-comb">(2.10)</a> and <a href="chap-srs.html#eq:srs-cov-formula">(2.9)</a> to get</p>
+<p><span class="math display" id="eq:srs-var-ht">\[\begin{align*}
+Var(\hat{T}_{HT}) &amp; = Var\left(\sum_{i=1}^N \frac{Z_iy_i}{\pi_i}\right) \\
+&amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}Var(Z_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}Cov(Z_i, Z_j) \\
+&amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \tag{2.11}
+\end{align*}\]</span></p>
+<p>where the last equation is because <span class="math inline">\(Z_i\)</span> is a <strong>binary</strong> random variable, thus <span class="math inline">\(Z_i = Z_i^2\)</span> and <span class="math inline">\(\E[Z_i] = \P(Z_i = 1) = \pi_i\)</span>, thus
+<span class="math display">\[
+Var(Z_i) = \E[Z_i^2] - (\E[Z_i])^2 = \E[Z_i] - (\E[Z_i])^2 = \pi_i - \pi_i^2 = \pi_i(1-\pi_i)
+\]</span>
+and
+<span class="math display">\[
+Cov(Z_i, Z_j) = \E[Z_iZ_j] - \E[Z_i]\E[Z_j] = \E[Z_iZ_j] - \pi_i\pi_j.
+\]</span></p>
+<p>And the variance of <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> is
+<span class="math display" id="eq:srs-var-ht-mean">\[\begin{equation}
+Var(\hat{\bar{Y}}_{HT}) = Var\left(\frac{1}{N}\hat{T}_{HT}\right) = \frac{1}{N^2}Var(\hat{T}_{HT})
+\tag{2.12}
+\end{equation}\]</span></p>
+</div>
+<div id="variance-under-simple-random-sampling" class="section level3 hasAnchor" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Variance under Simple Random Sampling<a href="chap-srs.html#variance-under-simple-random-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the case of <strong>simple random sampling</strong> of Section <a href="chap-srs.html#srs-srs">2.6</a>, we have <span class="math inline">\(\pi_i = n/N\)</span> and
+<span class="math display">\[
+\E[Z_iZ_j] = \P(Z_iZ_j = 1) = \P(Z_i = 1, Z_j = 1) = \left( \begin{array}{c} N-2 \\ n-2 \end{array} \right) \times \frac{1}{\left( \begin{array}{c} N \\ n \end{array} \right)} = \frac{n(n-1)}{N(N-1)}
+\]</span>
+since <span class="math inline">\(Z_1\)</span> and <span class="math inline">\(Z_2\)</span> are <strong>binary</strong> random variables so <span class="math inline">\(Z_1Z_2\)</span> are also <strong>binary</strong> random variables. Also, <span class="math inline">\(Z_i = 1\)</span> and <span class="math inline">\(Z_j = 1\)</span> happens at the same time if both units <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are included in our sample. This is the same as fixing units <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> in our sample and having <span class="math inline">\(N-2\)</span> units left to choose from to fill <span class="math inline">\(n-2\)</span> remaining positions in our sample.</p>
+Plugging the above formulas for <span class="math inline">\(\pi_i\)</span> and <span class="math inline">\(\E[Z_iZ_j]\)</span> <strong>under SRS</strong> to the variance formula of the Horvitz-Thompson estimator in Equation <a href="chap-srs.html#eq:srs-var-ht">(2.11)</a>, we have
+<details>
+<summary>
+<span class="math display" id="eq:srs-var-ht-srs">\[\begin{equation}
+  Var(\hat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n}.
+  \tag{2.13}
+  \end{equation}\]</span>
+.
+</summary>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="srs-var-ht-srs" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+Var(\hat{T}_{HT}) &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \\
+&amp; = \sum_{i=1}^N\frac{y_i^2}{n^2/N^2}\frac{n}{N}\left(1-\frac{n}{N}\right) + 2\sum_{i\ne j}\frac{y_iy_j}{n^2/N^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \\
+&amp; = \frac{N-n}{n}\sum_{i=1}^Ny_i^2 + 2\frac{-(N-n)}{n(N-1)}\sum_{i\ne j}y_iy_j \\
+&amp; = \frac{(N-n)}{n(N-1)}\left\{(N-1)\sum_{i=1}^Ny_i^2 - 2\sum_{i\ne j}y_iy_j\right\} \\
+&amp; = \frac{(N-n)}{n(N-1)}\left\{N\sum_{i=1}^Ny_i^2 - \left(\sum_{i=1}^Ny_i^2 + 2\sum_{i\ne j}y_iy_j\right)\right\} \\
+&amp; = \frac{(N-n)}{n(N-1)}\left\{N\sum_{i=1}^Ny_i^2 - \left(\sum_{i=1}^Ny_i\right)^2\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^Ny_i^2 - N\left(\frac{1}{N}\sum_{i=1}^Ny_i\right)^2\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^Ny_i^2 - N\bar{y}_U^2\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^Ny_i^2 - 2N\bar{y}_U^2 + N\bar{y}_U^2\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^Ny_i^2 - 2\bar{y}_U\sum_{i=1}^Ny_i + \sum_{i=1}^N\bar{y}_U^2\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^N(y_i^2 - 2y_i\bar{y}_U + \bar{y}_U^2)\right\} \\
+&amp; = \frac{N(N-n)}{n(N-1)}\left\{\sum_{i=1}^N(y_i - \bar{y}_U)^2 \right\} \\
+&amp; = \frac{N(N-n)}{n}s_U^2 \\
+&amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n}
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>where <span class="math inline">\(s_U^2 = \frac{1}{N-1}\sum_{i=1}^N(y_i - \bar{y}_U)^2\)</span> is the <strong>population variance</strong>.</p>
+<p>Plugging the variance of <span class="math inline">\(\hat{T}_{HT}\)</span> in Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a> into the variance formula of the HT estimator <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> for the population mean in Equation <a href="chap-srs.html#eq:srs-var-ht-mean">(2.12)</a>, we have the variance of the HT estimator <span class="math inline">\(\bar{Y}_S = \hat{\bar{Y}}_{HT}\)</span> for the population mean <strong>under SRS</strong>:
+<span class="math display" id="eq:srs-var-ht-srs-mean">\[\begin{equation}
+  Var(\bar{Y}_S) = \frac{1}{N^2}Var(\hat{T}_{HT}) = \left(1-\frac{n}{N}\right)\frac{s_U^2}{n}.
+  \tag{2.14}
+  \end{equation}\]</span></p>
+<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, the factor <span class="math inline">\(1-\frac{n}{N}\)</span> is called the <strong>finite population correction</strong> (or <strong>FPC</strong>). This is because if <span class="math inline">\(N\)</span> is not finite, i.e., infinite, and <span class="math inline">\(n\)</span> is fixed, then this factor will become 1 and the variance of <span class="math inline">\(\bar{Y}_S\)</span> will be <span class="math inline">\(s_U^2/n = \sigma^2/n\)</span>, which is the variance of <span class="math inline">\(\bar{Y}_S = 1/n\sum_{i=1}^nY_i\)</span> where we assume that <span class="math inline">\(Y_1, Y_2, ..., Y_n\)</span> are randomly drawn from a distribution<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> of variance <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+<div id="variance-estimators" class="section level3 hasAnchor" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> Variance Estimators<a href="chap-srs.html#variance-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, the variance formulas involve a <strong>population quantity</strong> <span class="math inline">\(s_U^2\)</span>, which requires all units in the population. However, we will not know these units unless we sample them and collect data from them!</p>
+<p>Therefore, we need to <strong>estimate the variance</strong> of the HT estimators <span class="math inline">\(\hat{T}_{HT}\)</span> and <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> from the sample.</p>
+<details>
+<summary>
+In fact, <strong>under SRS</strong>, the <strong>sample variance</strong> <span class="math inline">\(S_S^2 = \frac{1}{n-1}\sum_{i\in S}(y_i - \bar{Y}_S)^2\)</span> is an <strong>unbiased</strong> estimator of the population variance <span class="math inline">\(s_U^2\)</span>.
+.
+</summary>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="srs-var-ht-srs-estimator" class="proof"><em>Proof</em>. </span>We want to prove
+<span class="math display">\[
+\E[S_S^2] = \E\left[\frac{1}{n-1}\sum_{i\in S}(y_i - \bar{Y}_S)^2\right] = \frac{1}{n-1} \E\left[\sum_{i\in S}(y_i - \bar{Y}_S)^2\right] = s_U^2,
+\]</span>
+which is equivalent to proving <span class="math inline">\(\E\left[\sum_{i\in S}(y_i - \bar{Y}_S)^2\right] = s_U^2\)</span>. This is because:
+<span class="math display">\[\begin{align*}
+\E\left[\sum_{i\in S}(y_i - \bar{Y}_S)^2\right] &amp; = \E\Big[\sum_{i\in S}\big(\{y_i - \bar{y}_U\} - \{\bar{Y}_S - \bar{y}_U\}\big)^2\Big] \\
+&amp; = \E\Big[\sum_{i\in S}\big(\{y_i - \bar{y}_U\}^2 - 2\{y_i - \bar{y}_U\}\{\bar{Y}_S - \bar{y}_U\} + \{\bar{Y}_S - \bar{y}_U\}^2\big)\Big] \\
+&amp; = \E\Big[\sum_{i\in S}\{y_i - \bar{y}_U\}^2 - 2\{\bar{Y}_S - \bar{y}_U\}\sum_{i\in S}\{y_i - \bar{y}_U\} + n\{\bar{Y}_S - \bar{y}_U\}^2\Big] \\
+&amp; = \E\Big[\sum_{i\in S}\{y_i - \bar{y}_U\}^2 - 2n\{\bar{Y}_S - \bar{y}_U\}^2 + n\{\bar{Y}_S - \bar{y}_U\}^2\Big] \\
+&amp; = \E\Big[\sum_{i\in S}\{y_i - \bar{y}_U\}^2 - n\{\bar{Y}_S - \bar{y}_U\}^2\Big] \\
+&amp; = \E\Big[\sum_{i\in S}\{y_i - \bar{y}_U\}^2\Big] - n\Big[\{\bar{Y}_S - \bar{y}_U\}^2\Big] \\
+&amp; = \E\Big[\sum_{i=1}^NZ_i\{y_i - \bar{y}_U\}^2\Big] - nVar(\bar{Y}_S) \\
+&amp; = \sum_{i=1}^N(\E[Z_i]\{y_i - \bar{y}_U\}^2) - nVar\left(\frac{1}{N}\hat{T}_{HT}\right) \\
+&amp; = \frac{n}{N}\sum_{i=1}^N\{y_i - \bar{y}_U\}^2 - \frac{n}{N^2}Var\left(\hat{T}_{HT}\right) \\
+&amp; = \frac{n}{N}(N-1)s_U^2 - \frac{n}{N^2}N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n} \\
+&amp; = (n-1)s_U^2,
+\end{align*}\]</span>
+where the 7th equation is because under SRS, <span class="math inline">\(\bar{Y}_S\)</span> is an unbiased estimator for <span class="math inline">\(\bar{y}_U\)</span>, so <span class="math inline">\(\bar{y}_U = \E[\bar{Y}_S]\)</span>; and the 10th equation is obtained by applying Equation <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a>.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Therefore, we can <strong>estimate</strong> the variance of the HT estimators <span class="math inline">\(\hat{T}_{HT}\)</span> and <span class="math inline">\(\hat{\bar{Y}}_{HT}\)</span> by
+<span class="math display" id="eq:srs-var-ht-srs-estimator">\[\begin{equation}
+\hat{Var}(\hat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
+\tag{2.15}
+\end{equation}\]</span>
+and
+<span class="math display" id="eq:srs-var-ht-srs-mean-estimator">\[\begin{equation}
+\hat{Var}(\bar{Y}_S) = \frac{1}{N^2}Var(\hat{T}_{HT}) = \left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
+\tag{2.16}
+\end{equation}\]</span></p>
+
+</div>
 </div>
 </div>
 
@@ -988,6 +1626,11 @@ Figure 2.1: Visual illustration of biases of different estimators
 <hr />
 <ol start="2">
 <li id="fn2"><p>There are other frameworks, such as the model-based framework, but it will not be the focus of this book.<a href="chap-srs.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Here, independent means tossing a coin so that the result of one toss does not depend on the result of another toss.<a href="chap-srs.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Recall that we often do not have time and budget to interview everyone!<a href="chap-srs.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Note that this does not have any relationship with the Poisson distribution.<a href="chap-srs.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>If you are not familiar with combination, check it <a href="https://www.mathsisfun.com/combinatorics/combinations-permutations.html">here</a><a href="chap-srs.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Remember that a distribution is formed from repeating a probabilistic experiment infinite number of times. We can think of <span class="math inline">\(Y_1, ..., Y_n\)</span> as results of <span class="math inline">\(n\)</span> runs of the probabilistic experiment.<a href="chap-srs.html#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
