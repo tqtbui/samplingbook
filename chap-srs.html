@@ -740,11 +740,6 @@ Consider the sample total <span class="math inline">\(T_S = \sum_{i=1}^N Z_i Y_i
 </table>
 <p>We can see that, depending on the actual sample we obtain from our sample selection process, <span class="math inline">\(T_S\)</span> can have different values. Since the result of the sample selection process cannot be known beforehand and is random, the actual value of <span class="math inline">\(T_S\)</span> as a result of the sample selection process, is also random.</p>
 <p>To visualize the sampling distribution of <span class="math inline">\(T_S\)</span>, we can draw a plot of the probabilities of different actual values of <span class="math inline">\(T_S\)</span>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-srs.html#cb1-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">14</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">21</span>), </span>
-<span id="cb1-2"><a href="chap-srs.html#cb1-2" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">0</span>), </span>
-<span id="cb1-3"><a href="chap-srs.html#cb1-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;probability&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;possible values of T_S&quot;</span>, </span>
-<span id="cb1-4"><a href="chap-srs.html#cb1-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Sampling distribution of T_S&quot;</span>, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">lwd =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/srs-sampling-dist-1.png" alt="" width="50%" style="display: block; margin: auto;" /></p>
 <p>From the plot, we can see that</p>
 <p><span class="math display">\[
 \P(T_S = 4) = 1/6; \hspace{5mm} \P(T_S = 10) = 1/3; \hspace{5mm} \P(T_S = 14) = 1/3; \hspace{5mm} \P(T_S = 17) = 1/6.
@@ -1420,10 +1415,10 @@ Figure 2.2: Visual illustration of interval-based SRS technique
 </p>
 </div>
 <p><strong>The third method</strong>, which is very convenient in <strong>R</strong>, is to use the function <code>sample()</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-srs.html#cb1-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
 <p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 28  8 30 13</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 12 23 30  3</code></pre>
 </div>
 </div>
 <div id="variance" class="section level2 hasAnchor" number="2.7">
