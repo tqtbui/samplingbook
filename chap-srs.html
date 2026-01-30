@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-01-24" />
+<meta name="date" content="2026-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -641,12 +641,12 @@ The <strong>population mean</strong> is
   \bar{y}_S = \frac{1}{N}t_U = \frac{1}{N}\sum_{i=1}^N y_i
   \tag{2.2}
 \end{equation}\]</span></p>
-<p>An <strong>estimator</strong> of <span class="math inline">\(\theta\)</span> is usually denoted with a <strong>hat</strong>: <span class="math inline">\(\hat{\theta}\)</span>. In Section <a href="chap-srs.html#srs-param-stat">2.1.4</a>, <span class="math inline">\(\hat{\theta}\)</span> is a statistic calculated from the sample, so it is a function of <span class="math inline">\(Z_iY_i\)</span> and possibly <span class="math inline">\(Z_iX_i\)</span>. In the design-based framework of Section <a href="chap-srs.html#srs-design-based">2.1.5</a>, <span class="math inline">\(Z_i\)</span> is assumed to be random, so <span class="math inline">\(\hat{\theta}\)</span> is also <strong>random</strong>. Recall that we use lowercase letters to denote fixed and uppercase letters to denote random. So we write the <strong>sample total* as
+<p>An <strong>estimator</strong> of <span class="math inline">\(\theta\)</span> is usually denoted with a <strong>hat</strong>: <span class="math inline">\(\hat{\theta}\)</span>. In Section <a href="chap-srs.html#srs-param-stat">2.1.4</a>, <span class="math inline">\(\hat{\theta}\)</span> is a statistic calculated from the sample, so it is a function of <span class="math inline">\(Z_iY_i\)</span> and possibly <span class="math inline">\(Z_iX_i\)</span>. In the design-based framework of Section <a href="chap-srs.html#srs-design-based">2.1.5</a>, <span class="math inline">\(Z_i\)</span> is assumed to be random, so <span class="math inline">\(\hat{\theta}\)</span> is also <strong>random</strong>. Recall that we use lowercase letters to denote fixed and uppercase letters to denote random. So we write the <strong>sample total</strong> as
 <span class="math display" id="eq:srs-samp-total">\[\begin{equation}
   T_S = \sum_{i \in S} y_i = \sum_{i=1}^N Z_iy_i
   \tag{2.3}
 \end{equation}\]</span>
-and write the </strong>sample mean** as (if we have <span class="math inline">\(n\)</span> units in our sample)
+and write the <strong>sample mean</strong> as (if we have <span class="math inline">\(n\)</span> units in our sample)
 <span class="math display" id="eq:srs-samp-mean">\[\begin{equation}
   \bar{Y}_S = \frac{1}{n}\sum_{i\in S}y_i = \frac{1}{n}\sum_{i=1}^N Z_iy_i = \frac{\sum_{i=1}^N Z_iy_i}{\sum_{i=1}^N Z_i}
   \tag{2.4}
@@ -1423,7 +1423,7 @@ Figure 2.2: Visual illustration of interval-based SRS technique
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
 <p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 27  6 12  2</code></pre>
+<pre><code>## [1]  3 10 26 22</code></pre>
 </div>
 </div>
 <div id="variance" class="section level2 hasAnchor" number="2.7">
