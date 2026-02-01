@@ -1425,7 +1425,7 @@ Figure 2.2: Visual illustration of interval-based SRS technique
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
 <p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 10 18  3 23</code></pre>
+<pre><code>## [1] 29 18 24 28</code></pre>
 </div>
 </div>
 <div id="variance" class="section level2 hasAnchor" number="2.7">
@@ -1874,7 +1874,7 @@ n = \frac{1.96^2\times \frac{1}{4}}{0.03^2 + \frac{1.96^2\times \frac{1}{4}}{125
 <div class="empty">
 
 </div>
-<p>In Example <a href="chap-srs.html#exm:ex-srs-sample-size-mean">2.18</a>, we see that <span class="math inline">\(s_U\)</span> has unit of Canadian dollar. In that case, for different study we need to specify a specific value of <span class="math inline">\(s_U\)</span> depending on the unit of the response variable <span class="math inline">\(Y\)</span>. Instead, we may know the relative ratio between the mean and the variance, for example, from a study about student rent in the US where the data is collected in US dollar. Now, the ratio <span class="math inline">\(\bar{y}_U/s_U\)</span>, which is called the <strong>coefficient of variation</strong>, which is does not have a unit, i.e., <strong>scale-free</strong>, can help us! Specifically, we can make a <strong>statement</strong> like this: we want a sample size <span class="math inline">\(n\)</span> so that
+<p>In Example <a href="chap-srs.html#exm:ex-srs-sample-size-mean">2.18</a>, we see that <span class="math inline">\(s_U\)</span> has unit of Canadian dollar. In that case, for different study we need to specify a specific value of <span class="math inline">\(s_U\)</span> depending on the unit of the response variable <span class="math inline">\(Y\)</span>. Instead, we may know the relative ratio between the standard deviation and the mean, for example, from a study about student rent in the US where the data is collected in US dollar. Now, the ratio <span class="math inline">\(CV = s_U/\bar{y}_U\)</span>, which is called the <strong>coefficient of variation</strong>, can help us! This is because the coefficient of variation does not have a unit, i.e., it is <strong>scale-free</strong>. Specifically, we can make a <strong>statement</strong> like this: we want a sample size <span class="math inline">\(n\)</span> so that
 <span class="math display" id="eq:srs-error-cv">\[\begin{equation}
   \P\left(\left|\frac{\hat{\theta}-\theta}{\theta}\right| \le r\right) = 1-\alpha,
   \tag{2.27}
@@ -1883,12 +1883,12 @@ where <span class="math inline">\(r\)</span> is called the <strong>relative prec
 <span class="math display">\[
 n = \frac{z_{\alpha/2}^2(s_U/\bar{y}_U)^2}{r^2 + \frac{z_{\alpha/2}^2(s_U/\bar{y}_U)^2}{N}},
 \]</span></p>
-<p>where <span class="math inline">\(s_U/\bar{y}_U\)</span> is the <em>inverse</em> of the coefficient of variation!</p>
+<p>where <span class="math inline">\(s_U/\bar{y}_U\)</span> is the coefficient of variation!</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-srs-sample-size-cv" class="example"><strong>Example 2.20  </strong></span>Suppose we want to estimate the mean rent payments of students. We plan to take an SRS from a population of <span class="math inline">\(N=1251\)</span> students, and want to use <span class="math inline">\(95\%\)</span> with relative precision <span class="math inline">\(0.3\)</span>. The population coefficient of variation is estimated to be <span class="math inline">\(0.8\)</span>. The sample size needed is:
 <span class="math display">\[
-n = \frac{1.96^2\times (1/0.8)^2}{0.3^2 + \frac{1.96^2\times (1/0.8)^2}{1251}} = 63.3187 \to 64.
+n = \frac{1.96^2\times 0.8^2}{0.3^2 + \frac{1.96^2\times 0.8^2}{1251}} = 26.7343 \to 27.
 \]</span></p>
 </div>
 </div>
