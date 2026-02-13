@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-02-12" />
+<meta name="date" content="2026-02-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1166,14 +1166,14 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 <span class="math display">\[
 DE = \frac{Var_{complex}(\widehat{\overline{Y}})}{Var_{SRS}(\widehat{\overline{Y}})}
 \]</span></p>
-<p>The interpretation of design effect is that we need <span class="math inline">\(DE \times n\)</span> observations under the complex sampling scheme to achieve the same variance as in an SRS with <span class="math inline">\(n\)</span> observations. We define <span class="math inline">\(DE \times n\)</span> the <strong>effective sample size</strong>.</p>
+<p>The interpretation of design effect is that we need <span class="math inline">\(n / DE\)</span> observations under SRS to achieve the same variance as in the complex sampling scheme with <span class="math inline">\(n\)</span> observations. We call <span class="math inline">\(n / DE\)</span> the <strong>effective sample size</strong>.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-design-effect" class="example"><strong>Example 3.9  </strong></span>In Example <a href="chap-stratified.html#exm:ex-strt-compare-three">3.8</a>, the design effect of stratified sampling with proportional allocation is
 <span class="math display">\[
 \frac{Var_{strt, prop}(\widehat{\overline{Y}}_{HT})}{Var_{SRS}(\widehat{\overline{Y}}_{HT})} = \frac{4.7736}{7.3915} =0.6458
 \]</span>
-This means that we only need <span class="math inline">\(0.65 \times 36 = 23.4 \approx 23\)</span> observations in the stratified sample with proportional allocation to achieve the same variance as in the SRS with <span class="math inline">\(36\)</span> observations. The effective sample size here is <span class="math inline">\(23\)</span>.</p>
+This means that we need <span class="math inline">\(36/0.65 = 23.4 \approx 55\)</span> observations in SRS to achieve the same variance as in the stratified sample with proportional allocation with <span class="math inline">\(36\)</span> observations. The effective sample size here is <span class="math inline">\(55\)</span>.</p>
 </div>
 </div>
 </div>
