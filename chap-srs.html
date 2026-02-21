@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-02-19" />
+<meta name="date" content="2026-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1448,7 +1448,7 @@ Figure 2.2: Visual illustration of interval-based SRS technique
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-srs.html#cb2-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="co">#where N and n are numbers from your survey design </span></span></code></pre></div>
 <p>For example, in Example <a href="chap-srs.html#exm:ex-srs-systematic">2.13</a>, instead of systematic sampling, we can use <strong>R</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-srs.html#cb3-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 12 14 28  8</code></pre>
+<pre><code>## [1] 26  7 12 15</code></pre>
 </div>
 </div>
 <div id="variance" class="section level2 hasAnchor" number="2.7">
@@ -1674,7 +1674,7 @@ The variance of the sample mean is
 <span class="math display">\[
 \widehat{Var}(\overline{Y}_S) = \left(1-\frac{4}{10}\right)\frac{12.9167}{4} = 1.9375
 \]</span>
-The standard deviation is
+The standard error is
 <span class="math display">\[
 \widehat{SE}(\overline{Y}_S) = \sqrt{1.9375} = 1.3919
 \]</span></p>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-02-19" />
+<meta name="date" content="2026-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1164,9 +1164,9 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 <h3><span class="header-section-number">3.3.4</span> Design Effect<a href="chap-stratified.html#design-effect" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <strong>design effect</strong> of a complex survey is defined as
 <span class="math display">\[
-DE = \frac{Var_{complex}(\widehat{\overline{Y}})}{Var_{SRS}(\widehat{\overline{Y}})}
+DE = \frac{Var_{complex}(\widehat{\overline{Y}})}{Var_{SRS}(\widehat{\overline{Y}})},
 \]</span></p>
-<p>The interpretation of design effect is that we need <span class="math inline">\(n / DE\)</span> observations under SRS to achieve the same variance as in the complex sampling scheme with <span class="math inline">\(n\)</span> observations. We call <span class="math inline">\(n / DE\)</span> the <strong>effective sample size</strong>.</p>
+<p>in which the variances are calculated based on sample size <span class="math inline">\(n\)</span>. The interpretation of design effect is that we gain/lose <span class="math inline">\(DE\times 100\%\)</span> of efficiency when using the complex sampling design instead of SRS. Furthermore, we need <span class="math inline">\(\frac{n}{DE}\)</span> observations under SRS to achieve the same variance as in the complex sampling scheme with <span class="math inline">\(n\)</span> observations. We call <span class="math inline">\(n_{eff} = \frac{n}{DE}\)</span> the <strong>effective sample size</strong>.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-design-effect" class="example"><strong>Example 3.9  </strong></span>In Example <a href="chap-stratified.html#exm:ex-strt-compare-three">3.8</a>, the design effect of stratified sampling with proportional allocation is
