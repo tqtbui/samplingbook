@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Ratio and Regression Estimators | A Concise Introduction to Survey Sampling</title>
+  <meta name="description" content="4 Ratio and Regression Estimators | A Concise Introduction to Survey Sampling" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Ratio and Regression Estimators | A Concise Introduction to Survey Sampling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Ratio and Regression Estimators | A Concise Introduction to Survey Sampling" />
+  
+  
+  
+
+
+
+<meta name="date" content="2026-03-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-strt.html"/>
+<link rel="next" href="app-dataset.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Latex macros for html output
+
+A few very common things you should use:
+
+- $\bm{}$: Bold math.  Use bold for everything except scalars.
+- $\tx{}$: Text within math.  Use for abbreviating words, e.g., $A_{\tx{miss}}$.
+- $\xx, \YY$: Default macro convention for bold letters (small and capital case).
+- $\aal, \TTh$: Default macro convention for bold symbols (first two letters of symbol name, i.e., $\bm{\alpha}$ and $\bm{\Theta}$).
+- common stats symbols e.g., $\var$, $\cov$, $\iid$, $\N, defined below.
+-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+	  Macros: {
+	      bm: ["\\boldsymbol{#1}",1], <!--bold math-->
+	      tx: ["\\textrm{#1}",1], <!--text within math-->
+	      rv: ["#2_{#1},\\ldots,#2_{#3}",3,"1"], <!--random variable \rv{X}{n}: X_1, ..., X_n-->
+	      iid: ["\\overset{\\;\\tx{iid}\\;}{\\sim}"], <!--iid follows-->
+	      ind: ["\\overset{\\:\\tx{ind}\\:}{\\sim}"], <!--ind follows-->
+	      var: ["\\operatorname{var}"], <!--variance-->
+	      cov: ["\\operatorname{cov}"], <!--coveraince-->
+	      cor: ["\\operatorname{cor}"], <!--correlation-->
+	      std: ["\\operatorname{se}"], <!--standard error-->
+	      diag: ["\\operatorname{diag}"], <!--diagonal matrix-->
+	      logit: ["\\operatorname{logit}"], <!--logit function-->
+	      N: ["\\mathcal{N}"], <!--normal distribution-->
+	      E: ["{\\mathbb{E}}"], <!--expectation-->
+	      R: ["{\\mathbb{R}}"], <!--real set-->
+	      P: ["{\\mathbb{P}}"], <!--probability-->
+	      unif: ["\\operatorname{Unif}"], <!--Uniform distribution-->
+	      ud: ["\\mathop{}\\!\\mathrm{d}"], <!--d in tegeral-->
+	      der: ["\\frac{\\ud^{#1}}{\\ud{#2}^{#1}}", 2, ""], <!--\der{x}{f} d/dx f--> 
+	      del: ["\\frac{\\partial^{#1}}{\\partial{#2}^{#1}}", 2, ""], <!--\del{x}{f} d/dx f-->
+	      fder: ["\\frac{\\ud^{#1}#3}{\\ud{#2}^{#1}}", 3, ""], <!--\fder{x}{f} df/dx -->
+	      fdel: ["\\frac{\\partial^{#1}#3}{\\partial{#2}^{#1}}", 3, ""], <!--\fdel{x}{f} df/dx -->
+	      hess: ["\\frac{\\partial^2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 1], <!--\hess{x} d/dxdx -->
+	      fhess: ["\\frac{\\partial^2#2}{\\partial{#1}\\partial{#1}^{\\mathsf{T}}}", 2], <!--\fhess{x}{f} df/dxdx -->
+	      eps: ["\\varepsilon"], <!--epsilon-->
+	      L: ["{\\mathcal{L}}"], <!--curl L likelihood-->
+	      <!-- \ell is used for curl l log likelihood -->
+	      bz: ["{\\bm{0}}"], <!--boldface 0-->
+	      bu: ["{\\bm{1}}"], <!--boldface 1-->
+	      xx: ["{\\bm{x}}"], <!--boldface x-->
+	      yy: ["{\\bm{y}}"], <!--boldface y-->
+	      zz: ["{\\bm{z}}"], <!--boldface z-->
+	      II: ["{\\bm{I}}"], <!--boldface I-->
+	      HH: ["{\\bm{H}}"], <!--boldface H-->
+	      XX: ["{\\bm{X}}"], <!--boldface X-->
+	      YY: ["{\\bm{Y}}"], <!--boldface Y-->
+	      ZZ: ["{\\bm{Z}}"], <!--boldface Z-->
+	      WW: ["{\\bm{W}}"], <!--boldface Z-->
+	      aal: ["{\\bm{\\alpha}}"], <!--boldface alpha-->
+	      bbe: ["{\\bm{\\beta}}"], <!--boldface beta-->
+	      gga: ["{\\bm{\\gamma}}"], <!--boldface gamma-->
+	      eet: ["{\\bm{\\eta}}"], <!--boldface eta-->
+	      lla: ["{\\bm{\\lambda}}"], <!--boldface lambda-->
+	      mmu: ["{\\bm{\\mu}}"], <!--boldface mu-->
+	      pph: ["{\\bm{\\phi}}"], <!--boldface phi-->
+	      pps: ["{\\bm{\\psi}}"], <!--boldface psi-->
+	      rrh: ["{\\bm{\\rho}}"], <!--boldface rho-->
+	      ssi: ["{\\bm{\\sigma}}"], <!--boldface sigma-->
+	      tta: ["{\\bm{\\tau}}"], <!--boldface tau-->
+	      tth: ["{\\bm{\\theta}}"], <!--boldface theta-->
+	      eeps: ["{\\bm{\\varepsilon}}"], <!--boldface varepsilon-->
+	      GGa: ["{\\bm{\\Gamma}}"], <!--boldface Gamma-->
+	      SSi: ["{\\bm{\\Sigma}}"], <!--boldface Sigma-->
+	      TTh: ["{\\bm{\\Theta}}"], <!--boldface Theta-->
+	      rx: ["{\\tx{x}}"], <!--text x-->
+	      ry: ["{\\tx{y}}"], <!--text y-->
+	      rz: ["{\\tx{z}}"], <!--text z-->
+	      I: ["{\\mathcal{I}}"], <!--I curl-->
+	      H: ["{\\mathcal{H}}"], <!--H curl-->
+	      kl: ["{\\operatorname{KL}}"], <!--KL divergence-->
+	      sfT: ["{\\mathsf{T}}"], <!--sf T-->
+	      argmin: ["\\operatorname{arg\\,min}"], <!--argmin-->
+	      argmax: ["\\operatorname{arg\\,max}"], <!--argmax-->
+	      indep: ["\\perp \\!\\!\\! \\perp"] <!--independent-->
+	  }
+     }
+  });
+</script>
+
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Main Content</b></span></li>
+<li class="chapter" data-level="1" data-path="chap-intro.html"><a href="chap-intro.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-intro.html"><a href="chap-intro.html#survey-sampling"><i class="fa fa-check"></i><b>1.1</b> Survey Sampling</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-intro.html"><a href="chap-intro.html#census-vs.-samples"><i class="fa fa-check"></i><b>1.2</b> Census vs. Samples</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-intro.html"><a href="chap-intro.html#census"><i class="fa fa-check"></i><b>1.2.1</b> Census</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-intro.html"><a href="chap-intro.html#intro-sample"><i class="fa fa-check"></i><b>1.2.2</b> Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-intro.html"><a href="chap-intro.html#intro-bias-var"><i class="fa fa-check"></i><b>1.3</b> Variability and Bias</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-intro.html"><a href="chap-intro.html#variability"><i class="fa fa-check"></i><b>1.3.1</b> Variability</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-intro.html"><a href="chap-intro.html#bias"><i class="fa fa-check"></i><b>1.3.2</b> Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-intro.html"><a href="chap-intro.html#sources-of-bias"><i class="fa fa-check"></i><b>1.4</b> Sources of Bias</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-intro.html"><a href="chap-intro.html#intro-selection-bias"><i class="fa fa-check"></i><b>1.4.1</b> Selection Bias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-intro.html"><a href="chap-intro.html#measurement-errors"><i class="fa fa-check"></i><b>1.4.2</b> Measurement Errors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-srs.html"><a href="chap-srs.html"><i class="fa fa-check"></i><b>2</b> Simple Probability Sampling</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-srs.html"><a href="chap-srs.html#mathematical-framework"><i class="fa fa-check"></i><b>2.1</b> Mathematical Framework</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chap-srs.html"><a href="chap-srs.html#simplifying-assumptions"><i class="fa fa-check"></i><b>2.1.1</b> Simplifying Assumptions</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chap-srs.html"><a href="chap-srs.html#population-and-sample"><i class="fa fa-check"></i><b>2.1.2</b> Population and Sample</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chap-srs.html"><a href="chap-srs.html#variables"><i class="fa fa-check"></i><b>2.1.3</b> Variables</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chap-srs.html"><a href="chap-srs.html#srs-param-stat"><i class="fa fa-check"></i><b>2.1.4</b> Population Parameter and Sample Statistic</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chap-srs.html"><a href="chap-srs.html#srs-design-based"><i class="fa fa-check"></i><b>2.1.5</b> Design-based Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chap-srs.html"><a href="chap-srs.html#sampling-distribution"><i class="fa fa-check"></i><b>2.2</b> Sampling Distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-srs.html"><a href="chap-srs.html#probability-refresh"><i class="fa fa-check"></i><b>2.2.1</b> Probability Refresh</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-srs.html"><a href="chap-srs.html#sampling-distribution-1"><i class="fa fa-check"></i><b>2.2.2</b> Sampling Distribution</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-srs.html"><a href="chap-srs.html#probabilistic-mean"><i class="fa fa-check"></i><b>2.2.3</b> Probabilistic Mean</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap-srs.html"><a href="chap-srs.html#unbiased-estimator"><i class="fa fa-check"></i><b>2.3</b> Unbiased Estimator</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-srs.html"><a href="chap-srs.html#bias-1"><i class="fa fa-check"></i><b>2.3.1</b> Bias</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-srs.html"><a href="chap-srs.html#bias-of-sample-total"><i class="fa fa-check"></i><b>2.3.2</b> Bias of Sample Total</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="2.3.4" data-path="chap-srs.html"><a href="chap-srs.html#sampling-weights"><i class="fa fa-check"></i><b>2.3.4</b> Sampling Weights</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-srs.html"><a href="chap-srs.html#srs-probability-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability Sampling</a></li>
+<li class="chapter" data-level="2.5" data-path="chap-srs.html"><a href="chap-srs.html#srs-poisson"><i class="fa fa-check"></i><b>2.5</b> Poisson Sampling</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-srs.html"><a href="chap-srs.html#the-design"><i class="fa fa-check"></i><b>2.5.1</b> The Design</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-srs.html"><a href="chap-srs.html#the-estimator"><i class="fa fa-check"></i><b>2.5.2</b> The Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-srs.html"><a href="chap-srs.html#srs-srs"><i class="fa fa-check"></i><b>2.6</b> Simple Random Sampling</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-srs.html"><a href="chap-srs.html#definition"><i class="fa fa-check"></i><b>2.6.1</b> Definition</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-srs.html"><a href="chap-srs.html#srs-srs-ht-estimator"><i class="fa fa-check"></i><b>2.6.2</b> The Estimator</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-srs.html"><a href="chap-srs.html#the-design-1"><i class="fa fa-check"></i><b>2.6.3</b> The Design</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="chap-srs.html"><a href="chap-srs.html#variance"><i class="fa fa-check"></i><b>2.7</b> Variance</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="chap-srs.html"><a href="chap-srs.html#definition-1"><i class="fa fa-check"></i><b>2.7.1</b> Definition</a></li>
+<li class="chapter" data-level="2.7.2" data-path="chap-srs.html"><a href="chap-srs.html#srs-ht-var"><i class="fa fa-check"></i><b>2.7.2</b> Variance of Horvitz-Thompson Estimators</a></li>
+<li class="chapter" data-level="2.7.3" data-path="chap-srs.html"><a href="chap-srs.html#variance-under-simple-random-sampling"><i class="fa fa-check"></i><b>2.7.3</b> Variance under Simple Random Sampling</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-srs.html"><a href="chap-srs.html#variance-estimators"><i class="fa fa-check"></i><b>2.7.4</b> Variance Estimators</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="chap-srs.html"><a href="chap-srs.html#confidence-intervals"><i class="fa fa-check"></i><b>2.8</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="2.9" data-path="chap-srs.html"><a href="chap-srs.html#srs-sample-size"><i class="fa fa-check"></i><b>2.9</b> Sample Size Determination</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-strt.html"><a href="chap-strt.html"><i class="fa fa-check"></i><b>3</b> Stratified Sampling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-strt.html"><a href="chap-strt.html#what-is-stratified-sampling"><i class="fa fa-check"></i><b>3.1</b> What is Stratified Sampling?</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-strt.html"><a href="chap-strt.html#strt-components"><i class="fa fa-check"></i><b>3.1.1</b> Components</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-strt.html"><a href="chap-strt.html#why-stratification"><i class="fa fa-check"></i><b>3.1.2</b> Why Stratification?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-strt.html"><a href="chap-strt.html#estimation"><i class="fa fa-check"></i><b>3.2</b> Estimation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-strt.html"><a href="chap-strt.html#population-parameters"><i class="fa fa-check"></i><b>3.2.1</b> Population Parameters</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap-strt.html"><a href="chap-strt.html#sample-and-ht-estimators"><i class="fa fa-check"></i><b>3.2.2</b> Sample and HT Estimators</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap-strt.html"><a href="chap-strt.html#variances"><i class="fa fa-check"></i><b>3.2.3</b> Variances</a></li>
+<li class="chapter" data-level="3.2.4" data-path="chap-strt.html"><a href="chap-strt.html#variance-estimators-1"><i class="fa fa-check"></i><b>3.2.4</b> Variance Estimators</a></li>
+<li class="chapter" data-level="3.2.5" data-path="chap-strt.html"><a href="chap-strt.html#r-code"><i class="fa fa-check"></i><b>3.2.5</b> R Code</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-strt.html"><a href="chap-strt.html#design"><i class="fa fa-check"></i><b>3.3</b> Design</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-strt.html"><a href="chap-strt.html#approaches"><i class="fa fa-check"></i><b>3.3.1</b> Approaches</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-strt.html"><a href="chap-strt.html#strt-prop-alloc"><i class="fa fa-check"></i><b>3.3.2</b> Proportional Allocation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-strt.html"><a href="chap-strt.html#optimal-allocation"><i class="fa fa-check"></i><b>3.3.3</b> Optimal Allocation</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-strt.html"><a href="chap-strt.html#design-effect"><i class="fa fa-check"></i><b>3.3.4</b> Design Effect</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-strt.html"><a href="chap-strt.html#sample-size-determination"><i class="fa fa-check"></i><b>3.3.5</b> Sample Size Determination</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rr.html"><a href="chap-rr.html"><i class="fa fa-check"></i><b>4</b> Ratio and Regression Estimators</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rr.html"><a href="chap-rr.html#auxiliary-variables"><i class="fa fa-check"></i><b>4.1</b> Auxiliary Variables</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rr.html"><a href="chap-rr.html#ratio-estimator"><i class="fa fa-check"></i><b>4.2</b> Ratio Estimator</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-2"><i class="fa fa-check"></i><b>4.2.3</b> Bias</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#mean-squared-error"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chap-rr.html"><a href="chap-rr.html#compared-to-ht-estimator"><i class="fa fa-check"></i><b>4.2.5</b> Compared to HT estimator</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#variance-estimation"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-r"><i class="fa fa-check"></i><b>4.2.7</b> R Code</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification"><i class="fa fa-check"></i><b>4.3</b> Post-Stratification</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-rr.html"><a href="chap-rr.html#rr-post-stratification"><i class="fa fa-check"></i><b>4.3.1</b> Post-Stratification</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification-by-weight-adjustment"><i class="fa fa-check"></i><b>4.3.2</b> Post-Stratification by Weight Adjustment</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rr.html"><a href="chap-rr.html#calibration"><i class="fa fa-check"></i><b>4.3.3</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator"><i class="fa fa-check"></i><b>4.4</b> Regression Estimator</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
+<li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="app-summaries.html"><a href="app-summaries.html#chapter-2"><i class="fa fa-check"></i><b>B.1</b> Chapter 2</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="app-summaries.html"><a href="app-summaries.html#statistical-formulas"><i class="fa fa-check"></i><b>B.1.1</b> Statistical Formulas</a></li>
+<li class="chapter" data-level="B.1.2" data-path="app-summaries.html"><a href="app-summaries.html#notation"><i class="fa fa-check"></i><b>B.1.2</b> Notation</a></li>
+<li class="chapter" data-level="B.1.3" data-path="app-summaries.html"><a href="app-summaries.html#horvitz-thompson-estimator-1"><i class="fa fa-check"></i><b>B.1.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="B.1.4" data-path="app-summaries.html"><a href="app-summaries.html#simple-random-sampling"><i class="fa fa-check"></i><b>B.1.4</b> Simple Random Sampling</a></li>
+<li class="chapter" data-level="B.1.5" data-path="app-summaries.html"><a href="app-summaries.html#others"><i class="fa fa-check"></i><b>B.1.5</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="app-summaries.html"><a href="app-summaries.html#chapter-3"><i class="fa fa-check"></i><b>B.2</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="app-summaries.html"><a href="app-summaries.html#general-formula-for-ht-estimators"><i class="fa fa-check"></i><b>B.2.1</b> General Formula for HT Estimators</a></li>
+<li class="chapter" data-level="B.2.2" data-path="app-summaries.html"><a href="app-summaries.html#additional-formulas"><i class="fa fa-check"></i><b>B.2.2</b> Additional Formulas</a></li>
+<li class="chapter" data-level="B.2.3" data-path="app-summaries.html"><a href="app-summaries.html#allocations"><i class="fa fa-check"></i><b>B.2.3</b> Allocations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Concise Introduction to Survey Sampling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-rr" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Ratio and Regression Estimators<a href="chap-rr.html#chap-rr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="auxiliary-variables" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Auxiliary Variables<a href="chap-rr.html#auxiliary-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Chapter <a href="chap-strt.html#chap-strt">3</a>, we learn that if we sample using a stratification variable, we may be able to <strong>lower the variance</strong> of our estimation. Specifically, we learned in Section <a href="chap-strt.html#strt-prop-alloc">3.3.2</a> that in stratified sampling with proportional allocation, the stratification variable needs to be <strong>predictive</strong> of the variable of interest <span class="math inline">\(Y\)</span> so that the stratum means <span class="math inline">\(\overline{y}_{U,h}\)</span> are different from one stratum to another.</p>
+<p>In this chapter, we will learn how to use <strong>auxiliary variable</strong> <span class="math inline">\(X\)</span> that gives <strong>additional information</strong> about <span class="math inline">\(Y\)</span> to better estimate the mean and total of <span class="math inline">\(Y\)</span> in the population.</p>
+</div>
+<div id="ratio-estimator" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Ratio Estimator<a href="chap-rr.html#ratio-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="motivating-example-and-definition" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Motivating Example and Definition<a href="chap-rr.html#motivating-example-and-definition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we want to estimate the total rent paid by USask students <span class="math inline">\(t_{U,y} = \sum_{i=1}^N y_i\)</span>.</p>
+<p>In SRS, we use the HT estimator <span class="math inline">\(\widehat{T}_{HT} = N\overline{Y}_S = N \frac{\sum_{i\in S} y_i}{n}\)</span>, in which:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Quantity</th>
+<th align="center">Sample</th>
+<th align="center">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(\sum_{i \in S} y_i\)</span></td>
+<td align="center"><span class="math inline">\(t_{U,y} = ?\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Size</td>
+<td align="center"><span class="math inline">\(\sum_{i \in S} 1 = n\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i=1}^N 1 = N\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that we <strong>know</strong> the sample quantities from the <strong>sample</strong> we collected. On the other hand, we <strong>do not know</strong> the <strong>population</strong> because we did not collect the data on everyone. Nevertheless, by knowing <strong>one additional piece of information</strong> from the population, which is the population size <span class="math inline">\(N\)</span>, we are able to <strong>estimate</strong> a <strong>population quantity</strong>, which is <span class="math inline">\(t_{U,y}\)</span>, using <span class="math inline">\(\widehat{T}_{HT}  = N \frac{\sum_{i\in S} y_i}{n}\)</span>.</p>
+<p>Now suppose that I don’t know the population size <span class="math inline">\(N\)</span> but I know some other quantities from the population, for example, the number of students from Arts and Science. Let <span class="math inline">\(x_i\)</span> denote whether the <span class="math inline">\(i\)</span>th student come from Arts and Science, then, <span class="math inline">\(\sum_{i=1}^N x_i\)</span> is the number of Arts and Science students in the population. As a result, the information I have is:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Quantity</th>
+<th align="center">Sample</th>
+<th align="center">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(\sum_{i \in S} y_i = n\overline{Y}_S\)</span></td>
+<td align="center"><span class="math inline">\(t_{U,y} = N\overline{y}_U = ?\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">No. of A&amp;S students</td>
+<td align="center"><span class="math inline">\(\sum_{i \in S} x_i = n\overline{X}_S\)</span></td>
+<td align="center"><span class="math inline">\(t_{U,x} = \sum_{i=1}^N x_i = N\overline{x}_U\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Using the similar logic as the HT estimator, we replace</p>
+<ul>
+<li><p><span class="math inline">\(n = \sum_{i \in S} 1\)</span> by <span class="math inline">\(\sum_{i \in S} x_i\)</span>, and</p></li>
+<li><p><span class="math inline">\(N = \sum_{i=1}^N 1\)</span> by <span class="math inline">\(t_{U,x} = \sum_{i=1}^N x_i\)</span>,</p></li>
+</ul>
+<p>we then obtain the <strong>ratio estimator under SRS</strong>:
+<span class="math display" id="eq:rr-ratio-estimator">\[\begin{equation}
+  \widehat{T}_r = t_{U,x}\frac{\sum_{i\in S} y_i}{\sum_{i\in S}x_i} = t_{U,x} \frac{\overline{Y}_S}{\overline{X}_S}
+  \tag{4.1}
+\end{equation}\]</span></p>
+<p>This logic is similar to the three-number problem we learned in primary school: when we have four quantities that are proportional to one another, if we know three quantities, we can calculate the other quantity. In our case, we have
+<span class="math display">\[
+\frac{t_{U,y}}{\overline{y}_U} = \frac{t_{U,x}}{\overline{x}_U} = N
+\]</span>
+Replacing <span class="math inline">\(\overline{y}_U\)</span> and <span class="math inline">\(\overline{x}_U\)</span> by their sample versions we have the approximated proportional relationship:
+<span class="math display">\[
+\frac{\overline{Y}_S}{\overline{X}_S} \approx \frac{t_{U,y}}{t_{U,x}}.
+\]</span>
+We know <span class="math inline">\(\overline{Y}_S\)</span> and <span class="math inline">\(\overline{X}_S\)</span> from the sample and <span class="math inline">\(t_{U,x}\)</span> from the population. Now we want to estimate <span class="math inline">\(t_{U,y}\)</span>, so we use the ratio estimator formula in Equation <a href="chap-rr.html#eq:rr-ratio-estimator">(4.1)</a>. A visual illustration of ratio estimator is give in Figure <a href="chap-rr.html#fig:rr-illustration">4.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rr-illustration"></span>
+<img src="data/images/chap-rr/three-number.png" alt="Visual illustration of ratio estimator. In our case of ratio estimator, $Y$ is the stars, and $X$ is the diamonds." width="50%" />
+<p class="caption">
+Figure 4.1: Visual illustration of ratio estimator. In our case of ratio estimator, <span class="math inline">\(Y\)</span> is the stars, and <span class="math inline">\(X\)</span> is the diamonds.
+</p>
+</div>
+</div>
+<div id="why-ratio-estimator" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Why Ratio Estimator?<a href="chap-rr.html#why-ratio-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are five main reasons for us to use ratio estimators:</p>
+<details>
+<summary>
+when the population size <strong><span class="math inline">\(N\)</span> is unknown</strong> or difficult to obtain,
+</summary>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-unknown-N" class="example"><strong>Example 4.1  </strong></span>Suppose we are fishermen and we caught a big haul of fish. In the haul, there can be small fish, crabs, squid, etc., but big fish are the ones that we can sell for good price. We are now interested in estimating the total number of fish that are larger than 12 cm. However, the haul is big, how do we measure and count the number of fish that are larger than 12cm?</p>
+<p>One way to solve this problem is to use weight (<span class="math inline">\(X\)</span>) as the auxiliary variable for the indicator that a fish is larger than 12 cm (<span class="math inline">\(Y\)</span>). In particular, we can</p>
+<ul>
+<li><p>take an SRS sample from the haul,</p></li>
+<li><p>count the number of fish that are larger than 12 cm from the sample to obtain <span class="math inline">\(\sum_{i\in S}y_i\)</span>, (here <span class="math inline">\(y_i\)</span> indicates if the <span class="math inline">\(i\)</span>th fish is larger than 12 cm)</p></li>
+<li><p>weigh the sample to obtain <span class="math inline">\(\sum_{i\in S}x_i\)</span>, (here <span class="math inline">\(x_i\)</span> is the weight of the <span class="math inline">\(i\)</span>th fish)</p></li>
+<li><p>weigh the whole haul to obtain <span class="math inline">\(t_{U,x}\)</span>,</p></li>
+<li><p>finally, we can use the ratio estimator <span class="math inline">\(\widehat{T}_r = t_{U,x} \frac{\sum_{i\in S}y_i}{\sum_{i \in S} x_i}\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+when the <strong>ratio</strong> <span class="math inline">\(b_U = \frac{t_{U,y}}{t_{U,x}} = \frac{\overline{y}_U}{\overline{x}_U}\)</span> is the parameter <strong>of interest</strong>,
+</summary>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-ratio" class="example"><strong>Example 4.2  </strong></span>Suppose we are an agricultural scientist who developed a new crop and want to estimate the yield of grain (per acre) of the crop. We can plant the crop on multiple fields and record</p>
+<ul>
+<li><p><span class="math inline">\(y_i\)</span>: the yield of grain in the <span class="math inline">\(i\)</span>th field</p></li>
+<li><p><span class="math inline">\(x_i\)</span>: the area of the <span class="math inline">\(i\)</span>th field in acre</p></li>
+</ul>
+<p>Then we are interested in the ratio <span class="math inline">\(b_U = \frac{t_{U,y}}{t_{U,x}}\)</span>, that is, the yield of grain per acre.</p>
+<p>In the ratio estimator
+<span class="math display">\[
+\widehat{T}_{r} = t_x\frac{\sum_{i\in S}y_i}{\sum_{i\in S}x_i} = t_x\frac{\overline{Y}_S}{\overline{X}_S} = t_x\widehat{B}_r,
+\]</span>
+<span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span> estimates the ratio <span class="math inline">\(b_U\)</span> that we are interested in.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+when we want to <strong>adjust</strong> the estimate so that it reflect the population’s <strong>demographics</strong>,
+</summary>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-post-stratification" class="example"><strong>Example 4.3  </strong></span>Suppose there are <span class="math inline">\(N = 4,000\)</span> students in which <span class="math inline">\(2,700\)</span> are women and <span class="math inline">\(1,300\)</span> are men. Suppose we take an SRS of size <span class="math inline">\(n = 400\)</span>, in which there happens to be <span class="math inline">\(240\)</span> women and <span class="math inline">\(160\)</span> men. This sample is <em>not</em> representative in terms of the women-men ratio in the population. We can adjust for this using ratio estimators as follows.</p>
+<p>Suppose our interest is in estimating the number of students who took at least one programming course (i.e., know how to code). Let <span class="math inline">\(y_i\)</span> be the indicator whether the <span class="math inline">\(i\)</span>th student took at least one programming course. Suppose in our sample, we find 84 women took programming and 40 for men.</p>
+<p>Usually, for SRS we will use the HT estimator to estimate the total number of students in the population who took at least one programming course.
+<span class="math display">\[
+N\overline{Y}_S = 4,000 \times \frac{84+40}{400} = 1,240
+\]</span></p>
+<p>However, the sample we use to calculate this estimate represents less women (<span class="math inline">\(240/400 = 60\%\)</span>) than what we have in the population (<span class="math inline">\(2700/4000 = 67.5\%\)</span>). Similarly, the sample has more men (<span class="math inline">\(160/240 = 40\%\)</span>) compared to what we have in the population (<span class="math inline">\(1300/4000 = 32.5\%\)</span>).</p>
+<p>What we can do is to get a <strong>ratio estimate</strong> for the number of <strong>women</strong> students in the population who took at least one programming course:
+<span class="math display">\[
+\frac{84}{240}\times 2,700 = 945,
+\]</span>
+and a ratio estimate for the number of <strong>men</strong> students in the population who took at least one programming course:
+<span class="math display">\[
+\frac{40}{160}\times 1,300 = 325,
+\]</span>
+then sum them together to get the estimate of the <strong>total</strong> number of students in the population who took at least one programming course:
+<span class="math display">\[
+945 + 325 = 1270.
+\]</span></p>
+<p>You may notice that this type of estimate is similar to the HT estimator in stratified sampling we learned in Chapter <a href="chap-strt.html#chap-strt">3</a>. However, the difference is that in the previous chapter, the sampling design was stratified sampling and we used the HT estimator; while here the sampling design is SRS and we use the ratio estimator. Here, the ``stratification” and correction for stratification happens <strong>after</strong> the data is collected. Hence, this method is called <strong>post-stratification</strong> and we will learn more about it in Section <a href="chap-rr.html#rr-post-stratification">4.3.1</a>.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+when we want to <strong>adjust for nonresponse</strong>,
+</summary>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-nonresponse" class="example"><strong>Example 4.4  </strong></span>Suppose we are interested in investigating the total rent income of rental properties in Saskatoon. Let <span class="math inline">\(y_i\)</span> denote the amount of monthly rent income in the <span class="math inline">\(i\)</span>th building and <span class="math inline">\(x_i\)</span> denote the number of rental units in the <span class="math inline">\(i\)</span>th building.</p>
+<p>We sent out an interview survey to buildings. However, some buildings won’t answer the survey. It can be that the non-respondents are private landlords who own smaller buildings and do not respond to emails well.</p>
+<p>In this case, the sample data we collect will represent responses from <strong>big buildings</strong> which have more rental units and rental income, i.e., <span class="math inline">\(y_i\)</span> for these buildings are high. Then <span class="math inline">\(\overline{Y}_S\)</span> will be <strong>high</strong> and <span class="math inline">\(N\overline{Y}_S\)</span> will tend to <strong>overestimate</strong> <span class="math inline">\(t_{U,y}\)</span>, which is the total rental income, from both big and small buildings. Similarly, <span class="math inline">\(N\overline{X}_S\)</span> will tend to <strong>overestimate</strong> <span class="math inline">\(t_{U,x}\)</span>, which is the total number of rental units in Saskatoon, as well.</p>
+<p>Now, if we know <span class="math inline">\(t_{U,x}\)</span> from the city’s registry, we can rescale <span class="math inline">\(N\overline{Y}_S\)</span> to get a better estimate of the total rental income using a ratio estimator
+<span class="math display">\[
+\frac{N\overline{Y}_S}{N\overline{X}_S}t_{U,x} = \frac{\overline{Y}_S}{\overline{X}_S}t_{U,x} = \widehat{T}_r.
+\]</span>
+with <span class="math inline">\(\frac{t_{U,x}}{N\overline{X}_S} &lt; 1\)</span> being the contracting scalar that reduces <span class="math inline">\(N\overline{Y}_S\)</span>, which overestimate <span class="math inline">\(t_{U,y}\)</span>, to a better estimate.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+when we want to use auxiliary information to increase the precision, i.e., <strong>lower the variance</strong>, of our estimation in means and totals. We will see this in the next sections.
+</summary>
+</details>
+<div class="empty">
+
+</div>
+<p>In summary, we have the following summaries of <strong>ratio estimators</strong> for the <strong>population</strong> total, mean and ratio <strong>under SRS</strong>:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Quantity</th>
+<th align="center">Parameter</th>
+<th align="center">Estimator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(t_{U,y}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{T}_r = \frac{\overline{Y}_S}{\overline{X}_S}t_{U,x} = \widehat{B}_rt_{U,x}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Mean</td>
+<td align="center"><span class="math inline">\(\overline{y}_U\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{\overline{Y}}_r = \frac{1}{N}\widehat{T}_r = \frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_{U} = \widehat{B}_r\overline{x}_{U}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Ratio</td>
+<td align="center"><span class="math inline">\(b_U = \frac{\overline{y}_U}{\overline{x}_U} = \frac{t_{U,y}}{t_{U,x}}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="bias-2" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Bias<a href="chap-rr.html#bias-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details>
+<summary>
+Different from the HT estimator for SRS in Section <a href="chap-srs.html#srs-srs-ht-estimator">2.6.2</a>, the ratio estimators are <strong>biased</strong> with
+<span class="math display" id="eq:rr-ratio-bias">\[\begin{equation}
+  Bias(\widehat{\overline{Y}}_r) = -Cov(\widehat{B}_r, \overline{X}_S)
+  \tag{4.2}
+\end{equation}\]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="rr-ratio-bias" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{align*}
+Bias(\widehat{\overline{Y}}_r) &amp; = \E[\widehat{\overline{Y}}_r - \overline{y}_U] \\
+&amp; = \E\left[\frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_U - \overline{y}_U\right] \\
+&amp; = \E\left[\overline{Y}_S\left(1-\frac{\overline{X}_S-\overline{x}_U}{\overline{X}_S}\right)- \overline{y}_U\right] \\
+&amp; = \E[\overline{Y}_S - \overline{y}_U] - \E\left[\frac{\overline{Y}_S}{\overline{X}_S}(\overline{X}_S - \overline{x}_U)\right] \\
+&amp; = -\E[\widehat{B}_r(\overline{X}_S - \overline{x}_U)] \\
+&amp; = -\E[\widehat{B}_r\overline{X}_S] + \E[\widehat{B}_r\overline{x}_U] \\
+&amp; = -\E[\widehat{B}_r\overline{X}_S] + \overline{x}_U\E[\widehat{B}_r] \\
+&amp; = -\E[\widehat{B}_r\overline{X}_S] + \E[\overline{X}_S]\E[\widehat{B}_r] \\
+&amp; = -Cov(\widehat{B}_r,\overline{X}_S)
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>In summary, we have the biases under SRS for the three ratio estimators:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="center">Estimator</th>
+<th align="center">Bias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Mean</td>
+<td align="center"><span class="math inline">\(\widehat{\overline{Y}}_r =  \frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_{U}\)</span></td>
+<td align="center"><span class="math inline">\(-Cov(\widehat{B}_r, \overline{X}_S)\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(\widehat{T}_r = \frac{\overline{Y}_S}{\overline{X}_S}t_{U,x} = N\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(-NCov(\widehat{B}_r, \overline{X}_S)\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Ratio</td>
+<td align="center"><span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S} = \frac{1}{\overline{x}_{U}}\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(-\frac{1}{\overline{x}_U}Cov(\widehat{B}_r, \overline{X}_S)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The biases, for example <span class="math inline">\(Bias(\widehat{\overline{Y}}_r) = -Cov(\widehat{B}_r = -\E[(\widehat{B}_r - \E[\widehat{B}_r])(\overline{X}_S - \overline{x}_U)]\)</span>, will be small when <span class="math inline">\((\widehat{B}_r - \E[\widehat{B}_r])\)</span> and <span class="math inline">\((\overline{X}_S - \overline{x}_U)\)</span> are small, which happens</p>
+<ul>
+<li><p>when sample size <span class="math inline">\(n\)</span> is large and <span class="math inline">\(\overline{X}_S \approx \E[\overline{X}_S] = \overline{x}_U\)</span> and <span class="math inline">\(\widehat{B}_r \approx \E[\widehat{B}_r]\)</span> by law of large number, and/or</p></li>
+<li><p>when <span class="math inline">\(X\approx \propto Y\)</span> and <span class="math inline">\(\widehat{B}_r\)</span> is close to a constant.</p></li>
+</ul>
+</div>
+<div id="mean-squared-error" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Mean Squared Error<a href="chap-rr.html#mean-squared-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details>
+<summary>
+The Mean Squared Error of an estimator is defined as the expectation in distance between the estimator and the parameter of interest:
+<span class="math display" id="eq:rr-mse">\[\begin{equation}
+  MSE(\widehat{\theta}) = \E[(\widehat{\theta} - \theta)^2] = Bias^2(\widehat{\theta}) + Var(\widehat{\theta})
+  \tag{4.3}
+  \end{equation}\]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="rr-mse" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{align*}
+MSE(\widehat{\theta}) &amp; = \E[(\widehat{\theta} - \theta)^2] \\
+&amp; = \E[(\widehat{\theta} - \E[\widehat{\theta}] + \E[\widehat{\theta}] - \theta)^2] \\
+&amp; = \E[(\widehat{\theta} - \E[\widehat{\theta}])^2] - 2\E[(\widehat{\theta} - \E[\widehat{\theta}])(\E[\widehat{\theta}] - \theta)] + \E[(\E[\widehat{\theta}] - \theta)^2] \\
+&amp; = Var(\widehat{\theta}) - 2(\E[\widehat{\theta}] - \theta)\E[\widehat{\theta} - \E[\widehat{\theta}]] + (\E[\widehat{\theta}] - \theta)^2 \\
+&amp; = Var(\widehat{\theta}) + Bias^2(\widehat{\theta})
+\end{align*}\]</span>
+where the fourth equation is because <span class="math inline">\(\E[\widehat{\theta}]\)</span> and <span class="math inline">\(\theta\)</span> are fixed quantities, and the fifth equation is because <span class="math inline">\(\E[\widehat{\theta} - \E[\widehat{\theta}]] = 0\)</span>.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+For ratio estimator, we have
+<span class="math display" id="eq:rr-ratio-mse">\[\begin{equation}
+  MSE_{SRS}(\widehat{\overline{Y}}_r) = \E[(\widehat{\overline{Y}}_r - \overline{y}_U)^2] \approx \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}
+  \tag{4.4}
+  \end{equation}\]</span>
+where <span class="math inline">\(d_i = y_i - b_Ux_i\)</span> and <span class="math inline">\(s_{U,d}^2 = \frac{1}{N-1}\sum_{i=1}^N d_i^2\)</span>.
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="rr-ratio-mse" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{align*}
+MSE_{SRS}(\widehat{\overline{Y}}_r) &amp; = \E[(\widehat{\overline{Y}}_r - \overline{y}_U)^2] \\
+&amp; = \E\left[\left\{\frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_U - b_U\overline{x}_U\right\}^2\right] \\
+&amp; = \E\left[\left\{\overline{Y}_S\left(1-\frac{\overline{X}_S-\overline{x}_U}{\overline{X}_S}\right)- b_U\overline{X}_S\left(1- \frac{\overline{X}_S - \overline{x}_U}{\overline{X}_S}\right) \right\}^2\right] \\
+&amp; = \E\left[\left\{(\overline{Y}_S -  b_U\overline{X}_S) \left(1- \frac{\overline{X}_S - \overline{x}_U}{\overline{X}_S}\right) \right\}^2\right] \\
+&amp; = \E\left[(\overline{Y}_S -  b_U\overline{X}_S)^2 + (\overline{Y}_S -  b_U\overline{X}_S)^2 \left\{\left(\frac{\overline{X}_S - \overline{x}_U}{\overline{X}_S}\right)^2 - 2 \frac{\overline{X}_S - \overline{x}_U}{\overline{X}_S} \right\}\right] \\
+&amp; \approx \E[(\overline{Y}_S -  b_U\overline{X}_S)^2]
+\end{align*}\]</span>
+because the second term is the multiplication of the first term and small error terms so it is generally small compared to the first term.</p>
+<p>Let <span class="math inline">\(d_i = y_i - b_Ux_i\)</span>, we have
+<span class="math display">\[\begin{align*}
+MSE_{SRS}(\widehat{\overline{Y}}_r) &amp; \approx \E[(\overline{Y}_S -  b_U\overline{X}_S)^2] \\
+&amp; = \E[(\overline{Y}_S - b_U\overline{X}_S)^2] - \left(\E[\overline{Y}_S - b_U\overline{X}_S]\right)^2 \\
+&amp; = Var_{SRS}\left(\overline{Y}_S -  b_U\overline{X}_S\right) \\
+&amp; = Var_{SRS}\left(\frac{1}{n}\sum_{i\in S}(y_i - b_Ux_i)\right) \\
+&amp; = Var_{SRS}\left(\frac{1}{n}\sum_{i\in S}d_i\right) \\
+&amp; = Var_{SRS}(\overline{D}_S) \\
+&amp; = \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}
+\end{align*}\]</span>
+where the second equality is because
+<span class="math display">\[
+\E[\overline{Y}_S -  b_U\overline{X}_S] = \overline{y}_U - \frac{\overline{y}_U}{\overline{x}_U}\overline{x}_U = 0.
+\]</span></p>
+<p>Since
+<span class="math display">\[
+\overline{d}_U = \frac{1}{N}\sum_{i=1}^N(y_i - b_Ux_i) = \overline{y}_U - \frac{\overline{y}_U}{\overline{x}_U}\overline{x}_U = 0
+\]</span>
+so
+<span class="math display">\[
+s_{U,d}^2 = \frac{1}{N-1}\sum_{i=1}^N(d_i - \overline{d}_U)^2 = \frac{1}{N-1}\sum_{i=1}^N d_i^2.
+\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>The <strong>MSE will be small</strong> if <span class="math inline">\(s_{U,d}^2\)</span> is small, which is when <span class="math inline">\(d_i^2 = (y_i - \overline{b}_Ux_i)^2\)</span> are small. This happens when the approximation <span class="math inline">\(y_i \approx \overline{b}_U x_i\)</span> is good (has small errors), and <span class="math inline">\(y_i \approx \propto x_i\)</span>.</p>
+<details>
+<summary>
+Another form of Equation <a href="chap-rr.html#eq:rr-ratio-mse">(4.4)</a> that is useful for hand calculation is:
+<span class="math display" id="eq:rr-ratio-mse-2">\[\begin{equation}
+  MSE_{SRS}(\widehat{\overline{Y}}_r) \approx \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n} = \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2 - 2b_Ur_Us_{U,x}s_{U,y}+b_U^2s_{U,x}^2}{n}
+  \tag{4.5}
+  \end{equation}\]</span>
+where <span class="math inline">\(s_{U,x}^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \overline{x}_U)^2\)</span> and <span class="math inline">\(s_{U,y}^2 = \frac{1}{N-1}\sum_{i=1}^N (y_i - \overline{y}_U)^2\)</span> and <span class="math inline">\(r_{U} = \frac{\sum_{i=1}^N(x_i - \overline{y}_U)(x_i - \overline{y}_U)}{(N-1)s_{U,x}s_{U,y}}\)</span>.
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="rr-ratio-mse-2" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{align*}
+d_i^2 &amp; = (d_i - \overline{d}_U)^2 \\
+&amp; = \{(y_i - b_Ux_i) - (\overline{y}_U - b_U\overline{x}_U)\}^2 \\
+&amp; = \{(y_i - \overline{y}_U) - b_U(x_i - \overline{x}_U)\}^2 \\
+&amp; = \{(y_i - \overline{y}_U)^2 - 2b_U(y_i - \overline{y}_U)(x_i - \overline{x}_U) + b^2_U(x_i - \overline{x}_U)^2\}.
+\end{align*}\]</span>
+The formula follows that
+<span class="math display">\[\begin{align*}
+s_{U,d}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N d_i^2 \\
+&amp; = \frac{1}{N-1}\sum_{i=1}^N \{(y_i - \overline{y}_U)^2 - 2b_U(y_i - \overline{y}_U)(x_i - \overline{x}_U) + b^2_U(x_i - \overline{x}_U)^2\} \\
+&amp; = s_{U,y}^2 - 2b_Ur_Us_{U,x}s_{U,y}+b_U^2s_{U,x}^2.
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+</div>
+<div id="compared-to-ht-estimator" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Compared to HT estimator<a href="chap-rr.html#compared-to-ht-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From Equation <a href="chap-rr.html#eq:rr-ratio-mse-2">(4.5)</a>, we have the MSE for <strong>ratio estimator</strong> under SRS:
+<span class="math display">\[
+MSE_{SRS}(\widehat{\overline{Y}}_r) \approx  \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2 - 2b_Ur_Us_{U,x}s_{U,y}+b_U^2s_{U,x}^2}{n}
+\]</span></p>
+<p>On the other hand, since bias of the HT estimator is 0, from Equations <a href="chap-rr.html#eq:rr-mse">(4.3)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, we have the MSE for <strong>HT estimator</strong> under SRS:</p>
+<p><span class="math display">\[
+MSE_{SRS}(\widehat{\overline{Y}}_{HT}) = Var_{SRS}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2}{n}
+\]</span></p>
+<details>
+<summary>
+Comparing the two MSE formulas, we deduce
+<span class="math display">\[
+MSE_{SRS}(\widehat{\overline{Y}}_r) \le  MSE_{SRS}(\widehat{\overline{Y}}_{HT}) \hspace{5mm} \Leftrightarrow \hspace{5mm} r_U \ge \frac{1}{2}\frac{CV(x)}{CV(y)}
+\]</span>
+where <span class="math inline">\(CV(x) = \frac{s_{U,x}}{\overline{x}_U}\)</span> is the coefficient of variation defined in Section <a href="chap-srs.html#srs-sample-size">2.9</a>. Similarly <span class="math inline">\(CV(y) = \frac{s_{U,y}}{\overline{y}_U}\)</span>.
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="rr-ratio-ht-srs" class="proof"><em>Proof</em>. </span>We have:
+<span class="math display">\[\begin{align*}
+&amp; MSE_{SRS}(\widehat{\overline{Y}}_r) \le  MSE_{SRS}(\widehat{\overline{Y}}_{HT}) \\
+&amp; \approx \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2 - 2b_Ur_Us_{U,x}s_{U,y}+b_U^2s_{U,x}^2}{n} - \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2}{n} \\
+&amp; = \left(1-\frac{n}{N}\right)\frac{b_Us_{U,x}(-2r_Us_{U,y}+b_Us_{U,x})}{n} \\
+\end{align*}\]</span>
+This is smaller or equal to 0 if and only if
+<span class="math display">\[\begin{align*}
+&amp; -2r_Us_{U,y}+b_Us_{U,x} \le 0 \\
+\Leftrightarrow \hspace{5mm} &amp; r_U \ge \frac{b_Us_{U,x}}{2s_{U,y}} = \frac{1}{2}\frac{\overline{y}_U}{\overline{x}_U}\frac{s_{U,x}}{s_{U,y}} = \frac{1}{2}\frac{CV(x)}{CV(y)}.
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Therefore, the <strong>correlation coefficient</strong> <span class="math inline">\(r_U\)</span> needs to be <strong>large</strong> (i.e., strong linear correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>) so that the <strong>mean squared error of the ratio estimator is smaller</strong> than the mean squared error of the HT estimator. That is, we may <strong>accept some bias</strong> by using the ratio estimator but overall, the errors of the estimator can still be smaller than using the <strong>unbiased HT estimator</strong>.</p>
+</div>
+<div id="variance-estimation" class="section level3 hasAnchor" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> Variance Estimation<a href="chap-rr.html#variance-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the bias of the ratio estimators are small, for example, when sample size <span class="math inline">\(n\)</span> is large, from Equation <a href="chap-rr.html#eq:rr-mse">(4.3)</a>, we can use the MSE to <strong>approximate the variance</strong> of the ratio estimator. To <strong>estimate</strong> the variance using sample data, we replace population quantities in the formulas by the corresponding sample quantities:</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="26%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="center">Estimator</th>
+<th align="center">Variance (approx)</th>
+<th align="center">Variance (est)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Mean</td>
+<td align="center"><span class="math inline">\(\widehat{\overline{Y}}_r = \frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_U\)</span></td>
+<td align="center"><span class="math inline">\(\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(\widehat{T}_r = N\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(N^2\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(N^2\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Ratio</td>
+<td align="center"><span class="math inline">\(\widehat{B}_r = \frac{1}{\overline{x}_U}\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(\left(\frac{1}{\overline{x}_U}\right)^2\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(\left(\frac{1}{\overline{x}_U}\right)^2\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(e_i = y_i - \hat{B}_rx_i = y_i - \frac{\overline{Y}_S}{\overline{X}_S}x_i\)</span> and <span class="math inline">\(S_{S,e}^2 = \frac{1}{n-1}\sum_{i\in S}e_i^2\)</span>. Note that in these formulas, <span class="math inline">\(N\)</span> and <span class="math inline">\(\overline{x}_U\)</span> are population quantities so they are fixed and can be treated as constants.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-ratio-variance" class="example"><strong>Example 4.5  </strong></span>The manager of 7-Eleven is interested in estimating the total sale for all of its 300 branches. From last year record, the total sale (in thousands) for all the 300 branches is 21300. An SRS of 15 branches is taken this year, with the following results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Branch</th>
+<th align="center">Last year’s sales (<span class="math inline">\(X\)</span>)</th>
+<th align="center">This year’s sales (<span class="math inline">\(Y\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">50</td>
+<td align="center">56</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">35</td>
+<td align="center">48</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">22</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">15</td>
+<td align="center">18</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">30</td>
+<td align="center">26</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">25</td>
+<td align="center">30</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">100</td>
+<td align="center">165</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">200</td>
+<td align="center">300</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">50</td>
+<td align="center">73</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">50</td>
+<td align="center">70</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">150</td>
+<td align="center">200</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">100</td>
+<td align="center">120</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">40</td>
+<td align="center">83</td>
+</tr>
+</tbody>
+</table>
+<p>We can draw a scatter plot of this data</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chap-rr.html#cb21-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">12</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">100</span>,<span class="dv">200</span>,</span>
+<span id="cb21-2"><a href="chap-rr.html#cb21-2" tabindex="-1"></a>       <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">150</span>,<span class="dv">100</span>,<span class="dv">40</span>)</span>
+<span id="cb21-3"><a href="chap-rr.html#cb21-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">48</span>,<span class="dv">22</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">11</span>,<span class="dv">30</span>,<span class="dv">165</span>,<span class="dv">300</span>,</span>
+<span id="cb21-4"><a href="chap-rr.html#cb21-4" tabindex="-1"></a>       <span class="dv">73</span>,<span class="dv">70</span>,<span class="dv">200</span>,<span class="dv">120</span>,<span class="dv">83</span>)</span>
+<span id="cb21-5"><a href="chap-rr.html#cb21-5" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rr-ratio-scatter"></span>
+<img src="_main_files/figure-html/rr-ratio-scatter-1.png" alt="Relationship between last year's and this year's sales" width="60%" />
+<p class="caption">
+Figure 4.2: Relationship between last year’s and this year’s sales
+</p>
+</div>
+<p>We can see that there seems to be a strong linear relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, so we conjecture that ratio estimator is helpful in this case. We will calculate the ratio estimators for the mean, total and ratio.</p>
+<p>First, we extract the following information from the problem: <span class="math inline">\(n = 15\)</span>, <span class="math inline">\(N = 300\)</span> and <span class="math inline">\(\sum_{i=1}^N x_i = t_x = 21300\)</span>.</p>
+<p>We can also calculate from the data: <span class="math inline">\(\sum_{i=1}^n x_i = 876\)</span>, <span class="math inline">\(\sum_{i=1}^n y_i = 1236\)</span>, <span class="math inline">\(\sum_{i=1}^n x_i^2 = 94900\)</span>, <span class="math inline">\(\sum_{i=1}^n y_i^2 = 196884\)</span>, <span class="math inline">\(\sum_{i=1}^n x_iy_i = 135735\)</span>.</p>
+<p>The <strong>sample means</strong> are
+<span class="math display">\[
+\bar{X}_S = \frac{1}{n}\sum_{i=1}^n x_i = \frac{876}{15} = 58.4
+\]</span>
+<span class="math display">\[
+\bar{Y}_S = \frac{1}{n}\sum_{i=1}^n y_i = \frac{1236}{15} = 82.4
+\]</span></p>
+<p>The <strong>sample variances</strong> are
+<span class="math display">\[\begin{align*}
+S_{S,x}^2 &amp; = \frac{1}{n-1}\sum_{i=1}^n(x_i - \overline{X}_S)^2 \\
+&amp; = \frac{1}{n-1}[(\sum_{i=1}^n x_i^2) - n(\overline{X}_S)^2] \\
+&amp; = \frac{1}{15-1}\times (94900 - 15\times 58.4^2) = 3124.4
+\end{align*}\]</span>
+<span class="math display">\[
+S_{S,y}^2 = \frac{1}{n-1}[(\sum_{i=1}^n y_i^2) - n(\overline{Y}_S)^2] = \frac{1}{15-1}\times (196884 - 15\times 82.4^2) = 6788.4
+\]</span></p>
+<p>The <strong>sample correlation coefficient</strong> is
+<span class="math display">\[\begin{align*}
+R_S &amp; = \frac{\sum_{i=1}^n(x_i - \overline{X}_S)(y_i - \overline{Y}_S)}{(n-1)S_{S,x}S_{S,y}} \\
+&amp; = \frac{(\sum_{i=1}^m x_iy_i)-n(\overline{X}_S\overline{Y}_S)}{(n-1)S_{S,x}S_{S,y}} \\
+&amp; = \frac{135735 - 15\times 58.4\times 82.4}{(15-1)\sqrt{3124.4 \times 6788.4}} = 0.9857
+\end{align*}\]</span>
+This shows a strong positive linear relationship. Hence, expect the ratio estimators to be very helpful.</p>
+<p>Now, we can calculate the <strong>ratio estimators</strong>:
+<span class="math display">\[
+\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S} = \frac{82.4}{58.4} = 1.4110
+\]</span>
+<span class="math display">\[
+\widehat{\overline{Y}}_r = \widehat{B}_r\overline{x}_U = 1.4110 \times \frac{21300}{300} = 100.181
+\]</span>
+<span class="math display">\[
+\widehat{T}_r = \widehat{B}_r t_{U,x} = 1.4110 \times 21300 = 30054.3
+\]</span></p>
+<p>The <strong>variances of the ratio estimators</strong> are
+<span class="math display">\[\begin{align*}
+\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r) &amp; = \left(1-\frac{n}{N}\right)\frac{S_{S,y}^2 - 2\widehat{B}_rR_SS_{S,x}S_{S,y} + \widehat{B}_r^2S_{S,x}^2}{n} \\
+&amp; = \left(1-\frac{15}{300}\right) \\
+&amp; \qquad \times \frac{6788.4 - 2\times 1.4110\times 0.9857\times \sqrt{6788.4\times 3124.4} + 1.4110^2\times 3124.4}{15} \\
+&amp; = 12.5561
+\end{align*}\]</span>
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{T}_r) = N^2\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r) = 300^2 \times12.5561 = 1130049
+\]</span>
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{B}_r) = \frac{1}{\overline{x}_U^2}\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r) = \frac{1}{(21300/300)}\times 12.5561 = 0.1768
+\]</span></p>
+<p>We can construct <strong>95% confidence intervals</strong> for</p>
+<ul>
+<li><p>Ratio: <span class="math inline">\(1.4110 \pm 1.96 \times \sqrt{0.1768} = (0.5869, 2.2351)\)</span></p></li>
+<li><p>Mean: <span class="math inline">\(100.181 \pm 1.96 \times \sqrt{12.5561} = (93.2358, 107.1262)\)</span></p></li>
+<li><p>Total: <span class="math inline">\(30054.3 \pm 1.96 \times \sqrt{1130049} = (27970.75, 32137.85)\)</span></p></li>
+</ul>
+<p>To calculate the <strong>efficiency gain</strong> of using ratio estimator instead of HT etsimator, we first calculate the variance for the HT estimator <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span>:
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{S_{S,y}^2}{n} = \left(1-\frac{15}{300}\right)\frac{6788.4}{15} = 429.932
+\]</span></p>
+<p>The efficiency gain is
+<span class="math display">\[
+1-\frac{12.5561}{429.932} = 97.0795\%.
+\]</span>
+As expected, we achieve a whooping amount of 97.0795% gain in efficiency by using the ratio estimator compared to using HT estimator.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> When <span class="math inline">\(N\)</span> is unknown, such as in Example <a href="chap-rr.html#exm:ex-rr-unknown-N">4.1</a>, we can</p>
+<ul>
+<li><p>Assume that <span class="math inline">\(N\)</span> is large and thus <span class="math inline">\(1-\frac{n}{N} \approx 1\)</span></p></li>
+<li><p>Approximate <span class="math inline">\(N\)</span> by <span class="math inline">\(\frac{t_x}{\overline{X}_S}\)</span></p></li>
+</ul>
+<p>Thus, the variance of the ratio estimators can be estimated by
+<span class="math display">\[\begin{align*}
+\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r) &amp; = \frac{S_{S,y}^2 - 2\widehat{B}_rR_SS_{S,x}S_{S,y} + \widehat{B}_r^2S_{S,x}^2}{n} \\
+\widehat{Var}_{SRS}(\widehat{T}_r) &amp; = \left(\frac{t_x}{\overline{X}_S}\right)^2\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r) \\
+\widehat{Var}_{SRS}(\widehat{B}_r) &amp; = \left(\frac{1}{\overline{X}_S}\right)^2\widehat{Var}_{SRS}(\widehat{\overline{Y}}_r)
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="rr-ratio-r" class="section level3 hasAnchor" number="4.2.7">
+<h3><span class="header-section-number">4.2.7</span> R Code<a href="chap-rr.html#rr-ratio-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we have the population dataset <code>dat</code> (This is an example. In reality, you do not have population data):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-rr.html#cb22-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
+<span id="cb22-2"><a href="chap-rr.html#cb22-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>And suppose we obtain a sample data <code>samp_dat</code> from SRS. To do this, we run the following code:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chap-rr.html#cb23-1" tabindex="-1"></a><span class="co">#take SRS of the index</span></span>
+<span id="cb23-2"><a href="chap-rr.html#cb23-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), <span class="at">size =</span> <span class="dv">150</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb23-3"><a href="chap-rr.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="chap-rr.html#cb23-4" tabindex="-1"></a><span class="co">#get the sample dataset</span></span>
+<span id="cb23-5"><a href="chap-rr.html#cb23-5" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[idx,]</span></code></pre></div>
+<p>We can use <code>survey</code> package to obtain ratio estimate. First, we have to specify the survey design, which is an SRS here:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-rr.html#cb24-1" tabindex="-1"></a><span class="co">#specifying the fpc as the population size</span></span>
+<span id="cb24-2"><a href="chap-rr.html#cb24-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>fpc <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dat)</span>
+<span id="cb24-3"><a href="chap-rr.html#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="chap-rr.html#cb24-4" tabindex="-1"></a><span class="co">#specify survey design</span></span>
+<span id="cb24-5"><a href="chap-rr.html#cb24-5" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb24-6"><a href="chap-rr.html#cb24-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb24-7"><a href="chap-rr.html#cb24-7" tabindex="-1"></a>                        <span class="at">data =</span> samp_dat, </span>
+<span id="cb24-8"><a href="chap-rr.html#cb24-8" tabindex="-1"></a>                        <span class="at">fpc =</span> <span class="sc">~</span>fpc)</span></code></pre></div>
+<p>We can obtain the ratio estimate of the ratio <span class="math inline">\(\widehat{B}_r\)</span> using the following code:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chap-rr.html#cb25-1" tabindex="-1"></a><span class="co">#ratio of rent price per square meter</span></span>
+<span id="cb25-2"><a href="chap-rr.html#cb25-2" tabindex="-1"></a>srs.ratio <span class="ot">&lt;-</span> <span class="fu">svyratio</span>(<span class="at">numerator=</span><span class="sc">~</span>rent,</span>
+<span id="cb25-3"><a href="chap-rr.html#cb25-3" tabindex="-1"></a>                      <span class="at">denominator=</span><span class="sc">~</span>area,</span>
+<span id="cb25-4"><a href="chap-rr.html#cb25-4" tabindex="-1"></a>                      <span class="at">design=</span>design.srs)</span>
+<span id="cb25-5"><a href="chap-rr.html#cb25-5" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="chap-rr.html#cb25-6" tabindex="-1"></a>srs.ratio</span></code></pre></div>
+<pre><code>## Ratio estimator: svyratio.survey.design2(numerator = ~rent, denominator = ~area, 
+##     design = design.srs)
+## Ratios=
+##          area
+## rent 24.97163
+## SEs=
+##           area
+## rent 0.5517693</code></pre>
+<p>We can obtain <span class="math inline">\(\widehat{T}_r\)</span> using the following code</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chap-rr.html#cb27-1" tabindex="-1"></a><span class="co">#suppose we know the population total t_{U,x}</span></span>
+<span id="cb27-2"><a href="chap-rr.html#cb27-2" tabindex="-1"></a>known.x.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(dat<span class="sc">$</span>area)</span>
+<span id="cb27-3"><a href="chap-rr.html#cb27-3" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="chap-rr.html#cb27-4" tabindex="-1"></a><span class="co">#ratio estimator of the total</span></span>
+<span id="cb27-5"><a href="chap-rr.html#cb27-5" tabindex="-1"></a><span class="fu">predict</span>(srs.ratio,<span class="at">total=</span>known.x.total)</span></code></pre></div>
+<pre><code>## $total
+##          area
+## rent 20295789
+## 
+## $se
+##          area
+## rent 448452.7</code></pre>
+</div>
+</div>
+<div id="post-stratification" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Post-Stratification<a href="chap-rr.html#post-stratification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As illustrated in Example <a href="chap-rr.html#exm:ex-rr-post-stratification">4.3</a>, when taking samples using SRS, we may have a situation where the sample is <strong>not representative</strong> of the population in terms of one or more demographic variables. When we have reasons to believe that the variable of interest <span class="math inline">\(Y\)</span> is different among the demographics, (for example, students from different departments may have different propensities to have taken a programming course), it may be a good idea to <strong>adjust</strong> for such a demographic variable so that the estimate better represent the population. We can use <strong>ratio estimator</strong> for this purpose.</p>
+<div id="rr-post-stratification" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Post-Stratification<a href="chap-rr.html#rr-post-stratification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we have <span class="math inline">\(H\)</span> strata defined from a demographic stratification variable (such as department). Moreover, the <span class="math inline">\(h\)</span>th stratum has <span class="math inline">\(N_h\)</span> units in the population, and <span class="math inline">\(n_h\)</span> units in the sample. We can use the <strong>ratio estimator</strong> to estimate the <strong>mean or total within the stratum</strong> by defining:</p>
+<ul>
+<li><p><span class="math inline">\(x_{h,i}\)</span> to be the indicator whether unit <span class="math inline">\(i\)</span> is in stratum <span class="math inline">\(h\)</span></p></li>
+<li><p><span class="math inline">\(y_{h,i}^* = y_i\times x_{h,i}\)</span></p></li>
+</ul>
+<p>Then the ratio estimate of the population total of <span class="math inline">\(y\)</span> <strong>for stratum <span class="math inline">\(h\)</span></strong> is
+<span class="math display">\[
+\widehat{T}_{r,h} = \frac{\sum_{i\in S}y^*_{h,i}}{\sum_{i\in S}x_{h,i}} \sum_{i=1}^N x_{h,i} = \frac{\sum_{i\in S_h}y_{i}}{n_h}N_h = N_h\overline{Y}_{S,h}.
+\]</span>
+The <strong>post-stratified estimator for the population total</strong> will be the sum of the estimate for each stratum
+<span class="math display">\[
+\widehat{T}_{post} = \sum_{h=1}^H \widehat{T}_{r,h}.
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-post-stratification-2" class="example"><strong>Example 4.6  </strong></span>In Example <a href="chap-rr.html#exm:ex-rr-post-stratification">4.3</a>, we first estimate the number of <strong>women</strong> students in the population who took at least one programming course, then estimate the number of <strong>men</strong> students in the population who took at least one programming course. Finally, we sum the two estimates up to get the <strong>post-stratification estimate</strong> of the <strong>total</strong> number of students in the population who took at least one programming course.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> We can see that the <strong>post-stratified estimator <span class="math inline">\(\widehat{T}_{post}\)</span> under SRS</strong> has the same form as the <strong>HT estimator <span class="math inline">\(\widehat{T}_{HT}\)</span> under stratified sampling</strong>. However, the two are not the same, <span class="math inline">\(\hat{T}_{post}\)</span>, being a sum of ratio estimators, is indeed biased because the data was collected under SRS, not stratified sampling, and the adjustment for stratification is done <strong>after</strong> the data collection. This is why the estimator is called <strong>post</strong>-stratified estimator.</p>
+</div>
+<div class="empty">
+
+</div>
+<p>The <strong>post-stratified estimator of the population mean</strong> is
+<span class="math display">\[
+\widehat{\overline{Y}}_{post}=\frac{1}{N}\widehat{T}_{post} = \sum_{h=1}^H \frac{N_h}{N}\overline{Y}_{S,h}
+\]</span>
+If <span class="math inline">\(N_h/N\)</span> is known, <span class="math inline">\(n_h\)</span> is reasonably large (<span class="math inline">\(\ge 30\)</span> or so), and <span class="math inline">\(n\)</span> is large, we can use the variance for the HT estimator under stratified sampling with proportional allocation in Equation <a href="chap-strt.html#eq:strt-var-pa-mean">(3.8)</a> as an approximation to the <strong>post-stratified variance</strong>:
+<span class="math display">\[
+Var_{SRS}(\widehat{\overline{Y}}_{post}) \approx Var_{strt, prop}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\sum_{h=1}^H \frac{N_h}{N}\frac{s_{U,h}^2}{n}
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-rr-post-stratification-3" class="example"><strong>Example 4.7  </strong></span>Continue with Example <a href="chap-rr.html#exm:ex-rr-post-stratification">4.3</a>, suppose now we do not know population size <span class="math inline">\(N\)</span>, but we know that the population has <span class="math inline">\(N_1/N=67.5\%\)</span> women and <span class="math inline">\(N_2/N = 32.5\%\)</span> men. Again, we take an SRS of size <span class="math inline">\(n = 400\)</span>, and end up having <span class="math inline">\(n_1=240\)</span> women and <span class="math inline">\(n_2=160\)</span> men in our sample. From the sample, we learn that 84 of the sampled women and 40 of the sampled men took at least one programming course.</p>
+<p>Let <span class="math inline">\(y_i\)</span> be the indicator of whether a student took at least one programming course. Note here <span class="math inline">\(Y\)</span> is a <strong>binary variable</strong> and the <strong>mean of a binary variable</strong> is the <strong>proportion</strong>.</p>
+<p>Then the post-stratified estimate for the <strong>proportion</strong> of students who took at least one programming course in the <strong>population</strong> is
+<span class="math display">\[
+\widehat{\overline{Y}}_{post} = \sum_{h=1}^H \frac{N_h}{N}\overline{Y}_{S,h} = 67.5\% \times \frac{84}{240} + 32.5\% \times \frac{40}{160} = 31.75\%
+\]</span>
+The variance of this estimate is
+<span class="math display">\[\begin{align*}
+Var_{SRS}(\widehat{\overline{Y}}_{post}) &amp; \approx \left(1-\frac{n}{N}\right)\sum_{h=1}^H \frac{N_h}{N}\frac{s_{U,h}^2}{n} \\
+&amp; \approx \sum_{h=1}^H \frac{N_h}{N}\frac{s_{U,h}^2}{n} \\
+&amp; = 67.5\% \times \frac{1}{400} \times \frac{240}{240-1} \times \frac{84}{240} \left(1 - \frac{84}{240}\right) \\
+&amp; \qquad + 32.5\% \times \frac{1}{400} \times \frac{160}{160-1} \times \frac{40}{160} \left(1 - \frac{40}{160}\right) \\
+&amp; = 0.0005388144
+\end{align*}\]</span>
+where in the second equation, we assume that <span class="math inline">\(N\)</span> is large so the finite population correction (FPC) is 1 and in the third equation, we use the variance formula for proportion:
+<span class="math display">\[
+S_{S,h}^2 = \frac{n}{n-1}\widehat{P}_{S,h}(1-\widehat{P}_{S,h}) = \frac{n}{n-1}\overline{Y}_{S,h}(1-\overline{Y}_{S,h})
+\]</span></p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> Note that the post-stratified estimators are potentially biased, but the variance is approximately equal to the variance to the variance of HT estimators under stratified sampling with proportional allocation. This means that the MSE of the post-stratified estimators under SRS are higher than the MSE of the HT estimator under stratified sampling with proportional allocation. This shows that we will have more advantage by stratification <strong>by design</strong> compared to doing post-stratification <strong>after</strong> the data is collected.</p>
+<p>We can also do stratified sampling on one variable (e.g., department) and do post-stratification on another variable (e.g., gender).</p>
+</div>
+</div>
+<div id="post-stratification-by-weight-adjustment" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Post-Stratification by Weight Adjustment<a href="chap-rr.html#post-stratification-by-weight-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Note that the post-stratified estimator for the population total can be written as
+<span class="math display">\[
+\widehat{T}_{post} = \sum_{h=1}^H \widehat{T}_{r,h} = \sum_{h=1}^H N_h \overline{Y}_{S,h} = \sum_{h=1}^H \sum_{i\in S_h}\frac{N_h}{n_h}y_i =\sum_{i \in S} w_i^* y_i
+\]</span>
+Compared to the HT estimator under SRS:
+<span class="math display">\[
+\widehat{T}_{HT} = N\overline{Y}_S = \sum_{i\in S}\frac{N}{n}y_i = \sum_{i\in S}w_iy_i,
+\]</span>
+the weight <span class="math inline">\(w_i = \frac{N}{n}\)</span> is adjusted to be <span class="math inline">\(w_i^* = \frac{N_h}{n_h}\)</span>. Now, unit <span class="math inline">\(i\)</span> doesn’t generally represent <span class="math inline">\(N/n\)</span> units in the population, but it represents <span class="math inline">\(N_h/n_h\)</span> units that lie in the same stratum as <span class="math inline">\(i\)</span> in the population (e.g. a woman from representing <span class="math inline">\(N/n\)</span> people in the population now representing <span class="math inline">\(N_h/n_h\)</span> women in the population).</p>
+<p>The weight adjustment helps the sample better represents the population in terms of the stratification variable. When applied the adjusted weights to the indicator variable <span class="math inline">\(X_h\)</span> (that a unit lies in stratum <span class="math inline">\(h\)</span>), we recover the population size of stratum <span class="math inline">\(h\)</span>:
+<span class="math display">\[
+\sum_{i\in S}w_i^* x_{h,i} = \sum_{h=1}^H\sum_{i\in S_h}\frac{N_h}{n_h}x_{h,i} = \sum_{i\in S_h}\left(\frac{N_h}{n_h}\times 1\right) = N_h.
+\]</span>
+See Figure <a href="chap-rr.html#fig:rr-post-strt-fig">4.3</a> for a visual illustration.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rr-post-strt-fig"></span>
+<img src="data/images/chap-rr/calibration.png" alt="Post-stratification to adjust sample so that it represents the population." width="50%" />
+<p class="caption">
+Figure 4.3: Post-stratification to adjust sample so that it represents the population.
+</p>
+</div>
+<p>We can use the <code>survey</code> package to do post-stratification in <strong>R</strong>. Suppose in the students’ rent data <code>samp_dat</code> that we created in Section <a href="chap-rr.html#rr-ratio-r">4.2.7</a> above, we want to stratify by level of study:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="chap-rr.html#cb29-1" tabindex="-1"></a><span class="co">#get the frequencies (count, i.e., N_h) for each type of level of study</span></span>
+<span id="cb29-2"><a href="chap-rr.html#cb29-2" tabindex="-1"></a>Nh <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
+<span id="cb29-3"><a href="chap-rr.html#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="chap-rr.html#cb29-4" tabindex="-1"></a><span class="co">#create a new design with post-stratify adjusted weights</span></span>
+<span id="cb29-5"><a href="chap-rr.html#cb29-5" tabindex="-1"></a>design.post <span class="ot">&lt;-</span> <span class="fu">postStratify</span>(design.srs, </span>
+<span id="cb29-6"><a href="chap-rr.html#cb29-6" tabindex="-1"></a>                            <span class="at">strata =</span><span class="sc">~</span>study, </span>
+<span id="cb29-7"><a href="chap-rr.html#cb29-7" tabindex="-1"></a>                            <span class="at">population =</span> Nh)</span>
+<span id="cb29-8"><a href="chap-rr.html#cb29-8" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="chap-rr.html#cb29-9" tabindex="-1"></a><span class="co">#use the new survey design to estimate mean</span></span>
+<span id="cb29-10"><a href="chap-rr.html#cb29-10" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
+<pre><code>##        mean     SE
+## rent 749.46 21.598</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="chap-rr.html#cb31-1" tabindex="-1"></a><span class="co">#use the new survey design to estimate total</span></span>
+<span id="cb31-2"><a href="chap-rr.html#cb31-2" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
+<pre><code>##         total     SE
+## rent 19971556 575542</code></pre>
+</div>
+<div id="calibration" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Calibration<a href="chap-rr.html#calibration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In general, the ratio estimator can be written as
+<span class="math display">\[
+\widehat{T}_r = \frac{\overline{Y}_S}{\overline{X}_S}t_{U,x} = \frac{N\overline{Y}_S}{N\overline{X}_S}t_{U,x}t_{U,x} = \frac{\widehat{T}_{HT,y}}{\widehat{T}_{HT,x}}t_{U,x} = \sum_{i\in S}\frac{N}{n}\frac{t_{U,x}}{\widehat{T}_{HT,x}}y_i
+\]</span>
+Originally, in <span class="math inline">\(\widehat{T}_{HT,y}\)</span> and <span class="math inline">\(\widehat{T}_{HT,x}\)</span>, we used weights <span class="math inline">\(w_i = \frac{N}{n}\)</span>.</p>
+<p>Now, in ratio estimators, we use adjusted weight <span class="math inline">\(w_i^* = \frac{N}{n}\frac{t_{U,x}}{\widehat{T}_{HT,x}} = w_ig_i\)</span> where <span class="math inline">\(g_i = \frac{t_{U,x}}{\widehat{T}_{HT,x}}\)</span> is called the adjustment. In post-stratification, the adjustment is:
+<span class="math display" id="eq:rr-adjustment">\[\begin{equation}
+g_i = \frac{N_h}{n_h\times N/h} = \frac{N_h}{\sum_{i\in S_h}w_i}
+\tag{4.6}
+\end{equation}\]</span></p>
+<p>If we apply the adjusted weights <span class="math inline">\(w_i^*\)</span> to <span class="math inline">\(X\)</span>, we recover the population total of <span class="math inline">\(X\)</span>:
+<span class="math display">\[
+\sum_{i\in S}w_i^* x_i = \sum_{i\in S}\frac{N}{n}\frac{t_{U,x}}{\widehat{T}_{HT,x}}x_i = \frac{t_{U,x}}{\widehat{T}_{HT,x}}\sum_{i\in S}\frac{N}{n}x_i = \frac{t_{U,x}}{\widehat{T}_{HT,x}}\widehat{T}_{HT,x} = t_{U,x}
+\]</span>
+Therefore, these adjusted weights can be called the reproducing weights.</p>
+<p>Now, suppose we want to <strong>adjust for more than one stratification variable</strong> (e.g., gender and smoking status), we can</p>
+<ul>
+<li><p><strong>raking</strong>: iteratively adjust the weights using Equation <a href="chap-rr.html#eq:rr-adjustment">(4.6)</a> for each stratification variable until the weights converge to the final weights <span class="math inline">\(w_i^*\)</span>. Read more about raking in the original papers by <span class="citation">Deming and Stephan (<a href="references.html#ref-deming1940least">1940</a>)</span> or <span class="citation">Stephan (<a href="references.html#ref-stephan1942iterative">1942</a>)</span>.</p></li>
+<li><p><strong>calibration</strong>: estimate a set of weights <span class="math inline">\(w_i^*\)</span> so that (i) they are the least different from the original weight <span class="math inline">\(w_i\)</span> and that (ii) the new weights reproduce the stratification variable totals. Read more about calibration in the paper by <span class="citation">Deville, Särndal, and Sautory (<a href="references.html#ref-deville1993generalized">1993</a>)</span>.</p></li>
+</ul>
+<p>After using either raking or calibration, we can use the final adjusted weights <span class="math inline">\(w_i^*\)</span> for estimation:
+<span class="math display">\[
+\widehat{\overline{Y}}_{raking} = \frac{\sum_{i\in S}w_i^*y_i}{\sum_{i\in S}w_i^*}
+\]</span></p>
+<p>In <strong>R</strong>, we can use library <code>survey</code> to do either raking or calibration when we want to adjust for more than one stratification variables. In the students’ rent data, suppose we want to adjust for <code>study</code> and <code>origin</code>.</p>
+<p><strong><ins>Calibration:</ins></strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chap-rr.html#cb33-1" tabindex="-1"></a><span class="co">#adjust the sample data, converting stratification variables to factor</span></span>
+<span id="cb33-2"><a href="chap-rr.html#cb33-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>study <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>study)</span>
+<span id="cb33-3"><a href="chap-rr.html#cb33-3" tabindex="-1"></a>samp_dat<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>origin)</span>
+<span id="cb33-4"><a href="chap-rr.html#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="chap-rr.html#cb33-5" tabindex="-1"></a><span class="co">#re-define the design object because we have new data now</span></span>
+<span id="cb33-6"><a href="chap-rr.html#cb33-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> samp_dat, <span class="at">fpc=</span><span class="sc">~</span>fpc)</span>
+<span id="cb33-7"><a href="chap-rr.html#cb33-7" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="chap-rr.html#cb33-8" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
+<span id="cb33-9"><a href="chap-rr.html#cb33-9" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>study)</span>
+<span id="cb33-10"><a href="chap-rr.html#cb33-10" tabindex="-1"></a><span class="co">#adjust the names so the calibrate function can use</span></span>
+<span id="cb33-11"><a href="chap-rr.html#cb33-11" tabindex="-1"></a><span class="fu">names</span>(Nh_study) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;study&quot;</span>, <span class="fu">names</span>(Nh_study))</span>
+<span id="cb33-12"><a href="chap-rr.html#cb33-12" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="chap-rr.html#cb33-13" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
+<span id="cb33-14"><a href="chap-rr.html#cb33-14" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>origin)</span>
+<span id="cb33-15"><a href="chap-rr.html#cb33-15" tabindex="-1"></a><span class="fu">names</span>(Nh_origin) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;origin&quot;</span>, <span class="fu">names</span>(Nh_origin))</span>
+<span id="cb33-16"><a href="chap-rr.html#cb33-16" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="chap-rr.html#cb33-17" tabindex="-1"></a><span class="co">#combine population totals from Nh_study and Nh_origin</span></span>
+<span id="cb33-18"><a href="chap-rr.html#cb33-18" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> <span class="fu">c</span>(Nh_study, Nh_origin)</span>
+<span id="cb33-19"><a href="chap-rr.html#cb33-19" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> pop.totals[<span class="fu">cal_names</span>(<span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, design.srs)]</span>
+<span id="cb33-20"><a href="chap-rr.html#cb33-20" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="chap-rr.html#cb33-21" tabindex="-1"></a><span class="co">#adjust the weights using calibration</span></span>
+<span id="cb33-22"><a href="chap-rr.html#cb33-22" tabindex="-1"></a><span class="co">#need -1 to remove calibration by population size</span></span>
+<span id="cb33-23"><a href="chap-rr.html#cb33-23" tabindex="-1"></a>design.cal <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
+<span id="cb33-24"><a href="chap-rr.html#cb33-24" tabindex="-1"></a>                        <span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, </span>
+<span id="cb33-25"><a href="chap-rr.html#cb33-25" tabindex="-1"></a>                        <span class="at">population =</span> pop.totals)</span>
+<span id="cb33-26"><a href="chap-rr.html#cb33-26" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="chap-rr.html#cb33-27" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
+<span id="cb33-28"><a href="chap-rr.html#cb33-28" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.cal)</span></code></pre></div>
+<pre><code>##        mean     SE
+## rent 748.65 21.338</code></pre>
+<p><strong><ins>Raking:</ins></strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chap-rr.html#cb35-1" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
+<span id="cb35-2"><a href="chap-rr.html#cb35-2" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
+<span id="cb35-3"><a href="chap-rr.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="chap-rr.html#cb35-4" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
+<span id="cb35-5"><a href="chap-rr.html#cb35-5" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">origin =</span> dat<span class="sc">$</span>origin)</span>
+<span id="cb35-6"><a href="chap-rr.html#cb35-6" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="chap-rr.html#cb35-7" tabindex="-1"></a><span class="co">#adjust the weights using raking</span></span>
+<span id="cb35-8"><a href="chap-rr.html#cb35-8" tabindex="-1"></a>design.rak <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
+<span id="cb35-9"><a href="chap-rr.html#cb35-9" tabindex="-1"></a>                        <span class="fu">list</span>(<span class="sc">~</span>study, <span class="sc">~</span>origin), </span>
+<span id="cb35-10"><a href="chap-rr.html#cb35-10" tabindex="-1"></a>                        <span class="fu">list</span>(Nh_study, Nh_origin))</span>
+<span id="cb35-11"><a href="chap-rr.html#cb35-11" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="chap-rr.html#cb35-12" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
+<span id="cb35-13"><a href="chap-rr.html#cb35-13" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.rak)</span></code></pre></div>
+<pre><code>##        mean     SE
+## rent 748.65 21.338</code></pre>
+<p>We can see that the results by <code>calibrate()</code> (with default parameters) are practically the same as the results by <code>rake()</code>. In general, <code>calibrate()</code> is more general with more flexible options.</p>
+</div>
+</div>
+<div id="regression-estimator" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Regression Estimator<a href="chap-rr.html#regression-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-strt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
