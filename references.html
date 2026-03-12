@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-08" />
+<meta name="date" content="2026-03-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -335,7 +335,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="chap-rr.html"><a href="chap-rr.html"><i class="fa fa-check"></i><b>4</b> Ratio and Regression Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="chap-rr.html"><a href="chap-rr.html#auxiliary-variables"><i class="fa fa-check"></i><b>4.1</b> Auxiliary Variables</a></li>
-<li class="chapter" data-level="4.2" data-path="chap-rr.html"><a href="chap-rr.html#ratio-estimator"><i class="fa fa-check"></i><b>4.2</b> Ratio Estimator</a>
+<li class="chapter" data-level="4.2" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio"><i class="fa fa-check"></i><b>4.2</b> Ratio Estimator</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
 <li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
@@ -349,9 +349,16 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="chap-rr.html"><a href="chap-rr.html#rr-post-stratification"><i class="fa fa-check"></i><b>4.3.1</b> Post-Stratification</a></li>
 <li class="chapter" data-level="4.3.2" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification-by-weight-adjustment"><i class="fa fa-check"></i><b>4.3.2</b> Post-Stratification by Weight Adjustment</a></li>
-<li class="chapter" data-level="4.3.3" data-path="chap-rr.html"><a href="chap-rr.html#calibration"><i class="fa fa-check"></i><b>4.3.3</b> Calibration</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rr.html"><a href="chap-rr.html#calibration-and-raking"><i class="fa fa-check"></i><b>4.3.3</b> Calibration and Raking</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator"><i class="fa fa-check"></i><b>4.4</b> Regression Estimator</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator"><i class="fa fa-check"></i><b>4.4</b> Regression Estimator</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator-as-prediction-estimator"><i class="fa fa-check"></i><b>4.4.1</b> Regression Estimator as Prediction Estimator</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rr.html"><a href="chap-rr.html#least-square-estimation"><i class="fa fa-check"></i><b>4.4.2</b> Least Square Estimation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-and-variance"><i class="fa fa-check"></i><b>4.4.3</b> Bias and Variance</a></li>
+<li class="chapter" data-level="4.4.4" data-path="chap-rr.html"><a href="chap-rr.html#r-code-1"><i class="fa fa-check"></i><b>4.4.4</b> R Code</a></li>
+<li class="chapter" data-level="4.4.5" data-path="chap-rr.html"><a href="chap-rr.html#greg-estimator"><i class="fa fa-check"></i><b>4.4.5</b> GREG Estimator</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -370,6 +377,12 @@ div.csl-indent {
 <li class="chapter" data-level="B.2.1" data-path="app-summaries.html"><a href="app-summaries.html#general-formula-for-ht-estimators"><i class="fa fa-check"></i><b>B.2.1</b> General Formula for HT Estimators</a></li>
 <li class="chapter" data-level="B.2.2" data-path="app-summaries.html"><a href="app-summaries.html#additional-formulas"><i class="fa fa-check"></i><b>B.2.2</b> Additional Formulas</a></li>
 <li class="chapter" data-level="B.2.3" data-path="app-summaries.html"><a href="app-summaries.html#allocations"><i class="fa fa-check"></i><b>B.2.3</b> Allocations</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="app-summaries.html"><a href="app-summaries.html#chapter-4"><i class="fa fa-check"></i><b>B.3</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-summaries.html"><a href="app-summaries.html#ratio-estimation-1"><i class="fa fa-check"></i><b>B.3.1</b> Ratio Estimation</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-summaries.html"><a href="app-summaries.html#post-stratification-1"><i class="fa fa-check"></i><b>B.3.2</b> Post-Stratification</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-summaries.html"><a href="app-summaries.html#regression-estimation-1"><i class="fa fa-check"></i><b>B.3.3</b> Regression Estimation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -400,6 +413,9 @@ Berger, Yves G. 1998. <span>“Rate of Convergence to Normal Distribution for th
 <div id="ref-deming1940least" class="csl-entry">
 Deming, W Edwards, and Frederick F Stephan. 1940. <span>“On a Least Squares Adjustment of a Sampled Frequency Table When the Expected Marginal Totals Are Known.”</span> <em>The Annals of Mathematical Statistics</em> 11 (4): 427–44.
 </div>
+<div id="ref-deville1992calibration" class="csl-entry">
+Deville, Jean-Claude, and Carl-Erik Särndal. 1992. <span>“Calibration Estimators in Survey Sampling.”</span> <em>Journal of the American Statistical Association</em> 87 (418): 376–82.
+</div>
 <div id="ref-deville1993generalized" class="csl-entry">
 Deville, Jean-Claude, Carl-Erik Särndal, and Olivier Sautory. 1993. <span>“Generalized Raking Procedures in Survey Sampling.”</span> <em>Journal of the American Statistical Association</em> 88 (423): 1013–20.
 </div>
@@ -409,11 +425,19 @@ Hájek, Jaroslav. 1960. <span>“Limiting Distributions in Simple Random Samplin
 <div id="ref-lohr2021sampling" class="csl-entry">
 Lohr, Sharon L. 2021. <em>Sampling: Design and Analysis</em>. Chapman; Hall/CRC.
 </div>
+<div id="ref-sarndal2003model" class="csl-entry">
+Särndal, Carl-Erik, Bengt Swensson, and Jan Wretman. 2003. <em>Model Assisted Survey Sampling</em>. Springer Science &amp; Business Media.
+</div>
 <div id="ref-stephan1942iterative" class="csl-entry">
 Stephan, Frederick F. 1942. <span>“An Iterative Method of Adjusting Sample Frequency Tables When Expected Marginal Totals Are Known.”</span> <em>The Annals of Mathematical Statistics</em> 13 (2): 166–78.
 </div>
 </div>
 </div>
+
+
+
+
+
 
 
 

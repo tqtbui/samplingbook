@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-08" />
+<meta name="date" content="2026-03-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -335,7 +335,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="chap-rr.html"><a href="chap-rr.html"><i class="fa fa-check"></i><b>4</b> Ratio and Regression Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="chap-rr.html"><a href="chap-rr.html#auxiliary-variables"><i class="fa fa-check"></i><b>4.1</b> Auxiliary Variables</a></li>
-<li class="chapter" data-level="4.2" data-path="chap-rr.html"><a href="chap-rr.html#ratio-estimator"><i class="fa fa-check"></i><b>4.2</b> Ratio Estimator</a>
+<li class="chapter" data-level="4.2" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio"><i class="fa fa-check"></i><b>4.2</b> Ratio Estimator</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
 <li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
@@ -349,9 +349,16 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="chap-rr.html"><a href="chap-rr.html#rr-post-stratification"><i class="fa fa-check"></i><b>4.3.1</b> Post-Stratification</a></li>
 <li class="chapter" data-level="4.3.2" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification-by-weight-adjustment"><i class="fa fa-check"></i><b>4.3.2</b> Post-Stratification by Weight Adjustment</a></li>
-<li class="chapter" data-level="4.3.3" data-path="chap-rr.html"><a href="chap-rr.html#calibration"><i class="fa fa-check"></i><b>4.3.3</b> Calibration</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rr.html"><a href="chap-rr.html#calibration-and-raking"><i class="fa fa-check"></i><b>4.3.3</b> Calibration and Raking</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator"><i class="fa fa-check"></i><b>4.4</b> Regression Estimator</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator"><i class="fa fa-check"></i><b>4.4</b> Regression Estimator</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rr.html"><a href="chap-rr.html#regression-estimator-as-prediction-estimator"><i class="fa fa-check"></i><b>4.4.1</b> Regression Estimator as Prediction Estimator</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rr.html"><a href="chap-rr.html#least-square-estimation"><i class="fa fa-check"></i><b>4.4.2</b> Least Square Estimation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-and-variance"><i class="fa fa-check"></i><b>4.4.3</b> Bias and Variance</a></li>
+<li class="chapter" data-level="4.4.4" data-path="chap-rr.html"><a href="chap-rr.html#r-code-1"><i class="fa fa-check"></i><b>4.4.4</b> R Code</a></li>
+<li class="chapter" data-level="4.4.5" data-path="chap-rr.html"><a href="chap-rr.html#greg-estimator"><i class="fa fa-check"></i><b>4.4.5</b> GREG Estimator</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -370,6 +377,12 @@ div.csl-indent {
 <li class="chapter" data-level="B.2.1" data-path="app-summaries.html"><a href="app-summaries.html#general-formula-for-ht-estimators"><i class="fa fa-check"></i><b>B.2.1</b> General Formula for HT Estimators</a></li>
 <li class="chapter" data-level="B.2.2" data-path="app-summaries.html"><a href="app-summaries.html#additional-formulas"><i class="fa fa-check"></i><b>B.2.2</b> Additional Formulas</a></li>
 <li class="chapter" data-level="B.2.3" data-path="app-summaries.html"><a href="app-summaries.html#allocations"><i class="fa fa-check"></i><b>B.2.3</b> Allocations</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="app-summaries.html"><a href="app-summaries.html#chapter-4"><i class="fa fa-check"></i><b>B.3</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="app-summaries.html"><a href="app-summaries.html#ratio-estimation-1"><i class="fa fa-check"></i><b>B.3.1</b> Ratio Estimation</a></li>
+<li class="chapter" data-level="B.3.2" data-path="app-summaries.html"><a href="app-summaries.html#post-stratification-1"><i class="fa fa-check"></i><b>B.3.2</b> Post-Stratification</a></li>
+<li class="chapter" data-level="B.3.3" data-path="app-summaries.html"><a href="app-summaries.html#regression-estimation-1"><i class="fa fa-check"></i><b>B.3.3</b> Regression Estimation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -567,6 +580,89 @@ Var(\widehat{\overline{Y}}_{HT}) = \frac{1}{N^2}Var(\widehat{T}_{HT})
 <p>Proportional allocation: <span class="math inline">\(n_h \propto N_h\)</span></p>
 <p>Optimal allocation: <span class="math inline">\(n_h \propto \frac{N_hs_h}{\sqrt{c_h}}\)</span></p>
 <p>Neyman allocation: <span class="math inline">\(n_h \propto N_hs_h\)</span></p>
+</div>
+</div>
+<div id="chapter-4" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">B.3</span> Chapter 4<a href="app-summaries.html#chapter-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ratio-estimation-1" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">B.3.1</span> Ratio Estimation<a href="app-summaries.html#ratio-estimation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="26%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="center">Estimator</th>
+<th align="center">Variance (approx)</th>
+<th align="center">Variance (est)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Mean</td>
+<td align="center"><span class="math inline">\(\widehat{\overline{Y}}_r = \frac{\overline{Y}_S}{\overline{X}_S}\overline{x}_U\)</span></td>
+<td align="center"><span class="math inline">\(\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(\widehat{T}_r = N\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(N^2\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(N^2\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Ratio</td>
+<td align="center"><span class="math inline">\(\widehat{B}_r = \frac{1}{\overline{x}_U}\widehat{\overline{Y}}_r\)</span></td>
+<td align="center"><span class="math inline">\(\left(\frac{1}{\overline{x}_U}\right)^2\left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n}\)</span></td>
+<td align="center"><span class="math inline">\(\left(\frac{1}{\overline{x}_U}\right)^2\left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(e_i = y_i - \widehat{B}_rx_i = y_i - \frac{\overline{Y}_S}{\overline{X}_S}x_i\)</span> and
+<span class="math display">\[\begin{align*}
+S_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}e_i^2 = S_{S,y}^2 - 2\hat{B}_rR_SS_{S,y}S_{S,x} + \hat{B}_r^2S_{S,x}^2 \\
+S_{S,y}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}(y_i - \overline{Y}_S)^2 = \frac{(\sum_{i\in S}y_i^2) - n(\overline{Y}_S)^2}{n-1} \\
+S_{S,x}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}(x_i - \overline{X}_S)^2 = \frac{(\sum_{i\in S}x_i^2) - n(\overline{X}_S)^2}{n-1} \\
+R_{S} &amp; = \frac{\sum_{i\in S}(y_i - \overline{Y}_S)(x_i - \overline{X}_S)}{(n-1)S_{S,x}S_{S,y}} = \frac{(\sum_{i\in S}x_iy_i) - n\overline{Y}_S\overline{X}_S}{(n-1)S_{S,x}S_{S,y}}
+\end{align*}\]</span></p>
+</div>
+<div id="post-stratification-1" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">B.3.2</span> Post-Stratification<a href="app-summaries.html#post-stratification-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Post-stratified estimators:</p>
+<p><span class="math display">\[\begin{align*}
+\widehat{T}_{post} &amp; = \sum_{h=1}^H N_h \overline{Y}_{S,h} \\
+\widehat{\overline{Y}}_{post} &amp; = \frac{1}{N}\widehat{T}_{post}\sum_{h=1}^H \frac{N_h}{N} \overline{Y}_{S,h}
+\end{align*}\]</span></p>
+<p>Variance estimation:
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{\overline{Y}}_{post}) \approx \widehat{Var}_{strt, prop}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\sum_{h=1}^H \frac{N_h}{N}\frac{S_{S,h}^2}{n}
+\]</span>
+where
+<span class="math display">\[
+S_{S,h}^2 = \frac{1}{n-1}\sum_{i\in S_h} (y_i - \overline{Y}_{S,h})^2
+\]</span></p>
+</div>
+<div id="regression-estimation-1" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">B.3.3</span> Regression Estimation<a href="app-summaries.html#regression-estimation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Regression estimators:
+<span class="math display">\[\begin{align*}
+\widehat{T}_{reg} &amp; = N\widehat{B}_0 + \widehat{B}_1 t_{U,x} \\
+\widehat{\overline{Y}}_{reg} &amp; = \widehat{B}_0 + \widehat{B}_1 \overline{x}_{U}
+\end{align*}\]</span></p>
+<p>Least squares estimates of the intercept and slope of the regression line:
+<span class="math display">\[\begin{align*}
+  \widehat{B}_{S,reg,0} &amp; = \overline{Y}_S - \widehat{B}_{S,reg,1} \times \overline{X}_S \\
+  \widehat{B}_{S,reg,1} &amp; = \frac{\sum_{i\in S} (x_i - \overline{X}_S)(y_i - \overline{Y}_S)}{\sum_{i\in S}(x_i - \overline{X}_S)^2} = \frac{R_SS_{S,y}}{S_{S,x}} \\
+\end{align*}\]</span></p>
+<p>Variance:
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{\overline{Y}}_{reg}) \approx \widehat{MSE}_{SRS}(\widehat{\overline{Y}}_{reg}) = \left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n} =  \left(1-\frac{n}{N}\right)\frac{S_{S,y}^2(1-R_S^2)}{n}
+\]</span></p>
+<p>where <span class="math inline">\(e_i = y_i - \widehat{B}_{S,reg,0} -\widehat{B}_{S,reg,1} x_i = y_i - \overline{Y}_S - \widehat{B}_{S,reg,1}(x_i - \overline{X}_S)\)</span>.</p>
 
 </div>
 </div>
