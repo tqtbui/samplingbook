@@ -312,7 +312,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="chap-strt.html"><a href="chap-strt.html#what-is-stratified-sampling"><i class="fa fa-check"></i><b>3.1</b> What is Stratified Sampling?</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="chap-strt.html"><a href="chap-strt.html#strt-components"><i class="fa fa-check"></i><b>3.1.1</b> Components</a></li>
+<li class="chapter" data-level="3.1.1" data-path="chap-strt.html"><a href="chap-strt.html#strt-components"><i class="fa fa-check"></i><b>3.1.1</b> Stratify Sampling Steps</a></li>
 <li class="chapter" data-level="3.1.2" data-path="chap-strt.html"><a href="chap-strt.html#why-stratification"><i class="fa fa-check"></i><b>3.1.2</b> Why Stratification?</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="chap-strt.html"><a href="chap-strt.html#estimation"><i class="fa fa-check"></i><b>3.2</b> Estimation</a>
@@ -408,14 +408,14 @@ div.csl-indent {
 <div id="what-is-stratified-sampling" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> What is Stratified Sampling?<a href="chap-strt.html#what-is-stratified-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="strt-components" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Components<a href="chap-strt.html#strt-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.1.1</span> Stratify Sampling Steps<a href="chap-strt.html#strt-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Stratified sampling</strong> is composed of two steps:</p>
 <ul>
 <li><p><strong>Stratification</strong>: Divide the population into <span class="math inline">\(H\)</span> <em>subpopulations</em>, called <strong>strata</strong>,</p>
 <ul>
 <li><p>Each subpopulation is called a <strong>stratum</strong></p></li>
 <li><p>The variable used to divide population is called the <strong>stratification variable</strong>.</p></li>
-<li><p>The strata: (i) do not overlap and (ii) constitute the whole population, such that each sampling unit belongs to exactly one stratum<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p></li>
+<li><p>It is required that the strata: (i) do not overlap and (ii) constitute the whole population, such that each sampling unit belongs to exactly one stratum<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p></li>
 </ul></li>
 <li><p><strong>Sampling</strong>: Draw an <strong>independent probability sample</strong> from <strong>each stratum</strong>.</p>
 <ul>
@@ -445,9 +445,9 @@ Figure 3.1: Visual illustration of stratified sampling technique.
 <ul>
 <li>Imagine having to get an email list of all students at the university, versus asking each college their student email list.</li>
 </ul></li>
-<li><p>Sometimes we want <strong>inference for subgroups</strong></p>
+<li><p>Sometimes we want inference at specified confidence for <strong>subgroups</strong></p>
 <ul>
-<li>Instead of only wanting to know the mean rent payment of all students at the university, we may also want to know the mean rent payment of students from each college specifically.</li>
+<li>Instead of only wanting to know the mean rent payment of all students at the university, we may also want to estimate the mean rent payment of students from each college precisely.</li>
 </ul></li>
 <li><p>Improve <strong>representativeness</strong> of the sample</p>
 <ul>
@@ -504,7 +504,7 @@ Figure 3.1: Visual illustration of stratified sampling technique.
 
 </div>
 <div class="myNote">
-<p><strong><ins>Notes:</ins></strong> We cannot average the subpopulation means to get the overall population mean, i.e., <span class="math inline">\(\overline{y}_U \ne \frac{1}{H}\overline{y}_{U,h}\)</span>. This is because <span class="math inline">\(\overline{y}_{U,h}\)</span> is the mean that represents <span class="math inline">\(N_h\)</span> units in the population. Therefore, we have to use a <strong>weighted average</strong> instead, with each <span class="math inline">\(\overline{y}_{U,h}\)</span> weighted by the fraction of number of units in stratum <span class="math inline">\(h\)</span> out of the whole population, i.e., <span class="math inline">\(N_h/N\)</span>.
+<p><strong><ins>Notes:</ins></strong> We cannot average the subpopulation means to get the <strong>overall population mean</strong>, i.e., <span class="math inline">\(\overline{y}_U \ne \frac{1}{H}\overline{y}_{U,h}\)</span>. This is because for each <span class="math inline">\(h\)</span>, the stratum mean <span class="math inline">\(\overline{y}_{U,h}\)</span> represents <span class="math inline">\(N_h\)</span> units of stratum <span class="math inline">\(h\)</span> in the population. Therefore, we have to use a <strong>weighted average</strong> instead, with each <span class="math inline">\(\overline{y}_{U,h}\)</span> weighted by the fraction of number of units in stratum <span class="math inline">\(h\)</span> out of the whole population, i.e., <span class="math inline">\(N_h/N\)</span>.
 <span class="math display">\[
 \overline{y}_U = \frac{1}{N}\sum_{h=1}^H\sum_{i=1}^{N_h}y_{h,i}=\sum_{h=1}^H\frac{N_h}{N}\overline{y}_{U,h}
 \]</span></p>
@@ -513,12 +513,12 @@ Figure 3.1: Visual illustration of stratified sampling technique.
 <div id="sample-and-ht-estimators" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Sample and HT Estimators<a href="chap-strt.html#sample-and-ht-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As defined in Section <a href="chap-strt.html#strt-components">3.1.1</a>, for each <span class="math inline">\(h\)</span>, we take an SRS sample <span class="math inline">\(S_h\)</span> of <span class="math inline">\(n_h\)</span> units from stratum <span class="math inline">\(U_h\)</span>. Then our overall sample consists of units from these subsets: <span class="math inline">\(S = S_1 \cup S_2 \cup ... \cup S_H\)</span> and the overall sample size is <span class="math inline">\(n = \sum_{h=1}^H n_h\)</span>.</p>
-<p>Since we take an SRS from each of the stratum, we can use the HT estimators in Section <a href="chap-srs.html#srs-srs-ht-estimator">2.6.2</a> to estimate the subpopulation means and totals. By <strong>aggregating these subpopulation HT estimators</strong>, we can get the <strong>HT estimators for the population mean and total</strong>. The order is:</p>
+<p>Since we take an SRS from each of the stratum, we can use the <strong>HT estimators</strong> in Section <a href="chap-srs.html#srs-srs-ht-estimator">2.6.2</a> to estimate the <strong>subpopulation means and totals</strong>. By <strong>aggregating</strong> these subpopulation HT estimators, we can get the HT estimators for the <strong>overall population mean and total</strong>. The order of such a process is:</p>
 <ul>
-<li><p>First, calculate the HT estimates for the subpopulation means <strong><span class="math inline">\(\widehat{\overline{Y}}_{HT,h}\)</span></strong>. Since subpopulations are sampled using SRS, HT estimates for subpopulation means are the sample means, i.e., <span class="math inline">\(\widehat{\overline{Y}}_{HT,h} = \overline{Y}_{S,h}\)</span></p></li>
-<li><p>Now, calculate the HT estimates for the subpopulation totals <strong><span class="math inline">\(\widehat{T}_{HT,h}\)</span></strong>, which equals the estimates of the subpopulation means times the number of units in the subpopulation: <span class="math inline">\(\widehat{T}_{HT,h} = N_h\widehat{\overline{Y}}_{HT,h}\)</span>.</p></li>
-<li><p>Then, calculate the HT estimate for the overall population total <strong><span class="math inline">\(\widehat{T}_{HT}\)</span></strong> by summing the HT estimates of the subpopulation totals: <span class="math inline">\(\widehat{T}_{HT} = \sum_{h=1}^H \widehat{T}_{HT,h}\)</span>.</p></li>
-<li><p>Finally, calculate the HT estimate for the overall population mean <strong><span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span></strong> by dividing the HT estimate for the overall population total by the number of units in the population: <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \frac{1}{N}\widehat{T}_{HT}\)</span>.</p></li>
+<li><p>First, calculate the HT estimates for the <strong>subpopulation means</strong> <strong><span class="math inline">\(\widehat{\overline{Y}}_{HT,h}\)</span></strong>. Since subpopulations are sampled using SRS, HT estimates for subpopulation means are the sample stratum means, i.e., <span class="math inline">\(\widehat{\overline{Y}}_{HT,h} = \overline{Y}_{S,h}\)</span></p></li>
+<li><p>Now, calculate the HT estimates for the <strong>subpopulation totals</strong> <strong><span class="math inline">\(\widehat{T}_{HT,h}\)</span></strong>, which equals the estimates of the subpopulation means times the number of units in the subpopulation (i.e., stratum size): <span class="math inline">\(\widehat{T}_{HT,h} = N_h\widehat{\overline{Y}}_{HT,h}\)</span>.</p></li>
+<li><p>Then, calculate the HT estimate for the <strong>overall population total</strong> <span class="math inline">\(\widehat{T}_{HT}\)</span> by <strong>summing up</strong> the HT estimates of the subpopulation totals: <span class="math inline">\(\widehat{T}_{HT} = \sum_{h=1}^H \widehat{T}_{HT,h}\)</span>.</p></li>
+<li><p>Finally, calculate the HT estimate for the <strong>overall population mean</strong> <strong><span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span></strong> by dividing the HT estimate for the overall population total by the number of units in the population (i.e., population size): <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \frac{1}{N}\widehat{T}_{HT}\)</span>.</p></li>
 </ul>
 <p>The process is summarized in the table below:</p>
 <table>
@@ -596,7 +596,7 @@ Var_{strt}(\widehat{T}_{HT}) &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}Var(Z_i) +
 </div>
 <div id="variance-estimators-1" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Variance Estimators<a href="chap-strt.html#variance-estimators-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>From Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and <a href="chap-strt.html#eq:strt-var-mean">(3.2)</a> and the fact that each subpopulation are sampled using SRS, we can use the <strong>SRS variance estimators for each subpopulation</strong> and <strong>sum them together</strong> to get the variance estimators for the population, that is:
+<p>From Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and <a href="chap-strt.html#eq:strt-var-mean">(3.2)</a> and the fact that <strong>each subpopulation are sampled using SRS</strong>, we can use the <strong>SRS variance estimators</strong> for each subpopulation and <strong>sum them together</strong> to get the variance estimators for the population, that is:
 <span class="math display" id="eq:strt-var-estimator">\[\begin{equation}
   \widehat{Var}_{strt}\left(\widehat{T}_{HT}\right) = \sum_{h=1}^H \widehat{Var}_{SRS}(\widehat{T}_{HT,h}) = \sum_{h=1}^H N_h^2\left(1-\frac{n_h}{N_h}\right)\frac{S^2_{S,h}}{n_h},
   \tag{3.3}
@@ -606,7 +606,7 @@ and
   \widehat{Var}_{strt}\left(\widehat{\overline{Y}}_{HT}\right) = \sum_{h=1}^H \widehat{Var}_{SRS}(\widehat{\overline{Y}}_{HT,h}) = \sum_{h=1}^H \left(1-\frac{n_h}{N_h}\right)\frac{S^2_{S,h}}{n_h}.
   \tag{3.4}
 \end{equation}\]</span>
-In other words, in Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and <a href="chap-strt.html#eq:strt-var-mean">(3.2)</a>, we replace the subpopulation variances <span class="math inline">\(s^2_{U,h}\)</span> by the sub-sample variances <span class="math inline">\(S^2_{S,h}\)</span>.</p>
+In other words, in Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and <a href="chap-strt.html#eq:strt-var-mean">(3.2)</a>, we replace the subpopulation variances <span class="math inline">\(s^2_{U,h}\)</span> (population quantities) by the sub-sample variances <span class="math inline">\(S^2_{S,h}\)</span> (sample quantities).</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-estimation" class="example"><strong>Example 3.2  </strong></span>Suppose we conducted stratified sampling and collected the following information:</p>
@@ -679,49 +679,49 @@ In other words, in Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and 
 <div id="r-code" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> R Code<a href="chap-strt.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the <code>survey</code> package in <strong>R</strong> to calculate the estimate, standard errors and confidence intervals for stratified sampling.</p>
-<p>Suppose we have the population dataset <code>dat</code> (This is an example. In reality, you do not have ppopulation data):</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-strt.html#cb15-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
-<span id="cb15-2"><a href="chap-strt.html#cb15-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>And suppose we obtain a sample data <code>samp_dat</code> from stratified sampling. To do this, we run the following code:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-strt.html#cb16-1" tabindex="-1"></a><span class="co">#row indexes for each stratum</span></span>
-<span id="cb16-2"><a href="chap-strt.html#cb16-2" tabindex="-1"></a>idx_grad <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Grad&quot;</span>)</span>
-<span id="cb16-3"><a href="chap-strt.html#cb16-3" tabindex="-1"></a>idx_med <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Med Residents&quot;</span>)</span>
-<span id="cb16-4"><a href="chap-strt.html#cb16-4" tabindex="-1"></a>idx_non <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Non-degree&quot;</span>)</span>
-<span id="cb16-5"><a href="chap-strt.html#cb16-5" tabindex="-1"></a>idx_under <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Undergrad&quot;</span>)</span>
-<span id="cb16-6"><a href="chap-strt.html#cb16-6" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="chap-strt.html#cb16-7" tabindex="-1"></a><span class="co">#take SRS in each stratum</span></span>
-<span id="cb16-8"><a href="chap-strt.html#cb16-8" tabindex="-1"></a>idx_samp_grad <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_grad, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-9"><a href="chap-strt.html#cb16-9" tabindex="-1"></a>idx_samp_med <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_med, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-10"><a href="chap-strt.html#cb16-10" tabindex="-1"></a>idx_samp_non <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_non, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-11"><a href="chap-strt.html#cb16-11" tabindex="-1"></a>idx_samp_under <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_under, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-12"><a href="chap-strt.html#cb16-12" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="chap-strt.html#cb16-13" tabindex="-1"></a><span class="co">#obtain final sample dataset by combining the sampled indexes</span></span>
-<span id="cb16-14"><a href="chap-strt.html#cb16-14" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[<span class="fu">c</span>(idx_samp_grad, idx_samp_med, idx_samp_non, idx_samp_under),]</span></code></pre></div>
-<p>Now, we can use <code>survey</code> package to analyze the sampled data set</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chap-strt.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
-<span id="cb17-2"><a href="chap-strt.html#cb17-2" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="chap-strt.html#cb17-3" tabindex="-1"></a><span class="co">#define N_h for each stratum</span></span>
-<span id="cb17-4"><a href="chap-strt.html#cb17-4" tabindex="-1"></a>Nhs <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>study, dat<span class="sc">$</span>study, length)</span>
-<span id="cb17-5"><a href="chap-strt.html#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="chap-strt.html#cb17-6" tabindex="-1"></a><span class="co">#define an fpc dataset of two column</span></span>
-<span id="cb17-7"><a href="chap-strt.html#cb17-7" tabindex="-1"></a><span class="co">#one for stratum size and the other is the corresponding level of study</span></span>
-<span id="cb17-8"><a href="chap-strt.html#cb17-8" tabindex="-1"></a>fpc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">fpc =</span> Nhs, <span class="at">study =</span> <span class="fu">names</span>(Nhs))</span>
-<span id="cb17-9"><a href="chap-strt.html#cb17-9" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="chap-strt.html#cb17-10" tabindex="-1"></a><span class="co">#merge fpc dataset into the current dataset</span></span>
-<span id="cb17-11"><a href="chap-strt.html#cb17-11" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> <span class="fu">merge</span>(samp_dat, fpc, <span class="at">by =</span> <span class="st">&quot;study&quot;</span>)</span>
+<p>Suppose the population dataset is the fake rent dataset in Appendix <a href="app-dataset.html#app-dataset">A</a>. (This is an artificially created example. In reality, you do not have ppopulation data). We load the dataset using the following code:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-strt.html#cb16-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
+<span id="cb16-2"><a href="chap-strt.html#cb16-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Now suppose we use stratified sampling to obtain a sample data <code>samp_dat</code> from the population data <code>dat</code>. To do this, we run the following code:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chap-strt.html#cb17-1" tabindex="-1"></a><span class="co">#row indexes for each stratum</span></span>
+<span id="cb17-2"><a href="chap-strt.html#cb17-2" tabindex="-1"></a>idx_grad <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Grad&quot;</span>)</span>
+<span id="cb17-3"><a href="chap-strt.html#cb17-3" tabindex="-1"></a>idx_med <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Med Residents&quot;</span>)</span>
+<span id="cb17-4"><a href="chap-strt.html#cb17-4" tabindex="-1"></a>idx_non <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Non-degree&quot;</span>)</span>
+<span id="cb17-5"><a href="chap-strt.html#cb17-5" tabindex="-1"></a>idx_under <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>study <span class="sc">==</span> <span class="st">&quot;Undergrad&quot;</span>)</span>
+<span id="cb17-6"><a href="chap-strt.html#cb17-6" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="chap-strt.html#cb17-7" tabindex="-1"></a><span class="co">#take SRS in each stratum by sampling the row index in each stratum</span></span>
+<span id="cb17-8"><a href="chap-strt.html#cb17-8" tabindex="-1"></a>idx_samp_grad <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_grad, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-9"><a href="chap-strt.html#cb17-9" tabindex="-1"></a>idx_samp_med <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_med, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-10"><a href="chap-strt.html#cb17-10" tabindex="-1"></a>idx_samp_non <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_non, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-11"><a href="chap-strt.html#cb17-11" tabindex="-1"></a>idx_samp_under <span class="ot">&lt;-</span> <span class="fu">sample</span>(idx_under, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb17-12"><a href="chap-strt.html#cb17-12" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="chap-strt.html#cb17-13" tabindex="-1"></a><span class="co">#specify the stratified design for the sampled dataset</span></span>
-<span id="cb17-14"><a href="chap-strt.html#cb17-14" tabindex="-1"></a>design.strt <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
-<span id="cb17-15"><a href="chap-strt.html#cb17-15" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="sc">~</span>study, </span>
-<span id="cb17-16"><a href="chap-strt.html#cb17-16" tabindex="-1"></a>                         <span class="at">fpc =</span> <span class="sc">~</span>fpc, </span>
-<span id="cb17-17"><a href="chap-strt.html#cb17-17" tabindex="-1"></a>                         <span class="at">data =</span> samp_dat)</span>
-<span id="cb17-18"><a href="chap-strt.html#cb17-18" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="chap-strt.html#cb17-19" tabindex="-1"></a><span class="co">#estimating population mean</span></span>
-<span id="cb17-20"><a href="chap-strt.html#cb17-20" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.strt)</span></code></pre></div>
+<span id="cb17-13"><a href="chap-strt.html#cb17-13" tabindex="-1"></a><span class="co">#obtain final sample dataset by combining the sampled row indexes</span></span>
+<span id="cb17-14"><a href="chap-strt.html#cb17-14" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[<span class="fu">c</span>(idx_samp_grad, idx_samp_med, idx_samp_non, idx_samp_under),]</span></code></pre></div>
+<p>Now, we can use <code>survey</code> package to analyze the sampled data set</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chap-strt.html#cb18-1" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb18-2"><a href="chap-strt.html#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="chap-strt.html#cb18-3" tabindex="-1"></a><span class="co">#define N_h for each stratum</span></span>
+<span id="cb18-4"><a href="chap-strt.html#cb18-4" tabindex="-1"></a>Nhs <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dat<span class="sc">$</span>study, dat<span class="sc">$</span>study, length)</span>
+<span id="cb18-5"><a href="chap-strt.html#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="chap-strt.html#cb18-6" tabindex="-1"></a><span class="co">#define an fpc dataset of two column</span></span>
+<span id="cb18-7"><a href="chap-strt.html#cb18-7" tabindex="-1"></a><span class="co">#one for stratum size and the other is the corresponding level of study</span></span>
+<span id="cb18-8"><a href="chap-strt.html#cb18-8" tabindex="-1"></a>fpc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">fpc =</span> Nhs, <span class="at">study =</span> <span class="fu">names</span>(Nhs))</span>
+<span id="cb18-9"><a href="chap-strt.html#cb18-9" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="chap-strt.html#cb18-10" tabindex="-1"></a><span class="co">#merge fpc dataset into the current dataset</span></span>
+<span id="cb18-11"><a href="chap-strt.html#cb18-11" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> <span class="fu">merge</span>(samp_dat, fpc, <span class="at">by =</span> <span class="st">&quot;study&quot;</span>)</span>
+<span id="cb18-12"><a href="chap-strt.html#cb18-12" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="chap-strt.html#cb18-13" tabindex="-1"></a><span class="co">#specify the stratified design for the sampled dataset</span></span>
+<span id="cb18-14"><a href="chap-strt.html#cb18-14" tabindex="-1"></a>design.strt <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb18-15"><a href="chap-strt.html#cb18-15" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="sc">~</span>study, </span>
+<span id="cb18-16"><a href="chap-strt.html#cb18-16" tabindex="-1"></a>                         <span class="at">fpc =</span> <span class="sc">~</span>fpc, </span>
+<span id="cb18-17"><a href="chap-strt.html#cb18-17" tabindex="-1"></a>                         <span class="at">data =</span> samp_dat)</span>
+<span id="cb18-18"><a href="chap-strt.html#cb18-18" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="chap-strt.html#cb18-19" tabindex="-1"></a><span class="co">#estimating population mean</span></span>
+<span id="cb18-20"><a href="chap-strt.html#cb18-20" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.strt)</span></code></pre></div>
 <pre><code>##        mean     SE
 ## rent 788.32 52.814</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chap-strt.html#cb19-1" tabindex="-1"></a><span class="co">#getting confidence interval</span></span>
-<span id="cb19-2"><a href="chap-strt.html#cb19-2" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">svymean</span>(<span class="sc">~</span>rent, design.strt))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chap-strt.html#cb20-1" tabindex="-1"></a><span class="co">#getting confidence interval</span></span>
+<span id="cb20-2"><a href="chap-strt.html#cb20-2" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">svymean</span>(<span class="sc">~</span>rent, design.strt))</span></code></pre></div>
 <pre><code>##         2.5 %   97.5 %
 ## rent 684.8065 891.8318</code></pre>
 </div>
@@ -730,14 +730,14 @@ In other words, in Equations <a href="chap-strt.html#eq:strt-var">(3.1)</a> and 
 <h2><span class="header-section-number">3.3</span> Design<a href="chap-strt.html#design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="approaches" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Approaches<a href="chap-strt.html#approaches" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In Chapter <a href="chap-srs.html#chap-srs">2</a>, we considered two sampling schemes, Poisson sampling and SRS. To designa Poisson sampling, we only need to specify only one design feature, which is the expected sample size <span class="math inline">\(n^*\)</span>. Similarly, for SRS, we only need to specify the sample size <span class="math inline">\(n\)</span>.</p>
-<p>In stratified sampling, we need to consider <strong>two design features</strong>, that is, we need to:</p>
+<p>In Chapter <a href="chap-srs.html#chap-srs">2</a>, we considered two sampling schemes, Poisson sampling and SRS. To design a Poisson sampling scheme, we only need to specify only one design feature, which is the expected sample size <span class="math inline">\(n^*\)</span>. Similarly, for SRS, we only need to specify the sample size <span class="math inline">\(n\)</span>.</p>
+<p>In stratified sampling, we need to consider <strong>two design features</strong>, i.e., we need to:</p>
 <ul>
 <li><p>define the <strong>stratification variable</strong>, and</p></li>
 <li><p>determine the <strong>sample size <span class="math inline">\(n_h\)</span> in each stratum</strong> <span class="math inline">\(h = 1,2, ..., H\)</span>.</p></li>
 </ul>
 <p>There are <strong>two approaches</strong> to the design of stratified sampling.</p>
-<p><strong><ins>First approach:</ins></strong> Suppose we want precise estimates <span class="math inline">\(\widehat{T}_{HT,h}\)</span> or <span class="math inline">\(\widehat{\overline{Y}}_{HT,h}\)</span> for each stratum <span class="math inline">\(h\)</span>. In this case,</p>
+<p><strong><ins>First approach:</ins></strong> Suppose we want precise estimates of <span class="math inline">\(\widehat{T}_{HT,h}\)</span> or <span class="math inline">\(\widehat{\overline{Y}}_{HT,h}\)</span> for <strong>each stratum</strong> <span class="math inline">\(h\)</span> at <strong>pre-specified level of confidence</strong>. In this case,</p>
 <ul>
 <li><p>the stratification variable is already well-defined from our research interest</p></li>
 <li><p>we only need to determine a tolerable margin of error <span class="math inline">\(e_h\)</span> for each stratum <span class="math inline">\(h\)</span>, then proceed to separately calculate sample size <span class="math inline">\(n_h\)</span> for each stratum <span class="math inline">\(h\)</span> just like in SRS (see Section <a href="chap-srs.html#srs-sample-size">2.9</a>).</p></li>
@@ -750,7 +750,7 @@ n = n_1 + n_2 + ... + n_H.
 \]</span></p></li>
 <li><p>Based on the allocation rule, we</p>
 <ul>
-<li><p>Derive the formula of <span class="math inline">\(Var_{strt}(\widehat{T}_{HT,h})\)</span> or <span class="math inline">\(Var_{strt}(\widehat{\overline{Y}}_{HT,h})\)</span> so that the formula is related to <span class="math inline">\(n\)</span>.</p></li>
+<li><p>Derive the formula of <span class="math inline">\(Var_{strt}(\widehat{T}_{HT})\)</span> or <span class="math inline">\(Var_{strt}(\widehat{\overline{Y}}_{HT})\)</span> so that the formula is related to <span class="math inline">\(n\)</span>.</p></li>
 <li><p>Solve for <span class="math inline">\(n\)</span> based on the formula and the tolerable margin of error <span class="math inline">\(e\)</span>.</p></li>
 <li><p>Determine <span class="math inline">\(n_h\)</span> for each <span class="math inline">\(h = 1, 2, ..., H\)</span> from the allocation rule.</p></li>
 </ul></li>
@@ -766,7 +766,7 @@ n = n_1 + n_2 + ... + n_H.
   n_h \propto N_h.  
   \tag{3.5}
 \end{equation}\]</span></p>
-<p>This means that there is a constant <span class="math inline">\(k\)</span>, which is not dependent on <span class="math inline">\(h\)</span>, such that <span class="math inline">\(n_h = kN_h\)</span> for all <span class="math inline">\(h = 1, 2, ..., H\)</span>. However, we also know that <span class="math inline">\(\sum_{h=1}^Hn_h = n\)</span>.</p>
+<p>This means that there exists a constant <span class="math inline">\(k\)</span>, which is not dependent on <span class="math inline">\(h\)</span>, such that <span class="math inline">\(n_h = kN_h\)</span> for all <span class="math inline">\(h = 1, 2, ..., H\)</span>. However, we also know that <span class="math inline">\(\sum_{h=1}^Hn_h = n\)</span>.</p>
 <details>
 <summary>
 This implies
@@ -794,7 +794,7 @@ Therefore, <span class="math inline">\(k = \frac{n}{N}\)</span> and thus <span c
 <div class="empty">
 
 </div>
-<p>With proportional allocation, the sample is a <strong>miniature</strong> version of the population, and thus, the sample is <strong>representative</strong> of the population in terms of the stratification variable.</p>
+<p>With proportional allocation, the sample is a <strong>miniature</strong> version of the population, and thus, the sample is <strong>representative</strong> of the population <strong>in terms of the stratification variable</strong>.</p>
 <p>An illustration of proportional allocation is given in Figure <a href="chap-strt.html#fig:strt-proportional">3.2</a>, where we take a sample of <span class="math inline">\(\frac{1}{3}\)</span> the size of the population. The sample comprises of sub-samples that are <span class="math inline">\(\frac{1}{3}\)</span> the size of each stratum. The resulting sample is representative of the population in terms of color: one half of the sample is orange, one fourth is blue and the other one fourth is green.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:strt-proportional"></span>
 <img src="data/images/chap-strt/proportional.png" alt="Visual illustration of proportional allocation." width="50%" />
@@ -810,7 +810,7 @@ Figure 3.2: Visual illustration of proportional allocation.
 <div class="empty">
 
 </div>
-<p>Another property of stratified sampling with proportional allocation is that it is <strong>self-weighting</strong>: the probability that the <span class="math inline">\(i\)</span>th unit from stratum <span class="math inline">\(h\)</span> is included in our sample is <span class="math inline">\(\pi_{h,i} = \frac{n_h}{N_h} = \frac{n}{N}\)</span>, since we do SRS within each stratum. Therefore, the weight for the <span class="math inline">\(i\)</span>th unit from stratum <span class="math inline">\(h\)</span> is <span class="math inline">\(w_{h,i} = \frac{1}{\pi_{h,i}} = \frac{N}{n}\)</span>, which is the <strong>same</strong> across all units and strata. We also have that
+<p>Another property of stratified sampling with proportional allocation is that it is <strong>self-weighting</strong>: the probability that the <span class="math inline">\(i\)</span>th unit from stratum <span class="math inline">\(h\)</span> is included in our sample is <span class="math inline">\(\pi_{h,i} = \frac{n_h}{N_h} = \frac{n}{N}\)</span>, since we do SRS within each stratum. Therefore, the weight for the <span class="math inline">\(i\)</span>th unit from stratum <span class="math inline">\(h\)</span> is <span class="math inline">\(w_{h,i} = \frac{1}{\pi_{h,i}} = \frac{N}{n}\)</span>. This weight does not depend on <span class="math inline">\(i\)</span> and <span class="math inline">\(h\)</span> and so it is the <strong>same</strong> across all units and strata. We also have that
 <span class="math display">\[
 \widehat{T}_{HT} = \sum_{h=1}^H \widehat{T}_{HT,h} = \sum_{h=1}^H\sum_{i\in S_h}\frac{N_h}{n_h}y_{h,i} = \sum_{h=1}^H\sum_{i\in S_h}\frac{N}{n}y_{h,i}
 \]</span>
@@ -851,7 +851,7 @@ Var_{strt,prop}(\widehat{T}_{HT}) &amp; = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT
 </div>
 <p>Similarly,
 <span class="math display" id="eq:strt-var-pa-mean">\[\begin{equation}
-  Var_{strt,prop}\left(\widehat{\overline{Y}}_{HT}\right) = \frac{1}{nN}\left(1-\frac{n}{N}\right)\sum_{h=1}^HN_hs_{U,h}^2.
+  Var_{strt,prop}\left(\widehat{\overline{Y}}_{HT}\right) = \frac{1}{N^2}Var_{strt,prop}(\widehat{T}_{HT}) = \frac{1}{nN}\left(1-\frac{n}{N}\right)\sum_{h=1}^HN_hs_{U,h}^2.
   \tag{3.8}
 \end{equation}\]</span></p>
 </div>
@@ -905,7 +905,7 @@ Var_{strt,prop}(\widehat{T}_{HT}) &amp; = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT
 </tr>
 </tbody>
 </table>
-<p>The within-stratum variation measures the differences of units to its respective means, the between-strata variation measures the differences of the stratum means to the overall means, and the total variation measures the differences of units to the overall means.</p>
+<p>The within-stratum variation measures the differences of units to its respective stratum means, the between-strata variation measures the differences of the stratum means to the overall means, and the total variation measures the differences of units to the overall means.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-ss-decomp" class="example"><strong>Example 3.5  </strong></span>For example, the within-stratum variation sums over the differences such as of an Arts and Science student’s monthly rent payment to the Arts and Science mean, the between-stratum variation sums over the differences such as of the Arts and Science mean to the USask mean, and the total variation sums over the differences such as of a student to the USask mean.</p>
@@ -978,7 +978,7 @@ Plugging these into the formula of <a href="chap-strt.html#eq:strt-var-pa-compar
 <div class="empty">
 
 </div>
-<p>This is greater or equal to 0, that is, the variance from SRS is larger than the variance from stratification under proportional allocation, if
+<p>This is greater or equal to 0, that is, the variance from SRS is <strong>larger</strong> than the variance from stratification under proportional allocation, <strong>if</strong>
 <span class="math display">\[
 SSB \ge \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2
 \]</span>
@@ -990,7 +990,7 @@ This happens if <span class="math inline">\(SSB\)</span> is large and <span clas
 </ul>
 <details>
 <summary>
-On another note, we also can prove that <strong>if <span class="math inline">\(N_h\)</span> and <span class="math inline">\(N\)</span> are large</strong>, then variance from stratified sampling under proportional allocation is always smalller than variance from SRS. In other words, we always <strong>gain efficiency</strong> (i.e., <strong>lower variance</strong>) with stratification and proporational allocation when strata sizes are large.
+On another note, we also can prove that <strong>if <span class="math inline">\(N_h\)</span> and <span class="math inline">\(N\)</span> are large</strong>, then variance from stratified sampling under proportional allocation is <strong>always smalller</strong> than variance from SRS. In other words, we always <strong>gain efficiency</strong> (i.e., <strong>lower variance</strong>) with stratification under proportional allocation when strata sizes are large.
 </summary>
 <div class="empty">
 
@@ -1078,7 +1078,7 @@ SSB = \sum_{h=1}^H N_h(\overline{y}_{U,h} - \overline{y}_U)^2 = 3\times (6-6.5)^
 <h3><span class="header-section-number">3.3.3</span> Optimal Allocation<a href="chap-strt.html#optimal-allocation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="definition-2" class="section level4 hasAnchor" number="3.3.3.1">
 <h4><span class="header-section-number">3.3.3.1</span> Definition<a href="chap-strt.html#definition-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>As discussed in Section <a href="chap-srs.html#srs-sample-size">2.9</a>, in survey sampling, we want to balance two contraries: (i) we want to have a large sample size so that the variance of our estimators are the smallest, on the other hand (ii) we only have limited time and resources to collect the survey information. <strong>Optimal allocation</strong> is a method in stratified sampling that explicitly <strong>minimizes the variance</strong> of the HT estimators within a fixed <strong>cost constraints</strong>.</p>
+<p>As discussed in Section <a href="chap-srs.html#srs-sample-size">2.9</a>, in survey sampling, we want to balance two contraries: (i) we want to have a large sample size so that the variance of our estimators are the smallest, on the other hand (ii) we only have limited time and resources to collect the survey information. <strong>Optimal allocation</strong> is a method in stratified sampling that <strong>explicitly minimizes the variance</strong> of the HT estimators within a <strong>fixed cost constraints</strong>.</p>
 <p>To formalize this mathematically, let</p>
 <ul>
 <li><p><span class="math inline">\(c_0\)</span> be the <em>known</em> <strong>overhead cost</strong> of the survey</p>
@@ -1090,11 +1090,11 @@ SSB = \sum_{h=1}^H N_h(\overline{y}_{U,h} - \overline{y}_U)^2 = 3\times (6-6.5)^
 <li>This can be the cost to print the survey questionnaire, labor costs to interview individuals, etc.</li>
 </ul></li>
 </ul>
-<p>Suppose we have a fixed <strong>budget</strong> <span class="math inline">\(C\)</span>, then our <em>unknown</em> (or to-be-determined) sub-sample sizes <span class="math inline">\(n_1, n_2, ..., n_H\)</span> must satisfy
+<p>Suppose we have a <strong>fixed budget</strong> amount <span class="math inline">\(C\)</span>, then our <em>unknown</em> (or to-be-determined) sub-sample sizes <span class="math inline">\(n_1, n_2, ..., n_H\)</span> must satisfy
 <span class="math display">\[
 C = c_0 + \sum_{h=1}^H c_hn_h,
 \]</span>
-while at the same time minimize<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+while <strong>at the same time minimize</strong><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 <span class="math display">\[
 Var_{strt}(\widehat{T}_{HT}) = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT,h}) = \sum_{h=1}^H N_h^2 \left(1-\frac{n_h}{N_h}\right)\frac{s_{U,h}^2}{n_h}.
 \]</span></p>
@@ -1131,28 +1131,29 @@ n_h = \frac{1}{\sqrt{\lambda}} \frac{N_hs_{U,h}}{\sqrt{c_n}} \propto \frac{N_hs_
 </div>
 <p>From Equation <a href="chap-strt.html#eq:strt-oa">(3.12)</a>, we can see that in optimal allocation, we will <strong>sample more</strong> in a stratum <span class="math inline">\(h\)</span> if</p>
 <ul>
-<li><p><span class="math inline">\(c_h\)</span> is small, which means it is <strong>cheaper</strong> to sample there, and/or</p></li>
-<li><p><span class="math inline">\(N_h\)</span> is large, which means the stratum <strong>has a lot of units</strong> and we need to sample more there to lower our variance, and/or</p></li>
+<li><p><span class="math inline">\(c_h\)</span> is small, which means it is <strong>cheaper</strong> to sample in the <span class="math inline">\(h\)</span>th stratum, and/or</p></li>
+<li><p><span class="math inline">\(N_h\)</span> is large, which means the <span class="math inline">\(h\)</span>th stratum <strong>has a lot of units</strong> and we need to sample more there to lower our variance, and/or</p></li>
 <li><p><span class="math inline">\(s_{U,h}\)</span> is large, which means <strong>the responses vary a lot</strong> in that stratum and we need to sample more there to lower our variance.</p></li>
 </ul>
 <p>Using the same argument as in Equation <a href="chap-strt.html#eq:strt-pa-condition">(3.6)</a>, we have
-<span class="math display">\[
-n_h = \left(\frac{\frac{N_hs_{U,h}}{\sqrt{c_h}}}{\sum_{l=1}^H \frac{N_ls_{U,l}}{\sqrt{c_l}}}\right)n.
-\]</span></p>
+<span class="math display" id="eq:strt-oa-condition">\[\begin{equation}
+n_h = \left(\frac{\frac{N_hs_{U,h}}{\sqrt{c_h}}}{\sum_{l=1}^H \frac{N_ls_{U,l}}{\sqrt{c_l}}}\right)n
+\tag{3.13}
+\end{equation}\]</span></p>
 </div>
 <div id="neyman-allocation" class="section level4 hasAnchor" number="3.3.3.2">
 <h4><span class="header-section-number">3.3.3.2</span> Neyman Allocation<a href="chap-strt.html#neyman-allocation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A special case of optimal allocation is Neyman allocation. When the costs to sample one unit from each stratum are the same, that is, <span class="math inline">\(c_1 = c_2 = ... = c_H\)</span>, then optimal allocation becomes <strong>Neyman allocation</strong>, where</p>
 <p><span class="math display" id="eq:strt-na">\[\begin{equation}
   n_h \propto N_hs_{U,h}
-  \tag{3.13}
+  \tag{3.14}
 \end{equation}\]</span></p>
 <details>
 <summary>
 Under stratified sampling with Neyman allocation, the variance of the HT estimator for the population mean is<br />
 <span class="math display" id="eq:strt-na-var">\[\begin{equation}
   Var_{strt,Ney}(\widehat{T}_{HT}) = \frac{1}{n}\left(\sum_{h=1}^H N_hs_{U,h}\right)^2 - \sum_{h=1}^H N_hs_{U,h}^2.
-  \tag{3.14}
+  \tag{3.15}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -1183,7 +1184,7 @@ Var_{strt}(\widehat{T}_{HT}) &amp; = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT,h}) 
 We can prove that, for same sample size <span class="math inline">\(n\)</span>, Neyman allocation is more efficient that proportional allocation, that is<br />
 <span class="math display" id="eq:strt-na-pa">\[\begin{equation}
   Var_{strt,Ney}(\widehat{T}_{HT}) \le Var_{strt,prop}(\widehat{T}_{HT}).
-  \tag{3.15}
+  \tag{3.16}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -1215,8 +1216,8 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 <li><p>Proportional allocation: <span class="math inline">\(n_h \propto N_h\)</span></p></li>
 <li><p>Optimal allocation: <span class="math inline">\(n_h \propto \frac{N_hs_{U,h}}{\sqrt{c}_h}\)</span></p></li>
 </ul>
-<p>So optimal allocation is the same as proportional allocation when <span class="math inline">\(s_{U,1} = s_{U,2} = ... = s_{U,H}\)</span> and <span class="math inline">\(c_{U,1} = c_{U,2} = ... = c_{U,H}\)</span>.</p>
-<p>Note that although it is better than proportional allocation since it is the optimizer, <strong>optimal allocation only works for one variable of interest</strong> because the allocation depends on <span class="math inline">\(s_{U,h}\)</span>, which in turn depends on <span class="math inline">\(y_{h,i}\)</span>. Often, in survey sampling, we have more than one variable of interest. For example, not only we are interested in students’ rent payment, but we may also be interested in other expenses as well. If <span class="math inline">\(s_{U,h}\)</span> and <span class="math inline">\(c_{U,h}\)</span> are almost the similar among clusters, the gain in doing optimal allocation is small and we <strong>better use proportional allocation</strong>.</p>
+<p>So optimal allocation and proportional allocation are <strong>equivalent when</strong> <span class="math inline">\(s_{U,1} = s_{U,2} = ... = s_{U,H}\)</span> and <span class="math inline">\(c_{U,1} = c_{U,2} = ... = c_{U,H}\)</span>.</p>
+<p>Note that although it is better than proportional allocation since it is the optimizer, <strong>optimal allocation only works for one variable of interest</strong> because the optimal allocation, as in Equation <a href="chap-strt.html#eq:strt-oa-condition">(3.13)</a>, depends on <span class="math inline">\(s_{U,h}\)</span>, which in turn depends on <span class="math inline">\(y_{h,i}\)</span>. Often, in survey sampling, we have more than one variable of interest. For example, not only we are interested in students’ rent payment, but we may also be interested in other expenses as well. If <span class="math inline">\(s_{U,h}\)</span> and <span class="math inline">\(c_{U,h}\)</span> are almost the similar among clusters, the gain in doing optimal allocation is small and we <strong>better use proportional allocation</strong>.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-compare-three" class="example"><strong>Example 3.8  </strong></span>Suppose we want to sample <span class="math inline">\(n = 36\)</span> students for a survey about test scores. To design this year’s survey, we consider two strata of sizes 1200 and 800, respectively, and we take the means and standard deviations from last year’s survey and get</p>
@@ -1296,7 +1297,7 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 <span class="math display">\[
 DE = \frac{Var_{complex}(\widehat{\theta}_n)}{Var_{SRS}(\widehat{\theta}_n)},
 \]</span></p>
-<p>in which the estimators <span class="math inline">\(\hat{\theta}\)</span> are calculated based on sample size <span class="math inline">\(n\)</span>. The interpretation of design effect is that we gain/lose <span class="math inline">\(DE\times 100\%\)</span> of efficiency when using the complex sampling design instead of SRS. Furthermore, we need <span class="math inline">\(\frac{n}{DE}\)</span> observations under SRS to achieve the same variance as in the complex sampling scheme with <span class="math inline">\(n\)</span> observations. We call <span class="math inline">\(n_{eff} = \frac{n}{DE}\)</span> the <strong>effective sample size</strong>.</p>
+<p>in which the estimators <span class="math inline">\(\hat{\theta}\)</span> are calculated based on sample size <span class="math inline">\(n\)</span>. The interpretation of design effect is that we gain/lose <span class="math inline">\((1 - DE)\times 100\%\)</span> of efficiency when using the complex sampling design instead of SRS. Furthermore, we need <span class="math inline">\(\frac{n}{DE}\)</span> observations <strong>under SRS to achieve the same variance as in the complex sampling</strong> scheme with <span class="math inline">\(n\)</span> observations. We call <span class="math inline">\(n_{eff} = \frac{n}{DE}\)</span> the <strong>effective sample size</strong>.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-strt-design-effect" class="example"><strong>Example 3.9  </strong></span>In Example <a href="chap-strt.html#exm:ex-strt-compare-three">3.8</a>, the design effect of stratified sampling with proportional allocation is

@@ -312,7 +312,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="chap-strt.html"><a href="chap-strt.html#what-is-stratified-sampling"><i class="fa fa-check"></i><b>3.1</b> What is Stratified Sampling?</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="chap-strt.html"><a href="chap-strt.html#strt-components"><i class="fa fa-check"></i><b>3.1.1</b> Components</a></li>
+<li class="chapter" data-level="3.1.1" data-path="chap-strt.html"><a href="chap-strt.html#strt-components"><i class="fa fa-check"></i><b>3.1.1</b> Stratify Sampling Steps</a></li>
 <li class="chapter" data-level="3.1.2" data-path="chap-strt.html"><a href="chap-strt.html#why-stratification"><i class="fa fa-check"></i><b>3.1.2</b> Why Stratification?</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="chap-strt.html"><a href="chap-strt.html#estimation"><i class="fa fa-check"></i><b>3.2</b> Estimation</a>
@@ -1038,11 +1038,11 @@ So the <span class="math inline">\(MSE\)</span> is of order <span class="math in
 </tbody>
 </table>
 <p>We can draw a scatter plot of this data</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chap-rr.html#cb21-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">12</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">100</span>,<span class="dv">200</span>,</span>
-<span id="cb21-2"><a href="chap-rr.html#cb21-2" tabindex="-1"></a>       <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">150</span>,<span class="dv">100</span>,<span class="dv">40</span>)</span>
-<span id="cb21-3"><a href="chap-rr.html#cb21-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">48</span>,<span class="dv">22</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">11</span>,<span class="dv">30</span>,<span class="dv">165</span>,<span class="dv">300</span>,</span>
-<span id="cb21-4"><a href="chap-rr.html#cb21-4" tabindex="-1"></a>       <span class="dv">73</span>,<span class="dv">70</span>,<span class="dv">200</span>,<span class="dv">120</span>,<span class="dv">83</span>)</span>
-<span id="cb21-5"><a href="chap-rr.html#cb21-5" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-rr.html#cb22-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">12</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">100</span>,<span class="dv">200</span>,</span>
+<span id="cb22-2"><a href="chap-rr.html#cb22-2" tabindex="-1"></a>       <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">150</span>,<span class="dv">100</span>,<span class="dv">40</span>)</span>
+<span id="cb22-3"><a href="chap-rr.html#cb22-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">48</span>,<span class="dv">22</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">26</span>,<span class="dv">11</span>,<span class="dv">30</span>,<span class="dv">165</span>,<span class="dv">300</span>,</span>
+<span id="cb22-4"><a href="chap-rr.html#cb22-4" tabindex="-1"></a>       <span class="dv">73</span>,<span class="dv">70</span>,<span class="dv">200</span>,<span class="dv">120</span>,<span class="dv">83</span>)</span>
+<span id="cb22-5"><a href="chap-rr.html#cb22-5" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rr-ratio-scatter"></span>
 <img src="_main_files/figure-html/rr-ratio-scatter-1.png" alt="Relationship between last year's and this year's sales" width="60%" />
 <p class="caption">
@@ -1127,30 +1127,30 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 <div id="rr-ratio-r" class="section level3 hasAnchor" number="4.2.7">
 <h3><span class="header-section-number">4.2.7</span> R Code<a href="chap-rr.html#rr-ratio-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose we have the population dataset <code>dat</code> (This is an example. In reality, you do not have population data):</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-rr.html#cb22-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
-<span id="cb22-2"><a href="chap-rr.html#cb22-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chap-rr.html#cb23-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
+<span id="cb23-2"><a href="chap-rr.html#cb23-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>And suppose we obtain a sample data <code>samp_dat</code> from SRS. To do this, we run the following code:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chap-rr.html#cb23-1" tabindex="-1"></a><span class="co">#take SRS of the index</span></span>
-<span id="cb23-2"><a href="chap-rr.html#cb23-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), <span class="at">size =</span> <span class="dv">150</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb23-3"><a href="chap-rr.html#cb23-3" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="chap-rr.html#cb23-4" tabindex="-1"></a><span class="co">#get the sample dataset</span></span>
-<span id="cb23-5"><a href="chap-rr.html#cb23-5" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[idx,]</span></code></pre></div>
-<p>We can use <code>survey</code> package to obtain ratio estimate. First, we have to specify the survey design, which is an SRS here:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-rr.html#cb24-1" tabindex="-1"></a><span class="co">#specifying the fpc as the population size</span></span>
-<span id="cb24-2"><a href="chap-rr.html#cb24-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>fpc <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dat)</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-rr.html#cb24-1" tabindex="-1"></a><span class="co">#take SRS of the index</span></span>
+<span id="cb24-2"><a href="chap-rr.html#cb24-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), <span class="at">size =</span> <span class="dv">150</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) </span>
 <span id="cb24-3"><a href="chap-rr.html#cb24-3" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="chap-rr.html#cb24-4" tabindex="-1"></a><span class="co">#specify survey design</span></span>
-<span id="cb24-5"><a href="chap-rr.html#cb24-5" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
-<span id="cb24-6"><a href="chap-rr.html#cb24-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
-<span id="cb24-7"><a href="chap-rr.html#cb24-7" tabindex="-1"></a>                        <span class="at">data =</span> samp_dat, </span>
-<span id="cb24-8"><a href="chap-rr.html#cb24-8" tabindex="-1"></a>                        <span class="at">fpc =</span> <span class="sc">~</span>fpc)</span></code></pre></div>
+<span id="cb24-4"><a href="chap-rr.html#cb24-4" tabindex="-1"></a><span class="co">#get the sample dataset</span></span>
+<span id="cb24-5"><a href="chap-rr.html#cb24-5" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[idx,]</span></code></pre></div>
+<p>We can use <code>survey</code> package to obtain ratio estimate. First, we have to specify the survey design, which is an SRS here:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chap-rr.html#cb25-1" tabindex="-1"></a><span class="co">#specifying the fpc as the population size</span></span>
+<span id="cb25-2"><a href="chap-rr.html#cb25-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>fpc <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dat)</span>
+<span id="cb25-3"><a href="chap-rr.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="chap-rr.html#cb25-4" tabindex="-1"></a><span class="co">#specify survey design</span></span>
+<span id="cb25-5"><a href="chap-rr.html#cb25-5" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb25-6"><a href="chap-rr.html#cb25-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb25-7"><a href="chap-rr.html#cb25-7" tabindex="-1"></a>                        <span class="at">data =</span> samp_dat, </span>
+<span id="cb25-8"><a href="chap-rr.html#cb25-8" tabindex="-1"></a>                        <span class="at">fpc =</span> <span class="sc">~</span>fpc)</span></code></pre></div>
 <p>We can obtain the ratio estimate of the ratio <span class="math inline">\(\widehat{B}_r\)</span> using the following code:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chap-rr.html#cb25-1" tabindex="-1"></a><span class="co">#ratio of rent price per square meter</span></span>
-<span id="cb25-2"><a href="chap-rr.html#cb25-2" tabindex="-1"></a>srs.ratio <span class="ot">&lt;-</span> <span class="fu">svyratio</span>(<span class="at">numerator=</span><span class="sc">~</span>rent,</span>
-<span id="cb25-3"><a href="chap-rr.html#cb25-3" tabindex="-1"></a>                      <span class="at">denominator=</span><span class="sc">~</span>area,</span>
-<span id="cb25-4"><a href="chap-rr.html#cb25-4" tabindex="-1"></a>                      <span class="at">design=</span>design.srs)</span>
-<span id="cb25-5"><a href="chap-rr.html#cb25-5" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="chap-rr.html#cb25-6" tabindex="-1"></a>srs.ratio</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chap-rr.html#cb26-1" tabindex="-1"></a><span class="co">#ratio of rent price per square meter</span></span>
+<span id="cb26-2"><a href="chap-rr.html#cb26-2" tabindex="-1"></a>srs.ratio <span class="ot">&lt;-</span> <span class="fu">svyratio</span>(<span class="at">numerator=</span><span class="sc">~</span>rent,</span>
+<span id="cb26-3"><a href="chap-rr.html#cb26-3" tabindex="-1"></a>                      <span class="at">denominator=</span><span class="sc">~</span>area,</span>
+<span id="cb26-4"><a href="chap-rr.html#cb26-4" tabindex="-1"></a>                      <span class="at">design=</span>design.srs)</span>
+<span id="cb26-5"><a href="chap-rr.html#cb26-5" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="chap-rr.html#cb26-6" tabindex="-1"></a>srs.ratio</span></code></pre></div>
 <pre><code>## Ratio estimator: svyratio.survey.design2(numerator = ~rent, denominator = ~area, 
 ##     design = design.srs)
 ## Ratios=
@@ -1160,11 +1160,11 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 ##           area
 ## rent 0.5517693</code></pre>
 <p>We can obtain <span class="math inline">\(\widehat{T}_r\)</span> using the following code</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chap-rr.html#cb27-1" tabindex="-1"></a><span class="co">#suppose we know the population total t_{U,x}</span></span>
-<span id="cb27-2"><a href="chap-rr.html#cb27-2" tabindex="-1"></a>known.x.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(dat<span class="sc">$</span>area)</span>
-<span id="cb27-3"><a href="chap-rr.html#cb27-3" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="chap-rr.html#cb27-4" tabindex="-1"></a><span class="co">#ratio estimator of the total</span></span>
-<span id="cb27-5"><a href="chap-rr.html#cb27-5" tabindex="-1"></a><span class="fu">predict</span>(srs.ratio,<span class="at">total=</span>known.x.total)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-rr.html#cb28-1" tabindex="-1"></a><span class="co">#suppose we know the population total t_{U,x}</span></span>
+<span id="cb28-2"><a href="chap-rr.html#cb28-2" tabindex="-1"></a>known.x.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(dat<span class="sc">$</span>area)</span>
+<span id="cb28-3"><a href="chap-rr.html#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="chap-rr.html#cb28-4" tabindex="-1"></a><span class="co">#ratio estimator of the total</span></span>
+<span id="cb28-5"><a href="chap-rr.html#cb28-5" tabindex="-1"></a><span class="fu">predict</span>(srs.ratio,<span class="at">total=</span>known.x.total)</span></code></pre></div>
 <pre><code>## $total
 ##          area
 ## rent 20295789
@@ -1270,20 +1270,20 @@ Figure 4.3: Post-stratification to adjust sample so that it represents the popul
 </p>
 </div>
 <p>We can use the <code>survey</code> package to do post-stratification in <strong>R</strong>. Suppose in the students’ rent data <code>samp_dat</code> that we created in Section <a href="chap-rr.html#rr-ratio-r">4.2.7</a> above, we want to stratify by level of study:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="chap-rr.html#cb29-1" tabindex="-1"></a><span class="co">#get the frequencies (count, i.e., N_h) for each type of level of study</span></span>
-<span id="cb29-2"><a href="chap-rr.html#cb29-2" tabindex="-1"></a>Nh <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
-<span id="cb29-3"><a href="chap-rr.html#cb29-3" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="chap-rr.html#cb29-4" tabindex="-1"></a><span class="co">#create a new design with post-stratify adjusted weights</span></span>
-<span id="cb29-5"><a href="chap-rr.html#cb29-5" tabindex="-1"></a>design.post <span class="ot">&lt;-</span> <span class="fu">postStratify</span>(design.srs, </span>
-<span id="cb29-6"><a href="chap-rr.html#cb29-6" tabindex="-1"></a>                            <span class="at">strata =</span><span class="sc">~</span>study, </span>
-<span id="cb29-7"><a href="chap-rr.html#cb29-7" tabindex="-1"></a>                            <span class="at">population =</span> Nh)</span>
-<span id="cb29-8"><a href="chap-rr.html#cb29-8" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="chap-rr.html#cb29-9" tabindex="-1"></a><span class="co">#use the new survey design to estimate mean</span></span>
-<span id="cb29-10"><a href="chap-rr.html#cb29-10" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-rr.html#cb30-1" tabindex="-1"></a><span class="co">#get the frequencies (count, i.e., N_h) for each type of level of study</span></span>
+<span id="cb30-2"><a href="chap-rr.html#cb30-2" tabindex="-1"></a>Nh <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
+<span id="cb30-3"><a href="chap-rr.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="chap-rr.html#cb30-4" tabindex="-1"></a><span class="co">#create a new design with post-stratify adjusted weights</span></span>
+<span id="cb30-5"><a href="chap-rr.html#cb30-5" tabindex="-1"></a>design.post <span class="ot">&lt;-</span> <span class="fu">postStratify</span>(design.srs, </span>
+<span id="cb30-6"><a href="chap-rr.html#cb30-6" tabindex="-1"></a>                            <span class="at">strata =</span><span class="sc">~</span>study, </span>
+<span id="cb30-7"><a href="chap-rr.html#cb30-7" tabindex="-1"></a>                            <span class="at">population =</span> Nh)</span>
+<span id="cb30-8"><a href="chap-rr.html#cb30-8" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="chap-rr.html#cb30-9" tabindex="-1"></a><span class="co">#use the new survey design to estimate mean</span></span>
+<span id="cb30-10"><a href="chap-rr.html#cb30-10" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##        mean     SE
 ## rent 749.46 21.598</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="chap-rr.html#cb31-1" tabindex="-1"></a><span class="co">#use the new survey design to estimate total</span></span>
-<span id="cb31-2"><a href="chap-rr.html#cb31-2" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-rr.html#cb32-1" tabindex="-1"></a><span class="co">#use the new survey design to estimate total</span></span>
+<span id="cb32-2"><a href="chap-rr.html#cb32-2" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##         total     SE
 ## rent 19971556 575542</code></pre>
 </div>
@@ -1315,50 +1315,50 @@ Therefore, these adjusted weights can be called the reproducing weights.</p>
 \]</span></p>
 <p>In <strong>R</strong>, we can use library <code>survey</code> to do either raking or calibration when we want to adjust for more than one stratification variables. In the students’ rent data, suppose we want to adjust for <code>study</code> and <code>origin</code>.</p>
 <p><strong><ins>Calibration:</ins></strong></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chap-rr.html#cb33-1" tabindex="-1"></a><span class="co">#adjust the sample data, converting stratification variables to factor</span></span>
-<span id="cb33-2"><a href="chap-rr.html#cb33-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>study <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>study)</span>
-<span id="cb33-3"><a href="chap-rr.html#cb33-3" tabindex="-1"></a>samp_dat<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>origin)</span>
-<span id="cb33-4"><a href="chap-rr.html#cb33-4" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="chap-rr.html#cb33-5" tabindex="-1"></a><span class="co">#re-define the design object because we have new data now</span></span>
-<span id="cb33-6"><a href="chap-rr.html#cb33-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> samp_dat, <span class="at">fpc=</span><span class="sc">~</span>fpc)</span>
-<span id="cb33-7"><a href="chap-rr.html#cb33-7" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="chap-rr.html#cb33-8" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
-<span id="cb33-9"><a href="chap-rr.html#cb33-9" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>study)</span>
-<span id="cb33-10"><a href="chap-rr.html#cb33-10" tabindex="-1"></a><span class="co">#adjust the names so the calibrate function can use</span></span>
-<span id="cb33-11"><a href="chap-rr.html#cb33-11" tabindex="-1"></a><span class="fu">names</span>(Nh_study) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;study&quot;</span>, <span class="fu">names</span>(Nh_study))</span>
-<span id="cb33-12"><a href="chap-rr.html#cb33-12" tabindex="-1"></a></span>
-<span id="cb33-13"><a href="chap-rr.html#cb33-13" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
-<span id="cb33-14"><a href="chap-rr.html#cb33-14" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>origin)</span>
-<span id="cb33-15"><a href="chap-rr.html#cb33-15" tabindex="-1"></a><span class="fu">names</span>(Nh_origin) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;origin&quot;</span>, <span class="fu">names</span>(Nh_origin))</span>
-<span id="cb33-16"><a href="chap-rr.html#cb33-16" tabindex="-1"></a></span>
-<span id="cb33-17"><a href="chap-rr.html#cb33-17" tabindex="-1"></a><span class="co">#combine population totals from Nh_study and Nh_origin</span></span>
-<span id="cb33-18"><a href="chap-rr.html#cb33-18" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> <span class="fu">c</span>(Nh_study, Nh_origin)</span>
-<span id="cb33-19"><a href="chap-rr.html#cb33-19" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> pop.totals[<span class="fu">cal_names</span>(<span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, design.srs)]</span>
-<span id="cb33-20"><a href="chap-rr.html#cb33-20" tabindex="-1"></a></span>
-<span id="cb33-21"><a href="chap-rr.html#cb33-21" tabindex="-1"></a><span class="co">#adjust the weights using calibration</span></span>
-<span id="cb33-22"><a href="chap-rr.html#cb33-22" tabindex="-1"></a><span class="co">#need -1 to remove calibration by population size</span></span>
-<span id="cb33-23"><a href="chap-rr.html#cb33-23" tabindex="-1"></a>design.cal <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
-<span id="cb33-24"><a href="chap-rr.html#cb33-24" tabindex="-1"></a>                        <span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, </span>
-<span id="cb33-25"><a href="chap-rr.html#cb33-25" tabindex="-1"></a>                        <span class="at">population =</span> pop.totals)</span>
-<span id="cb33-26"><a href="chap-rr.html#cb33-26" tabindex="-1"></a></span>
-<span id="cb33-27"><a href="chap-rr.html#cb33-27" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
-<span id="cb33-28"><a href="chap-rr.html#cb33-28" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.cal)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chap-rr.html#cb34-1" tabindex="-1"></a><span class="co">#adjust the sample data, converting stratification variables to factor</span></span>
+<span id="cb34-2"><a href="chap-rr.html#cb34-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>study <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>study)</span>
+<span id="cb34-3"><a href="chap-rr.html#cb34-3" tabindex="-1"></a>samp_dat<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(samp_dat<span class="sc">$</span>origin)</span>
+<span id="cb34-4"><a href="chap-rr.html#cb34-4" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="chap-rr.html#cb34-5" tabindex="-1"></a><span class="co">#re-define the design object because we have new data now</span></span>
+<span id="cb34-6"><a href="chap-rr.html#cb34-6" tabindex="-1"></a>design.srs <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> samp_dat, <span class="at">fpc=</span><span class="sc">~</span>fpc)</span>
+<span id="cb34-7"><a href="chap-rr.html#cb34-7" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="chap-rr.html#cb34-8" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
+<span id="cb34-9"><a href="chap-rr.html#cb34-9" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>study)</span>
+<span id="cb34-10"><a href="chap-rr.html#cb34-10" tabindex="-1"></a><span class="co">#adjust the names so the calibrate function can use</span></span>
+<span id="cb34-11"><a href="chap-rr.html#cb34-11" tabindex="-1"></a><span class="fu">names</span>(Nh_study) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;study&quot;</span>, <span class="fu">names</span>(Nh_study))</span>
+<span id="cb34-12"><a href="chap-rr.html#cb34-12" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="chap-rr.html#cb34-13" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
+<span id="cb34-14"><a href="chap-rr.html#cb34-14" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>origin)</span>
+<span id="cb34-15"><a href="chap-rr.html#cb34-15" tabindex="-1"></a><span class="fu">names</span>(Nh_origin) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;origin&quot;</span>, <span class="fu">names</span>(Nh_origin))</span>
+<span id="cb34-16"><a href="chap-rr.html#cb34-16" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="chap-rr.html#cb34-17" tabindex="-1"></a><span class="co">#combine population totals from Nh_study and Nh_origin</span></span>
+<span id="cb34-18"><a href="chap-rr.html#cb34-18" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> <span class="fu">c</span>(Nh_study, Nh_origin)</span>
+<span id="cb34-19"><a href="chap-rr.html#cb34-19" tabindex="-1"></a>pop.totals <span class="ot">&lt;-</span> pop.totals[<span class="fu">cal_names</span>(<span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, design.srs)]</span>
+<span id="cb34-20"><a href="chap-rr.html#cb34-20" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="chap-rr.html#cb34-21" tabindex="-1"></a><span class="co">#adjust the weights using calibration</span></span>
+<span id="cb34-22"><a href="chap-rr.html#cb34-22" tabindex="-1"></a><span class="co">#need -1 to remove calibration by population size</span></span>
+<span id="cb34-23"><a href="chap-rr.html#cb34-23" tabindex="-1"></a>design.cal <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
+<span id="cb34-24"><a href="chap-rr.html#cb34-24" tabindex="-1"></a>                        <span class="sc">~</span>study<span class="sc">+</span>origin<span class="dv">-1</span>, </span>
+<span id="cb34-25"><a href="chap-rr.html#cb34-25" tabindex="-1"></a>                        <span class="at">population =</span> pop.totals)</span>
+<span id="cb34-26"><a href="chap-rr.html#cb34-26" tabindex="-1"></a></span>
+<span id="cb34-27"><a href="chap-rr.html#cb34-27" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
+<span id="cb34-28"><a href="chap-rr.html#cb34-28" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.cal)</span></code></pre></div>
 <pre><code>##        mean     SE
 ## rent 748.65 21.338</code></pre>
 <p><strong><ins>Raking:</ins></strong></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chap-rr.html#cb35-1" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
-<span id="cb35-2"><a href="chap-rr.html#cb35-2" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
-<span id="cb35-3"><a href="chap-rr.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="chap-rr.html#cb35-4" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
-<span id="cb35-5"><a href="chap-rr.html#cb35-5" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">origin =</span> dat<span class="sc">$</span>origin)</span>
-<span id="cb35-6"><a href="chap-rr.html#cb35-6" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="chap-rr.html#cb35-7" tabindex="-1"></a><span class="co">#adjust the weights using raking</span></span>
-<span id="cb35-8"><a href="chap-rr.html#cb35-8" tabindex="-1"></a>design.rak <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
-<span id="cb35-9"><a href="chap-rr.html#cb35-9" tabindex="-1"></a>                        <span class="fu">list</span>(<span class="sc">~</span>study, <span class="sc">~</span>origin), </span>
-<span id="cb35-10"><a href="chap-rr.html#cb35-10" tabindex="-1"></a>                        <span class="fu">list</span>(Nh_study, Nh_origin))</span>
-<span id="cb35-11"><a href="chap-rr.html#cb35-11" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="chap-rr.html#cb35-12" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
-<span id="cb35-13"><a href="chap-rr.html#cb35-13" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.rak)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-rr.html#cb36-1" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
+<span id="cb36-2"><a href="chap-rr.html#cb36-2" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
+<span id="cb36-3"><a href="chap-rr.html#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="chap-rr.html#cb36-4" tabindex="-1"></a><span class="co">#get the population count for origin</span></span>
+<span id="cb36-5"><a href="chap-rr.html#cb36-5" tabindex="-1"></a>Nh_origin <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">origin =</span> dat<span class="sc">$</span>origin)</span>
+<span id="cb36-6"><a href="chap-rr.html#cb36-6" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="chap-rr.html#cb36-7" tabindex="-1"></a><span class="co">#adjust the weights using raking</span></span>
+<span id="cb36-8"><a href="chap-rr.html#cb36-8" tabindex="-1"></a>design.rak <span class="ot">&lt;-</span> <span class="fu">calibrate</span>(design.srs, </span>
+<span id="cb36-9"><a href="chap-rr.html#cb36-9" tabindex="-1"></a>                        <span class="fu">list</span>(<span class="sc">~</span>study, <span class="sc">~</span>origin), </span>
+<span id="cb36-10"><a href="chap-rr.html#cb36-10" tabindex="-1"></a>                        <span class="fu">list</span>(Nh_study, Nh_origin))</span>
+<span id="cb36-11"><a href="chap-rr.html#cb36-11" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="chap-rr.html#cb36-12" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
+<span id="cb36-13"><a href="chap-rr.html#cb36-13" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.rak)</span></code></pre></div>
 <pre><code>##        mean     SE
 ## rent 748.65 21.338</code></pre>
 <p>We can see that the results by <code>calibrate()</code> (with default settings) are practically the same as the results by <code>rake()</code>. In general, <code>calibrate()</code> is <strong>more general with more flexible options</strong>.</p>
@@ -1632,30 +1632,30 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 <h3><span class="header-section-number">4.4.4</span> R Code<a href="chap-rr.html#r-code-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the <code>survey</code> package to obtain regression estimates in <strong>R</strong>. We continue to work with the sample students’ rent data <code>samp_dat</code> that we created in Section <a href="chap-rr.html#rr-ratio-r">4.2.7</a>. The (survey sampling) regression can be conducted using the <code>svyglm()</code> function.</p>
 <p>Suppose we want to use <code>area</code> as the auxiliary variable to help us estimate <code>rent</code>:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chap-rr.html#cb37-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
-<span id="cb37-2"><a href="chap-rr.html#cb37-2" tabindex="-1"></a>srs.reg <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area, <span class="at">design =</span> design.srs)</span>
-<span id="cb37-3"><a href="chap-rr.html#cb37-3" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="chap-rr.html#cb37-4" tabindex="-1"></a><span class="co">#suppose we know population mean from population data</span></span>
-<span id="cb37-5"><a href="chap-rr.html#cb37-5" tabindex="-1"></a>known.x.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>area)</span>
-<span id="cb37-6"><a href="chap-rr.html#cb37-6" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="chap-rr.html#cb37-7" tabindex="-1"></a><span class="co">#we can plug the population mean in x to get the predicted value of the population mean in y</span></span>
-<span id="cb37-8"><a href="chap-rr.html#cb37-8" tabindex="-1"></a><span class="fu">predict</span>(srs.reg, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x.mean),</span>
-<span id="cb37-9"><a href="chap-rr.html#cb37-9" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-rr.html#cb38-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
+<span id="cb38-2"><a href="chap-rr.html#cb38-2" tabindex="-1"></a>srs.reg <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area, <span class="at">design =</span> design.srs)</span>
+<span id="cb38-3"><a href="chap-rr.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="chap-rr.html#cb38-4" tabindex="-1"></a><span class="co">#suppose we know population mean from population data</span></span>
+<span id="cb38-5"><a href="chap-rr.html#cb38-5" tabindex="-1"></a>known.x.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>area)</span>
+<span id="cb38-6"><a href="chap-rr.html#cb38-6" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="chap-rr.html#cb38-7" tabindex="-1"></a><span class="co">#we can plug the population mean in x to get the predicted value of the population mean in y</span></span>
+<span id="cb38-8"><a href="chap-rr.html#cb38-8" tabindex="-1"></a><span class="fu">predict</span>(srs.reg, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x.mean),</span>
+<span id="cb38-9"><a href="chap-rr.html#cb38-9" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>##   response     SE
 ## 1   760.12 17.164</code></pre>
 <p>In R, we can also use more than 1 variable to do the regression prediction. Suppose I also want to use the indicator variable <code>washroom</code>, together with <code>area</code> to predict <code>rent</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chap-rr.html#cb39-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
-<span id="cb39-2"><a href="chap-rr.html#cb39-2" tabindex="-1"></a>srs.reg2 <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area<span class="sc">+</span>washroom, <span class="at">design =</span> design.srs)</span>
-<span id="cb39-3"><a href="chap-rr.html#cb39-3" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="chap-rr.html#cb39-4" tabindex="-1"></a><span class="co">#suppose we know population mean from population data</span></span>
-<span id="cb39-5"><a href="chap-rr.html#cb39-5" tabindex="-1"></a>known.x1.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>area)</span>
-<span id="cb39-6"><a href="chap-rr.html#cb39-6" tabindex="-1"></a>known.x2.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>washroom)</span>
-<span id="cb39-7"><a href="chap-rr.html#cb39-7" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="chap-rr.html#cb39-8" tabindex="-1"></a><span class="co">#we can plug the population mean in x to get the predicted value of the population mean in y</span></span>
-<span id="cb39-9"><a href="chap-rr.html#cb39-9" tabindex="-1"></a><span class="fu">predict</span>(srs.reg2, </span>
-<span id="cb39-10"><a href="chap-rr.html#cb39-10" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x1.mean, </span>
-<span id="cb39-11"><a href="chap-rr.html#cb39-11" tabindex="-1"></a>                             <span class="at">washroom =</span> known.x2.mean),</span>
-<span id="cb39-12"><a href="chap-rr.html#cb39-12" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-rr.html#cb40-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
+<span id="cb40-2"><a href="chap-rr.html#cb40-2" tabindex="-1"></a>srs.reg2 <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area<span class="sc">+</span>washroom, <span class="at">design =</span> design.srs)</span>
+<span id="cb40-3"><a href="chap-rr.html#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="chap-rr.html#cb40-4" tabindex="-1"></a><span class="co">#suppose we know population mean from population data</span></span>
+<span id="cb40-5"><a href="chap-rr.html#cb40-5" tabindex="-1"></a>known.x1.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>area)</span>
+<span id="cb40-6"><a href="chap-rr.html#cb40-6" tabindex="-1"></a>known.x2.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>washroom)</span>
+<span id="cb40-7"><a href="chap-rr.html#cb40-7" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="chap-rr.html#cb40-8" tabindex="-1"></a><span class="co">#we can plug the population mean in x to get the predicted value of the population mean in y</span></span>
+<span id="cb40-9"><a href="chap-rr.html#cb40-9" tabindex="-1"></a><span class="fu">predict</span>(srs.reg2, </span>
+<span id="cb40-10"><a href="chap-rr.html#cb40-10" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x1.mean, </span>
+<span id="cb40-11"><a href="chap-rr.html#cb40-11" tabindex="-1"></a>                             <span class="at">washroom =</span> known.x2.mean),</span>
+<span id="cb40-12"><a href="chap-rr.html#cb40-12" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>##   response    SE
 ## 1   764.35 15.87</code></pre>
 </div>
@@ -1682,7 +1682,7 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 \end{align*}\]</span>
 so the GREG estimator becomes the regression estimator: <span class="math inline">\(\widehat{T}_{GREG} = \widehat{T}_{reg}\)</span>.</p>
 <p><strong>In general</strong>, GREG estimator and regression estimators are <strong>not the same</strong>, i.e., <span class="math inline">\(\widehat{T}_{GREG} \ne \widehat{T}_{reg}\)</span>, unless we use <strong>least squares estimates</strong> of the line. Examples of <strong>other</strong> types of regression line estimates are: robust regression, weighted regression, etc.</p>
-<p>When we think about it, ratio estimates is also a kind of regression line estimates because we use a specific line that passes through the origin with intercept = 0 and slope <span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span> to predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>. Interestingly, the GREG estimator that is based on the ratio line estimate is the same as the ratio estimator:
+<p>When we think about it, ratio estimates is also a kind of regression line estimates because we use a specific line that passes through the origin with intercept = 0 and slope <span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span> to predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>. Interestingly, the GREG estimator based on the ratio line estimate is the same as the ratio estimator:
 <span class="math display">\[\begin{align*}
 \widehat{T}_{GREG} &amp; = N\hat{B}_0 + \hat{B}_1t_{U,x} + \sum_{i\in S}e_i \\
 &amp; = 0 + \widehat{B}_r t_{U,x} + \sum_{i \in S}(y_i - \widehat{B}_r x_i) \\

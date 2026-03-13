@@ -33,6 +33,7 @@ prp:prop-srs-independence
 exm:ex-srs-poisson-sampling-2
 exm:ex-srs-srs
 eq:srs-srs-prob
+exm:ex-srs-ht-estimator
 exm:ex-srs-systematic
 fig:srs-interval-sampling
 eq:srs-cov-formula
@@ -85,6 +86,7 @@ exm:ex-strt-pa-compare-large
 exm:ex-strt-pa-compare-small
 exr:unlabeled-div-3
 eq:strt-oa
+eq:strt-oa-condition
 eq:strt-na
 eq:strt-na-var
 eq:strt-na-pa
