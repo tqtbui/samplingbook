@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-12" />
+<meta name="date" content="2026-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -360,6 +360,10 @@ div.csl-indent {
 <li class="chapter" data-level="4.4.5" data-path="chap-rr.html"><a href="chap-rr.html#greg-estimator"><i class="fa fa-check"></i><b>4.4.5</b> GREG Estimator</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="chap-clus.html"><a href="chap-clus.html"><i class="fa fa-check"></i><b>5</b> Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
 <li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
@@ -436,10 +440,10 @@ The <em>parameter</em> of our interest can be the average crop yield per acre.</
 <div class="empty">
 
 </div>
-<p>In survey sampling, we often assume that the population is finite<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, and consists of <span class="math inline">\(N &lt; \infty\)</span> observation units. The population size <span class="math inline">\(N\)</span> is also assumed to be fixed, although this assumption rarely holds in reality.</p>
+<p>In survey sampling, we often assume that the population is <strong>finite</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, and consists of <span class="math inline">\(N &lt; \infty\)</span> observation units. The population size <span class="math inline">\(N\)</span> is also assumed to be <strong>fixed</strong>, although this assumption rarely holds in reality.</p>
 <div class="myExample">
 <div class="example">
-<p><span id="exm:ex-intro-rent-finite-pop" class="example"><strong>Example 1.3  </strong></span>In <a href="chap-intro.html#exm:ex-intro-rent">1.1</a>, the USask student body may change every semester as current students graduate and new students enroll.</p>
+<p><span id="exm:ex-intro-rent-finite-pop" class="example"><strong>Example 1.3  </strong></span>In <a href="chap-intro.html#exm:ex-intro-rent">1.1</a>, the USask student body may change every semester as current students graduate and new students enroll. This is a violation of the fixed population size assumption. On the other hand, the assumption may hold if we consider the whole student body in a fixed semester.</p>
 </div>
 </div>
 </div>
@@ -447,7 +451,7 @@ The <em>parameter</em> of our interest can be the average crop yield per acre.</
 <h2><span class="header-section-number">1.2</span> Census vs. Samples<a href="chap-intro.html#census-vs.-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="census" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Census<a href="chap-intro.html#census" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To understand about the parameter of interest, we may try to collect data about every single observation unit in the target population. This is called a <strong>census</strong>.</p>
+<p>To understand about the parameter of interest, we may try to collect data about <strong>every single</strong> observation unit in the target population. This is called a <strong>census</strong>.</p>
 <ul>
 <li><p>With a census, you can calculate the parameter of interest directly.</p></li>
 <li><p>A census also provides information on every subpopulation, no matter how small.</p></li>
@@ -486,10 +490,10 @@ Figure 1.1: Population and sample, from Figure 1.1. of <span class="citation">Lo
 </p>
 </div>
 <ul>
-<li><p><strong>Statistic</strong>: A quantity that can be calculated from the sample.</p>
+<li><p><strong>Statistic</strong>: A quantity that can be calculated from the <strong>sample</strong>.</p>
 <ul>
-<li><p>We can use statistics to <strong>estimate</strong> or make conclusions about the population parameter. This process is called <strong>inference</strong>.</p></li>
-<li><p>In the next few chapters, we will consider (i) different sampling methods, then learn about (ii) how to make inferences in each of those sampling cases.</p></li>
+<li><p>We can use statistics to <strong>estimate</strong> or <strong>make conclusions</strong> about the population parameter. This process is called <strong>inference</strong>.</p></li>
+<li><p>In the next few chapters, we will consider (i) different sampling methods, then learn about (ii) how to make inferences for each of those sampling methods.</p></li>
 </ul></li>
 </ul>
 <div class="myExample">
@@ -502,7 +506,7 @@ Figure 1.1: Population and sample, from Figure 1.1. of <span class="citation">Lo
 <div class="empty">
 
 </div>
-<p>Since samples are much smaller than censuses, data collection for samples are often conducted with more care. Thus, if samples are collected in an appropriate manner, inferences from samples can be more reliable than censuses.</p>
+<p>Since samples are much smaller than censuses, data collection for samples are often conducted with more care and precision. Thus, if samples are collected in an appropriate manner, inferences from samples can be even more reliable than censuses.</p>
 </div>
 </div>
 <div id="intro-bias-var" class="section level2 hasAnchor" number="1.3">
@@ -513,8 +517,8 @@ Figure 1.1: Population and sample, from Figure 1.1. of <span class="citation">Lo
 <p>In most cases, the list of observation units included in a sample is random, intentionally or not. The sample-to-sample difference (under the same sampling protocol) is called the variability of the sampling protocol. A sampling protocol with <strong>low variability</strong> is a sampling protocol with <strong>high precision</strong>.</p>
 <div class="myExample">
 <div class="example">
-<p><span id="exm:ex-intro-rent-variability" class="example"><strong>Example 1.6  </strong></span>Suppose I randomly choose <strong>one</strong> region in Saskatoon and then ask students in that region about their rent. In this case, my sampling protocol will have a <strong>high variability</strong> or a <strong>low precision</strong>.</p>
-<p>This is because if I <strong>repeat</strong> this same sample collecting method for many times, <strong>every time</strong> I will interview students living in a different region. Since rent will depend on specific regions and their distances to school, the rent data I collect will tend to be substantially different from one sample to another.</p>
+<p><span id="exm:ex-intro-rent-variability" class="example"><strong>Example 1.6  </strong></span>Suppose I randomly choose <strong>one</strong> neighborhood in Saskatoon and then ask students in that neighborhood about their rent. In this case, my sampling protocol will have a <strong>high variability</strong> or a <strong>low precision</strong>.</p>
+<p>This is because if I <strong>repeat</strong> this same sample collecting method for many times, <strong>every time</strong> I may interview students living in a different neighborhood. Since rent will depend on specific neighborhoods and their distances to school, the rent data I collect will tend to be substantially different from one sample to another.</p>
 </div>
 </div>
 </div>
@@ -536,7 +540,7 @@ Figure 1.1: Population and sample, from Figure 1.1. of <span class="citation">Lo
 Figure 1.2: Accuracy and precision.
 </p>
 </div>
-<p>Because we want to get an accurate and precise estimation of the population parameter, good sampling protocol should have low variance and low bias. You will learn from this course that we are usually able to reduce the variability by choosing an appropriate sampling method. On the other hand, bias is a much harder and more subtle problem to deal with. In practice, it can be even impossible to avoid bias.</p>
+<p>Because we want to get an accurate and precise estimation of the population parameter, good sampling protocol should have <strong>low variance</strong> and <strong>low bias</strong>. You will learn from this course that we are usually able to reduce the variability by choosing an appropriate sampling method. On the other hand, bias is a much harder and more subtle problem to deal with. In practice, it can be even impossible to avoid bias.</p>
 </div>
 </div>
 <div id="sources-of-bias" class="section level2 hasAnchor" number="1.4">
@@ -552,16 +556,16 @@ Figure 1.2: Accuracy and precision.
 <ul>
 <li><p><strong>convenience samples</strong>: when researchers conduct surveys on the first subset of population units they encounter;</p></li>
 <li><p><strong>judgement samples</strong>: when researchers deliberately and intentionally select a “representative” sample;</p></li>
-<li><p><strong>self-selected samples</strong>: when the sample only consists of volunteer;</p></li>
+<li><p><strong>self-selected samples</strong>: when the sample only consists of volunteers;</p></li>
 <li><p><strong>undercoverage</strong>: when the sampling frame fails to include some members of the target population;</p></li>
 <li><p><strong>overcoverage</strong>: when units not in the target population can end up in the sample;</p></li>
-<li><p><strong>nonresponse</strong>: when responses from some members of the chosen samples are not collected.</p></li>
+<li><p><strong>nonresponse</strong>: when some members of the chosen samples do not respond.</p></li>
 </ul>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-intro-rent-selection-bias" class="example"><strong>Example 1.8  </strong></span>If we choose to interview our friends on their rent, because they are easier to interview, we are collecting a <em>convenience sample</em>. If we look at people walking on the street and use our judgement to determine who we think are spending the average rent and go to interview them, we are collecting a <em>judgement sample</em>. If we hang on posters around school to let students to come to us by themselves, we are collecting a <em>self-selected</em> sample. In all these cases, there can be systematic differences between students in our sample compared to students in the population. Our friends may have a similar spending patterns as us while other students may have different opinions. Our judgement can easily be misleading regarding who we think are paying the average rent. Finally, volunteers are usually more motivated by rewards and may have a different spending behavior compared to the rest of the students.</p>
 <p>When we interview students by visiting classes, we may miss people who do not come to class, remote students, graduate students who are writing their theses, medical residents, and so on. This induces <em>undercoverage</em>. When we send out emails with rewards for students to participate in our surveys, we may also end up collecting data from people who are not eligible but are motivated by the rewards and make up their eligibility. This leads us to the <em>overcoverage</em> problem.</p>
-<p>Even when we actually get to interview a student, they may choose not to disclose their information. These students can be more private and have a different rent selection than the one who reply to our interviews. Here, we run into a <em>nonresponse</em> problem.</p>
+<p>Even when we actually get to interview a student, they may choose not to disclose their information. These students can be more private and have a different rent selection than the ones who reply to our interviews. Here, we run into a <em>nonresponse</em> problem.</p>
 </div>
 </div>
 </div>
@@ -586,9 +590,9 @@ Figure 1.2: Accuracy and precision.
 <div class="empty">
 
 </div>
-<p>Therefore, when conducting surveys, we should pay attention to our sampling protocol so that we get responses or measurements as accurate as possible.</p>
+<p>Therefore, when conducting surveys, we should pay attention to our sampling protocol so that we get responses or measurements as <strong>accurate</strong> as possible.</p>
 <ul>
-<li><p>For surveys that require a measurement tool or device, such an equipment needs to get a thorough reliability check.</p></li>
+<li><p>For surveys that require a measurement tool or device, such an equipment needs to go through a thorough reliability check before the survey is rolled out.</p></li>
 <li><p>When designing questionnaires to survey individuals, we should pay attention to details that may influence respondents’ responses, such as the order and wording of the questions, the list of options provided, the attitude of the interviewers, etc. For a quick guide on <strong>questionnaire design</strong>, check <a href="https://scsru.github.io/Modules/introduction-to-questionnaire-design.html">this tutorial</a>.</p></li>
 </ul>
 
@@ -598,7 +602,7 @@ Figure 1.2: Accuracy and precision.
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>This is called the finite population assumption<a href="chap-intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>This is called the finite population assumption.<a href="chap-intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-12" />
+<meta name="date" content="2026-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -360,6 +360,10 @@ div.csl-indent {
 <li class="chapter" data-level="4.4.5" data-path="chap-rr.html"><a href="chap-rr.html#greg-estimator"><i class="fa fa-check"></i><b>4.4.5</b> GREG Estimator</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="chap-clus.html"><a href="chap-clus.html"><i class="fa fa-check"></i><b>5</b> Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
 <li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
@@ -403,11 +407,11 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="app-summaries" class="section level1 hasAnchor" number="6">
+<div id="app-summaries" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">B</span> Formula Summaries<a href="app-summaries.html#app-summaries" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="chapter-2" class="section level2 hasAnchor" number="6.1">
+<div id="chapter-2" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">B.1</span> Chapter 2<a href="app-summaries.html#chapter-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="statistical-formulas" class="section level3 hasAnchor" number="6.1.1">
+<div id="statistical-formulas" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">B.1.1</span> Statistical Formulas<a href="app-summaries.html#statistical-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mean: <span class="math inline">\(\overline{x} = \frac{1}{m}(x_1 + x_2 + ... + x_m) = \frac{1}{m}\sum_{i=1}^m x_i\)</span></p>
 <p>Variance: <span class="math inline">\(s^2 = \frac{1}{m-1}\sum_{i=1}^m (x_i - \overline{x})^2 = \frac{1}{m-1}\left[\left(\sum_{i=1}^m x_i^2\right) - \left(m\overline{x}^2\right)\right]\)</span></p>
@@ -420,7 +424,7 @@ div.csl-indent {
 <p>Linearity of Expectation: <span class="math inline">\(\E\left[\sum_{i=1}^N a_iZ_i\right] = \sum_{i=1}^N a_i\E\big[Z_i\big]\)</span></p>
 <p>Variance of Linear Combination: <span class="math inline">\(Var\left(\sum_{i=1}^Na_iZ_i\right) = \sum_{i=1}^N a_i^2 Var(Z_i) + 2\sum_{i \ne j}a_ia_j Cov(Z_i,Z_j)\)</span></p>
 </div>
-<div id="notation" class="section level3 hasAnchor" number="6.1.2">
+<div id="notation" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">B.1.2</span> Notation<a href="app-summaries.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
@@ -459,7 +463,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="horvitz-thompson-estimator-1" class="section level3 hasAnchor" number="6.1.3">
+<div id="horvitz-thompson-estimator-1" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">B.1.3</span> Horvitz-Thompson Estimator<a href="app-summaries.html#horvitz-thompson-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Probability of selection: <span class="math inline">\(\pi_i = \P(Z_i = 1) = \E[Z_i]\)</span></p>
 <p>Weights: <span class="math inline">\(w_i = 1/\pi_i\)</span></p>
@@ -471,7 +475,7 @@ Var(\widehat{T}_{HT}) &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 
 Var(\widehat{\overline{Y}}_{HT}) &amp; = \frac{1}{N^2}Var(\widehat{T}_{HT})
 \end{align*}\]</span></p>
 </div>
-<div id="simple-random-sampling" class="section level3 hasAnchor" number="6.1.4">
+<div id="simple-random-sampling" class="section level3 hasAnchor" number="7.1.4">
 <h3><span class="header-section-number">B.1.4</span> Simple Random Sampling<a href="app-summaries.html#simple-random-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Under SRS, <span class="math inline">\(\pi_i = \frac{n}{N}\)</span> for all <span class="math inline">\(i \in U\)</span>. Plugging this and other properties of SRS into the HT estimator:</p>
 <table>
@@ -511,16 +515,16 @@ Var(\widehat{\overline{Y}}_{HT}) &amp; = \frac{1}{N^2}Var(\widehat{T}_{HT})
 </tbody>
 </table>
 </div>
-<div id="others" class="section level3 hasAnchor" number="6.1.5">
+<div id="others" class="section level3 hasAnchor" number="7.1.5">
 <h3><span class="header-section-number">B.1.5</span> Others<a href="app-summaries.html#others" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Standard error: <span class="math inline">\(SE(\widehat{\theta}) = \sqrt{Var(\hat{\theta})}\)</span></p>
 <p>Confidence intervals: <span class="math inline">\(\widehat{\theta} \pm z_{\alpha/2}SE(\widehat{\theta})\)</span></p>
 <p>Sample size calculation: <span class="math inline">\(e = z_{\alpha/2}SE(\widehat{\theta})\)</span></p>
 </div>
 </div>
-<div id="chapter-3" class="section level2 hasAnchor" number="6.2">
+<div id="chapter-3" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">B.2</span> Chapter 3<a href="app-summaries.html#chapter-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="general-formula-for-ht-estimators" class="section level3 hasAnchor" number="6.2.1">
+<div id="general-formula-for-ht-estimators" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">B.2.1</span> General Formula for HT Estimators<a href="app-summaries.html#general-formula-for-ht-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
@@ -559,7 +563,7 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 \overline{Y}_{S,h} &amp; = \frac{1}{n_h}\sum_{i \in S_h}y_i = \frac{1}{n_h}\sum_{i = 1}^{n_h} y_{h,i}\\
 \end{align*}\]</span></p>
 </div>
-<div id="additional-formulas" class="section level3 hasAnchor" number="6.2.2">
+<div id="additional-formulas" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">B.2.2</span> Additional Formulas<a href="app-summaries.html#additional-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
@@ -595,16 +599,16 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 <p>Design effect: <span class="math inline">\(DE = \frac{Var_{complex}(\widehat{\theta}_n)}{Var_{SRS}(\widehat{\theta}_n)}\)</span></p>
 <p>Effective sample size: <span class="math inline">\(n_{eff} = \frac{n}{DE}\)</span></p>
 </div>
-<div id="allocations" class="section level3 hasAnchor" number="6.2.3">
+<div id="allocations" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">B.2.3</span> Allocations<a href="app-summaries.html#allocations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Proportional allocation: <span class="math inline">\(n_h \propto N_h\)</span></p>
 <p>Optimal allocation: <span class="math inline">\(n_h \propto \frac{N_hs_h}{\sqrt{c_h}}\)</span></p>
 <p>Neyman allocation: <span class="math inline">\(n_h \propto N_hs_h\)</span></p>
 </div>
 </div>
-<div id="chapter-4" class="section level2 hasAnchor" number="6.3">
+<div id="chapter-4" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">B.3</span> Chapter 4<a href="app-summaries.html#chapter-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="ratio-estimation-1" class="section level3 hasAnchor" number="6.3.1">
+<div id="ratio-estimation-1" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">B.3.1</span> Ratio Estimation<a href="app-summaries.html#ratio-estimation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
@@ -650,7 +654,7 @@ S_{S,x}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}(x_i - \overline{X}_S)^2 = \frac{(\s
 R_{S} &amp; = \frac{\sum_{i\in S}(y_i - \overline{Y}_S)(x_i - \overline{X}_S)}{(n-1)S_{S,x}S_{S,y}} = \frac{(\sum_{i\in S}x_iy_i) - n\overline{Y}_S\overline{X}_S}{(n-1)S_{S,x}S_{S,y}}
 \end{align*}\]</span></p>
 </div>
-<div id="post-stratification-1" class="section level3 hasAnchor" number="6.3.2">
+<div id="post-stratification-1" class="section level3 hasAnchor" number="7.3.2">
 <h3><span class="header-section-number">B.3.2</span> Post-Stratification<a href="app-summaries.html#post-stratification-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Post-stratified estimators:</p>
 <p><span class="math display">\[\begin{align*}
@@ -662,7 +666,7 @@ R_{S} &amp; = \frac{\sum_{i\in S}(y_i - \overline{Y}_S)(x_i - \overline{X}_S)}{(
 \widehat{Var}_{SRS}(\widehat{\overline{Y}}_{post}) \approx \widehat{Var}_{strt, prop}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\sum_{h=1}^H \frac{N_h}{N}\frac{S_{S,h}^2}{n}.
 \]</span></p>
 </div>
-<div id="regression-estimation-1" class="section level3 hasAnchor" number="6.3.3">
+<div id="regression-estimation-1" class="section level3 hasAnchor" number="7.3.3">
 <h3><span class="header-section-number">B.3.3</span> Regression Estimation<a href="app-summaries.html#regression-estimation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Regression estimators:
 <span class="math display">\[\begin{align*}

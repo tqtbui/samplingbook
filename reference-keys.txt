@@ -117,6 +117,7 @@ fig:rr-regression
 exm:ex-rr-reg-estimate
 eq:rr-reg-mse
 exm:ex-rr-reg-var
+eq:rr-greg
 chap-intro
 survey-sampling
 census-vs.-samples
@@ -204,6 +205,8 @@ least-square-estimation
 bias-and-variance
 r-code-1
 greg-estimator
+chap-clus
+one-stage-cluster-sampling
 app-dataset
 app-summaries
 chapter-2

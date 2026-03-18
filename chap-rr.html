@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-12" />
+<meta name="date" content="2026-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="chap-strt.html"/>
-<link rel="next" href="app-dataset.html"/>
+<link rel="next" href="chap-clus.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -360,6 +360,10 @@ div.csl-indent {
 <li class="chapter" data-level="4.4.5" data-path="chap-rr.html"><a href="chap-rr.html#greg-estimator"><i class="fa fa-check"></i><b>4.4.5</b> GREG Estimator</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="chap-clus.html"><a href="chap-clus.html"><i class="fa fa-check"></i><b>5</b> Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
 <li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
@@ -647,7 +651,7 @@ when we want to use auxiliary information to increase the precision, i.e., <stro
 <h3><span class="header-section-number">4.2.3</span> Bias<a href="chap-rr.html#bias-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details>
 <summary>
-Different from the HT estimator for SRS in Section <a href="chap-srs.html#srs-srs-ht-estimator">2.6.2</a>, the ratio estimators are <strong>biased</strong> with
+Different from the HT estimator for SRS in Section <a href="chap-srs.html#srs-srs-ht-estimator">2.6.2</a>, the <strong>ratio estimators are biased</strong> with
 <span class="math display" id="eq:rr-ratio-bias">\[\begin{equation}
   Bias(\widehat{\overline{Y}}_r) = -Cov(\widehat{B}_r, \overline{X}_S)
   \tag{4.2}
@@ -1572,7 +1576,7 @@ s_{U,d}^2 &amp; = \frac{\sum_{i=1}^Nd_i^2}{N-1} \\
 &amp; = \frac{\sum_{i=1}^N(y_i - \overline{y}_U + \widehat{b}_{U,reg,1}\overline{x}_U - \widehat{b}_{U,reg,1} x_i)^2}{N-1} \\
 &amp; = \frac{\sum_{i=1}^N(y_i - \overline{y}_U)^2 + \widehat{b}_{U,reg,1}^2\sum_{i=1}^N(x_i - \overline{x}_U)^2 - 2\widehat{b}_{U,reg,1}\sum_{i=1}^N(y_i - \overline{y}_U)(x_i - \overline{x}_U)}{N-1} \\
 &amp; = s_{U,y}^2 + \widehat{b}_{U,reg,1}^2s_{U,x}^2 - 2\widehat{b}_{U,reg,1}r_Us_{U,x}s_{U,y} \\
-&amp; = s_{U,y}^2 + \frac{r_U^2s_{U,y}^2}{s_{U,x}^2} - \frac{r_Us_{U,y}}{s_{U,x}}r_Us_{U,x}s_{U,y} \\
+&amp; = s_{U,y}^2 + \frac{r_U^2s_{U,y}^2}{s_{U,x}^2}s_{U,x}^2 - \frac{r_Us_{U,y}}{s_{U,x}}r_Us_{U,x}s_{U,y} \\
 &amp; = s_{U,y}^2(1-r_U^2).
 \end{align*}\]</span></p>
 </div>
@@ -1661,17 +1665,29 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 </div>
 <div id="greg-estimator" class="section level3 hasAnchor" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> GREG Estimator<a href="chap-rr.html#greg-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The idea of the GREG estimator, i.e., the generalized regression estimator <span class="citation">(<a href="references.html#ref-sarndal2003model">Särndal, Swensson, and Wretman 2003</a>)</span>, is that: we already <strong>know true values</strong> of <span class="math inline">\(Y\)</span> for units in the sample <span class="math inline">\(S\)</span> that we collected. Therefore, we <strong>only</strong> need to predict/estimate <span class="math inline">\(Y\)</span> for units <span class="math inline">\(i\)</span> that are in the population <span class="math inline">\(U\)</span>, but was not sampled, that is, we only need to predict <span class="math inline">\(Y\)</span> for <span class="math inline">\(i \in U \backslash S\)</span>. This is the same as <strong>predicting</strong> <span class="math inline">\(Y\)</span> for <strong>all</strong> units in the <strong>population</strong>, then adding the <strong>prediction errors</strong> in the <strong>sample</strong>:
+<p>We can write the HT estimator as:
 <span class="math display">\[\begin{align*}
-\widehat{T}_{GREG} &amp; = \sum_{i \in S}y_i + \sum_{i \in U\backslash S}\hat{y}_i \\
-&amp; = \sum_{i \in S}(\hat{y}_i + y_i - \hat{y}_i) + \sum_{i \in U\backslash S}\hat{y}_i \\
-&amp; = \sum_{i \in S} \hat{y}_i + \sum_{i \in U\backslash S}\hat{y}_i + \sum_{i\in S}(y_i - \hat{y}_i) \\
-&amp; = \sum_{i\in U} \hat{y}_i + \sum_{i\in S}e_i
-\end{align*}\]</span></p>
+\widehat{T}_{HT} &amp; = \frac{N}{n}\sum_{i\in S}y_i \\
+&amp; = \frac{N}{n}\sum_{i \in S}(\hat{y}_i + y_i - \hat{y}_i) \\
+&amp; = \frac{N}{n}\sum_{i\in S}\hat{y}_i + \frac{N}{n}\sum_{i\in S} e_i
+\end{align*}\]</span>
+We can see that the first component is the <strong>HT estimator</strong> for the <strong>population total</strong> of <strong>predicted values</strong> of <span class="math inline">\(Y\)</span> based on <span class="math inline">\(X\)</span> and the second component is the <strong>HT estimator</strong> for the <strong>population total</strong> of <strong>prediction errors</strong>.</p>
+<p>The idea of the GREG estimator, i.e., the generalized regression estimator <span class="citation">(<a href="references.html#ref-sarndal2003model">Särndal, Swensson, and Wretman 2003</a>)</span>, is to modify the <strong>first component</strong> of the HT estimator <span class="math inline">\(\widehat{T}_{HT}\)</span> to be the <strong>actual</strong> population total of predicted values, in case we know it:
+<span class="math display" id="eq:rr-greg">\[\begin{equation}
+\widehat{T}_{GREG} = \sum_{i=1}^N\hat{y}_i + \frac{N}{n}\sum_{i\in S} e_i
+\tag{4.13}
+\end{equation}\]</span>
+Essentially, we first <strong>predict</strong> the <strong>responses</strong> for all units in the <strong>population</strong>, then <strong>estimate</strong> the population prediction <strong>errors</strong> from the <strong>sample</strong>. So if the prediction model is very good, the errors are small and we get a better prediction by replacing the <strong>estimated</strong> population total of predicted values by the <strong>actual</strong> population total of predicted values. At the same time, if the prediction model is bad, we still get an (almost) unbiased estimator because
+<span class="math display">\[\begin{align*}
+\widehat{T}_{GREG} &amp; = \sum_{i=1}^N\hat{y}_i + \frac{N}{n}\sum_{i\in S} e_i \\
+&amp; = \sum_{i=1}^N\hat{y}_i + \frac{N}{n}\sum_{i\in S} (y_i - \hat{y}_i) \\
+&amp; = \widehat{T}_{HT} + \left(\sum_{i=1}^N\hat{y}_i - \frac{N}{n}\sum_{i\in S} \hat{y}_i\right)
+\end{align*}\]</span>
+and <span class="math inline">\(\widehat{T}_{HT}\)</span> is unbiased for <span class="math inline">\(\overline{y}_U\)</span> while <span class="math inline">\(\frac{N}{n}\sum_{i\in S} \hat{y}_i\)</span> is the HT estimator for <span class="math inline">\(\sum_{i=1}^N\hat{y}_i\)</span>. This shows the <strong>robustness</strong><a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> of the GREG estimator.</p>
 <p>For regression models <span class="math inline">\(y = b_0 + b_1 x\)</span> and <strong>any regression line estimates</strong> <span class="math inline">\(\hat{B}_0\)</span> and <span class="math inline">\(\hat{B}_1\)</span>, this is equivalent to:
 <span class="math display">\[\begin{align*}
 \widehat{T}_{GREG} &amp; = \sum_{i\in U} \hat{y}_i + \sum_{i\in S}e_i \\
-&amp; = N\hat{B}_0 + \hat{B}_1t_{U,x} + \sum_{i\in S}e_i
+&amp; = N\hat{B}_0 + \hat{B}_1t_{U,x} + \frac{N}{n}\sum_{i\in S}e_i
 \end{align*}\]</span></p>
 <p>However, when we are using <strong>least squares estimates</strong>, we know that:
 <span class="math display">\[\begin{align*}
@@ -1682,20 +1698,16 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 \end{align*}\]</span>
 so the GREG estimator becomes the regression estimator: <span class="math inline">\(\widehat{T}_{GREG} = \widehat{T}_{reg}\)</span>.</p>
 <p><strong>In general</strong>, GREG estimator and regression estimators are <strong>not the same</strong>, i.e., <span class="math inline">\(\widehat{T}_{GREG} \ne \widehat{T}_{reg}\)</span>, unless we use <strong>least squares estimates</strong> of the line. Examples of <strong>other</strong> types of regression line estimates are: robust regression, weighted regression, etc.</p>
-<p>When we think about it, ratio estimates is also a kind of regression line estimates because we use a specific line that passes through the origin with intercept = 0 and slope <span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span> to predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>. Interestingly, the GREG estimator based on the ratio line estimate is the same as the ratio estimator:
+<p>When we think about it, <strong>ratio estimates</strong> is also a kind of regression line estimates because we use a specific line that passes through the origin with intercept = 0 and slope <span class="math inline">\(\widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S}\)</span> to predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>. Interestingly, the GREG estimator based on the ratio line estimate is the same as the ratio estimator:
 <span class="math display">\[\begin{align*}
-\widehat{T}_{GREG} &amp; = N\hat{B}_0 + \hat{B}_1t_{U,x} + \sum_{i\in S}e_i \\
-&amp; = 0 + \widehat{B}_r t_{U,x} + \sum_{i \in S}(y_i - \widehat{B}_r x_i) \\
-&amp; = \widehat{B}_r t_{U,x} + n\overline{Y}_S - n\frac{\overline{Y}_S}{\overline{X}_S}\overline{X}_S \\
+\widehat{T}_{GREG} &amp; = N\hat{B}_0 + \hat{B}_1t_{U,x} + \frac{N}{n}\sum_{i\in S}e_i \\
+&amp; = 0 + \widehat{B}_r t_{U,x} + \frac{N}{n}\sum_{i \in S}(y_i - \widehat{B}_r x_i) \\
+&amp; = \widehat{B}_r t_{U,x} + N\overline{Y}_S - N\frac{\overline{Y}_S}{\overline{X}_S}\overline{X}_S \\
 &amp; = \widehat{B}_r t_{U,x} = \widehat{T}_{r}.
 \end{align*}\]</span></p>
 
 </div>
 </div>
-</div>
-
-
-
 </div>
 <div class="footnotes">
 <hr />
@@ -1705,6 +1717,7 @@ so the GREG estimator becomes the regression estimator: <span class="math inline
 <li id="fn13"><p>On this line, if <span class="math inline">\(x\)</span> increases by 1, then <span class="math inline">\(y\)</span> increases by <span class="math inline">\(b_1\)</span>.<a href="chap-rr.html#fnref13" class="footnote-back">↩︎</a></p></li>
 <li id="fn14"><p>We want to care for prediction errors from <strong>all</strong> units<a href="chap-rr.html#fnref14" class="footnote-back">↩︎</a></p></li>
 <li id="fn15"><p>Over-estimation and under-estimation is equally bad so we use the square of the differences.<a href="chap-rr.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>That is, if the model is correct, we get a model-unbiased estimator and if the model is incorrect, we still get a design-unbiased estimator. In fact, the GREG estimator has been slightly modified and applied to problems such as causal inference and missing data to achieve what is called <strong>double robustness</strong>. The idea is further developed to what we called <strong>double or debiased machine learning</strong> nowadays.<a href="chap-rr.html#fnref16" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -1713,7 +1726,7 @@ so the GREG estimator becomes the regression estimator: <span class="math inline
         </div>
       </div>
 <a href="chap-strt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="app-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chap-clus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
