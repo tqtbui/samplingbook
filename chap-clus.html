@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-18" />
+<meta name="date" content="2026-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -283,7 +283,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="chap-srs.html"><a href="chap-srs.html#bias-1"><i class="fa fa-check"></i><b>2.3.1</b> Bias</a></li>
 <li class="chapter" data-level="2.3.2" data-path="chap-srs.html"><a href="chap-srs.html#bias-of-sample-total"><i class="fa fa-check"></i><b>2.3.2</b> Bias of Sample Total</a></li>
-<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#srs-ht"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
 <li class="chapter" data-level="2.3.4" data-path="chap-srs.html"><a href="chap-srs.html#sampling-weights"><i class="fa fa-check"></i><b>2.3.4</b> Sampling Weights</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="chap-srs.html"><a href="chap-srs.html#srs-probability-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability Sampling</a></li>
@@ -362,7 +362,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="chap-clus.html"><a href="chap-clus.html"><i class="fa fa-check"></i><b>5</b> Cluster Sampling</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure"><i class="fa fa-check"></i><b>5.1.1</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#comparing-to-srs-1"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -371,8 +377,8 @@ div.csl-indent {
 <li class="chapter" data-level="B.1" data-path="app-summaries.html"><a href="app-summaries.html#chapter-2"><i class="fa fa-check"></i><b>B.1</b> Chapter 2</a>
 <ul>
 <li class="chapter" data-level="B.1.1" data-path="app-summaries.html"><a href="app-summaries.html#statistical-formulas"><i class="fa fa-check"></i><b>B.1.1</b> Statistical Formulas</a></li>
-<li class="chapter" data-level="B.1.2" data-path="app-summaries.html"><a href="app-summaries.html#notation"><i class="fa fa-check"></i><b>B.1.2</b> Notation</a></li>
-<li class="chapter" data-level="B.1.3" data-path="app-summaries.html"><a href="app-summaries.html#horvitz-thompson-estimator-1"><i class="fa fa-check"></i><b>B.1.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="B.1.2" data-path="app-summaries.html"><a href="app-summaries.html#notation-1"><i class="fa fa-check"></i><b>B.1.2</b> Notation</a></li>
+<li class="chapter" data-level="B.1.3" data-path="app-summaries.html"><a href="app-summaries.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>B.1.3</b> Horvitz-Thompson Estimator</a></li>
 <li class="chapter" data-level="B.1.4" data-path="app-summaries.html"><a href="app-summaries.html#simple-random-sampling"><i class="fa fa-check"></i><b>B.1.4</b> Simple Random Sampling</a></li>
 <li class="chapter" data-level="B.1.5" data-path="app-summaries.html"><a href="app-summaries.html#others"><i class="fa fa-check"></i><b>B.1.5</b> Others</a></li>
 </ul></li>
@@ -409,9 +415,539 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="chap-clus" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Cluster Sampling<a href="chap-clus.html#chap-clus" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In practice, <strong>observation units</strong> (units that we take measurements or surveys on) are organized or administered by <strong>clusters</strong>, for example: students in schools, patients in hospitals, etc. In these cases, it is often <strong>easier</strong>, <strong>more convenient</strong>, and <strong>cheaper</strong> to construct the sampling frame based on the list of clusters, rather than the list of individuals. The sampling scheme that accommodates this reality is called <strong>cluster sampling</strong>, where the <strong>sampling units</strong> are <strong>clusters</strong> (e.g., hospitals) instead of observation units (e.g., patients). That is, we sample on the cluster level, instead of individual level.</p>
+<p>In cluster sampling, the <strong>clusters</strong> are often called the primary sampling units (or <strong>psus</strong>) and the <strong>observation units</strong> are called secondary sampling units (or <strong>ssus</strong>).</p>
 <div id="one-stage-cluster-sampling" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> One-Stage Cluster Sampling<a href="chap-clus.html#one-stage-cluster-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-procedure" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Sampling Procedure<a href="chap-clus.html#sampling-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In <strong>one-stage cluster sampling</strong>, we</p>
+<ul>
+<li><p>divide the population into <span class="math inline">\(N\)</span> non-overlapping clusters,</p></li>
+<li><p>do SRS to choose <span class="math inline">\(n\)</span> clusters into the sample,</p></li>
+<li><p>for each sampled cluster <span class="math inline">\(i\)</span>, include <strong>all</strong> observation units <span class="math inline">\(j\)</span>.</p></li>
+</ul>
+<p>Figure <a href="chap-clus.html#fig:clus-comparison">5.1</a> visualizes a comparison between SRS, stratified sampling and one-stage cluster sampling. We can see that although both stratified sampling and cluster sampling divide the population into subgroups: in stratified sampling, we call them strata, in cluster sampling, we call them clusters. However, in <strong>stratified sampling</strong>, we sample units from <strong>every</strong> subgroups, while in <strong>cluster sampling</strong>, we only sample <strong>some</strong> of the subgroups. Moreover, in <strong>one-stage</strong> cluster-sampling, we include <strong>all</strong> observation units into our sample.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:clus-comparison"></span>
+<img src="data/images/chap-clus/comparison.png" alt="Comparison of SRS, Stratified Sampling and One-Stage Cluster Sampling." width="100%" />
+<p class="caption">
+Figure 5.1: Comparison of SRS, Stratified Sampling and One-Stage Cluster Sampling.
+</p>
+</div>
+</div>
+<div id="notation" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Notation<a href="chap-clus.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><span class="math inline">\(N\)</span>: number of clusters (psus) in the population</p></li>
+<li><p><span class="math inline">\(n\)</span>: number of clusters (psus) in the sample</p></li>
+<li><p><span class="math inline">\(U\)</span>: the population of <span class="math inline">\(N\)</span> clusters (psus)</p></li>
+<li><p><span class="math inline">\(S\)</span>: the sample of <span class="math inline">\(n\)</span> clusters (psus) chosen from <span class="math inline">\(U\)</span></p></li>
+<li><p><span class="math inline">\(U_i\)</span>: the collection of observation units that belongs to the <span class="math inline">\(i\)</span>th cluster in the population</p></li>
+<li><p><span class="math inline">\(S_i\)</span>: the collection of observation units that belongs to the <span class="math inline">\(i\)</span>th cluster in the sample.</p>
+<ul>
+<li>For one-stage cluster sampling, if the <span class="math inline">\(i\)</span>th cluster is selected into the sample, i.e., <span class="math inline">\(i \in S\)</span>, then all units in the cluster will be selected into the sample, so <span class="math inline">\(S_i = U_i\)</span>.</li>
+</ul></li>
+<li><p><span class="math inline">\(M_i\)</span> is the number of observation units (ssus) in the <span class="math inline">\(i\)</span>th cluster</p></li>
+<li><p><span class="math inline">\(M_0 = \sum_{i=1}^N M_i\)</span> is the number of observation units (ssus) in the entire population.</p></li>
+<li><p><span class="math inline">\(y_{ij}\)</span>: the measurement of <span class="math inline">\(Y\)</span> from the <span class="math inline">\(j\)</span>th unit of the <span class="math inline">\(i\)</span>th cluster.</p></li>
+<li><p><span class="math inline">\(t_{U,i} = \sum_{j \in U_i}y_{ij}\)</span> is the total of the <span class="math inline">\(i\)</span>th cluster.</p>
+<ul>
+<li>In one-stage cluster sampling, since we include <strong>all</strong> units of a selected cluster into the sample the population total of the <span class="math inline">\(i\)</span>th cluster is the sample as the sample total of the <span class="math inline">\(i\)</span>th cluster, that is: <span class="math inline">\(t_{U,i} = T_{S,i}\)</span>. So we will denote <span class="math inline">\(t_i = t_{U,i}\)</span> for short in one-stage cluster sampling.</li>
+</ul></li>
+<li><p><span class="math inline">\(t_U = \sum_{i=1}^N t_{U,i} = \sum_{i=1}^N\sum_{j\in U_i}y_{ij}\)</span> is the population total.</p></li>
+<li><p><span class="math inline">\(\overline{y}_{U,i} = \frac{t_{U,i}}{M_i}\)</span> is the mean response of the <span class="math inline">\(i\)</span>th cluster.</p></li>
+<li><p><span class="math inline">\(\overline{y}_U = \frac{t_U}{M_0}\)</span> is the overall mean of the whole population.</p></li>
+</ul>
+</div>
+<div id="ht-estimator" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> HT Estimator<a href="chap-clus.html#ht-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall from Section <a href="chap-srs.html#srs-ht">2.3.3</a> that the general Horvitz-Thompson estimator for the population total takes the form:</p>
+<p><span class="math display">\[
+\widehat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\P(Z_i = 1)} = \sum_{i=1}^N \frac{Z_iy_i}{\pi_i},
+\]</span>
+where <span class="math inline">\(\pi_i\)</span> is the probability that the <span class="math inline">\(i\)</span>th observation unit is included in the sample.</p>
+<p>So, in order to construct the HT estimator, we need to know the probability that an <strong>observation unit</strong> is included in the sample. Now, in the case of one-stage cluster sampling, in order for the <span class="math inline">\(j\)</span>th observation unit of the <span class="math inline">\(i\)</span>th cluster to be selected into the sample, the <span class="math inline">\(i\)</span>th cluster needs to be selected. Once the <span class="math inline">\(i\)</span>th cluster is selected, the <span class="math inline">\(j\)</span>th unit in the <span class="math inline">\(i\)</span>th cluster is selected for sure this is <strong>one-stage</strong> cluster sampling. Since the clusters are selected using SRS by choosing <span class="math inline">\(n\)</span> clusters from a population of <span class="math inline">\(N\)</span> clusters, we have:</p>
+<p><span class="math display">\[
+\pi_{ij} = \P(i\tx{th cluster is selected}) = \frac{n}{N}.
+\]</span></p>
+<p>Plug this into the formula of the HT estimator for the population total, we have:</p>
+<p><span class="math display">\[
+\widehat{T}_{HT} = \sum_{i\in S}\sum_{j\in S_i}\frac{N}{n}y_{ij} = \frac{N}{n}\sum_{i\in S}t_i.
+\]</span></p>
+<p>So, the HT estimator for the population total under one-stage cluster sampling is similar to the HT estimator in Equation <a href="chap-srs.html#eq:srs-ht-srs-total">(2.9)</a> under SRS. The only difference is that here, we replace <span class="math inline">\(y_i\)</span>, the individual response, by <span class="math inline">\(t_i\)</span>, the cluster total.</p>
+<p>Since the population has <span class="math inline">\(M_0 = \sum_{i=1}^N M_i\)</span> observation units, and the population mean is taken on the observation unit level, so the HT estimator of the population mean is:</p>
+<p><span class="math display">\[
+\widehat{\overline{Y}}_{HT} = \frac{1}{M_0}\widehat{T}_{HT}.
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-ht" class="example"><strong>Example 5.1  </strong></span>Consider a population of 6 clusters with the following unit responses:</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="18%" />
+<col width="18%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Cluster <span class="math inline">\(i\)</span></th>
+<th align="center">Number of units (<span class="math inline">\(M_i\)</span>)</th>
+<th align="center">Responses of 1st unit <span class="math inline">\(y_{i1}\)</span></th>
+<th align="center"><span class="math inline">\(y_{i2}\)</span></th>
+<th align="center"><span class="math inline">\(y_{i3}\)</span></th>
+<th align="center"><span class="math inline">\(y_{i4}\)</span></th>
+<th align="center"><span class="math inline">\(y_{i5}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Suppose I take an SRS of the clusters, and sampled cluster 1, 3 and 4. We have</p>
+<p><span class="math display">\[\begin{align*}
+t_1 &amp; = 3 + 5 + 6 + 2 + 0 = 16 \\
+t_3 &amp; = 10 + 7 + 3 = 20 \\
+t_4 &amp; = 1 + 5 = 6
+\end{align*}\]</span></p>
+<p>The HT estimate for the population total is:</p>
+<p><span class="math display">\[
+\widehat{T}_{HT} = \frac{N}{n}\sum_{i\in S}t_i = \frac{6}{3}\times (16+20+6) = 84.
+\]</span></p>
+<p>The population has:</p>
+<p><span class="math display">\[
+M_0 = \sum_{i=1}^N M_i = 5+3+3+2+4+1 = 18 \tx{ (obs. units)}
+\]</span></p>
+<p>So the HT estimate of the population mean is:</p>
+<p><span class="math display">\[
+\widehat{\overline{Y}}_{HT} = \frac{1}{M_0}\widehat{T}_{HT} = \frac{84}{18} = 4.6667.
+\]</span></p>
+</div>
+</div>
+<div class="empty">
 
+</div>
+<details>
+<summary>
+We can use the variance formula from SRS to calculate the variance for the HT estimators under one-stage cluster sampling, replacing <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span>, that is:
+<span class="math display" id="eq:clus-1clus-ht-var">\[\begin{align*}
+  Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \tag{5.1} \\
+  Var_{1clus}(\widehat{\overline{Y}}_{HT}) &amp; = \frac{1}{M_0^2}Var_{1clus}(\widehat{T}_{HT})
+  \end{align*}\]</span>
+where <span class="math inline">\(s_{U,t}^2 = \frac{1}{N-1}\sum_{i=1}^N(t_i - \overline{t}_U)^2 = \frac{1}{N-1}\sum_{i=1}^N(t_i - \frac{t_U}{N})^2\)</span> is the <strong>population</strong> standard deviation of the <strong>cluster totals</strong>.
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ht-variance" class="proof"><em>Proof</em>. </span>Note that the variance formula of the general HT estimator in Equation <a href="chap-srs.html#eq:srs-var-ht">(2.12)</a> is</p>
+<p><span class="math display">\[
+Var(\widehat{T}_{HT}) = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j)
+\]</span></p>
+<p>Now, we apply this to the case of one-stage cluster sampling. As discussed earlier in this section, the probability for the <span class="math inline">\(j\)</span>th unit of the <span class="math inline">\(i\)</span>th cluster to be included in the sample is <span class="math inline">\(\pi_{ij} = \frac{n}{N}\)</span>.</p>
+<p>Consider the <span class="math inline">\(j\)</span>th unit of the <span class="math inline">\(i\)</span>th cluster and the <span class="math inline">\(l\)</span>th unit of the <span class="math inline">\(h\)</span>th cluster: under one-stage cluster sampling:</p>
+<ul>
+<li><p>If <span class="math inline">\(i = h\)</span>, meaning that the two units are in the same cluster, then as long as cluster <span class="math inline">\(i\)</span>th is sampled, both units are sampled, so <span class="math inline">\(\E[Z_{ij}Z_{hl}] = \E[Z_i] = \frac{n}{N}\)</span>(from SRS on the clusters).</p></li>
+<li><p>If <span class="math inline">\(i \ne h\)</span>, meaning that the two units are in different clusters, then the two units are sampled if both clusters <span class="math inline">\(i\)</span> and <span class="math inline">\(h\)</span> are sampled: <span class="math inline">\(\E[Z_{ij}Z_{hl}] = \E[Z_i Z_h] = \frac{n(n-1)}{N(N-1)}\)</span> (result from SRS on the clusters).</p></li>
+</ul>
+<p>Plugging these into the variance formula, we have
+<span class="math display">\[\begin{align*}
+Var_{1clus}(\widehat{T}_{HT}) &amp; = \sum_{i=1}^N\sum_{j\in U_i}\frac{y_{ij}^2}{\pi_{ij}^2}\pi_{ij}(1-\pi_{ij}) \\
+&amp; \qquad \qquad + 2\sum_{i=1}^N\sum_{j \ne l}\frac{y_{ij}y_{il}}{\pi_{ij}\pi_{il}}(\E[Z_{ij}Z_{il}] - \pi_{ij}\pi_{il}) \\
+&amp; \qquad \qquad + 2\sum_{i\ne h}\sum_{j \in U_i, l\in U_h}\frac{y_{ij}y_{hl}}{\pi_{ij}\pi_{hl}}(\E[Z_{ij}Z_{hl}] - \pi_{ij}\pi_{hl}) \\
+&amp; = \sum_{i=1}^N\sum_{j\in U_i}\frac{y_{ij}^2}{(n/N)^2}\frac{n}{N}\left(1-\frac{n}{N}\right) \\
+&amp; \qquad \qquad + 2\sum_{i=1}^N\sum_{j \ne l}\frac{y_{ij}y_{il}}{(n/N)^2}\left(\frac{n}{N} - \frac{n^2}{N^2}\right) \\
+&amp; \qquad \qquad + 2\sum_{i\ne h}\sum_{j \in U_i, l\in U_h}\frac{y_{ij}y_{hl}}{(n/N)^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \\
+&amp; = \sum_{i=1}^N \frac{1}{(n/N)^2}\frac{n}{N}\left(1-\frac{n}{N}\right) \left(\sum_{j \in U_i}y_{ij}^2 + 2\sum_{j \ne l}y_{ij}y_{il}\right) \\
+&amp; \qquad \qquad + 2\frac{1}{(n/N)^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \sum_{i=1}^N\sum_{j \in U_i}\Big(y_{ij}\sum_{h\ne i}\sum_{l \in U_h}y_{hl}\Big) \\
+&amp; = \sum_{i=1}^N \frac{1}{(n/N)^2}\frac{n}{N}\left(1-\frac{n}{N}\right) t_i^2 \\
+&amp; \qquad \qquad + 2\frac{1}{(n/N)^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \sum_{i=1}^N\sum_{j \in U_i}\Big(y_{ij}\sum_{h\ne i}t_h\Big) \\
+&amp; = \sum_{i=1}^N \frac{1}{(n/N)^2}\frac{n}{N}\left(1-\frac{n}{N}\right) t_i^2 \\
+&amp; \qquad \qquad + 2\frac{1}{(n/N)^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \sum_{i=1}^N\sum_{h\ne i}t_h\sum_{j \in U_i}y_{ij} \\
+&amp; = \frac{1}{(n/N)^2}\frac{n}{N}\left(1-\frac{n}{N}\right)  \sum_{i=1}^N t_i^2 \\
+&amp; \qquad \qquad + 2\frac{1}{(n/N)^2}\left(\frac{n(n-1)}{N(N-1)} - \frac{n^2}{N^2}\right) \sum_{i=1}^N\sum_{h\ne i}t_ht_i \\
+&amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n}
+\end{align*}\]</span>
+where the last equation follows from SRS results.</p>
+<p>Since <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \frac{1}{M_0}\widehat{T}_{HT}\)</span>, the variance of the HT estimator for the population mean under one-stage cluster sampling is:</p>
+<p><span class="math display">\[
+Var_{1clus}(\widehat{\overline{Y}}_{HT}) = \frac{1}{M_0^2}Var_{1clus}(\widehat{T}_{HT}).
+\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>The <strong>estimated</strong> variance for the HT estimators can be obtained by replacing the <strong>population</strong> quantity <span class="math inline">\(s_{U,t}^2\)</span> by its <strong>sample</strong> counterpart <span class="math inline">\(S_{S,t}^2\)</span>:</p>
+<p><span class="math display">\[
+S_{S,t}^2 = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \frac{\sum_{i\in S}t_i}{n}\right)^2 = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \overline{T}_S\right)^2.
+\]</span></p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-ht-var" class="example"><strong>Example 5.2  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-ht">5.1</a>. The sample mean of cluster total is:</p>
+<p><span class="math display">\[
+\overline{T}_S = \frac{\sum_{i\in S}t_i}{n} = \frac{t_1+t_3+t_4}{3} = \frac{16+20+6}{3} = 14
+\]</span></p>
+<p>So we can calculate the sample standard deviation of the cluster totals as</p>
+<p><span class="math display">\[\begin{align*}
+S_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \frac{\sum_{i\in S}t_i}{n}\right)^2 \\
+&amp; = \frac{1}{3-1}\times \left\{(16-14)^2+(20-14)^2+(6-14)^2\right\} \\
+&amp; = 52
+\end{align*}\]</span></p>
+<p>and the variances of the HT estimates are:
+<span class="math display">\[\begin{align*}
+\widehat{Var}_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{S_{S,t}^2}{n} \\
+&amp; = 6^2\times \left(1-\frac{3}{6}\right)\times \frac{52}{3} = 312.\\
+\widehat{Var}_{1clus}(\widehat{\overline{Y}}_{HT}) &amp; = \frac{1}{M_0^2}\widehat{Var}_{1clus}(\widehat{T}_{HT}) = \frac{1}{18^2}\times 312 = 0.9630.
+\end{align*}\]</span></p>
+<p>The 95% CI are:</p>
+<ul>
+<li><p>For population total: <span class="math inline">\(\widehat{T}_{HT} \pm 1.96 \times \sqrt{\widehat{Var}_{1clus}(\widehat{T}_{HT})} = 84 \pm 1.96 \times \sqrt{312} = (49.3795, 118.6205)\)</span></p></li>
+<li><p>For population mean: <span class="math inline">\(\widehat{\overline{Y}}_{HT} \pm 1.96 \times \sqrt{\widehat{Var}_{1clus}(\widehat{\overline{Y}}_{HT})} = 4.6667 \pm 1.96 \times \sqrt{0.9630} = (2.7433, 6.5901)\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="comparing-to-srs-1" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Comparing to SRS<a href="chap-clus.html#comparing-to-srs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To simplify the comparison between SRS and one-stage cluster sampling, we assume that the clusters are <strong>equal-sized</strong>: that is, we assume that <strong>each</strong> cluster has <span class="math inline">\(M\)</span> observation units (ssus). In this case, <span class="math inline">\(M_i = M\)</span> for all <span class="math inline">\(i \in U\)</span> and <span class="math inline">\(M_0 = \sum_{i=1}^N M_i = NM\)</span>.</p>
+<p>Since we are using HT estimators, which are always unbiased, we only need to compare the variances under two sampling schemes: SRS vs. one-stage cluster sampling.</p>
+<p>From the variance formula in Equation <a href="chap-clus.html#eq:clus-1clus-ht-var">(5.1)</a>, we can write the variance of the HT estimator under one-stage cluster sampling with <strong>equal-sized</strong> clusters as:</p>
+<p><span class="math display">\[\begin{align*}
+Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N \left(M_i\overline{y}_{U,i} - \frac{M_0\overline{y}_U}{N}\right)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N \left(M\overline{y}_{U,i} - \frac{MN\overline{y}_U}{N}\right)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N M^2(\overline{y}_{U,i} - \overline{y}_U)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M}{N-1}\sum_{i=1}^N M(\overline{y}_{U,i} - \overline{y}_U)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M}{N-1}\sum_{i=1}^N\sum_{i\in U_i}(\overline{y}_{U,i} - \overline{y}_U)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB}{N-1}
+\end{align*}\]</span></p>
+<p>Now consider SRS. We need to consider SRS where the <strong>sample sizes are equal</strong>. In one-stage cluster sampling, by sampling <span class="math inline">\(n\)</span> clusters, each of <span class="math inline">\(M\)</span> observation units, from a population of <span class="math inline">\(N\)</span> clusters, we effectively sample <span class="math inline">\(nM\)</span> observation units from a population of <span class="math inline">\(NM\)</span> units. So the variance of the HT estimator when sampling the same number of observation units under SRS, instead of one-stage cluster sampling is: (using SRS formula in Equation <a href="chap-srs.html#eq:srs-var-ht-srs">(2.14)</a>)</p>
+<p><span class="math display">\[\begin{align*}
+Var_{SRS}(\widehat{T}_{HT}) &amp; = (NM)^2\left(1-\frac{nM}{NM}\right)\frac{s_{U,y}^2}{nM} \\
+&amp; = N^2\left(1-\frac{n}{N}\right)\frac{Ms_{U,y}^2}{n} \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M}{M_0 - 1}\sum_{i=1}^N\sum_{j\in U_i} (y_{ij} - \overline{y}_U)^2 \\
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}
+\end{align*}\]</span></p>
+<p>Therefore, the <strong>design effect</strong> is:</p>
+<p><span class="math display" id="eq:clus-1clus-de">\[\begin{equation}
+DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB}{N-1}}{\frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}} = \frac{\frac{SSB}{N-1}}{\frac{SST}{NM-1}} = \frac{MSB}{MST}
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(MSB\)</span> and <span class="math inline">\(MST\)</span> are defined based on the <strong>ANOVA table</strong> for <strong>equal-sized clusters</strong>:</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="31%" />
+<col width="22%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Sum of Squares</th>
+<th align="center">Formula</th>
+<th align="center">Degree of Freedom (df)</th>
+<th align="center">Mean of Squares</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(SSB\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i}(\overline{y}_{U,i}-\overline{y}_U)^2\)</span> <span class="math inline">\(= \sum_{i=1}^N M(\overline{y}_{U,i} - \overline{y}_U)^2\)</span></td>
+<td align="center"><span class="math inline">\(N-1\)</span></td>
+<td align="center"><span class="math inline">\(MSB = \frac{SSB}{N-1}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(SSW\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i}(y_{ij} - \overline{y}_{U,i})^2\)</span></td>
+<td align="center"><span class="math inline">\(M_0 - N = N(M-1)\)</span></td>
+<td align="center"><span class="math inline">\(MSW = \frac{SSW}{N(M-1)}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(SST\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i} (y_{ij} - \overline{y}_U)^2\)</span></td>
+<td align="center"><span class="math inline">\(M_0 - 1 = NM - 1\)</span></td>
+<td align="center"><span class="math inline">\(MST = \frac{SST}{NM-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> The ANOVA table is often used in the analysis of experiments, but we can also use it here to facilitate our comprison of SRS and one-stage cluster sampling. In the ANOVA table:</p>
+<ul>
+<li><p>The sum of squares are taken over <strong>all</strong> observation units.</p></li>
+<li><p>The <strong>degree of freedom</strong> tells us the number of independent values in the vector formed by the summands inside the summations (i.e., the squares of distinces). In here, it equals the number of distinct quantities on the left-hand-side of the differences inside the squares minus the number of distinct quantities on the right-hand-side.</p></li>
+<li><p>The mean of squares equals the sum of squares <strong>divided by the degree of freedom</strong>.</p></li>
+<li><p>We can calculate the sums and/or means of squares from sample data by replacing <strong>population</strong> quantities by <strong>sample</strong> quantities in the ANOVA table.</p></li>
+</ul>
+</div>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-anova" class="example"><strong>Example 5.3  </strong></span>A student wants to estimate the average GPA in his dormitory. Instead of obtaining a listing of all students in the dorm and conducting an SRS, he notices that the dorm consists of 100 suites, each with 4 students; he chooses 5 of those suites at random, and asks every person in the 5 suites what her or his GPA is. The results are as follows.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Student</th>
+<th align="center">Suit 1</th>
+<th align="center">Suit 2</th>
+<th align="center">Suit 3</th>
+<th align="center">Suit 4</th>
+<th align="center">Suit 5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">3.08</td>
+<td align="center">2.36</td>
+<td align="center">2.00</td>
+<td align="center">3.00</td>
+<td align="center">2.68</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">2.60</td>
+<td align="center">3.04</td>
+<td align="center">2.56</td>
+<td align="center">2.88</td>
+<td align="center">1.92</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">3.44</td>
+<td align="center">3.28</td>
+<td align="center">2.52</td>
+<td align="center">3.44</td>
+<td align="center">3.28</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">3.04</td>
+<td align="center">2.68</td>
+<td align="center">1.88</td>
+<td align="center">3.64</td>
+<td align="center">3.20</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong> (<span class="math inline">\(t_i\)</span>)</td>
+<td align="center">12.16</td>
+<td align="center">11.36</td>
+<td align="center">8.96</td>
+<td align="center">12.96</td>
+<td align="center">11.08</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Mean</strong> (<span class="math inline">\(\overline{y}_{U,i}\)</span>)</td>
+<td align="center">3.04</td>
+<td align="center">2.84</td>
+<td align="center">2.24</td>
+<td align="center">3.24</td>
+<td align="center">2.77</td>
+</tr>
+</tbody>
+</table>
+<p>First, note that <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(M = 4\)</span>, and <span class="math inline">\(n = 5\)</span>.</p>
+<p>The <strong>sample overall mean</strong> is:</p>
+<p><span class="math display">\[
+\overline{Y}_S = \frac{1}{nM}\sum_{i \in S} = \frac{1}{5\times 4}\times(12.16 + 11.36 + 8.96 + 12.96 + 11.08) = 2.826.
+\]</span></p>
+<p>Now we can calculate the <strong>sample sums of squares</strong>:
+<span class="math display">\[\begin{align*}
+\widehat{SSB} &amp; = \sum_{i\in S}M(\overline{y}_{U,i}-\overline{y}_U)^2 \\
+&amp; = 4 \times \Big\{(3.04 - 2.826)^2 + (2.84 - 2.826)^2 + (2.24 - 2.826)^2 \\
+&amp; \qquad \qquad + (3.24 - 2.826)^2 + (2.77 - 2.826)^2 \Big\} \\
+&amp; = 2.2557. \\
+\widehat{SST} &amp; = \sum_{i\in S}\sum_{j\in S_i} (y_{ij} - \overline{y}_U)^2 \\
+&amp; = (3.08 - 2.826)^2 + (2.60 - 2.826)^2 + ... + (3.20 - 2.826)^2 \\
+&amp; = 5.0313.
+\end{align*}\]</span></p>
+<p>The <strong>sample means of squares</strong> are:
+<span class="math display">\[\begin{align*}
+\widehat{MSB} &amp; = \frac{\widehat{SSB}}{n-1} = \frac{2.2557}{5-1} = 0.5639. \\
+\widehat{MST} &amp; = \frac{\widehat{SST}}{nM-1} = \frac{5.0313}{5\times 4 - 1} = 0.2648.
+\end{align*}\]</span></p>
+<p>Since <span class="math inline">\(\widehat{MSB} &gt; \widehat{MST}\)</span>, we <strong>lose efficiency</strong> due to cluster sampling. We can actually see this beforehand in the data table: the cluster means (<span class="math inline">\(\overline{y}_{U,i}\)</span>) are <strong>different</strong> from one another. Note that here, <span class="math inline">\(\overline{y}_{U,i} = \overline{Y}_{S,i}\)</span> because we include all units of the cluster into the sample so <strong>population</strong> cluster total/mean is <strong>equal</strong> to <strong>sample</strong> cluster total/mean.</p>
+<p>The design effect is</p>
+<p><span class="math display">\[
+\widehat{DE} = \frac{\widehat{MSB}}{\widehat{MST}} = \frac{0.5639}{0.2648} = 2.1295
+\]</span></p>
+<p>In fact, we are losing <span class="math inline">\(100 \times (2.1295-1)\% = 112.95\%\)</span> efficiency.</p>
+</div>
+</div>
+<div class="empty">
+
+</div>
+<p>Looking at the design effect formula in Equation <a href="chap-clus.html#eq:clus-1clus-de">(5.2)</a>, we can see that <strong>cluster sampling</strong> will be <strong>worse</strong> (i.e., lose efficiency) compared to SRS if the the <strong>between-cluster variation is large</strong>. This is opposite with what we see in stratified sampling: if between-stratum variation is large, we gain efficiency, i.e., we have lower variances. The intuition for this is:</p>
+<ul>
+<li><p>In <strong>stratified sampling</strong>, we sample units from <strong>all strata</strong>, so the sample will be <strong>more representative</strong> of the population if the stratum means are different from one another. With stratified sampling, we are guaranteed to have all types of units in our sample: ones that tend to have higher responses or ones that tend to have lower responses, so the estimate we obtain will be closer to the truth.</p></li>
+<li><p>In cluster sampling, we only sample from <strong>some clusters</strong>. So when we <strong>repeat</strong> the sampling procedure, each time we will include observation units from some clusters and <strong>leave out</strong> observation units from the other clusters. If the cluster means are different from one another, our estimate will be different each time we repeat the sampling procedure, depending on which specific clusters our randomization happens to dictate us to choose. As a result, depending on randomization, i.e., luck, our estimate can be overestimating or underestimating the truth.</p></li>
+</ul>
+<p>So, conversely, we can be protected from the effect of cluster sampling if the between-cluster variation is small, which means the clusters are similar to one another. Equivalently, if clusters are already representative of the population, we don’t need to worry about missing out any cluster when doing random sampling. In the literature, metrics are proposed to inform us about this, including the intraclass correlation coefficient (<strong>ICC</strong>) and adjusted R squared (<strong><span class="math inline">\(R_a^2\)</span></strong>).</p>
+<div id="intraclass-correlation-coefficient" class="section level4 hasAnchor" number="5.1.4.1">
+<h4><span class="header-section-number">5.1.4.1</span> Intraclass Correlation Coefficient<a href="chap-clus.html#intraclass-correlation-coefficient" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>ICC</strong> is defined as</p>
+<p><span class="math display">\[
+ICC = 1-\frac{M}{M-1}\frac{SSW}{SST}.
+\]</span></p>
+<p>Since <span class="math inline">\(SST = SSW + SSB\)</span> and the SS’s are sum of squares so they are greater or equal to 0, so <span class="math inline">\(SSW \le SST\)</span>, <span class="math inline">\(0 \le \frac{SSW}{SST} \le 1\)</span> and</p>
+<p><span class="math display">\[
+-\frac{1}{M-1} \le ICC \le 1
+\]</span></p>
+<p>If clusters are perfectly <strong>homogeneous</strong>, then all units in a cluster have the same respond, so <span class="math inline">\(SSW = 0\)</span>, and <span class="math inline">\(ICC = 1\)</span>.</p>
+<details>
+<summary>
+We can prove that
+<span class="math display">\[
+  DE = \frac{MSB}{MST} = \frac{NM-1}{M(N-1)}[1+(M-1)ICC]
+  \]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ht-icc" class="proof"><em>Proof</em>. </span>We have
+<span class="math display">\[\begin{align*}
+\frac{NM-1}{M(N-1)}[1+(M-1)ICC] &amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1)\left(1 - \frac{M}{M-1}\frac{SSW}{SST}\right)\right] \\
+&amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1) \frac{(M-1)SST - M\times SSW}{(M-1)SST}\right] \\
+&amp; = \frac{NM-1}{M(N-1)} \left[1 + \frac{(M-1)SST - M\times SSW}{SST}\right] \\
+&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SST - M\times SSW}{SST} \\
+&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SSB}{SST} \\
+&amp; = \frac{\frac{SSB}{N-1}}{\frac{SST}{NM-1}} = DE.
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Looking at this formula, we can see that the design effect will be large if ICC is large, which is when the observation units are similar within clusters, instead of being representative of the population. I other words, we would want ICC to be <strong>small</strong>. Specifically, if <span class="math inline">\(ICC &gt; 0\)</span>, <span class="math inline">\(DE &gt; 1\)</span> and we lose efficiency due to cluster sampling.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-anova-icc" class="example"><strong>Example 5.4  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-anova">5.3</a>, the ICC can be calculated as</p>
+<p><span class="math display">\[\begin{align*}
+\widehat{ICC} &amp; = 1-\frac{M}{M-1}\frac{\widehat{SSW}}{\widehat{SST}} \\
+&amp; = 1-\frac{M}{M-1}\frac{\widehat{SST}-\widehat{SSB}}{\widehat{SST}} \\
+&amp; = 1-\frac{4}{4-1}\frac{5.0313 - 2.2557}{5.0313} \\
+&amp; = 0.2644.
+\end{align*}\]</span></p>
+<p>The estimated ICC is positive, so we expect to lose efficiency by conducting (one-stage) cluster sampling instead of SRS of the same sample size.</p>
+</div>
+</div>
+</div>
+<div id="adjusted-r-squared" class="section level4 hasAnchor" number="5.1.4.2">
+<h4><span class="header-section-number">5.1.4.2</span> Adjusted R Squared<a href="chap-clus.html#adjusted-r-squared" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>adjusted R squared</strong> is defined as</p>
+<p><span class="math display">\[
+R_a^2 = 1 - \frac{MSW}{MST}
+\]</span></p>
+<p>The adjusted R squared represents the relative amount of <strong>variability</strong> in the population <strong>explained</strong> by cluster means, adjusted for degree of freedom. If clusters are perfectly <strong>homogeneous</strong>, then <span class="math inline">\(SSW = 0\)</span>, and <span class="math inline">\(R_a^2 = 1\)</span>. Large <span class="math inline">\(R_a^2\)</span> means that most of the variability of the data is explained by the cluster means, so cluster means are different among each other and between-cluster variation is high.</p>
+<details>
+<summary>
+Furthermore, we can prove that
+<span class="math display">\[
+  DE = \frac{MSB}{MST} = 1 + \frac{N(M-1)}{N-1}(1-R_a^2)
+  \]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ht-r2" class="proof"><em>Proof</em>. </span>We have
+<span class="math display">\[\begin{align*}
+&amp; 1 + \frac{N(M-1)}{N-1}R_a^2 \\
+&amp; = 1 + \frac{N(M-1)}{N-1}\left(1 - \frac{MSW}{MST}\right) \\
+&amp; = 1 + \frac{N(M-1)}{N-1} \left(1 - \frac{NM-1}{N(M-1)}\frac{SSW}{SST}\right) \\
+&amp; = 1 + \frac{N(M-1)}{N-1} \frac{N(M-1)SST - (NM-1)SSW}{N(M-1)SST} \\
+&amp; = \frac{(N-1)N(M-1)SST + N^2(M-1)^2SST - N(M-1)(NM-1)SSW}{(N-1)N(M-1)SST} \\
+&amp; = \frac{N(M-1)\{(N-1)SST + N(M-1)SST - (NM-1)SSW\}}{(N-1)N(M-1)SST} \\
+&amp; = \frac{(NM-1)SSB}{(N-1)SST} = DE.
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>Looking at this formula, we can see that the design effect will be larger than 1 if <span class="math inline">\(R_a^2\)</span> is positive. As <span class="math inline">\(R_a^2\)</span> grows larger, we will lose more efficiency when doing (one-stage) cluster sampling compared to SRS.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-anova-r2" class="example"><strong>Example 5.5  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-anova">5.3</a>, the adjusted R squared can be calculated as</p>
+<p><span class="math display">\[\begin{align*}
+\widehat{R}_a^2 &amp; = 1-\frac{\widehat{MSW}}{\widehat{MST}} \\
+&amp; = 1-\frac{nM-1}{n(M-1)}\frac{\widehat{SSW}}{\widehat{SST}} \\
+&amp; = 1-\frac{nM-1}{n(M-1)}\frac{\widehat{SST}-\widehat{SSB}}{\widehat{SST}} \\
+&amp; = 1-\frac{5\times 4-1}{5\times(4-1)}\frac{5.0313 - 2.2557}{5.0313} \\
+&amp; = 0.3012.
+\end{align*}\]</span></p>
+<p>The estimated <span class="math inline">\(R_a^2\)</span> is positive, so we expect to lose efficiency by conducting (one-stage) cluster sampling instead of SRS of the same sample size.</p>
+</div>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 

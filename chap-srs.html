@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-18" />
+<meta name="date" content="2026-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -283,7 +283,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="chap-srs.html"><a href="chap-srs.html#bias-1"><i class="fa fa-check"></i><b>2.3.1</b> Bias</a></li>
 <li class="chapter" data-level="2.3.2" data-path="chap-srs.html"><a href="chap-srs.html#bias-of-sample-total"><i class="fa fa-check"></i><b>2.3.2</b> Bias of Sample Total</a></li>
-<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-srs.html"><a href="chap-srs.html#srs-ht"><i class="fa fa-check"></i><b>2.3.3</b> Horvitz-Thompson Estimator</a></li>
 <li class="chapter" data-level="2.3.4" data-path="chap-srs.html"><a href="chap-srs.html#sampling-weights"><i class="fa fa-check"></i><b>2.3.4</b> Sampling Weights</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="chap-srs.html"><a href="chap-srs.html#srs-probability-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability Sampling</a></li>
@@ -362,7 +362,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="chap-clus.html"><a href="chap-clus.html"><i class="fa fa-check"></i><b>5</b> Cluster Sampling</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="5.1" data-path="chap-clus.html"><a href="chap-clus.html#one-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.1</b> One-Stage Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure"><i class="fa fa-check"></i><b>5.1.1</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#comparing-to-srs-1"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -371,8 +377,8 @@ div.csl-indent {
 <li class="chapter" data-level="B.1" data-path="app-summaries.html"><a href="app-summaries.html#chapter-2"><i class="fa fa-check"></i><b>B.1</b> Chapter 2</a>
 <ul>
 <li class="chapter" data-level="B.1.1" data-path="app-summaries.html"><a href="app-summaries.html#statistical-formulas"><i class="fa fa-check"></i><b>B.1.1</b> Statistical Formulas</a></li>
-<li class="chapter" data-level="B.1.2" data-path="app-summaries.html"><a href="app-summaries.html#notation"><i class="fa fa-check"></i><b>B.1.2</b> Notation</a></li>
-<li class="chapter" data-level="B.1.3" data-path="app-summaries.html"><a href="app-summaries.html#horvitz-thompson-estimator-1"><i class="fa fa-check"></i><b>B.1.3</b> Horvitz-Thompson Estimator</a></li>
+<li class="chapter" data-level="B.1.2" data-path="app-summaries.html"><a href="app-summaries.html#notation-1"><i class="fa fa-check"></i><b>B.1.2</b> Notation</a></li>
+<li class="chapter" data-level="B.1.3" data-path="app-summaries.html"><a href="app-summaries.html#horvitz-thompson-estimator"><i class="fa fa-check"></i><b>B.1.3</b> Horvitz-Thompson Estimator</a></li>
 <li class="chapter" data-level="B.1.4" data-path="app-summaries.html"><a href="app-summaries.html#simple-random-sampling"><i class="fa fa-check"></i><b>B.1.4</b> Simple Random Sampling</a></li>
 <li class="chapter" data-level="B.1.5" data-path="app-summaries.html"><a href="app-summaries.html#others"><i class="fa fa-check"></i><b>B.1.5</b> Others</a></li>
 </ul></li>
@@ -939,8 +945,8 @@ Now, if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math
 that is, <span class="math inline">\(T_S\)</span> tends to <strong>underestimate</strong> <span class="math inline">\(t_U\)</span> if <span class="math inline">\(y_i \ge 0\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This is what we have seen in Example <a href="chap-srs.html#exm:ex-srs-bias">2.9</a>.</p>
 <p>The only case where <span class="math inline">\(T_S\)</span> is unbiased for <span class="math inline">\(t_U\)</span> is when <span class="math inline">\(\Pr(Z_i = 1)\)</span> for all <span class="math inline">\(i = 1, ..., N\)</span>. This means that all units <span class="math inline">\(i\)</span> in the population are included in our sample with certainty, implying that we are taking a <em>census</em>!</p>
 </div>
-<div id="horvitz-thompson-estimator" class="section level3 hasAnchor" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Horvitz-Thompson Estimator<a href="chap-srs.html#horvitz-thompson-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="srs-ht" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Horvitz-Thompson Estimator<a href="chap-srs.html#srs-ht" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>From the previous section, we notice that the sample total <span class="math inline">\(T_S\)</span> is unbiased for the population total <span class="math inline">\(t_U\)</span> only if we are taking a census. However, as discussed in Section <a href="chap-intro.html#intro-sample">1.2.2</a>, a census is usually impossible due to constraints in time, cost and other administrative issues. Thus, we cannot use the sample total to estimate the population total and we have to <strong>modify</strong> the sample total so that it become <strong>unbiased</strong>!</p>
 <p>For this, in 1952, the <strong>Horvitz-Thompson estimator</strong> <span class="citation">(<a href="references.html#ref-horvitz1952generalization">Horvitz and Thompson 1952</a>)</span> is proposed:
 <span class="math display" id="eq:srs-ht-estimator">\[\begin{equation}
@@ -1455,12 +1461,10 @@ P(Z_i = 1) = \left( \begin{array}{c} N-1 \\ n-1 \end{array} \right) \times \frac
 <div id="srs-srs-ht-estimator" class="section level3 hasAnchor" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> The Estimator<a href="chap-srs.html#srs-srs-ht-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using the results for <span class="math inline">\(\pi_i\)</span>, we can derive the <strong>HT estimators</strong> for the population mean and population total under simple random sampling:
-<span class="math display">\[
-\widehat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\pi_i} = \sum_{i \in S}\frac{y_i}{n/N} = \frac{N}{n}\sum_{i\in S}y_i = N\overline{Y}_S
-\]</span></p>
-<p><span class="math display">\[
-\widehat{\overline{Y}}_{HT} = \frac{1}{N}\widehat{T}_{HT} = \frac{1}{n}\sum_{i\in S}y_i = \overline{Y}_S
-\]</span></p>
+<span class="math display" id="eq:srs-ht-srs-total">\[\begin{align*}
+\widehat{T}_{HT} &amp; = \sum_{i \in S}\frac{y_i}{\pi_i} = \sum_{i \in S}\frac{y_i}{n/N} = \frac{N}{n}\sum_{i\in S}y_i = N\overline{Y}_S \tag{2.9} \\
+\widehat{\overline{Y}}_{HT} &amp; = \frac{1}{N}\widehat{T}_{HT} = \frac{1}{n}\sum_{i\in S}y_i = \overline{Y}_S
+\end{align*}\]</span></p>
 <p>So, using simple random sampling (SRS), the <strong>Horvitz-Thompson estimator</strong> for the <strong>population mean</strong> is the <strong>sample mean</strong> itself! This is more intuitive and convenient, compared to Poisson sampling!</p>
 <div class="myExample">
 <div class="example">
@@ -1552,7 +1556,7 @@ Var(Z_1) = Cov(Z_1, Z_1).
 We can <strong>prove</strong> that for any random variables <span class="math inline">\(Z_1, Z_2\)</span>:
 <span class="math display" id="eq:srs-cov-formula">\[\begin{equation}
   Cov(Z_1, Z_2) = \E[Z_1Z_2] - \E[Z_1]\E[Z_2].
-  \tag{2.9}
+  \tag{2.10}
   \end{equation}\]</span>
 .
 </summary>
@@ -1583,7 +1587,7 @@ Cov(Z_1, Z_2) &amp; = \E[(Z_1 - \E[Z_1])(Z_2 - \E[Z_2])] \\
 To derive this variance, we use the <strong>variance formula for a linear combination of random variables</strong>:
 <span class="math display" id="eq:srs-var-linear-comb">\[\begin{equation}
   Var\left(\sum_{i=1}^Na_iZ_i\right) = \sum_{i=1}^N a_i^2 Var(Z_i) + 2\sum_{i \ne j}a_ia_j Cov(Z_i,Z_j).
-  \tag{2.10}
+  \tag{2.11}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -1608,11 +1612,11 @@ We can then use mathematical induction to prove the case for a linear combinatio
 
 </div>
 <p>Here, <span class="math inline">\(\sum_{i \ne j} \equiv \sum_{i=1}^N\sum_{j=i+1}^N\)</span>, meaning we are summing over all pairs <span class="math inline">\(i, j\)</span> so that <span class="math inline">\(i \ne j\)</span>.</p>
-<p>Now, we apply Equations <a href="chap-srs.html#eq:srs-var-linear-comb">(2.10)</a> and <a href="chap-srs.html#eq:srs-cov-formula">(2.9)</a> to get</p>
+<p>Now, we apply Equations <a href="chap-srs.html#eq:srs-var-linear-comb">(2.11)</a> and <a href="chap-srs.html#eq:srs-cov-formula">(2.10)</a> to get</p>
 <p><span class="math display" id="eq:srs-var-ht">\[\begin{align*}
 Var(\widehat{T}_{HT}) &amp; = Var\left(\sum_{i=1}^N \frac{Z_iy_i}{\pi_i}\right) \\
 &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}Var(Z_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}Cov(Z_i, Z_j) \\
-&amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \tag{2.11}
+&amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \tag{2.12}
 \end{align*}\]</span></p>
 <p>where the last equation is because <span class="math inline">\(Z_i\)</span> is a <strong>binary</strong> random variable, thus <span class="math inline">\(Z_i = Z_i^2\)</span> and <span class="math inline">\(\E[Z_i] = \P(Z_i = 1) = \pi_i\)</span>. Therefore:
 <span class="math display">\[
@@ -1625,7 +1629,7 @@ Cov(Z_i, Z_j) = \E[Z_iZ_j] - \E[Z_i]\E[Z_j] = \E[Z_iZ_j] - \pi_i\pi_j.
 <p>And the variance of <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span> is
 <span class="math display" id="eq:srs-var-ht-mean">\[\begin{equation}
 Var(\widehat{\overline{Y}}_{HT}) = Var\left(\frac{1}{N}\widehat{T}_{HT}\right) = \frac{1}{N^2}Var(\widehat{T}_{HT})
-\tag{2.12}
+\tag{2.13}
 \end{equation}\]</span></p>
 </div>
 <div id="variance-under-simple-random-sampling" class="section level3 hasAnchor" number="2.7.3">
@@ -1652,10 +1656,10 @@ where the first equation is because <span class="math inline">\(Z_1\)</span> and
 </div>
 <details>
 <summary>
-Plugging the above formulas for <span class="math inline">\(\pi_i\)</span> and <span class="math inline">\(\E[Z_iZ_j]\)</span> <strong>under SRS</strong> to the <strong>variance</strong> formula in Equation <a href="chap-srs.html#eq:srs-var-ht">(2.11)</a> of the <strong>HT estimator</strong> for <strong>population total</strong> <span class="math inline">\(\widehat{T}_{HT}\)</span>, we have
+Plugging the above formulas for <span class="math inline">\(\pi_i\)</span> and <span class="math inline">\(\E[Z_iZ_j]\)</span> <strong>under SRS</strong> to the <strong>variance</strong> formula in Equation <a href="chap-srs.html#eq:srs-var-ht">(2.12)</a> of the <strong>HT estimator</strong> for <strong>population total</strong> <span class="math inline">\(\widehat{T}_{HT}\)</span>, we have
 <span class="math display" id="eq:srs-var-ht-srs">\[\begin{equation}
   Var_{SRS}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n}.
-  \tag{2.13}
+  \tag{2.14}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -1686,16 +1690,16 @@ Var(\widehat{T}_{HT}) &amp; = \sum_{i=1}^N\frac{y_i^2}{\pi_i^2}\pi_i(1-\pi_i) + 
 
 </div>
 <p>where <span class="math inline">\(s_U^2 = \frac{1}{N-1}\sum_{i=1}^N(y_i - \overline{y}_U)^2\)</span> is the <strong>population variance</strong>.</p>
-<p>Plugging the variance of <span class="math inline">\(\widehat{T}_{HT}\)</span> in Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a> into the variance formula of the HT estimator <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span> for the population mean in Equation <a href="chap-srs.html#eq:srs-var-ht-mean">(2.12)</a>, we have the <strong>variance of the HT estimator</strong> <span class="math inline">\(\overline{Y}_S = \widehat{\overline{Y}}_{HT}\)</span> for the <strong>population mean</strong> <strong>under SRS</strong>:
+<p>Plugging the variance of <span class="math inline">\(\widehat{T}_{HT}\)</span> in Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.15)</a> into the variance formula of the HT estimator <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span> for the population mean in Equation <a href="chap-srs.html#eq:srs-var-ht-mean">(2.13)</a>, we have the <strong>variance of the HT estimator</strong> <span class="math inline">\(\overline{Y}_S = \widehat{\overline{Y}}_{HT}\)</span> for the <strong>population mean</strong> <strong>under SRS</strong>:
 <span class="math display" id="eq:srs-var-ht-srs-mean">\[\begin{equation}
   Var_{SRS}(\overline{Y}_S) = \frac{1}{N^2}Var(\widehat{T}_{HT}) = \left(1-\frac{n}{N}\right)\frac{s_U^2}{n}.
-  \tag{2.14}
+  \tag{2.15}
   \end{equation}\]</span></p>
-<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, the factor <span class="math inline">\(1-\frac{n}{N}\)</span> is called the <strong>finite population correction</strong> (or <strong>FPC</strong>). This is because if <span class="math inline">\(N\)</span> is not finite, i.e., infinite, and <span class="math inline">\(n\)</span> is fixed, then this factor will become 1 and the variance of <span class="math inline">\(\overline{Y}_S\)</span> will be <span class="math inline">\(s_U^2/n = \sigma^2/n\)</span>, which is the variance of <span class="math inline">\(\overline{Y}_S = 1/n\sum_{i=1}^nY_i\)</span> where we assume that <span class="math inline">\(Y_1, Y_2, ..., Y_n\)</span> are randomly drawn from a distribution<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> of variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.14)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.15)</a>, the factor <span class="math inline">\(1-\frac{n}{N}\)</span> is called the <strong>finite population correction</strong> (or <strong>FPC</strong>). This is because if <span class="math inline">\(N\)</span> is not finite, i.e., infinite, and <span class="math inline">\(n\)</span> is fixed, then this factor will become 1 and the variance of <span class="math inline">\(\overline{Y}_S\)</span> will be <span class="math inline">\(s_U^2/n = \sigma^2/n\)</span>, which is the variance of <span class="math inline">\(\overline{Y}_S = 1/n\sum_{i=1}^nY_i\)</span> where we assume that <span class="math inline">\(Y_1, Y_2, ..., Y_n\)</span> are randomly drawn from a distribution<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> of variance <span class="math inline">\(\sigma^2\)</span>.</p>
 </div>
 <div id="variance-estimators" class="section level3 hasAnchor" number="2.7.4">
 <h3><span class="header-section-number">2.7.4</span> Variance Estimators<a href="chap-srs.html#variance-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, the variance formulas involve a <strong>population quantity</strong> <span class="math inline">\(s_U^2\)</span>, which <strong>requires knowing</strong> <span class="math inline">\(y_i\)</span> for <strong>all units</strong> in the population. However, we will not know these units unless we sample them and collect data from them!</p>
+<p>In Equations <a href="chap-srs.html#eq:srs-var-ht-srs">(2.14)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.15)</a>, the variance formulas involve a <strong>population quantity</strong> <span class="math inline">\(s_U^2\)</span>, which <strong>requires knowing</strong> <span class="math inline">\(y_i\)</span> for <strong>all units</strong> in the population. However, we will not know these units unless we sample them and collect data from them!</p>
 <p>Therefore, we need to <strong>estimate the variance</strong> of the HT estimators <span class="math inline">\(\widehat{T}_{HT}\)</span> and <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span> from the sample.</p>
 <details>
 <summary>
@@ -1724,7 +1728,7 @@ which is equivalent to proving <span class="math inline">\(\E\left[\sum_{i\in S}
 &amp; = \frac{n}{N}(N-1)s_U^2 - \frac{n}{N^2}N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n} \\
 &amp; = (n-1)s_U^2,
 \end{align*}\]</span>
-where the 7th equation is because under SRS, <span class="math inline">\(\overline{Y}_S\)</span> is an unbiased estimator for <span class="math inline">\(\overline{y}_U\)</span>, so <span class="math inline">\(\overline{y}_U = \E[\overline{Y}_S]\)</span>; and the 10th equation is obtained by applying Equation <a href="chap-srs.html#eq:srs-var-ht-srs">(2.13)</a>.</p>
+where the 7th equation is because under SRS, <span class="math inline">\(\overline{Y}_S\)</span> is an unbiased estimator for <span class="math inline">\(\overline{y}_U\)</span>, so <span class="math inline">\(\overline{y}_U = \E[\overline{Y}_S]\)</span>; and the 10th equation is obtained by applying Equation <a href="chap-srs.html#eq:srs-var-ht-srs">(2.14)</a>.</p>
 </div>
 </div>
 </details>
@@ -1734,12 +1738,12 @@ where the 7th equation is because under SRS, <span class="math inline">\(\overli
 <p>Therefore, <strong>under SRS</strong>, we can <strong>estimate</strong> the variance of the HT estimators <span class="math inline">\(\widehat{T}_{HT}\)</span> and <span class="math inline">\(\widehat{\overline{Y}}_{HT}\)</span> by
 <span class="math display" id="eq:srs-var-ht-srs-estimator">\[\begin{equation}
 \widehat{Var}_{SRS}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
-\tag{2.15}
+\tag{2.16}
 \end{equation}\]</span>
 and
 <span class="math display" id="eq:srs-var-ht-srs-mean-estimator">\[\begin{equation}
 \widehat{Var}_{SRS}(\overline{Y}_S) = \frac{1}{N^2}Var(\widehat{T}_{HT}) = \left(1-\frac{n}{N}\right)\frac{S_S^2}{n}.
-\tag{2.16}
+\tag{2.17}
 \end{equation}\]</span></p>
 <div class="myExercise">
 <div class="exercise">
@@ -1753,15 +1757,15 @@ and
 <div class="empty">
 
 </div>
-<p>The <strong>standard error</strong> of an estimator <span class="math inline">\(\widehat{\theta}\)</span> is defined as the square root of the variance, that is <span class="math inline">\(SE(\widehat{\theta}) = \sqrt{Var(\widehat{\theta})}\)</span>. Therefore, the standard errors of the HT estimators for population total and populaton mean <strong>under SRS</strong> can be <strong>estimated</strong> by taking the square root of the formula in Equations <a href="chap-srs.html#eq:srs-var-ht-srs-estimator">(2.15)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean-estimator">(2.16)</a>, which gives
+<p>The <strong>standard error</strong> of an estimator <span class="math inline">\(\widehat{\theta}\)</span> is defined as the square root of the variance, that is <span class="math inline">\(SE(\widehat{\theta}) = \sqrt{Var(\widehat{\theta})}\)</span>. Therefore, the standard errors of the HT estimators for population total and populaton mean <strong>under SRS</strong> can be <strong>estimated</strong> by taking the square root of the formula in Equations <a href="chap-srs.html#eq:srs-var-ht-srs-estimator">(2.16)</a> and <a href="chap-srs.html#eq:srs-var-ht-srs-mean-estimator">(2.17)</a>, which gives
 <span class="math display" id="eq:srs-se-ht-srs-estimator">\[\begin{equation}
 \widehat{SE}(\widehat{T}_{HT}) = N\sqrt{1-\frac{n}{N}}\frac{S_S}{\sqrt{n}}.
-\tag{2.17}
+\tag{2.18}
 \end{equation}\]</span>
 and
 <span class="math display" id="eq:srs-se-ht-srs-mean-estimator">\[\begin{equation}
 \widehat{SE}(\overline{Y}_S) = \sqrt{1-\frac{n}{N}}\frac{S_S}{\sqrt{n}}.
-\tag{2.18}
+\tag{2.19}
 \end{equation}\]</span>
 Note here the <strong>difference</strong> between the <strong>standard error</strong> <span class="math inline">\(SE\)</span>, which is the square root of the variance of an estimator, and the <strong>standard deviation</strong> <span class="math inline">\(S_S\)</span> or <span class="math inline">\(s_U\)</span>, which is the square root of the variance of observations <span class="math inline">\(y\)</span> in our sample or population, respectively.</p>
 <div class="myExample">
@@ -1832,7 +1836,7 @@ The <strong>standard error</strong> for <span class="math inline">\(\widehat{\ov
 Then with some algebra, we can prove that
 <span class="math display" id="eq:srs-var-ht-srs-prop">\[\begin{equation}
   s_U^2 = \frac{N}{N-1}p_U(1-p_U)
-  \tag{2.19}
+  \tag{2.20}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -1856,10 +1860,10 @@ where the third equation is because we are summing over all unit <span class="ma
 
 </div>
 <p>Similarly, we have <span class="math inline">\(S_S^2 = \frac{n}{n-1}\widehat{P}_S(1-\widehat{P}_S)\)</span>.</p>
-<p>Therefore, the <strong>HT estimator</strong> for <strong>population proportion</strong> <strong>under SRS</strong> is <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \overline{Y}_S = \widehat{P}_S\)</span>, which is the <strong>sample proportion</strong>. The estimated variance is obtained by plugging in the formula for <span class="math inline">\(S_S^2\)</span> for proportions into Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean-estimator">(2.16)</a>:
+<p>Therefore, the <strong>HT estimator</strong> for <strong>population proportion</strong> <strong>under SRS</strong> is <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \overline{Y}_S = \widehat{P}_S\)</span>, which is the <strong>sample proportion</strong>. The estimated variance is obtained by plugging in the formula for <span class="math inline">\(S_S^2\)</span> for proportions into Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean-estimator">(2.17)</a>:
 <span class="math display" id="eq:srs-var-ht-srs-prop-estimator">\[\begin{equation}
 \widehat{Var}_{SRS}(\widehat{P}_S) = \left(1-\frac{n}{N}\right)\frac{\widehat{P}_S(1-\widehat{P}_S)}{n-1}
-\tag{2.20}
+\tag{2.21}
 \end{equation}\]</span></p>
 <div class="myExample">
 <div class="example">
@@ -1879,24 +1883,24 @@ and the <strong>standard error</strong> is <span class="math inline">\(\sqrt{0.0
 <p>A <span class="math inline">\(100(1-\alpha)\%\)</span> <strong>confidence interval</strong> is defined as an interval <span class="math inline">\((LB_S, UB_S)\)</span> which satisfies
 <span class="math display" id="eq:srs-ci">\[\begin{equation}
   \P(LB_S \le \theta \le UB_S) = 1-\alpha.
-  \tag{2.21}
+  \tag{2.22}
 \end{equation}\]</span></p>
 <p>To construct confidence intervals for HT estimators, we use the <strong>Central Limit Theorem</strong> for <strong>HT estimators</strong> <span class="citation">Berger (<a href="references.html#ref-berger1998rate">1998</a>)</span>:
 <span class="math display" id="eq:srs-ht-clt">\[\begin{equation}
   \frac{\widehat{\theta}_{HT} - \theta}{SE(\widehat{\theta}_{HT})} \to \mathcal{N}(0,1).
-  \tag{2.22}
+  \tag{2.23}
 \end{equation}\]</span>
 This is called the <strong>asymptotic normality</strong> of the HT estimators. Asymptotic here means that if the population size <span class="math inline">\(N\)</span> goes to infinity, the sample size <span class="math inline">\(n\)</span> goes to infinity, and <span class="math inline">\(N-n\)</span> also goes to infinity, then <span class="math inline">\((\widehat{\theta}_{HT} - \theta)/SE(\widehat{\theta}_{HT})\)</span> will follows a standard normal distribution. In practice, if <span class="math inline">\(y\)</span> roughly follows normal distribution, then with <span class="math inline">\(n \ge 30\)</span> and <span class="math inline">\(N &gt;&gt; n\)</span>, we can apply the Central Limit Theorem <span class="citation">(<a href="references.html#ref-lohr2021sampling">Lohr 2021</a>)</span>.</p>
 <p>Based on the Central Limit Theorem, we have
 <span class="math display" id="eq:srs-ht-clt-ci">\[\begin{equation}
   \P\left(\left|\frac{\widehat{\theta}_{HT}-\theta}{SE(\widehat{\theta}_{HT})}\right| \le z_{\alpha/2}\right) = 1-\alpha,
-  \tag{2.23}
+  \tag{2.24}
 \end{equation}\]</span>
 where <span class="math inline">\(z_{\alpha/2}\)</span> is the <span class="math inline">\(1-\alpha/2\)</span> quantile of the standard normal distribution. This is the same as
 <span class="math display">\[
 \P\Big(\widehat{\theta}_{HT} - z_{\alpha/2}SE(\widehat{\theta}_{HT}) \le \theta \le \widehat{\theta}_{HT} + z_{\alpha/2}SE(\widehat{\theta}_{HT})\Big) = 1-\alpha.
 \]</span>
-Compare this to Equation <a href="chap-srs.html#eq:srs-ci">(2.21)</a>, we see that, in our case,
+Compare this to Equation <a href="chap-srs.html#eq:srs-ci">(2.22)</a>, we see that, in our case,
 <span class="math display">\[
 LB_S = \widehat{\theta}_{HT} - z_{\alpha/2}SE(\widehat{\theta}_{HT}) \hspace{5mm} \text{and} \hspace{5mm} UB_S = \widehat{\theta}_{HT} + z_{\alpha/2}SE(\widehat{\theta}_{HT}).
 \]</span>
@@ -1943,19 +1947,19 @@ In <strong>R</strong>, we can write</p>
 <div id="srs-sample-size" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Sample Size Determination<a href="chap-srs.html#srs-sample-size" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Sections <a href="chap-srs.html#srs-srs">2.6</a>, we see that, in order to perform SRS, we need to specify the sample size <span class="math inline">\(n\)</span>. In practice, <strong>sample size determination</strong> is useful for us to prepare for resources <strong>before</strong> we roll out our study and conduct the surveys to collect information/data. Usually, we have limited resources, so we will want a <em>small</em> sample size.</p>
-<p>Moreover, from Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.14)</a>, as sample size <span class="math inline">\(n\)</span> increases, the variance of <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \overline{Y}_S\)</span> decreases. So in this case, we want the sample size to be <em>big</em> so that our estimates are more precise.</p>
+<p>Moreover, from Equation <a href="chap-srs.html#eq:srs-var-ht-srs-mean">(2.15)</a>, as sample size <span class="math inline">\(n\)</span> increases, the variance of <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \overline{Y}_S\)</span> decreases. So in this case, we want the sample size to be <em>big</em> so that our estimates are more precise.</p>
 <p>To reconcile these two contradicting objectives, usually sample sizes are determined based on the following <strong>statement</strong>: we want a sample size <span class="math inline">\(n\)</span> so that
 <span class="math display" id="eq:srs-error">\[\begin{equation}
   \P\left(\left|\widehat{\theta}-\theta\right| \le e\right) = 1-\alpha,
-  \tag{2.24}
-\end{equation}\]</span>
-where <span class="math inline">\(e\)</span> is called the <strong>margin of error</strong>. This means that instead of surveying the whole population to get the <strong>exact</strong> population quantities like in a census, we want to survey a <strong>smaller</strong> sample while <strong>tolerating some errors</strong> <span class="math inline">\(e\)</span> with confidence <span class="math inline">\(1-\alpha\)</span>.</p>
-<p>From Equation <a href="chap-srs.html#eq:srs-ht-clt-ci">(2.23)</a>, we can see that, in our survey sampling setting with HT estimators,
-<span class="math display" id="eq:srs-error-2">\[\begin{equation}
-  e = z_{\alpha/2}SE(\widehat{\theta}),
   \tag{2.25}
 \end{equation}\]</span>
-Since <span class="math inline">\(SE(\widehat{\theta}_{HT})\)</span> is related to <span class="math inline">\(n\)</span>, we can solve Equation <a href="chap-srs.html#eq:srs-error-2">(2.25)</a> to obtain the desired sample size <span class="math inline">\(n\)</span>. Note that <span class="math inline">\(n\)</span> is an integer, if a non-integer number is obtained while solving Equation <a href="chap-srs.html#eq:srs-error-2">(2.25)</a>, we <strong>round up</strong> the number to get the desired sample size (i.e., we better sample more).</p>
+where <span class="math inline">\(e\)</span> is called the <strong>margin of error</strong>. This means that instead of surveying the whole population to get the <strong>exact</strong> population quantities like in a census, we want to survey a <strong>smaller</strong> sample while <strong>tolerating some errors</strong> <span class="math inline">\(e\)</span> with confidence <span class="math inline">\(1-\alpha\)</span>.</p>
+<p>From Equation <a href="chap-srs.html#eq:srs-ht-clt-ci">(2.24)</a>, we can see that, in our survey sampling setting with HT estimators,
+<span class="math display" id="eq:srs-error-2">\[\begin{equation}
+  e = z_{\alpha/2}SE(\widehat{\theta}),
+  \tag{2.26}
+\end{equation}\]</span>
+Since <span class="math inline">\(SE(\widehat{\theta}_{HT})\)</span> is related to <span class="math inline">\(n\)</span>, we can solve Equation <a href="chap-srs.html#eq:srs-error-2">(2.26)</a> to obtain the desired sample size <span class="math inline">\(n\)</span>. Note that <span class="math inline">\(n\)</span> is an integer, if a non-integer number is obtained while solving Equation <a href="chap-srs.html#eq:srs-error-2">(2.26)</a>, we <strong>round up</strong> the number to get the desired sample size (i.e., we better sample more).</p>
 <p>Now, if we are conducting <strong>SRS</strong> and our HT estimator of interest is <span class="math inline">\(\overline{Y}_S\)</span>, then
 <span class="math display">\[
 e = z_{\alpha/2}\sqrt{1-\frac{n}{N}}\frac{s_U}{\sqrt{n}}
@@ -1965,7 +1969,7 @@ e = z_{\alpha/2}\sqrt{1-\frac{n}{N}}\frac{s_U}{\sqrt{n}}
 Solving the above equation, we obtain the <strong>required sample size</strong>:
 <span class="math display" id="eq:srs-sample-size-mean">\[\begin{equation}
   n = \frac{z_{\alpha/2}^2s_U^2}{e^2 + \frac{z_{\alpha/2}^2s_U^2}{N}}
-  \tag{2.26}
+  \tag{2.27}
   \end{equation}\]</span>
 </summary>
 <div class="empty">
@@ -2003,7 +2007,7 @@ So the sample size we need is 34 students.</p>
 <span class="math display">\[
 s_U^2 = \frac{N}{N-1}p_U(1-p_U) \approx p_U(1-p_U) \le \frac{1}{4}.
 \]</span>
-Here, the approximation happens when <span class="math inline">\(N\)</span> is large. Now, we can use this maximum value of <span class="math inline">\(s_U^2\)</span> to plug in Equation <a href="chap-srs.html#eq:srs-sample-size-mean">(2.26)</a> to get a <strong>conservative sample size</strong>, i.e., a sample size that is possibly larger than needed, but we’re better safe than sorry.</p>
+Here, the approximation happens when <span class="math inline">\(N\)</span> is large. Now, we can use this maximum value of <span class="math inline">\(s_U^2\)</span> to plug in Equation <a href="chap-srs.html#eq:srs-sample-size-mean">(2.27)</a> to get a <strong>conservative sample size</strong>, i.e., a sample size that is possibly larger than needed, but we’re better safe than sorry.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-srs-sample-size-proportion" class="example"><strong>Example 2.20  </strong></span>Suppose we want to estimate the proportion of students who have private washroom. We plan to take an SRS from a population of <span class="math inline">\(N=1251\)</span> students, and want to use <span class="math inline">\(95\%\)</span> with margin or error <span class="math inline">\(0.03\)</span>. The sample size we need is
@@ -2018,9 +2022,9 @@ n = \frac{1.96^2\times \frac{1}{4}}{0.03^2 + \frac{1.96^2\times \frac{1}{4}}{125
 <p>In Example <a href="chap-srs.html#exm:ex-srs-sample-size-mean">2.19</a>, we see that <span class="math inline">\(s_U\)</span> has the measurement unit of Canadian dollar. In that case, for different study, we need to specify a different, specific value of <span class="math inline">\(s_U\)</span> depending on the measurement unit of the response variable <span class="math inline">\(Y\)</span>. Instead, we may know the relative ratio between the standard deviation and the mean, for example, from a study about student rent in the US where the data is collected in US dollar. Now, the ratio <span class="math inline">\(CV = s_U/\overline{y}_U\)</span>, which is called the <strong>coefficient of variation</strong>, can help us! This is because the coefficient of variation does not have a unit, i.e., it is <strong>scale-free</strong>. Now, we can make a <strong>statement</strong> like this: we want a sample size <span class="math inline">\(n\)</span> so that
 <span class="math display" id="eq:srs-error-cv">\[\begin{equation}
   \P\left(\left|\frac{\widehat{\theta}-\theta}{\theta}\right| \le r\right) = 1-\alpha,
-  \tag{2.27}
+  \tag{2.28}
 \end{equation}\]</span>
-where <span class="math inline">\(r\)</span> is called the <strong>relative precision</strong>. In case of wanting to estimate the population mean under SRS, we can determine, in the similar fashion as in Equation <a href="chap-srs.html#eq:srs-sample-size-mean">(2.26)</a>, that the required sample size is
+where <span class="math inline">\(r\)</span> is called the <strong>relative precision</strong>. In case of wanting to estimate the population mean under SRS, we can determine, in the similar fashion as in Equation <a href="chap-srs.html#eq:srs-sample-size-mean">(2.27)</a>, that the required sample size is
 <span class="math display">\[
 n = \frac{z_{\alpha/2}^2(s_U/\overline{y}_U)^2}{r^2 + \frac{z_{\alpha/2}^2(s_U/\overline{y}_U)^2}{N}},
 \]</span></p>
