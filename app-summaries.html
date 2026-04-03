@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-21" />
+<meta name="date" content="2026-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -367,8 +367,16 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure"><i class="fa fa-check"></i><b>5.1.1</b> Sampling Procedure</a></li>
 <li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
 <li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#comparing-to-srs-1"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#clus-one-compare"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.5" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator"><i class="fa fa-check"></i><b>5.1.5</b> Ratio Estimator</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-clus.html"><a href="chap-clus.html#two-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.2</b> Two-Stage Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure-1"><i class="fa fa-check"></i><b>5.2.1</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#designing-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Designing a Cluster Sample</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -571,6 +579,7 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 </div>
 <div id="additional-formulas" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">B.2.2</span> Additional Formulas<a href="app-summaries.html#additional-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sum of squares (population version):</p>
 <table>
 <colgroup>
 <col width="33%" />
@@ -587,18 +596,50 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 <tbody>
 <tr class="odd">
 <td align="center">SSW</td>
-<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\bar{y}_{U,h})^2\)</span></td>
-<td align="center"><span class="math inline">\(\sum_{h=1}^H(N_h - 1)s_{U,h}^2\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2\)</span></td>
+<td align="center"><span class="math inline">\(SSW = \sum_{h=1}^H(N_h - 1)s_{U,h}^2\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">SSB</td>
-<td align="center"><span class="math inline">\(\sum_{h=1}^H N_h (\bar{y}_{U,h} - \bar{y}_U)^2\)</span></td>
-<td align="center"><span class="math inline">\(\bar{y}_U = \frac{1}{N}\sum_{h=1}^HN_h\bar{y}_{U,h}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H N_h (\overline{y}_{U,h} - \overline{y}_U)^2\)</span></td>
+<td align="center"><span class="math inline">\(\overline{y}_U = \sum_{h=1}^H\frac{N_h}{N}\overline{y}_{U,h}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">SST = SSW + SSB</td>
-<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\bar{y}_{U})^2\)</span></td>
-<td align="center"><span class="math inline">\((N-1)s_{U}^2\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U})^2\)</span></td>
+<td align="center"><span class="math inline">\(SST = (N-1)s_{U}^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Sum of squares (sample version):</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Sum of Squares</th>
+<th align="center">Formula</th>
+<th align="center">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\widehat{SSW}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{n_h}(y_{h,i}-\overline{Y}_{S,h})^2\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{SSW} = \sum_{h=1}^H(n_h - 1)S_{S,h}^2\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\widehat{SSB}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H n_h (\overline{Y}_{S,h} - \overline{Y}_S)^2\)</span></td>
+<td align="center"><span class="math inline">\(\overline{Y}_S = \sum_{h=1}^H\frac{n_h}{n}\overline{Y}_{S,h}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\widehat{SST} = \widehat{SSW} + \widehat{SSB}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{n_h}(y_{h,i}-\overline{Y}_{S})^2\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{SST} = (n-1)S_{S}^2\)</span></td>
 </tr>
 </tbody>
 </table>

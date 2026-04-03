@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-21" />
+<meta name="date" content="2026-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -367,8 +367,16 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure"><i class="fa fa-check"></i><b>5.1.1</b> Sampling Procedure</a></li>
 <li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
 <li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#comparing-to-srs-1"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#clus-one-compare"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.5" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator"><i class="fa fa-check"></i><b>5.1.5</b> Ratio Estimator</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-clus.html"><a href="chap-clus.html#two-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.2</b> Two-Stage Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure-1"><i class="fa fa-check"></i><b>5.2.1</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#designing-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Designing a Cluster Sample</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -1165,10 +1173,10 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 ##     design = design.srs)
 ## Ratios=
 ##          area
-## rent 24.97163
+## rent 26.14118
 ## SEs=
 ##           area
-## rent 0.5517693</code></pre>
+## rent 0.5956652</code></pre>
 <p>We can obtain <span class="math inline">\(\widehat{T}_r\)</span> using the following code</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-rr.html#cb28-1" tabindex="-1"></a><span class="co">#suppose we know the population total t_{U,x}</span></span>
 <span id="cb28-2"><a href="chap-rr.html#cb28-2" tabindex="-1"></a>known.x.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(dat<span class="sc">$</span>area)</span>
@@ -1177,11 +1185,11 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 <span id="cb28-5"><a href="chap-rr.html#cb28-5" tabindex="-1"></a><span class="fu">predict</span>(srs.ratio,<span class="at">total=</span>known.x.total)</span></code></pre></div>
 <pre><code>## $total
 ##          area
-## rent 20295789
+## rent 21246346
 ## 
 ## $se
 ##          area
-## rent 448452.7</code></pre>
+## rent 484129.3</code></pre>
 </div>
 </div>
 <div id="post-stratification" class="section level2 hasAnchor" number="4.3">
@@ -1220,7 +1228,7 @@ The <strong>post-stratified estimator for the population total</strong> will be 
 <span class="math display">\[
 \widehat{\overline{Y}}_{post}=\frac{1}{N}\widehat{T}_{post} = \sum_{h=1}^H \frac{N_h}{N}\overline{Y}_{S,h}
 \]</span>
-If <span class="math inline">\(N_h/N\)</span> is known, <span class="math inline">\(n_h\)</span> is reasonably large (<span class="math inline">\(\ge 30\)</span> or so), and <span class="math inline">\(n\)</span> is large, we can use the variance for the HT estimator under stratified sampling with proportional allocation in Equation <a href="chap-strt.html#eq:strt-var-pa-mean">(3.8)</a> as an approximation to the <strong>post-stratified variance</strong>:
+If <span class="math inline">\(N_h/N\)</span> is known, <span class="math inline">\(n_h\)</span> is reasonably large (<span class="math inline">\(\ge 30\)</span> or so), and <span class="math inline">\(n\)</span> is large, we can use the variance for the HT estimator under stratified sampling with proportional allocation in Equation <a href="chap-strt.html#eq:strt-var-pa-mean">(3.11)</a> as an approximation to the <strong>post-stratified variance</strong>:
 <span class="math display">\[
 Var_{SRS}(\widehat{\overline{Y}}_{post}) \approx Var_{strt, prop}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\sum_{h=1}^H \frac{N_h}{N}\frac{s_{U,h}^2}{n}
 \]</span></p>
@@ -1291,11 +1299,11 @@ Figure 4.3: Post-stratification to adjust sample so that it represents the popul
 <span id="cb30-9"><a href="chap-rr.html#cb30-9" tabindex="-1"></a><span class="co">#use the new survey design to estimate mean</span></span>
 <span id="cb30-10"><a href="chap-rr.html#cb30-10" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##        mean     SE
-## rent 749.46 21.598</code></pre>
+## rent 814.91 25.157</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-rr.html#cb32-1" tabindex="-1"></a><span class="co">#use the new survey design to estimate total</span></span>
 <span id="cb32-2"><a href="chap-rr.html#cb32-2" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##         total     SE
-## rent 19971556 575542</code></pre>
+## rent 21715735 670388</code></pre>
 </div>
 <div id="calibration-and-raking" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Calibration and Raking<a href="chap-rr.html#calibration-and-raking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1353,8 +1361,8 @@ Therefore, these adjusted weights can be called the reproducing weights.</p>
 <span id="cb34-26"><a href="chap-rr.html#cb34-26" tabindex="-1"></a></span>
 <span id="cb34-27"><a href="chap-rr.html#cb34-27" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
 <span id="cb34-28"><a href="chap-rr.html#cb34-28" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.cal)</span></code></pre></div>
-<pre><code>##        mean     SE
-## rent 748.65 21.338</code></pre>
+<pre><code>##       mean     SE
+## rent 815.7 24.758</code></pre>
 <p><strong><ins>Raking:</ins></strong></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-rr.html#cb36-1" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
 <span id="cb36-2"><a href="chap-rr.html#cb36-2" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
@@ -1369,8 +1377,8 @@ Therefore, these adjusted weights can be called the reproducing weights.</p>
 <span id="cb36-11"><a href="chap-rr.html#cb36-11" tabindex="-1"></a></span>
 <span id="cb36-12"><a href="chap-rr.html#cb36-12" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
 <span id="cb36-13"><a href="chap-rr.html#cb36-13" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.rak)</span></code></pre></div>
-<pre><code>##        mean     SE
-## rent 748.65 21.338</code></pre>
+<pre><code>##       mean     SE
+## rent 815.7 24.758</code></pre>
 <p>We can see that the results by <code>calibrate()</code> (with default settings) are practically the same as the results by <code>rake()</code>. In general, <code>calibrate()</code> is <strong>more general with more flexible options</strong>.</p>
 </div>
 </div>
@@ -1637,6 +1645,21 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 <p>The 95% CI is: <span class="math inline">\(\widehat{\overline{Y}}_{reg} \pm 1.96 \times  SE(\widehat{\overline{Y}}_{reg}) = 100.7065 \pm 1.96\times  3.4940 = (93.8583, 107.5547)\)</span>.</p>
 </div>
 </div>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> As we can see from Equations <a href="chap-rr.html#eq:rr-ratio-mse">(4.4)</a> and <a href="chap-rr.html#eq:rr-reg-mse">(4.12)</a>, the MSE of both ratio and regression estimators depend on the variance of prediction errors
+<span class="math display">\[
+s_{U,d}^2 = \frac{1}{N-1}\sum_{i=1}^N d_i^2,
+\]</span>
+and the estimated MSE depend on the sample version
+<span class="math display">\[
+S_{S,e}^2 = \frac{1}{n-1}\sum_{i\in S} e_i^2.
+\]</span></p>
+<p>Note that the ratio estimator is similar to constructing a prediction/regression line that passes through the origin, while the regression estimator is obtained by finding a line that minimizes the squares of prediction/regression errors, i.e., <span class="math inline">\(\sum_{i\in S}e_i^2\)</span>. Therefore, the regression estimator tend to have <strong>smaller</strong> (estimated) MSE. It is also more straightforward to incorporate more than one auxiliary variables into the regression estimator.</p>
+<p>On the other hand, the ratio estimator will be helpful when the population parameter of interest itself is a ratio. It is also <strong>more interpretable</strong> as a form of re-weighting (a.k.a. adjusted weighting) when doing post-stratification or raking.</p>
+</div>
 </div>
 <div id="r-code-1" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> R Code<a href="chap-rr.html#r-code-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1652,7 +1675,7 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 <span id="cb38-8"><a href="chap-rr.html#cb38-8" tabindex="-1"></a><span class="fu">predict</span>(srs.reg, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x.mean),</span>
 <span id="cb38-9"><a href="chap-rr.html#cb38-9" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>##   response     SE
-## 1   760.12 17.164</code></pre>
+## 1   798.43 17.806</code></pre>
 <p>In R, we can also use more than 1 variable to do the regression prediction. Suppose I also want to use the indicator variable <code>washroom</code>, together with <code>area</code> to predict <code>rent</code>:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-rr.html#cb40-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
 <span id="cb40-2"><a href="chap-rr.html#cb40-2" tabindex="-1"></a>srs.reg2 <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area<span class="sc">+</span>washroom, <span class="at">design =</span> design.srs)</span>
@@ -1666,8 +1689,8 @@ The standard error is <span class="math inline">\(\sqrt{12.2081} = 3.4940\)</spa
 <span id="cb40-10"><a href="chap-rr.html#cb40-10" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x1.mean, </span>
 <span id="cb40-11"><a href="chap-rr.html#cb40-11" tabindex="-1"></a>                             <span class="at">washroom =</span> known.x2.mean),</span>
 <span id="cb40-12"><a href="chap-rr.html#cb40-12" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
-<pre><code>##   response    SE
-## 1   764.35 15.87</code></pre>
+<pre><code>##   response     SE
+## 1   793.67 17.797</code></pre>
 </div>
 <div id="greg-estimator" class="section level3 hasAnchor" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> GREG Estimator<a href="chap-rr.html#greg-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-03-21" />
+<meta name="date" content="2026-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -367,8 +367,16 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure"><i class="fa fa-check"></i><b>5.1.1</b> Sampling Procedure</a></li>
 <li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
 <li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#comparing-to-srs-1"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#clus-one-compare"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
+<li class="chapter" data-level="5.1.5" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator"><i class="fa fa-check"></i><b>5.1.5</b> Ratio Estimator</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-clus.html"><a href="chap-clus.html#two-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.2</b> Two-Stage Cluster Sampling</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure-1"><i class="fa fa-check"></i><b>5.2.1</b> Sampling Procedure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#designing-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Designing a Cluster Sample</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -455,7 +463,10 @@ Figure 5.1: Comparison of SRS, Stratified Sampling and One-Stage Cluster Samplin
 <li>In one-stage cluster sampling, since we include <strong>all</strong> units of a selected cluster into the sample the population total of the <span class="math inline">\(i\)</span>th cluster is the sample as the sample total of the <span class="math inline">\(i\)</span>th cluster, that is: <span class="math inline">\(t_{U,i} = T_{S,i}\)</span>. So we will denote <span class="math inline">\(t_i = t_{U,i}\)</span> for short in one-stage cluster sampling.</li>
 </ul></li>
 <li><p><span class="math inline">\(t_U = \sum_{i=1}^N t_{U,i} = \sum_{i=1}^N\sum_{j\in U_i}y_{ij}\)</span> is the population total.</p></li>
-<li><p><span class="math inline">\(\overline{y}_{U,i} = \frac{t_{U,i}}{M_i}\)</span> is the mean response of the <span class="math inline">\(i\)</span>th cluster.</p></li>
+<li><p><span class="math inline">\(\overline{y}_{U,i} = \frac{t_{U,i}}{M_i}\)</span> is the mean response of the <span class="math inline">\(i\)</span>th cluster.</p>
+<ul>
+<li>In one-stage cluster sampling, since we include <strong>all</strong> units of a selected cluster into the sample, <span class="math inline">\(\overline{y}_{U,i} = \overline{Y}_{S,i}\)</span>.</li>
+</ul></li>
 <li><p><span class="math inline">\(\overline{y}_U = \frac{t_U}{M_0}\)</span> is the overall mean of the whole population.</p></li>
 </ul>
 </div>
@@ -465,8 +476,12 @@ Figure 5.1: Comparison of SRS, Stratified Sampling and One-Stage Cluster Samplin
 <p><span class="math display">\[
 \widehat{T}_{HT} = \sum_{i \in S}\frac{y_i}{\P(Z_i = 1)} = \sum_{i=1}^N \frac{Z_iy_i}{\pi_i},
 \]</span>
-where <span class="math inline">\(\pi_i\)</span> is the probability that the <span class="math inline">\(i\)</span>th observation unit is included in the sample.</p>
-<p>So, in order to construct the HT estimator, we need to know the probability that an <strong>observation unit</strong> is included in the sample. Now, in the case of one-stage cluster sampling, in order for the <span class="math inline">\(j\)</span>th observation unit of the <span class="math inline">\(i\)</span>th cluster to be selected into the sample, the <span class="math inline">\(i\)</span>th cluster needs to be selected. Once the <span class="math inline">\(i\)</span>th cluster is selected, the <span class="math inline">\(j\)</span>th unit in the <span class="math inline">\(i\)</span>th cluster is selected for sure this is <strong>one-stage</strong> cluster sampling. Since the clusters are selected using SRS by choosing <span class="math inline">\(n\)</span> clusters from a population of <span class="math inline">\(N\)</span> clusters, we have:</p>
+where <span class="math inline">\(\pi_i\)</span> is the probability that the <span class="math inline">\(i\)</span>th <strong>observation unit</strong> is included in the sample. Similar to what we did in stratified sampling, in <strong>cluster sampling</strong>, we switch the enumeration: instead of enumerating (i.e., listing) all observation units, we will first list out the clusters then list the observation units within each cluster. The <strong>general</strong> HT estimator formula becomes:
+<span class="math display" id="eq:clus-ht-clus">\[\begin{equation}
+\widehat{T}_{HT} = \sum_{i\in S}\sum_{j\in S_i}\frac{y_{ij}}{\pi_{ij}}
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>So, in order to construct the HT estimator, we need to know the probability that an <strong>observation unit</strong> is included in the sample. Now, in the case of <strong>one-stage cluster sampling</strong>, in order for the <span class="math inline">\(j\)</span>th observation unit of the <span class="math inline">\(i\)</span>th cluster to be selected into the sample, the <span class="math inline">\(i\)</span>th cluster needs to be selected. Once the <span class="math inline">\(i\)</span>th cluster is selected, the <span class="math inline">\(j\)</span>th unit in the <span class="math inline">\(i\)</span>th cluster is selected for sure because this is <strong>one-stage</strong> cluster sampling. Since the clusters are selected using SRS by choosing <span class="math inline">\(n\)</span> clusters from a population of <span class="math inline">\(N\)</span> clusters, we have:</p>
 <p><span class="math display">\[
 \pi_{ij} = \P(i\tx{th cluster is selected}) = \frac{n}{N}.
 \]</span></p>
@@ -496,7 +511,7 @@ where <span class="math inline">\(\pi_i\)</span> is the probability that the <sp
 <tr class="header">
 <th align="center">Cluster <span class="math inline">\(i\)</span></th>
 <th align="center">Number of units (<span class="math inline">\(M_i\)</span>)</th>
-<th align="center">Responses of 1st unit <span class="math inline">\(y_{i1}\)</span></th>
+<th align="center">Response of 1st unit <span class="math inline">\(y_{i1}\)</span></th>
 <th align="center"><span class="math inline">\(y_{i2}\)</span></th>
 <th align="center"><span class="math inline">\(y_{i3}\)</span></th>
 <th align="center"><span class="math inline">\(y_{i4}\)</span></th>
@@ -587,7 +602,7 @@ M_0 = \sum_{i=1}^N M_i = 5+3+3+2+4+1 = 18 \tx{ (obs. units)}
 <summary>
 We can use the variance formula from SRS to calculate the variance for the HT estimators under one-stage cluster sampling, replacing <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span>, that is:
 <span class="math display" id="eq:clus-1clus-ht-var">\[\begin{align*}
-  Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \tag{5.1} \\
+  Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \tag{5.2} \\
   Var_{1clus}(\widehat{\overline{Y}}_{HT}) &amp; = \frac{1}{M_0^2}Var_{1clus}(\widehat{T}_{HT})
   \end{align*}\]</span>
 where <span class="math inline">\(s_{U,t}^2 = \frac{1}{N-1}\sum_{i=1}^N(t_i - \overline{t}_U)^2 = \frac{1}{N-1}\sum_{i=1}^N(t_i - \frac{t_U}{N})^2\)</span> is the <strong>population</strong> standard deviation of the <strong>cluster totals</strong>.
@@ -666,11 +681,11 @@ S_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \frac{\sum_{i\in S}t_i}{
 </div>
 </div>
 </div>
-<div id="comparing-to-srs-1" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Comparing to SRS<a href="chap-clus.html#comparing-to-srs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="clus-one-compare" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Comparing to SRS<a href="chap-clus.html#clus-one-compare" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To simplify the comparison between SRS and one-stage cluster sampling, we assume that the clusters are <strong>equal-sized</strong>: that is, we assume that <strong>each</strong> cluster has <span class="math inline">\(M\)</span> observation units (ssus). In this case, <span class="math inline">\(M_i = M\)</span> for all <span class="math inline">\(i \in U\)</span> and <span class="math inline">\(M_0 = \sum_{i=1}^N M_i = NM\)</span>.</p>
 <p>Since we are using HT estimators, which are always unbiased, we only need to compare the variances under two sampling schemes: SRS vs. one-stage cluster sampling.</p>
-<p>From the variance formula in Equation <a href="chap-clus.html#eq:clus-1clus-ht-var">(5.1)</a>, we can write the variance of the HT estimator under one-stage cluster sampling with <strong>equal-sized</strong> clusters as:</p>
+<p>From the variance formula in Equation <a href="chap-clus.html#eq:clus-1clus-ht-var">(5.2)</a>, we can write the variance of the HT estimator under one-stage cluster sampling with <strong>equal-sized</strong> clusters as:</p>
 <p><span class="math display">\[\begin{align*}
 Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \\
 &amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right)^2 \\
@@ -691,7 +706,7 @@ Var_{SRS}(\widehat{T}_{HT}) &amp; = (NM)^2\left(1-\frac{nM}{NM}\right)\frac{s_{U
 <p>Therefore, the <strong>design effect</strong> is:</p>
 <p><span class="math display" id="eq:clus-1clus-de">\[\begin{equation}
 DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB}{N-1}}{\frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}} = \frac{\frac{SSB}{N-1}}{\frac{SST}{NM-1}} = \frac{MSB}{MST}
-\tag{5.2}
+\tag{5.3}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(MSB\)</span> and <span class="math inline">\(MST\)</span> are defined based on the <strong>ANOVA table</strong> for <strong>equal-sized clusters</strong>:</p>
 <table>
@@ -838,7 +853,7 @@ DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\
 <div class="empty">
 
 </div>
-<p>Looking at the design effect formula in Equation <a href="chap-clus.html#eq:clus-1clus-de">(5.2)</a>, we can see that <strong>cluster sampling</strong> will be <strong>worse</strong> (i.e., lose efficiency) compared to SRS if the the <strong>between-cluster variation is large</strong>. This is opposite with what we see in stratified sampling: if between-stratum variation is large, we gain efficiency, i.e., we have lower variances. The intuition for this is:</p>
+<p>Looking at the design effect formula in Equation <a href="chap-clus.html#eq:clus-1clus-de">(5.3)</a>, we can see that <strong>cluster sampling</strong> will be <strong>worse</strong> (i.e., lose efficiency) compared to SRS if the the <strong>between-cluster variation is large</strong>. This is opposite with what we see in stratified sampling: if between-stratum variation is large, we gain efficiency, i.e., we have lower variances. The intuition for this is:</p>
 <ul>
 <li><p>In <strong>stratified sampling</strong>, we sample units from <strong>all strata</strong>, so the sample will be <strong>more representative</strong> of the population if the stratum means are different from one another. With stratified sampling, we are guaranteed to have all types of units in our sample: ones that tend to have higher responses or ones that tend to have lower responses, so the estimate we obtain will be closer to the truth.</p></li>
 <li><p>In cluster sampling, we only sample from <strong>some clusters</strong>. So when we <strong>repeat</strong> the sampling procedure, each time we will include observation units from some clusters and <strong>leave out</strong> observation units from the other clusters. If the cluster means are different from one another, our estimate will be different each time we repeat the sampling procedure, depending on which specific clusters our randomization happens to dictate us to choose. As a result, depending on randomization, i.e., luck, our estimate can be overestimating or underestimating the truth.</p></li>
@@ -945,9 +960,313 @@ Furthermore, we can prove that
 <p>The estimated <span class="math inline">\(R_a^2\)</span> is positive, so we expect to lose efficiency by conducting (one-stage) cluster sampling instead of SRS of the same sample size.</p>
 </div>
 </div>
+</div>
+</div>
+<div id="ratio-estimator" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Section <a href="chap-clus.html#clus-one-compare">5.1.4</a>, we considered the case where all the clusters are of equal sizes, that is: <span class="math inline">\(M_i = M\)</span> for all <span class="math inline">\(i \in U\)</span>. Now, consider the case where <strong>cluster sizes are unequal</strong>. This situation is more general and realistic. Imagine big hospitals having more patients than smaller hospitals, bigger counties having more residents than smaller counties.</p>
+<p>Recall from Equation <a href="chap-clus.html#eq:clus-1clus-ht-var">(5.2)</a>, the variance Horvitz-Thompson estimator for one-stage cluster sampling is
+<span class="math display">\[
+Var_{1clus}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n}
+\]</span>
+where <span class="math inline">\(s_{U,t}^2\)</span> is the variance of the cluster totals. However, when cluster sizes are equal, the cluster totals can be a lot different from one another. Imagine the difference in total rental revenue between a big residential building with a lot of apartments and a single house for rent. Another difficulty with the HT estimator is that, if we are interested in the population mean, for example, average rental price of a residential unit,
+<span class="math display">\[
+\widehat{\overline{Y}}_{HT} = \frac{N}{nM_0}\sum_{i\in S}t_i,
+\]</span>
+we need to know the number of residential units in the whole population <span class="math inline">\(M_0\)</span>. However, this information may not be available to us or hard to collect. Often, we only know the cluster size when we go and conduct survey (collect information) from the selected cluster.</p>
+<p>In this case, it can be helpful if we use the <strong>ratio estimator</strong>:</p>
+<ul>
+<li>The population mean is a ratio itself:
+<span class="math display">\[
+\overline{y}_U = \frac{\sum_{i=1}^N t_i}{\sum_{i=1}^N M_i} = \frac{t}{M_0}
+  \]</span></li>
+<li>When cluster sizes are unequal, the size of a cluster <span class="math inline">\(M_i\)</span> can be highly correlated with the cluster total <span class="math inline">\(t_i\)</span>. Recall the residential building example. Therefore, we can think of using the cluster size as auxiliary information to estimate <span class="math inline">\(t_i\)</span>.</li>
+</ul>
+<p>Applying ratio estimation in Equation <a href="chap-rr.html#eq:rr-ratio-estimator">(4.1)</a> of Chapter <a href="chap-rr.html#chap-rr">4</a>, but replacing the roles of <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span>, and <span class="math inline">\(x_i\)</span> by <span class="math inline">\(M_i\)</span>, we have the ratio estimator for the population mean under one-stage cluster sampling:
+<span class="math display">\[
+\widehat{\overline{Y}}_r = \frac{\sum_{i\in S}t_i}{\sum_{i\in S}M_i}
+\]</span>
+If <span class="math inline">\(M_0\)</span> is available to us, we can also estimate the population total: <span class="math inline">\(\widehat{T}_r = M_0\widehat{\overline{Y}}_r\)</span>.</p>
+<p>We also apply the MSE/variance formula in Equation <a href="chap-rr.html#eq:rr-ratio-mse">(4.4)</a>, replacing <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span> and <span class="math inline">\(x_i\)</span> by <span class="math inline">\(M_i\)</span> to obtain
+<span class="math display">\[
+Var_{1clus}(\widehat{\overline{Y}}_r) = \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n\overline{M}^2_U}
+\]</span>
+where <span class="math inline">\(d_i = t_i - \overline{y}_U M_i\)</span> is the prediction error and <span class="math inline">\(\overline{M}_U = \frac{1}{N}\sum_{i=1}^NM_i\)</span> is the population average cluster size. To get an estimate of the variance using <strong>sample</strong> data, we use sample quantities instead of population quantities:
+<span class="math display">\[
+\widehat{Var}_{1clus}(\widehat{\overline{Y}}_r) = \left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n\overline{M}^2_S}
+\]</span>
+where <span class="math inline">\(e_i = t_i - \widehat{\overline{Y}}_r\times M_i\)</span> and <span class="math inline">\(\overline{M} = \frac{1}{n}\sum_{i\in S}M_i\)</span> is the sample average cluster size.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-1clus-ratio" class="example"><strong>Example 5.6  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-ht">5.1</a>, the ratio estimate is
+<span class="math display">\[
+\widehat{\overline{Y}}_r = \frac{\sum_{i\in S}t_i}{\sum_{i\in S}M_i} = \frac{t_1 + t_3 + t_4}{M_1 + M_3 + M_4} = \frac{16+20+6}{5+3+2} = 4.2.
+\]</span></p>
+<p>Now, to calculate the variance of the ratio estimator, we need to get the regression/prediction errors:</p>
+<p><span class="math display">\[\begin{align*}
+e_1 &amp; = t_1 - \widehat{\overline{Y}}_r\times M_1 = 16 - 4.2\times 5 = -5 \\
+e_3 &amp; = t_3 - \widehat{\overline{Y}}_r \times M_3 = 20 - 4.2 \times 3 = 7.4 \\
+e_4 &amp; = t_4 - \widehat{\overline{Y}}_r \times M_4 = 6 - 4.2 \times 2 = -2.4
+\end{align*}\]</span></p>
+<p>As we see from above and proved in Chapter <a href="chap-rr.html#chap-rr">4</a>, <span class="math inline">\(\sum_{i\in S} e_i = 0\)</span> so <span class="math inline">\(\overline{e} = 0\)</span>. The variance of the errors is
+<span class="math display">\[\begin{align*}
+S_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}(e_i-\overline{e})^2 \\
+&amp; = \frac{1}{n-1}\sum_{i\in S}e_i^2 \\
+&amp; = \frac{1}{3-1}\times \Big\{(-5)^2 + 7.4^2 + (-2.4)^2\Big\} = 42.76.
+\end{align*}\]</span></p>
+<p>The average cluster size is: <span class="math inline">\(\overline{M}_S = \frac{1}{n}\sum_{i\in S}M_i = \frac{1}{3}(M_1 + M_3 + M_4) = \frac{1}{3}(5 + 3 + 2) = \frac{10}{3}\)</span>.</p>
+<p>The estimated variance of the ratio estimator is</p>
+<p><span class="math display">\[
+\widehat{Var}_{1clus}(\widehat{\overline{Y}}_r) = \left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n\overline{M}_S^2} = \left(1 - \frac{3}{6}\right)\frac{42.76}{3\times{\left(\frac{10}{3}\right)^2}} = 0.6414.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div id="two-stage-cluster-sampling" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Two-Stage Cluster Sampling<a href="chap-clus.html#two-stage-cluster-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-procedure-1" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Sampling Procedure<a href="chap-clus.html#sampling-procedure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Two-stage cluster sampling is similar to one-stage cluster sampling. The difference is after you select a cluster by SRS, instead of including all observation units in the cluster into the sample, we do another SRS to select <strong>some</strong> observation units of the cluster into the sample. An example of this is when we sample some hospitals, in each hospital, instead of surveying all patients in the hospital, we survey only some of the patients. Figure <a href="chap-clus.html#fig:clus-one-two-comparison">5.2</a> visualizes the comparison between one- and two-stage cluster sampling.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:clus-one-two-comparison"></span>
+<img src="data/images/chap-clus/one-two-comparison.png" alt="Comparison of one-stage and two-stage cluster sampling." width="80%" />
+<p class="caption">
+Figure 5.2: Comparison of one-stage and two-stage cluster sampling.
+</p>
+</div>
+<p>Specifically, the two-stage cluster sampling procedure is:</p>
+<ul>
+<li><p>divide the population into <span class="math inline">\(N\)</span> non-overlapping clusters,</p></li>
+<li><p>do SRS to choose <span class="math inline">\(n\)</span> clusters into the sample,</p></li>
+<li><p>for each sampled cluster <span class="math inline">\(i \in S\)</span>, do SRS to choose <span class="math inline">\(m_i\)</span> observation units from <span class="math inline">\(M_i\)</span> units in cluster <span class="math inline">\(i\)</span>.</p></li>
+</ul>
+<p>Therefore, we have these changes in notation:</p>
+<ul>
+<li><p>the <strong>sample cluster total</strong> <span class="math inline">\(T_{S,i} = \sum_{j \in S_i}y_{ij}\)</span>. This is different from the population cluster total <span class="math inline">\(t_{U,i} = \sum_{j \in U_i}y_{ij}\)</span>.</p></li>
+<li><p>the <strong>sample cluster mean</strong> <span class="math inline">\(\overline{Y}_{S,i} = \frac{1}{m_i} \sum_{j \in S_i}y_{ij}\)</span> is different from the population cluster mean <span class="math inline">\(\overline{y}_{U,i} = \frac{1}{M_i}\sum_{j \in U_i}y_{ij}\)</span>.</p></li>
+</ul>
+</div>
+<div id="ht-estimator-1" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> HT Estimator<a href="chap-clus.html#ht-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Similar to one-stage cluster sampling, in order to get the Horvitz-Thompson estimator in Equation <a href="chap-clus.html#eq:clus-ht-clus">(5.1)</a>, we need to find the probability that the <span class="math inline">\(j\)</span>th observation unit of the <span class="math inline">\(i\)</span>th cluster is selected into the sample. For that to happen:</p>
+<ul>
+<li><p>the cluster <span class="math inline">\(i\)</span> needs to be sampled among the <span class="math inline">\(n\)</span> clusters out of <span class="math inline">\(N\)</span> population clusters, and</p></li>
+<li><p>the observation unit <span class="math inline">\(j\)</span> needs to be sampled among the <span class="math inline">\(m_i\)</span> observation units out of<span class="math inline">\(M_i\)</span> observation units in the <span class="math inline">\(i\)</span>th cluster.</p></li>
+</ul>
+<p>Since both stages of the sampling is done by SRS, the probability that the <span class="math inline">\(j\)</span>th observation unit in the <span class="math inline">\(i\)</span>th cluster is sampled is:
+<span class="math display">\[\begin{align*}
+\pi_{ij} &amp; = \Pr(\text{unit } j \text{ is sampled} \mid \text{cluster } i \text{ is sampled}) \times \Pr(\text{cluster } i \text{ is sampled}) \\
+&amp; = \frac{m_i}{M_i} \times \frac{n}{N}
+\end{align*}\]</span></p>
+<p>So the HT estimator for two-stage cluster sampling is:
+<span class="math display">\[
+\widehat{T}_{HT} = \sum_{i\in S}\sum_{j \in S_i} \frac{N}{n}\frac{M_i}{m_i}y_{ij} = \frac{N}{n}\sum_{i\in S}\left(\frac{M_i}{m_i}\sum_{j\in S_i}y_{ij}\right) = \frac{N}{n}\sum_{i\in S}\widehat{T}_{HT,i} = \sum_{i\in S}\frac{\widehat{T}_{HT,i}}{\psi_i}
+\]</span>
+where <span class="math inline">\(\widehat{T}_{HT,i}\)</span> is the Horvitz-Thompson estimator that estimate the population cluster total of the <span class="math inline">\(i\)</span>th cluster <span class="math inline">\(t_{U,i}\)</span>, and <span class="math inline">\(\psi_i\)</span> is the probability that cluster <span class="math inline">\(i\)</span> is selected into the sample. So, under two-stage cluster sampling, the <strong>overall</strong> HT estimator <span class="math inline">\(\widehat{T}_{HT}\)</span> is the Horvitz-Thompson estimator made out of <strong>cluster total</strong> estimates <span class="math inline">\(\widehat{T}_{HT,i}\)</span> to estimate the <strong>total of all the cluster totals</strong>.</p>
+<details>
+<summary>
+We can prove that
+<span class="math display" id="eq:clus-two-stage-var">\[\begin{equation}
+  Var_{2clus}(\widehat{T}_{HT}) = Var\left(\sum_{i\in S}\frac{\widehat{T}_{HT,i}}{\psi_i}\right) = Var_{psu} + Var_{ssu}
+  \tag{5.4}
+  \end{equation}\]</span>
+where
+<span class="math display">\[\begin{align*}
+  Var_{psu} &amp; = Var\left(\sum_{i\in S} \frac{t_{U,i}}{\psi_i}\right) = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} \\
+  Var_{ssu} &amp; = \sum_{i=1}^N \frac{Var(\widehat{T}_{HT,i})}{\psi_i} = \frac{N}{n}\sum_{i=1}^N Var_{SRS}(\widehat{T}_{HT,i})
+  \end{align*}\]</span>
+</summary>
+<div class="empty">
 
 </div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ht-2clus-variance" class="proof"><em>Proof</em>. </span>To prove this formula, we use the <strong>law of total variation</strong> for any random variables <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>:
+<span class="math display">\[
+Var(Y) = Var\Big(\E[Y \mid X]\Big) + \E\Big[Var(Y \mid X)\Big]
+\]</span>
+where the <span class="math inline">\(\E[Y \mid X]\)</span> is called the conditional expectation. This basically treats <span class="math inline">\(X\)</span> as fixed and can be taken out of the expectation sign.</p>
+<p>Apply this to our case, let <span class="math inline">\(\mathbf{Z} = (Z_1, Z_2, ..., Z_N)\)</span> be the vector of indicators <span class="math inline">\(Z_i\)</span> that cluster <span class="math inline">\(i\)</span> is included in the sample, we have
+<span class="math display">\[\begin{align*}
+Var\left(\sum_{i\in S}\frac{\widehat{T}_{HT,i}}{\psi_i}\right) &amp; = Var\left(\sum_{i = 1}^N Z_i\frac{\widehat{T}_{HT,i}}{\psi_i}\right) \\
+&amp; = Var\left(\E\left[\sum_{i = 1}^N Z_i\frac{\widehat{T}_{HT,i}}{\psi_i} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z} \right]\right) + \E\left[Var\left(\sum_{i = 1}^N Z_i\frac{\widehat{T}_{HT,i}}{\psi_i} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z} \right)\right] \\
+&amp; = Var\left(\sum_{i=1}^N \frac{Z_i}{\psi_i}\E[\widehat{T}_{HT,i} \mid \mathbf{Z}]\right) + \E\left[\sum_{i=1}^N \frac{Z_i^2}{\psi_i^2}Var(\widehat{T}_{HT,i} \mid \mathbf{Z})\right] \\
+&amp; = Var\left(\sum_{i=1}^N \frac{Z_i}{\psi_i}\E[\widehat{T}_{HT,i}]\right) + \E\left[\sum_{i=1}^N \frac{Z_i^2}{\psi_i^2}Var(\widehat{T}_{HT,i})\right] \\
+&amp; = Var\left(\sum_{i\in S}\frac{t_{U,i}}{\psi_i}\right) + \sum_{i=1}^N\frac{\E\left[Z_i^2\right]}{\psi_i^2}Var(\widehat{T}_{HT,i}) \\
+&amp; = Var_{psu} + \sum_{i=1}^N \frac{\psi_i}{\psi_i^2}Var(\widehat{T}_{HT,i}) \\
+&amp; = Var_{psu} + Var_{ssu}
+\end{align*}\]</span>
+where</p>
+<ul>
+<li><p>the second equation is using law of total variation</p></li>
+<li><p>the third line is using conditional expectation and also that <span class="math inline">\(\widehat{T}_{HT,i}\)</span> are based on independent SRS on different clusters, so they are independent from one another. Note that if <span class="math inline">\(X_1, X_2, ..., X_N\)</span> are independent from one another and <span class="math inline">\(a_1, a_2, ..., a_N\)</span> are fixed constants, <span class="math inline">\(Var(\sum_{i=1}^N a_iX_i) = \sum_{i=1}^Na_i^2Var(X_i)\)</span></p></li>
+<li><p>the fourth equation is because <span class="math inline">\(\widehat{T}_{HT,i}\)</span> does not depend on which cluster is sampled so it is independent of <span class="math inline">\(\mathbf{Z}\)</span>. Note that if <span class="math inline">\(X\)</span> is independent of <span class="math inline">\(Y\)</span>, then <span class="math inline">\(\E[X \mid Y] = \E[X]\)</span>.</p></li>
+<li><p>the fifth equation is because the HT estimator is unbiased: <span class="math inline">\(\E[\widehat{T}_{HT,i}] = t_{U,i}\)</span>.</p></li>
+<li><p>the sixth equation is because <span class="math inline">\(Z_i\)</span> is a binary variable so <span class="math inline">\(\E[Z_i^2] = \E[Z_i] = \psi_i\)</span>.</p></li>
+</ul>
 </div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<details>
+<summary>
+The above variance formula is based on <strong>population</strong> quantities. To estimate the variance using the <strong>sample</strong>, we use an <strong>unbiased variance estimator</strong>:
+<span class="math display">\[
+\widehat{Var}_{2clus}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{\widehat{S}_{S,t}^2}{n} + \frac{N}{n}\sum_{i\in S} \widehat{Var}_{SRS}(\widehat{T}_{HT,i})
+  \]</span>
+where
+<span class="math display">\[\begin{align*}
+  \widehat{S}_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(\widehat{T}_{HT,i} - \frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2 \\
+  \widehat{Var}_{SRS}(\widehat{T}_{HT,i}) &amp; = M_i^2 \left(1- \frac{m_i}{M_i}\right)\frac{S_{S,i}^2}{m_i}
+  \end{align*}\]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ht-2clus-variance-estimator" class="proof"><em>Proof</em>. </span>To prove that the above <span class="math inline">\(\widehat{Var}_{2clus}(\widehat{T}_{HT})\)</span> is unbiased, we first note that
+<span class="math display">\[\begin{align*}
+\E[\widehat{S}_{S,t}^2] &amp; = \E\left[\frac{1}{n-1}\sum_{i\in S}\left(\widehat{T}_{HT,i} - \frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2\right] \\
+&amp; = \frac{1}{n-1}\E\left[\left(\sum_{i\in S}\widehat{T}_{HT,i}^2\right) - n\left(\frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2 \right] \\
+&amp; = \frac{1}{n-1} \E\left[\left(\sum_{i=1}^N Z_i \widehat{T}_{HT,i}^2\right) - n\left(\frac{1}{N}\widehat{T}_{HT}\right)^2\right] \\
+&amp; = \frac{1}{n-1}\left\{\sum_{i=1}^N \E[Z_i]\E[\widehat{T}_{HT,i}^2] - \frac{n}{N^2}\E[\widehat{T}_{HT}^2]\right\} \\
+&amp; = \frac{1}{n-1}\left\{\frac{n}{N}\sum_{i=1}^N \big[(\E[\widehat{T}_{HT,i}])^2 + Var(\widehat{T}_{HT,i})\big] - \frac{n}{N^2}\big[(\E[\widehat{T}_{HT}])^2 + Var(\widehat{T}_{HT})\big]\right\} \\
+&amp; = \frac{1}{n-1}\left\{\frac{n}{N}\sum_{i=1}^N t_{U,i}^2 + \frac{n}{N}\sum_{i=1}^NVar(\widehat{T}_{HT,i}) - \frac{n}{N^2}t_U^2 - \frac{n}{N^2}Var(\widehat{T}_{HT})\right\} \\
+&amp; = \frac{1}{n-1}\left\{\frac{n}{N}\left[\sum_{i=1}^N t_{U,i}^2 - N\left(\frac{t_U^2}{N}\right)^2\right] + \frac{n^2}{N^2}Var_{ssu} - \frac{n}{N^2}(Var_{psu} + Var_{ssu})\right\} \\
+&amp; = \frac{1}{n-1}\left\{\frac{n}{N}(N-1)s_{U,t}^2 + \frac{n(n-1)}{N^2}Var_{ssu} - \frac{n}{N^2}N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n}\right\} \\
+&amp; = \frac{1}{n-1}\left\{(n-1)s_{U,t}^2 + \frac{n(n-1)}{N^2}Var_{ssu}\right\} \\
+&amp; = s_{U,t}^2 + \frac{n}{N^2}Var_{ssu} \\
+\end{align*}\]</span>
+where the second equation is because <span class="math inline">\(\sum_{i=1}^n (x_i - \bar{x})^2 = \sum_{i=1}^n x_i^2 - n\bar{x}^2\)</span> with <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span> for any <span class="math inline">\(x_i\)</span>; the fourth equation is because <span class="math inline">\(Z_i\)</span>, which indicates whether cluster <span class="math inline">\(i\)</span> is selected into the sample, is independent of <span class="math inline">\(\widehat{T}_{HT,i}\)</span>; and the fifth equation is because <span class="math inline">\(Var(X) = \E[X^2] - (\E[X])^2\)</span> so <span class="math inline">\(\E[X^2] = Var(X) + (\E[X])^2\)</span>.</p>
+<p>We also note that</p>
+<p><span class="math display">\[\begin{align*}
+\E\left[\sum_{i\in S} \widehat{Var}_{SRS}(\widehat{T}_{HT,i})\right] &amp; = \frac{N}{n}\E\left[\sum_{i=1}^N Z_i\widehat{Var}_{SRS}(\widehat{T}_{HT,i})\right] \\
+&amp; = \frac{N}{n}\sum_{i=1}^N \E[Z_i] \E[\widehat{Var}_{SRS}(\widehat{T}_{HT,i})] \\
+&amp; = \frac{N}{n}\sum_{i=1}^N \frac{n}{N}Var_{SRS}(\widehat{T}_{HT,i}) \\
+&amp; = \sum_{i=1}^N Var_{SRS}(\widehat{T}_{HT,i}) \\
+&amp; = \frac{n}{N}Var_{ssu}
+\end{align*}\]</span></p>
+<p>Combining the two derivations together, we have
+<span class="math display">\[\begin{align*}
+\E[\widehat{Var}_{2clus}(\widehat{T}_{HT})] &amp; = \E\left[N^2\left(1-\frac{n}{N}\right)\frac{\widehat{S}_{S,t}^2}{n} + \frac{N}{n}\sum_{i\in S} \widehat{Var}_{SRS}(\widehat{T}_{HT,i})\right] \\
+&amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2 + \frac{n}{N^2}Var_{ssu}}{n} + \frac{n}{N}Var_{ssu} \\
+&amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} + Var_{ssu} \\
+&amp; = Var_{psu} + Var_{ssu} \\
+&amp; = Var_{2clus}(\widehat{T}_{HT})
+\end{align*}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-2clus-ht" class="example"><strong>Example 5.7  </strong></span>Three hospitals are sampled by SRS from a population of 10 hospitals in the city. We are interested in the out-of-pocket spending per patient per hospital visit. We collected the following data</p>
+<table style="width:100%;">
+<colgroup>
+<col width="17%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Hospital (<span class="math inline">\(i\)</span>)</th>
+<th align="center">Total number of patients (<span class="math inline">\(M_i\)</span>)</th>
+<th align="center">Number of patients sampled (<span class="math inline">\(m_i\)</span>)</th>
+<th align="center">Average spending (<span class="math inline">\(\overline{Y}_{S,i}\)</span>)</th>
+<th align="center">Variance of spending (<span class="math inline">\(S_{S,i}^2\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(800\)</span></td>
+<td align="center"><span class="math inline">\(16\)</span></td>
+<td align="center"><span class="math inline">\(150\)</span></td>
+<td align="center"><span class="math inline">\(1200\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(1200\)</span></td>
+<td align="center"><span class="math inline">\(25\)</span></td>
+<td align="center"><span class="math inline">\(85\)</span></td>
+<td align="center"><span class="math inline">\(5600\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center"><span class="math inline">\(600\)</span></td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(120\)</span></td>
+<td align="center"><span class="math inline">\(2100\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can calculate the HT estimate and its variance for each cluster:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Hospital (<span class="math inline">\(i\)</span>)</th>
+<th align="center"><span class="math inline">\(\widehat{T}_{HT,i}\)</span></th>
+<th align="center"><span class="math inline">\(\widehat{Var}_{SRS}(\widehat{T}_{HT})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(800 \times 150 = 120,000\)</span></td>
+<td align="center"><span class="math inline">\(800^2\times\left(1-\frac{16}{800}\right)\frac{1200}{16} = 47,040,000\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center"><span class="math inline">\(102,000\)</span></td>
+<td align="center"><span class="math inline">\(315,840,000\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center"><span class="math inline">\(72,000\)</span></td>
+<td align="center"><span class="math inline">\(36,540,000\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We also can calculate <span class="math inline">\(\frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i} = \frac{1}{3}\times(80,000 + 102,000 + 72,000) = 98,000\)</span>, so
+<span class="math display">\[\begin{align*}
+\hat{S}_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(\widehat{T}_{HT,i} - \frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2 \\
+&amp; = \frac{1}{3-1}\sum_{i\in S}\left\{(120,000 - 98,000)^2 + (102,000 - 98,000)^2 + (72,000 - 98,000)^2\right\} \\
+&amp; = 588,000,000
+\end{align*}\]</span></p>
+<p>The overall HT estimate of the total out-of-pocket spending per visit is
+<span class="math display">\[
+\widehat{T}_{HT} = \frac{N}{n}\sum_{i\in S}\widehat{T}_{HT,i} = \frac{10}{3}\times(80,000 + 102,000 + 72,000) = 980,000.
+\]</span></p>
+<p>The variance is
+<span class="math display">\[\begin{align*}
+\widehat{Var}_{2clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{\widehat{S}_{S,t}^2}{n} + \frac{N^2}{n^2}\sum_{i\in S} \widehat{Var}_{SRS}(\widehat{T}_{HT,i}) \\
+&amp; = 10^2 \times \left(1 - \frac{3}{10}\right)\frac{588,000,000}{3} \\
+&amp; \qquad \qquad + \frac{10}{3}\times(47,040,000 + 315,840,000 + 36,540,000) \\
+&amp; = 15,051,400,000
+\end{align*}\]</span></p>
+<p>The standard error is <span class="math inline">\(\sqrt{15,051,400,000} = 122,684.1\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="ratio-estimator-1" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="designing-a-cluster-sample" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Designing a Cluster Sample<a href="chap-clus.html#designing-a-cluster-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
 </div>
 </div>
 
