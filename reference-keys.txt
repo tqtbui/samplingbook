@@ -134,10 +134,13 @@ eq:clus-1clus-de
 exm:ex-clus-1clus-anova
 exm:ex-clus-1clus-anova-icc
 exm:ex-clus-1clus-anova-r2
+eq:clus-1clus-ratio
 exm:ex-clus-1clus-ratio
 fig:clus-one-two-comparison
 eq:clus-two-stage-var
 exm:ex-clus-2clus-ht
+exm:ex-clus-2clus-ratio
+eq:clus-equal-size-2stage
 chap-intro
 survey-sampling
 census-vs.-samples
@@ -238,7 +241,10 @@ two-stage-cluster-sampling
 sampling-procedure-1
 ht-estimator-1
 ratio-estimator-1
-designing-a-cluster-sample
+design-a-cluster-sample
+equal-sized-clusters
+general-sample-size-determination
+chap-others
 app-dataset
 app-summaries
 chapter-2
@@ -255,3 +261,7 @@ chapter-4
 ratio-estimation-1
 post-stratification-1
 regression-estimation-1
+chapter-5
+one-stage-cluster-sampling-1
+two-stage-cluster-sampling-1
+others-1

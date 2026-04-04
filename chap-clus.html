@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-02" />
+<meta name="date" content="2026-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="chap-rr.html"/>
-<link rel="next" href="app-dataset.html"/>
+<link rel="next" href="chap-others.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -376,8 +376,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
 <li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#designing-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Designing a Cluster Sample</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#design-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Design a Cluster Sample</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-clus.html"><a href="chap-clus.html#equal-sized-clusters"><i class="fa fa-check"></i><b>5.3.1</b> Equal-Sized Clusters</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-clus.html"><a href="chap-clus.html#general-sample-size-determination"><i class="fa fa-check"></i><b>5.3.2</b> General Sample Size Determination</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-others.html"><a href="chap-others.html"><i class="fa fa-check"></i><b>6</b> Other Topics in Survey Sampling</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
 <li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
@@ -401,6 +406,12 @@ div.csl-indent {
 <li class="chapter" data-level="B.3.1" data-path="app-summaries.html"><a href="app-summaries.html#ratio-estimation-1"><i class="fa fa-check"></i><b>B.3.1</b> Ratio Estimation</a></li>
 <li class="chapter" data-level="B.3.2" data-path="app-summaries.html"><a href="app-summaries.html#post-stratification-1"><i class="fa fa-check"></i><b>B.3.2</b> Post-Stratification</a></li>
 <li class="chapter" data-level="B.3.3" data-path="app-summaries.html"><a href="app-summaries.html#regression-estimation-1"><i class="fa fa-check"></i><b>B.3.3</b> Regression Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-summaries.html"><a href="app-summaries.html#chapter-5"><i class="fa fa-check"></i><b>B.4</b> Chapter 5</a>
+<ul>
+<li class="chapter" data-level="B.4.1" data-path="app-summaries.html"><a href="app-summaries.html#one-stage-cluster-sampling-1"><i class="fa fa-check"></i><b>B.4.1</b> One-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="B.4.2" data-path="app-summaries.html"><a href="app-summaries.html#two-stage-cluster-sampling-1"><i class="fa fa-check"></i><b>B.4.2</b> Two-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="B.4.3" data-path="app-summaries.html"><a href="app-summaries.html#others-1"><i class="fa fa-check"></i><b>B.4.3</b> Others</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -969,11 +980,11 @@ Furthermore, we can prove that
 <span class="math display">\[
 Var_{1clus}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n}
 \]</span>
-where <span class="math inline">\(s_{U,t}^2\)</span> is the variance of the cluster totals. However, when cluster sizes are equal, the cluster totals can be a lot different from one another. Imagine the difference in total rental revenue between a big residential building with a lot of apartments and a single house for rent. Another difficulty with the HT estimator is that, if we are interested in the population mean, for example, average rental price of a residential unit,
+where <span class="math inline">\(s_{U,t}^2\)</span> is the variance of the cluster totals. However, when <strong>cluster sizes are not equal</strong>, the cluster totals can be a lot different from one another. Imagine the difference in total rental revenue between a big residential building with a lot of apartments and a single house for rent. Another difficulty with the HT estimator is that, if we are interested in the population mean, for example, average rental price of a residential unit,
 <span class="math display">\[
 \widehat{\overline{Y}}_{HT} = \frac{N}{nM_0}\sum_{i\in S}t_i,
 \]</span>
-we need to know the number of residential units in the whole population <span class="math inline">\(M_0\)</span>. However, this information may not be available to us or hard to collect. Often, we only know the cluster size when we go and conduct survey (collect information) from the selected cluster.</p>
+we need to know the number of residential units in the whole population <span class="math inline">\(M_0\)</span>. However, this information may <strong>not</strong> be <strong>available</strong> to us or hard to collect. Often, we only know the cluster size when we go and conduct survey (collect information) from the selected cluster.</p>
 <p>In this case, it can be helpful if we use the <strong>ratio estimator</strong>:</p>
 <ul>
 <li>The population mean is a ratio itself:
@@ -983,10 +994,11 @@ we need to know the number of residential units in the whole population <span cl
 <li>When cluster sizes are unequal, the size of a cluster <span class="math inline">\(M_i\)</span> can be highly correlated with the cluster total <span class="math inline">\(t_i\)</span>. Recall the residential building example. Therefore, we can think of using the cluster size as auxiliary information to estimate <span class="math inline">\(t_i\)</span>.</li>
 </ul>
 <p>Applying ratio estimation in Equation <a href="chap-rr.html#eq:rr-ratio-estimator">(4.1)</a> of Chapter <a href="chap-rr.html#chap-rr">4</a>, but replacing the roles of <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span>, and <span class="math inline">\(x_i\)</span> by <span class="math inline">\(M_i\)</span>, we have the ratio estimator for the population mean under one-stage cluster sampling:
-<span class="math display">\[
+<span class="math display" id="eq:clus-1clus-ratio">\[\begin{equation}
 \widehat{\overline{Y}}_r = \frac{\sum_{i\in S}t_i}{\sum_{i\in S}M_i}
-\]</span>
-If <span class="math inline">\(M_0\)</span> is available to us, we can also estimate the population total: <span class="math inline">\(\widehat{T}_r = M_0\widehat{\overline{Y}}_r\)</span>.</p>
+\tag{5.4}
+\end{equation}\]</span></p>
+<p>If <span class="math inline">\(M_0\)</span> is available to us, we can also estimate the population total: <span class="math inline">\(\widehat{T}_r = M_0\widehat{\overline{Y}}_r\)</span>.</p>
 <p>We also apply the MSE/variance formula in Equation <a href="chap-rr.html#eq:rr-ratio-mse">(4.4)</a>, replacing <span class="math inline">\(y_i\)</span> by <span class="math inline">\(t_i\)</span> and <span class="math inline">\(x_i\)</span> by <span class="math inline">\(M_i\)</span> to obtain
 <span class="math display">\[
 Var_{1clus}(\widehat{\overline{Y}}_r) = \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n\overline{M}^2_U}
@@ -995,7 +1007,7 @@ where <span class="math inline">\(d_i = t_i - \overline{y}_U M_i\)</span> is the
 <span class="math display">\[
 \widehat{Var}_{1clus}(\widehat{\overline{Y}}_r) = \left(1-\frac{n}{N}\right)\frac{S_{S,e}^2}{n\overline{M}^2_S}
 \]</span>
-where <span class="math inline">\(e_i = t_i - \widehat{\overline{Y}}_r\times M_i\)</span> and <span class="math inline">\(\overline{M} = \frac{1}{n}\sum_{i\in S}M_i\)</span> is the sample average cluster size.</p>
+where <span class="math inline">\(e_i = t_i - M_i\widehat{\overline{Y}}_r\)</span> and <span class="math inline">\(\overline{M}_S = \frac{1}{n}\sum_{i\in S}M_i\)</span> is the sample average cluster size.</p>
 <div class="myExample">
 <div class="example">
 <p><span id="exm:ex-clus-1clus-ratio" class="example"><strong>Example 5.6  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-ht">5.1</a>, the ratio estimate is
@@ -1004,9 +1016,9 @@ where <span class="math inline">\(e_i = t_i - \widehat{\overline{Y}}_r\times M_i
 \]</span></p>
 <p>Now, to calculate the variance of the ratio estimator, we need to get the regression/prediction errors:</p>
 <p><span class="math display">\[\begin{align*}
-e_1 &amp; = t_1 - \widehat{\overline{Y}}_r\times M_1 = 16 - 4.2\times 5 = -5 \\
-e_3 &amp; = t_3 - \widehat{\overline{Y}}_r \times M_3 = 20 - 4.2 \times 3 = 7.4 \\
-e_4 &amp; = t_4 - \widehat{\overline{Y}}_r \times M_4 = 6 - 4.2 \times 2 = -2.4
+e_1 &amp; = t_1 - M_1\widehat{\overline{Y}}_r = 16 - 4.2\times 5 = -5 \\
+e_3 &amp; = t_3 - M_3\widehat{\overline{Y}}_r = 20 - 4.2 \times 3 = 7.4 \\
+e_4 &amp; = t_4 - M_4\widehat{\overline{Y}}_r = 6 - 4.2 \times 2 = -2.4
 \end{align*}\]</span></p>
 <p>As we see from above and proved in Chapter <a href="chap-rr.html#chap-rr">4</a>, <span class="math inline">\(\sum_{i\in S} e_i = 0\)</span> so <span class="math inline">\(\overline{e} = 0\)</span>. The variance of the errors is
 <span class="math display">\[\begin{align*}
@@ -1068,7 +1080,7 @@ where <span class="math inline">\(\widehat{T}_{HT,i}\)</span> is the Horvitz-Tho
 We can prove that
 <span class="math display" id="eq:clus-two-stage-var">\[\begin{equation}
   Var_{2clus}(\widehat{T}_{HT}) = Var\left(\sum_{i\in S}\frac{\widehat{T}_{HT,i}}{\psi_i}\right) = Var_{psu} + Var_{ssu}
-  \tag{5.4}
+  \tag{5.5}
   \end{equation}\]</span>
 where
 <span class="math display">\[\begin{align*}
@@ -1119,7 +1131,8 @@ The above variance formula is based on <strong>population</strong> quantities. T
 where
 <span class="math display">\[\begin{align*}
   \widehat{S}_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(\widehat{T}_{HT,i} - \frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2 \\
-  \widehat{Var}_{SRS}(\widehat{T}_{HT,i}) &amp; = M_i^2 \left(1- \frac{m_i}{M_i}\right)\frac{S_{S,i}^2}{m_i}
+  \widehat{Var}_{SRS}(\widehat{T}_{HT,i}) &amp; = M_i^2 \left(1- \frac{m_i}{M_i}\right)\frac{S_{S,i}^2}{m_i} \\
+  S_{S,i}^2 &amp; = \frac{1}{m_i-1}\sum_{j\in S_i}(y_{ij} - \overline{Y}_{S,i})^2
   \end{align*}\]</span>
 </summary>
 <div class="empty">
@@ -1218,7 +1231,7 @@ where the second equation is because <span class="math inline">\(\sum_{i=1}^n (x
 <tr class="header">
 <th align="center">Hospital (<span class="math inline">\(i\)</span>)</th>
 <th align="center"><span class="math inline">\(\widehat{T}_{HT,i}\)</span></th>
-<th align="center"><span class="math inline">\(\widehat{Var}_{SRS}(\widehat{T}_{HT})\)</span></th>
+<th align="center"><span class="math inline">\(\widehat{Var}_{SRS}(\widehat{T}_{HT,i})\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1262,16 +1275,174 @@ where the second equation is because <span class="math inline">\(\sum_{i=1}^n (x
 </div>
 <div id="ratio-estimator-1" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The ratio estimator for two-stage cluster sampling is similar to the ratio estimator for one-stage cluster sampling in Equation <a href="chap-clus.html#eq:clus-1clus-ratio">(5.4)</a>. The only difference is that, in one-stage cluster sampling, we collect data from every observation unit in the selected cluster <span class="math inline">\(i\)</span>, therefore, the <strong>population</strong> cluster total <span class="math inline">\(t_{U,i} = T_{S,i}\)</span> is known to us. In two-stage cluster sampling, we do not know <span class="math inline">\(t_{U,i}\)</span> and thus we have to <strong>estimate</strong> it using a Horvitz-Thompson estimator:
+<span class="math display">\[
+\widehat{T}_{HT,i} = M_i \overline{Y}_{S,i} = \frac{M_i}{m_i}\sum_{j\in S_i} y_{ij}
+\]</span>
+Plugging this in place of <span class="math inline">\(t_{U,i}\)</span> in the ratio estimator in Equation <a href="chap-clus.html#eq:clus-1clus-ratio">(5.4)</a>, we obtain the <strong>ratio estimator for two-stage cluster sampling</strong>:
+<span class="math display">\[
+\widehat{\overline{Y}}_r = \frac{\sum_{i\in S}\widehat{T}_{HT,i}}{\sum_{i\in S}M_i} = \frac{\sum_{i\in S}M_i \overline{Y}_{S,i}}{\sum_{i\in S}M_i}
+\]</span></p>
+<details>
+<summary>
+The variance estimator for the ratio estimator under two-stage cluster sampling is
+<span class="math display">\[
+  \widehat{Var}_{2clus}(\widehat{\overline{Y}}_r) = \frac{1}{\overline{M}^2_S}\left(1-\frac{n}{N}\right)\frac{\widehat{S}_{S,e}^2}{n} + \frac{1}{nN\overline{M}^2_S}\sum_{i\in S}M_i^2\left(1-\frac{m_i}{M_i}\right)\frac{S_{S,i}^2}{m_i}
+  \]</span>
+where <span class="math inline">\(\overline{M}_S = \frac{1}{n}\sum_{i\in S}M_i\)</span> and <span class="math inline">\(\widehat{S}_{S,e}^2 = \frac{1}{n-1}\sum_{i\in S}(\widehat{T}_{HT,i} - M_i\widehat{\overline{Y}}_S)^2\)</span>.
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-ratio-2clus-variance-estimator" class="proof"><em>Proof</em>. </span>Similar to the variance proof for HT estimator under two-stage cluster sampling, we again use the <strong>law of total variation</strong> to obtain
+<span class="math display">\[\begin{align*}
+Var(\widehat{\overline{Y}}_r)
+&amp; = Var\left(\E\left[\frac{\sum_{i=1}^N Z_i\widehat{T}_{HT,i}}{\sum_{i=1}^NZ_iM_i} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z} \right]\right) + \E\left[Var\left(\frac{\sum_{i=1}^N Z_i\widehat{T}_{HT,i}}{\sum_{i=1}^NZ_iM_i} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z} \right)\right] \\
+&amp; = Var\left(\frac{\sum_{i=1}^N Z_i\E[\widehat{T}_{HT,i} \mid \mathbf{Z}]}{\sum_{i=1}^NZ_iM_i}\right) + \E\left[\frac{\sum_{i=1}^N Z_i^2Var(\widehat{T}_{HT,i} \mid \mathbf{Z})}{(\sum_{i=1}^NZ_iM_i)^2}\right] \\
+&amp; = Var\left(\frac{\sum_{i=1}^N Z_it_{U,i}}{\sum_{i=1}^NZ_iM_i}\right) + \E\left[\frac{\sum_{i=1}^N Z_i^2Var(\widehat{T}_{HT,i} \mid \mathbf{Z})}{(\sum_{i=1}^NZ_iM_i)^2}\right] \\
+&amp; = Var_{1clus}(\widehat{\overline{Y}}_r) + \E\left[\frac{\sum_{i=1}^N Z_i^2Var(\widehat{T}_{HT,i} \mid \mathbf{Z})}{(\sum_{i=1}^NZ_iM_i)^2}\right] \\
+&amp; \approx Var_{1clus}(\widehat{\overline{Y}}_r) + \frac{\sum_{i=1}^N \E[Z_i^2]Var(\widehat{T}_{HT,i})}{\E[(\sum_{i=1}^NZ_iM_i)^2]} \\
+&amp; \approx Var_{1clus}(\widehat{\overline{Y}}_r) + \frac{n}{N}\times \frac{1}{n^2\overline{M}_U^2}\sum_{i=1}^NVar(\widehat{T}_{HT,i}) \\
+&amp; = \left(1-\frac{n}{N}\right)\frac{s_{U,d}^2}{n\overline{M}^2_U} + \frac{1}{nN\overline{M}_U^2}\sum_{i=1}^N M_i^2\left(1-\frac{m_i}{M_i}\right)\frac{s_{U,i}^2}{m_i}.
+\end{align*}\]</span>
+To obtain a variance estimation from <strong>sample</strong> data, we replace population quantities by sample quantities, similar to what we did in the HT estimator case.</p>
 </div>
 </div>
-<div id="designing-a-cluster-sample" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Designing a Cluster Sample<a href="chap-clus.html#designing-a-cluster-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</details>
+<div class="empty">
+
+</div>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-clus-2clus-ratio" class="example"><strong>Example 5.8  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-2clus-ht">5.7</a>, the ratio estimator for the <strong>average</strong> out-of-pocket spending per visit is
+<span class="math display">\[
+\widehat{\overline{Y}}_r = \frac{\sum_{i\in S}\widehat{T}_{HT,i}}{\sum_{i\in S}M_i} = \frac{120,000 + 102,000 + 72,000}{800+1200+600} = 113.0769.
+\]</span></p>
+<p>The average cluster size is <span class="math inline">\(\overline{M}_S = \frac{1}{3}(800+1200+600) = 866.6667\)</span>.</p>
+<p>We have
+<span class="math display">\[\begin{align*}
+\widehat{S}_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}(\widehat{T}_{HT,i} - M_i\widehat{\overline{Y}}_S)^2 \\
+&amp; = \frac{1}{3-1}\Big[(120,000 - 800 \times 113.0769)^2 + (102,000 - 1200 \times 113.0769)^2 \\
+&amp; \qquad \qquad + (72,000 - 600 \times 113.0769)^2\Big] \\
+&amp; = 1,012,473,043
+\end{align*}\]</span></p>
+<p>Therefore, the variance of the ratio estimate is
+<span class="math display">\[\begin{align*}
+\widehat{Var}_{2clus}(\widehat{\overline{Y}}_r) &amp; = \frac{1}{\overline{M}^2_S}\left(1-\frac{n}{N}\right)\frac{\widehat{S}_{S,e}^2}{n} + \frac{1}{nN\overline{M}^2_S}\sum_{i\in S}M_i^2\left(1-\frac{m_i}{M_i}\right)\frac{S_{S,i}^2}{m_i} \\
+&amp; = \frac{1}{866.6667^2}\left(1- \frac{3}{10}\right)\frac{1,012,473,043}{3} \\
+&amp; \qquad \qquad + \frac{1}{3\times 10 \times 866.6667^2}(47,040,000 + 315,840,000 + 36,540,000) \\
+&amp; = 332.2514
+\end{align*}\]</span></p>
+<p>The standard error is <span class="math inline">\(\sqrt{332.2514} = 18.2278\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="design-a-cluster-sample" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Design a Cluster Sample<a href="chap-clus.html#design-a-cluster-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="equal-sized-clusters" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Equal-Sized Clusters<a href="chap-clus.html#equal-sized-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details>
+<summary>
+Suppose we need to design a two-stage cluster sampling scheme where <span class="math inline">\(M_i = M\)</span> and <span class="math inline">\(m_i = m\)</span> for all clusters <span class="math inline">\(i\)</span>, we can substitute this into the variance formula in Equation <a href="chap-clus.html#eq:clus-two-stage-var">(5.5)</a> to derive that
+<span class="math display" id="eq:clus-equal-size-2stage">\[\begin{equation}
+  Var_{2clus}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm}
+  \tag{5.6}
+  \end{equation}\]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-equal-size-2stage" class="proof"><em>Proof</em>. </span>From Equation <a href="chap-clus.html#eq:clus-two-stage-var">(5.5)</a> and the fact that <span class="math inline">\(\widehat{\overline{Y}}_{HT} = \frac{1}{M_0}\widehat{T}_{HT}\)</span>, we have
+<span class="math display">\[\begin{align*}
+Var_{2clus}(\widehat{\overline{Y}}_{HT}) &amp; = \frac{N^2}{M_0^2}\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} + \frac{N}{nM_0^2}\sum_{i=1}^N M_i^2\left(1 - \frac{m_i}{M_i}\right)\frac{s_{U,i}^2}{m_i} \\
+&amp; = \frac{N^2}{N^2M^2}\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} + \frac{N}{nN^2M^2}\sum_{i=1}^N M^2\left(1 - \frac{m}{M}\right)\frac{s_{U,i}^2}{m} \\
+&amp; = \frac{1}{nM^2}\left(1-\frac{n}{N}\right)s_{U,t}^2 + \frac{1}{nmN}\left(1 - \frac{m}{M}\right)\sum_{i=1}^N s_{U,i}^2 \\
+&amp; = \frac{1}{nM^2}\left(1-\frac{n}{N}\right)\frac{M\times SSB}{N-1} + \frac{1}{nmN}\left(1 - \frac{m}{M}\right)\frac{SSW}{M-1} \\
+&amp; = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm},
+\end{align*}\]</span>
+where <span class="math inline">\(s_{U,t}^2 = \frac{M\times SSB}{N-1}\)</span> as in Section <a href="chap-clus.html#clus-one-compare">5.1.4</a> and <span class="math inline">\(\sum_{i=1}^N s_{U,i}^2 = \frac{SSW}{M-1}\)</span>.</p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p><strong>Approach 1:</strong> (Optimal allocation) suppose we have the cost constraint
+<span class="math display">\[
+C = c_1n + c_2nm
+\]</span>
+where <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are fixed costs per cluster and unit, respectively.</p>
+<details>
+<summary>
+We can prove that the optimal values for <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are
+<span class="math display">\[\begin{align*}
+  n_{opt} &amp; = \frac{C}{c_1 + c_2m_{opt}} \\
+  m_{opt} &amp; = \sqrt{\frac{c_1M(N-1)(1-R_a^2)}{c_2(NM-1)R_a^2}}
+  \end{align*}\]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="clus-optimal-alloc" class="proof"><em>Proof</em>. </span>We can form a Lagrangian:
+<span class="math display">\[
+f(n,m, \lambda) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm} - \lambda \left(C - c_1n - c_2nm\right)
+\]</span></p>
+<p>Taking derivatives we get
+<span class="math display">\[\begin{align}
+\frac{\partial f}{\partial \lambda} &amp; = C - c_1n - c_2nm = 0 \\
+\Leftrightarrow \hspace{5mm} n &amp; = \frac{C}{c_1 + c_2m} \\
+\frac{\partial f}{\partial m} &amp; = -\frac{MSW}{nm^2} + \lambda c_2n = 0 \\
+\Leftrightarrow \hspace{5mm} \lambda &amp; = \frac{MSW}{c_2 n^2m^2} \\
+\frac{\partial f}{\partial n} &amp; = -\frac{MSB}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW}{n^2m} + \lambda(c_1 + c_2m)\\
+&amp; = -\frac{MSB}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW}{n^2m} + \frac{MSW}{c_2 n^2m^2}(c_1 + c_2m) \\
+&amp; = -\frac{MSB}{n^2M} - \frac{MSW}{n^2m} + \frac{MSW}{n^2M} + \frac{c_1 MSW}{c_2 n^2m^2} + \frac{MSW}{n^2m} \\
+&amp; = \frac{-m\times MSB + m \times MSW}{n^2mM} + \frac{c_1 MSW}{c_2 n^2m^2} \\
+&amp; = \frac{MSW - MSB}{n^2M} + \frac{c_1 MSW}{c_2 n^2m^2} \\
+\frac{1}{MST}\frac{\partial f}{\partial n} &amp; = \frac{(1-R_a^2) - (1 + \frac{N(M-1)}{N-1}R_a^2)}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
+&amp; =  \frac{-R_a^2(1 + \frac{N(M-1)}{N-1})}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
+&amp; = \frac{-R_a^2\frac{NM-1}{N-1}}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
+\Leftrightarrow \hspace{5mm} m^2 &amp; = \frac{c_1M(N-1)(1-R_a^2)}{c_2(NM-1)R_a^2}
+\end{align}\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>So if we know <span class="math inline">\(R_a^2\)</span>, possibly from previous surveys, we can choose <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> accordingly.</p>
+<p><strong>Approach 2</strong>: (Tolerable Margin of Error) Suppose we ignore the psu-level fpc, Equation <a href="chap-clus.html#eq:clus-equal-size-2stage">(5.6)</a> implies that
+<span class="math display">\[
+Var_{2clus}(\widehat{\overline{Y}}_{HT}) \le \frac{1}{n}\left[\frac{MSB}{M} + \left(1-\frac{m}{M}\right)\frac{MSW}{m}\right] := \frac{1}{n}v
+\]</span>
+We can set <span class="math inline">\(e = z_{\alpha/2}\pm\sqrt{\frac{1}{n}v}\)</span> and solve to obtain <span class="math inline">\(n = z_{\alpha/2}^2v/e^2\)</span>. This approach requires that you have an estimate of <span class="math inline">\(v\)</span>, possibly from prior surveys.</p>
+<div class="empty">
+
+</div>
+<div class="myNote">
+<p><strong><ins>Notes:</ins></strong> Although so far we consider equal-sized cluster sampling, we can use an estimate of the average cluster size <span class="math inline">\(\overline{M}\)</span> in place of <span class="math inline">\(M\)</span> to obtain the desired average sample cluster size <span class="math inline">\(\overline{m}\)</span>. We then can do a proportional sampling scheme: <span class="math inline">\(m_i \propto \frac{\overline{m}}{\overline{M}}\)</span>.</p>
+</div>
+</div>
+<div id="general-sample-size-determination" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> General Sample Size Determination<a href="chap-clus.html#general-sample-size-determination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you have a complex sampling design, we can use the estimated design effect to determine the sample size. Recall the design effect formula
+<span class="math display">\[
+DE = \frac{Var_{complex}(\widehat{\theta}_n)}{Var_{SRS}(\widehat{\theta}_n)}
+\]</span>
+where the estimator <span class="math inline">\(\widehat{\theta}_n\)</span> uses <span class="math inline">\(n\)</span> observation units. Suppose we are interested in <span class="math inline">\(\widehat{\theta} = \widehat{\overline{Y}}_{HT}\)</span>, then the design effect formula becomes
+<span class="math display">\[
+DE = \frac{Var_{complex}(\widehat{\overline{Y}}_{HT})}{Var_{SRS}(\widehat{\overline{Y}}_{HT})} =  \frac{Var_{complex}(\widehat{\overline{Y}}_{HT})}{\left(1-\frac{n}{N}\right)\frac{s_{U,y}^2}{n}}
+\]</span></p>
+<p>We can then set the tolerable margin <span class="math inline">\(e = z_{\alpha/2}\sqrt{DE \times \left(1-\frac{n}{N}\right)\frac{s_{U,y}^2}{n}}\)</span> and solve for <span class="math inline">\(n\)</span> to find the required number of observation units.</p>
 
 </div>
 </div>
-
-
-
 </div>
             </section>
 
@@ -1279,7 +1450,7 @@ where the second equation is because <span class="math inline">\(\sum_{i=1}^n (x
         </div>
       </div>
 <a href="chap-rr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="app-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chap-others.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-02" />
+<meta name="date" content="2026-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -376,8 +376,13 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
 <li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#designing-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Designing a Cluster Sample</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#design-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Design a Cluster Sample</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-clus.html"><a href="chap-clus.html#equal-sized-clusters"><i class="fa fa-check"></i><b>5.3.1</b> Equal-Sized Clusters</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-clus.html"><a href="chap-clus.html#general-sample-size-determination"><i class="fa fa-check"></i><b>5.3.2</b> General Sample Size Determination</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-others.html"><a href="chap-others.html"><i class="fa fa-check"></i><b>6</b> Other Topics in Survey Sampling</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
 <li class="chapter" data-level="B" data-path="app-summaries.html"><a href="app-summaries.html"><i class="fa fa-check"></i><b>B</b> Formula Summaries</a>
@@ -401,6 +406,12 @@ div.csl-indent {
 <li class="chapter" data-level="B.3.1" data-path="app-summaries.html"><a href="app-summaries.html#ratio-estimation-1"><i class="fa fa-check"></i><b>B.3.1</b> Ratio Estimation</a></li>
 <li class="chapter" data-level="B.3.2" data-path="app-summaries.html"><a href="app-summaries.html#post-stratification-1"><i class="fa fa-check"></i><b>B.3.2</b> Post-Stratification</a></li>
 <li class="chapter" data-level="B.3.3" data-path="app-summaries.html"><a href="app-summaries.html#regression-estimation-1"><i class="fa fa-check"></i><b>B.3.3</b> Regression Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="app-summaries.html"><a href="app-summaries.html#chapter-5"><i class="fa fa-check"></i><b>B.4</b> Chapter 5</a>
+<ul>
+<li class="chapter" data-level="B.4.1" data-path="app-summaries.html"><a href="app-summaries.html#one-stage-cluster-sampling-1"><i class="fa fa-check"></i><b>B.4.1</b> One-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="B.4.2" data-path="app-summaries.html"><a href="app-summaries.html#two-stage-cluster-sampling-1"><i class="fa fa-check"></i><b>B.4.2</b> Two-Stage Cluster Sampling</a></li>
+<li class="chapter" data-level="B.4.3" data-path="app-summaries.html"><a href="app-summaries.html#others-1"><i class="fa fa-check"></i><b>B.4.3</b> Others</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -1173,10 +1184,10 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 ##     design = design.srs)
 ## Ratios=
 ##          area
-## rent 26.14118
+## rent 24.97163
 ## SEs=
 ##           area
-## rent 0.5956652</code></pre>
+## rent 0.5517693</code></pre>
 <p>We can obtain <span class="math inline">\(\widehat{T}_r\)</span> using the following code</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-rr.html#cb28-1" tabindex="-1"></a><span class="co">#suppose we know the population total t_{U,x}</span></span>
 <span id="cb28-2"><a href="chap-rr.html#cb28-2" tabindex="-1"></a>known.x.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(dat<span class="sc">$</span>area)</span>
@@ -1185,11 +1196,11 @@ As expected, we achieve a whooping amount of 97.0795% gain in efficiency by usin
 <span id="cb28-5"><a href="chap-rr.html#cb28-5" tabindex="-1"></a><span class="fu">predict</span>(srs.ratio,<span class="at">total=</span>known.x.total)</span></code></pre></div>
 <pre><code>## $total
 ##          area
-## rent 21246346
+## rent 20295789
 ## 
 ## $se
 ##          area
-## rent 484129.3</code></pre>
+## rent 448452.7</code></pre>
 </div>
 </div>
 <div id="post-stratification" class="section level2 hasAnchor" number="4.3">
@@ -1299,11 +1310,11 @@ Figure 4.3: Post-stratification to adjust sample so that it represents the popul
 <span id="cb30-9"><a href="chap-rr.html#cb30-9" tabindex="-1"></a><span class="co">#use the new survey design to estimate mean</span></span>
 <span id="cb30-10"><a href="chap-rr.html#cb30-10" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##        mean     SE
-## rent 814.91 25.157</code></pre>
+## rent 749.46 21.598</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-rr.html#cb32-1" tabindex="-1"></a><span class="co">#use the new survey design to estimate total</span></span>
 <span id="cb32-2"><a href="chap-rr.html#cb32-2" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>rent, design.post)</span></code></pre></div>
 <pre><code>##         total     SE
-## rent 21715735 670388</code></pre>
+## rent 19971556 575542</code></pre>
 </div>
 <div id="calibration-and-raking" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Calibration and Raking<a href="chap-rr.html#calibration-and-raking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1361,8 +1372,8 @@ Therefore, these adjusted weights can be called the reproducing weights.</p>
 <span id="cb34-26"><a href="chap-rr.html#cb34-26" tabindex="-1"></a></span>
 <span id="cb34-27"><a href="chap-rr.html#cb34-27" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
 <span id="cb34-28"><a href="chap-rr.html#cb34-28" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.cal)</span></code></pre></div>
-<pre><code>##       mean     SE
-## rent 815.7 24.758</code></pre>
+<pre><code>##        mean     SE
+## rent 748.65 21.338</code></pre>
 <p><strong><ins>Raking:</ins></strong></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-rr.html#cb36-1" tabindex="-1"></a><span class="co">#get the population count for study</span></span>
 <span id="cb36-2"><a href="chap-rr.html#cb36-2" tabindex="-1"></a>Nh_study <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">study =</span> dat<span class="sc">$</span>study)</span>
@@ -1377,8 +1388,8 @@ Therefore, these adjusted weights can be called the reproducing weights.</p>
 <span id="cb36-11"><a href="chap-rr.html#cb36-11" tabindex="-1"></a></span>
 <span id="cb36-12"><a href="chap-rr.html#cb36-12" tabindex="-1"></a><span class="co">#estimate the mean using the adjusted weights</span></span>
 <span id="cb36-13"><a href="chap-rr.html#cb36-13" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>rent, design.rak)</span></code></pre></div>
-<pre><code>##       mean     SE
-## rent 815.7 24.758</code></pre>
+<pre><code>##        mean     SE
+## rent 748.65 21.338</code></pre>
 <p>We can see that the results by <code>calibrate()</code> (with default settings) are practically the same as the results by <code>rake()</code>. In general, <code>calibrate()</code> is <strong>more general with more flexible options</strong>.</p>
 </div>
 </div>
@@ -1675,7 +1686,7 @@ S_{S,e}^2 = \frac{1}{n-1}\sum_{i\in S} e_i^2.
 <span id="cb38-8"><a href="chap-rr.html#cb38-8" tabindex="-1"></a><span class="fu">predict</span>(srs.reg, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x.mean),</span>
 <span id="cb38-9"><a href="chap-rr.html#cb38-9" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>##   response     SE
-## 1   798.43 17.806</code></pre>
+## 1   760.12 17.164</code></pre>
 <p>In R, we can also use more than 1 variable to do the regression prediction. Suppose I also want to use the indicator variable <code>washroom</code>, together with <code>area</code> to predict <code>rent</code>:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-rr.html#cb40-1" tabindex="-1"></a><span class="co">#estimate/fit the regression</span></span>
 <span id="cb40-2"><a href="chap-rr.html#cb40-2" tabindex="-1"></a>srs.reg2 <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(rent<span class="sc">~</span>area<span class="sc">+</span>washroom, <span class="at">design =</span> design.srs)</span>
@@ -1689,8 +1700,8 @@ S_{S,e}^2 = \frac{1}{n-1}\sum_{i\in S} e_i^2.
 <span id="cb40-10"><a href="chap-rr.html#cb40-10" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">area =</span> known.x1.mean, </span>
 <span id="cb40-11"><a href="chap-rr.html#cb40-11" tabindex="-1"></a>                             <span class="at">washroom =</span> known.x2.mean),</span>
 <span id="cb40-12"><a href="chap-rr.html#cb40-12" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
-<pre><code>##   response     SE
-## 1   793.67 17.797</code></pre>
+<pre><code>##   response    SE
+## 1   764.35 15.87</code></pre>
 </div>
 <div id="greg-estimator" class="section level3 hasAnchor" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> GREG Estimator<a href="chap-rr.html#greg-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
