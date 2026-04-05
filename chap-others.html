@@ -340,9 +340,9 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
 <li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
 <li class="chapter" data-level="4.2.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-2"><i class="fa fa-check"></i><b>4.2.3</b> Bias</a></li>
-<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
 <li class="chapter" data-level="4.2.5" data-path="chap-rr.html"><a href="chap-rr.html#compared-to-ht-estimator"><i class="fa fa-check"></i><b>4.2.5</b> Compared to HT estimator</a></li>
-<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#variance-estimation"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-var"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
 <li class="chapter" data-level="4.2.7" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-r"><i class="fa fa-check"></i><b>4.2.7</b> R Code</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification"><i class="fa fa-check"></i><b>4.3</b> Post-Stratification</a>
@@ -393,11 +393,20 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="chap-others.html"><a href="chap-others.html#variance-estimation-in-complex-surveys"><i class="fa fa-check"></i><b>6.2</b> Variance Estimation in Complex Surveys</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylor-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor Approximation)</a></li>
+<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylors-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor’s Approximation)</a></li>
 <li class="chapter" data-level="6.2.2" data-path="chap-others.html"><a href="chap-others.html#bootstrap"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a></li>
-<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure"><i class="fa fa-check"></i><b>6.3.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-others.html"><a href="chap-others.html#ht-estimator-2"><i class="fa fa-check"></i><b>6.3.2</b> HT estimator</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-others.html"><a href="chap-others.html#ratio-estimator-2"><i class="fa fa-check"></i><b>6.3.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure-1"><i class="fa fa-check"></i><b>6.4.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-others.html"><a href="chap-others.html#estimation-2"><i class="fa fa-check"></i><b>6.4.2</b> Estimation</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -494,7 +503,7 @@ Figure 6.1: An illustration of the cumulative size method. With the generated <s
 </div>
 <div id="estimation-1" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Estimation<a href="chap-others.html#estimation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As discussed in Chapter <a href="chap-srs.html#chap-srs">2</a>, we can use the Horvitz-Thompson estimator to obtain an unbiased estimate of the population total or mean under a any probability sampling scheme, with possibly unequal probabilities:
+<p>As discussed in Chapter <a href="chap-srs.html#chap-srs">2</a>, we can use the Horvitz-Thompson estimator to obtain an unbiased estimate of the population total or mean under any probability sampling scheme, with possibly unequal probabilities:
 <span class="math display">\[
 \widehat{T}_{HT} = \sum_{i\in S}\frac{y_i}{\pi_i}.
 \]</span></p>
@@ -511,7 +520,7 @@ We can prove that the variance formula can also be written as
   Var(\widehat{T}_{HT}) = \sum_{i\ne j}(\pi_i\pi_j - \pi_{ij})\left(\frac{y_i}{\pi_i} - \frac{y_j}{\pi_j}\right)^2
   \tag{6.2}
   \end{equation}\]</span>
-This is called the Sen-Yates-Grundy (SYG) form of the variance.
+This is called the <strong>Sen-Yates-Grundy</strong> (SYG) form of the variance <span class="citation">(<a href="references.html#ref-sen1953estimate">Sen 1953</a>; <a href="references.html#ref-yates1953selection">Yates and Grundy 1953</a>)</span>.
 </summary>
 <div class="empty">
 
@@ -522,7 +531,7 @@ This is called the Sen-Yates-Grundy (SYG) form of the variance.
 <span class="math display">\[\begin{align*}
 &amp; \sum_{i\ne j}(\pi_i\pi_j - \pi_{ij})\left(\frac{y_i}{\pi_i} - \frac{y_j}{\pi_j}\right)^2 \\
 &amp; = \sum_{i\ne j}(\pi_i\pi_j - \pi_{ij})\left(\frac{y_i^2}{\pi_i^2} + \frac{y_j^2}{\pi_j^2} - 2\frac{y_i}{\pi_i}\frac{y_j}{\pi_j}\right) \\
-&amp; = \sum_{i\ne j}\sum_{i\ne j}(\pi_i\pi_j - \pi_{ij})\left(\frac{y_i^2}{\pi_i^2} + \frac{y_j^2}{\pi_j^2}\right) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \\
+&amp; = \sum_{i\ne j}(\pi_i\pi_j - \pi_{ij})\left(\frac{y_i^2}{\pi_i^2} + \frac{y_j^2}{\pi_j^2}\right) + 2\sum_{i\ne j}\frac{y_iy_j}{\pi_i\pi_j}(\E[Z_iZ_j] - \pi_i\pi_j) \\
 \end{align*}\]</span>
 To prove that this equals the original formula <a href="chap-others.html#eq:others-general-ht">(6.1)</a>, we only need to prove
 <span class="math display">\[
@@ -561,11 +570,11 @@ as required.</p>
 \widehat{Var}_{HT}(\widehat{T}_{HT}) &amp; = \sum_{i\in S}\frac{y_i^2}{\pi_i^3}\pi_i(1-\pi_i) + 2\sum_{i\ne j \in S}\frac{y_iy_j}{\pi_i\pi_j}\frac{\pi_{ij} - \pi_i\pi_j}{\pi_{ij}} \\
 \widehat{Var}_{SYG}(\widehat{T}_{HT}) &amp; = \sum_{i\ne j \in S}\frac{\pi_i\pi_j - \pi_{ij}}{\pi_{ij}}\left(\frac{y_i}{\pi_i} - \frac{y_j}{\pi_j}\right)^2
 \end{align*}\]</span>
-In general, the SYG estimator of the variance is more stable and is preferred for most applications.</p>
+In general, the SYG estimator of the variance is <strong>more stable</strong> and is preferred for most applications.</p>
 </div>
 <div id="alternative-variance-formulas" class="section level3 hasAnchor" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> Alternative Variance Formulas<a href="chap-others.html#alternative-variance-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Although the SYG and HT variance estimators are unbiased estimators of the <strong>exact</strong> variance, they require the knowledge of <span class="math inline">\(\pi_{ij}\)</span>, the <strong>joint inclusion probabilities</strong> for two distinct units, which, in practice, may <strong>not</strong> be <strong>available</strong> to us. Furthermore, it can be possible that the HT and SYG variance estimators give <strong>negative estimates</strong>. In those cases, we may use other variance formulas to approximate or estimate the variance.</p>
+<p>Although the SYG and HT variance estimators are unbiased estimators of the <strong>exact</strong> variance, they require the knowledge of <span class="math inline">\(\pi_{ij}\)</span>, the <strong>joint inclusion probabilities</strong> for two distinct units, which, in practice, may <strong>not</strong> be <strong>available</strong> to us. Furthermore, it can be possible that the HT and SYG variance estimators give <strong>negative estimates</strong>. This does not make sense for a variance estimation. Therefore, alternative variance formulas have been proposed to approximate or estimate the variance.</p>
 <div id="conservative-variance-formula" class="section level4 hasAnchor" number="6.1.4.1">
 <h4><span class="header-section-number">6.1.4.1</span> Conservative Variance Formula<a href="chap-others.html#conservative-variance-formula" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Note that the variance for the HT estimator of the total in Equation <a href="chap-others.html#eq:others-general-ht">(6.1)</a> can also be written as
@@ -584,33 +593,34 @@ where <span class="math inline">\(Z_i\)</span> are the binary inclusion indicato
 </div>
 <div id="with-replacement-approximation" class="section level4 hasAnchor" number="6.1.4.2">
 <h4><span class="header-section-number">6.1.4.2</span> With Replacement Approximation<a href="chap-others.html#with-replacement-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>To deal with unknown joint inclusion probabilities, <span class="citation">Durbin (<a href="references.html#ref-durbin1953some">1953</a>)</span> suggest to assume that the units were selected <strong>with replacement</strong> and use the with-replacement variance estimator.</p>
+<p>To deal with unknown joint inclusion probabilities, <span class="citation">Durbin (<a href="references.html#ref-durbin1953some">1953</a>)</span> suggest to <strong>assume</strong> that the units were selected <strong>with replacement</strong> and use the with-replacement variance estimator.</p>
 <p>First, consider the case where <strong>only one</strong> unit is selected, i.e., <span class="math inline">\(n=1\)</span>, and the inclusion probability for unit <span class="math inline">\(i\)</span> is <span class="math inline">\(\psi_i\)</span>, which can be unequal among the units. In that case, the Horvitz-Thompson estimator for the population total is still <span class="math inline">\(\sum_{i\in S}\frac{y_i}{\psi_i}\)</span> and unbiased. Suppose the unit <span class="math inline">\(i\)</span> is selected, then <span class="math inline">\(u_i = \frac{y_i}{\psi_i}\)</span> is an unbiased estimator of the population total <span class="math inline">\(t_U\)</span>.</p>
 <p>When we sample <span class="math inline">\(n\)</span> units <strong>with replacement</strong>, it is similar to conducting <span class="math inline">\(n\)</span> times the sampling of size 1, each time we obtain an independent unbiased estimator <span class="math inline">\(u_i\)</span> of <span class="math inline">\(t_U\)</span>. We can <strong>average them</strong> to get an estimator of the population total <span class="math inline">\(t_U\)</span>:
 <span class="math display">\[
 \widehat{T}_{HH} = \frac{1}{n}\sum_{i\in W}\frac{y_i}{\psi_i} = \frac{1}{n}\sum_{i\in W}u_i = \overline{u}
 \]</span>
-where <span class="math inline">\(W\)</span> records the units selected with replacement in each draw, including the <strong>repeats</strong> (if happens). That is, different from the sample set <span class="math inline">\(S\)</span> which contains <strong>distinct</strong> units in the sample, there can be units that appear <strong>more than once</strong> in <span class="math inline">\(W\)</span>. This estimator is called the Hansen-Hurwitz estimator <span class="citation">(<a href="references.html#ref-hansen1943theory">Hansen and Hurwitz 1943</a>)</span>. As each <span class="math inline">\(u_i\)</span> has variance <span class="math inline">\(s^2_{U,u}\)</span>, <span class="math inline">\(Var(\widehat{T}_{HH}) = \frac{s_{U,u}^2}{n}\)</span>, and such variance can be estimated by
+where <span class="math inline">\(W\)</span> records the units selected with replacement in each draw, including the <strong>repeats</strong> (if happens). That is, different from the sample set <span class="math inline">\(S\)</span> which contains <strong>distinct</strong> units in the sample, there can be units that appear <strong>more than once</strong> in <span class="math inline">\(W\)</span>. This estimator is called the <strong>Hansen-Hurwitz estimator</strong> <span class="citation">(<a href="references.html#ref-hansen1943theory">Hansen and Hurwitz 1943</a>)</span>.</p>
+<p>As each <span class="math inline">\(u_i\)</span> has variance <span class="math inline">\(s^2_{U,u}\)</span>, <span class="math inline">\(Var(\widehat{T}_{HH}) = \frac{s_{U,u}^2}{n}\)</span>, and such variance can be estimated by
 <span class="math display">\[
 \widehat{Var}(\widehat{T}_{HH}) = \frac{S_{S,u}^2}{n} = \frac{1}{n}\frac{1}{n-1}\sum_{i\in W}(u_i - \overline{u})^2 = \frac{1}{n}\frac{1}{n-1}\sum_{i\in W}\left(\frac{y_i}{\psi_i} - \widehat{T}_{HH}\right)^2
 \]</span></p>
-<p>Now, assuming that the sampling is done with replacement. Note that the probability of inclusion in each with-replacement draw is <span class="math inline">\(\psi_i\)</span>, and the draws are repeated <span class="math inline">\(n\)</span> times <strong>independently</strong>. Therefore probability that a unit <span class="math inline">\(i\)</span> is included in the sample over the <span class="math inline">\(n\)</span> independent with-replacement draw is <span class="math inline">\(\Pr(i\in S) = \pi_i = n\psi_i\)</span>. Furthermore
+<p>Now, assuming that the sampling is done with replacement. Note that the probability of inclusion in each with-replacement draw is <span class="math inline">\(\psi_i\)</span>, and the draws are repeated <span class="math inline">\(n\)</span> times <strong>independently</strong>. Therefore probability that a unit <span class="math inline">\(i\)</span> is included in the sample over the <span class="math inline">\(n\)</span> independent with-replacement draw is <span class="math inline">\(\pi_i = n\psi_i\)</span>. Indeed,
 <span class="math display">\[
 \widehat{T}_{HH} = \frac{1}{n}\sum_{i\in W}\frac{y_i}{\psi_i} = \sum_{i\in W}\frac{y_i}{\pi_i} = \widehat{T}_{HT}
 \]</span>
-So under sampling with replacement, the Hansen-Hurwitz estimator and the Horvitz-Thompson estimator are equivalent. Now assuming that we sample with replacement (although we may not), we obtain the with-replacement simplified variance estimator for <span class="math inline">\(\widehat{T}_{HT}\)</span>:
+So under sampling with replacement, the Hansen-Hurwitz estimator and the Horvitz-Thompson estimator are <strong>equivalent</strong>. Now assuming that we sample with replacement (although we may not), we obtain the with-replacement simplified variance estimator for <span class="math inline">\(\widehat{T}_{HT}\)</span>:
 <span class="math display">\[
 \widehat{Var}_{WR}(\widehat{T}_{HT}) = \frac{1}{n}\frac{1}{n-1}\sum_{i\in S}\left(\frac{y_i}{\psi_i} - \widehat{T}_{HH}\right)^2 = \frac{n}{n-1}\sum_{i\in S}\left(\frac{y_i}{\pi_i} - \frac{\widehat{T}_{HT}}{n}\right)^2
 \]</span>
-This variance is always non-negative, so we can avoid the possibility of getting a negative estimate of the variance, as in the HT or SYG variance estimators.</p>
+This variance estimator does not require the joint inclusion probabilities and is always non-negative, so we can avoid the possibility of getting a negative estimate of the variance, which may happen with the HT or SYG variance estimators.</p>
 </div>
 </div>
 </div>
 <div id="variance-estimation-in-complex-surveys" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Variance Estimation in Complex Surveys<a href="chap-others.html#variance-estimation-in-complex-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As we have seen in Chapter <a href="chap-rr.html#chap-rr">4</a>, there are many <strong>estimators</strong> besides the HT estimators that are <strong>more complicated</strong>, they can be biased but potentially give us lower mean squared error. In Chapter <a href="chap-clus.html#chap-clus">5</a>, we also see that as the <strong>sampling scheme</strong> becomes <strong>more complex</strong> from one-stage to two-stage cluster sampling, the variance formula can be more and more complicated and more difficult to derive. Nevertheless, in practice, surveys, especially big surveys, can have a very complex designs with multiple stages of cluster sampling, stratification and many auxiliary information. Therefore, we need some tools or <strong>methods</strong> that are <strong>easier to implement</strong> to approximate to estimate the variance formula in those cases, rather than deriving the exact formula and finding an appropriate estimator for such variance.</p>
-<div id="linearization-taylor-approximation" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Linearization (Taylor Approximation)<a href="chap-others.html#linearization-taylor-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As we have seen in Chapter <a href="chap-rr.html#chap-rr">4</a>, there are many <strong>estimators</strong> besides the HT estimators that are <strong>more complicated</strong>, they can be biased but potentially give us lower mean squared error. In Chapter <a href="chap-clus.html#chap-clus">5</a>, we also see that as the <strong>sampling scheme</strong> becomes <strong>more complex</strong> from one-stage to two-stage cluster sampling, the variance formula can become more and more complicated and more difficult to derive. Meanwhile, in practice, surveys, especially big surveys, can have a very complex designs with multiple stages of cluster sampling, stratification and many auxiliary variables. Therefore, we need some tools or <strong>methods</strong> that are <strong>easier to implement</strong> to <strong>approximate</strong> or <strong>estimate</strong> the <strong>variance</strong>, rather than deriving the exact formula and finding an appropriate estimator for such variance.</p>
+<div id="linearization-taylors-approximation" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Linearization (Taylor’s Approximation)<a href="chap-others.html#linearization-taylors-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In Chapter <a href="chap-srs.html#chap-srs">2</a>, Equation <a href="chap-srs.html#eq:srs-var-linear-comb">(2.11)</a>, we proved the variance formula of a <strong>linear function</strong> <span class="math inline">\(h(Z_1, Z_2, ..., Z_k) = \sum_{j=1}^k a_kZ_k\)</span> where <span class="math inline">\(a_k\)</span> are fixed constants and <span class="math inline">\(X_k\)</span> are random variables:
 <span class="math display">\[
 Var\left(\sum_{i=1}^Na_iZ_i\right) = \sum_{i=1}^N a_i^2 Var(Z_i) + 2\sum_{i \ne j}a_ia_j Cov(Z_i,Z_j)
@@ -635,18 +645,18 @@ Var(\widehat{\theta}) = Var\left(\sum_{j=1}^k a_j\widehat{T}_{j}\right) = \sum_{
 <p><span class="math display">\[
   a_j = \frac{\partial h(c_1, ..., c_k)}{\partial c_j} \Big|_{t_{U,1}, ..., t_{U,k}}
   \]</span></p></li>
-<li><p>Approximate the variance of <span class="math inline">\(\widehat{\theta}\)</span> by</p>
+<li><p>Approximate the variance of <span class="math inline">\(\widehat{\theta}\)</span>, for example, by</p>
 <p><span class="math display">\[
   Var(\hat{\theta}) = Var(h(\widehat{T}_1, ..., \widehat{T}_k)) \approx Var\left(\sum_{j=1}^ka_j(\widehat{T}_j - t_{U,j})\right)
   \]</span></p></li>
 </ul>
 <div class="myExample">
 <div class="example">
-<p><span id="exm:ex-others-taylor" class="example"><strong>Example 6.1  </strong></span>Consider the ratio estimator in Chapter <a href="chap-rr.html#chap-rr">4</a> for the ratio:
+<p><span id="exm:ex-others-taylor" class="example"><strong>Example 6.1  </strong></span>Consider the ratio estimator for the ratio from Section <a href="chap-rr.html#rr-ratio">4.2</a>:
 <span class="math display">\[
 \widehat{B}_r = \frac{\overline{Y}_S}{\overline{X}_S} = \frac{\widehat{T}_{HT,y}}{\widehat{T}_{HT,x}}
 \]</span>
-We now use the linearization (Taylor approximation) method to derive an approximation formula for the variance of <span class="math inline">\(\widehat{B}_r\)</span>.</p>
+We now use the linearization (Taylor’s approximation) method to derive an approximation formula for the variance of <span class="math inline">\(\widehat{B}_r\)</span>.</p>
 <p>First, we have <span class="math inline">\(\widehat{B}_r = h(\widehat{T}_{HT,x}, \widehat{T}_{HT,y})\)</span> where <span class="math inline">\(h(c,d) = \frac{d}{c}\)</span>.</p>
 <p>The partial derivatives are
 <span class="math display">\[
@@ -667,7 +677,7 @@ By Taylor’s theorem
 <span class="math display">\[
 \frac{N^2}{t_{U,x}^2}\left(1-\frac{n}{N}\right)\frac{b_U^2s_{U,x}^2 + s_{U,y}^2 - 2b_Ur_Us_{U,x}s_{U,y}}{n}
 \]</span>
-which is the same as the formula we derived in Section <a href="chap-rr.html#rr-mse">4.2.4</a>.</p>
+which is the same as the formula we derived in Section <a href="chap-rr.html#rr-ratio-var">4.2.6</a>.</p>
 </div>
 </div>
 </div>
@@ -695,10 +705,207 @@ Figure 6.2: An illustration of choosing the <span class="math inline">\(b\)</spa
 </div>
 <div id="two-phase-sampling" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Two-Phase Sampling<a href="chap-others.html#two-phase-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="motivation-and-procedure" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Motivation and Procedure<a href="chap-others.html#motivation-and-procedure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Two phase sampling</strong> is often used when we need useful <strong>auxiliary information</strong> to improve the precision of the estimator, adjust for nonresponse, sample rare populations, or to improve the sampling frame. For example:</p>
+<ul>
+<li><p>We would like to use stratification or unequal-probability sampling, but the <strong>sampling frame</strong> lacks necessary information:</p>
+<ul>
+<li>Suppose we want to do stratified sampling on departments in USask. However, we may not know which student is in which department and how many students there are in each department.</li>
+</ul></li>
+<li><p>We would like to use ratio estimation to increase the precision of the estimator, but <strong>population auxiliary information</strong> is required. This often happens when the auxiliary variable is <strong>cheaper</strong> or <strong>easier</strong> to collect than the target variable of interest.</p>
+<ul>
+<li>Suppose we want to use ratio estimator to estimatestudents’ rent expenses using students’ income. To get a ratio estimate, we need to know the population total/mean of the rent expsenses, i.e., <span class="math inline">\(t_{U,x}\)</span> or <span class="math inline">\(\overline{x}_U\)</span>.</li>
+</ul></li>
+</ul>
+<p>Suppose the population has <span class="math inline">\(N\)</span> observation units. The sample is taken in <strong>two phases</strong>:</p>
+<ul>
+<li><p><strong>Phase I sample</strong>: Take a probability sample of <span class="math inline">\(n^{(1)}\)</span> units, called the phase I sample. Measure the auxiliary variables <span class="math inline">\(X\)</span> for every unit in the phase I sample. The phase I sample is usually relatively large and provide accurate information about the population distribution of <span class="math inline">\(X\)</span>.</p></li>
+<li><p><strong>Phase II sample</strong>: Treating the phase I sample as the population, select a probability sample of size <span class="math inline">\(n^{(2)}\)</span>, called the phase II sample. Measure the variables of interest for each unit in the phase II sample. Since we treat the phase I sample as the population, we may use the auxiliary information gathered in phase I when designing the phase II sample.</p></li>
+</ul>
+<p>Two-phase sampling can save time and money if auxiliary information is relatively <strong>inexpensive</strong> to obtain and if auxiliary information can be used in both the design and analysis stage to increase the precision of the estimates for quantities of interest.</p>
+<p>Figure <a href="chap-others.html#fig:others-twophase">6.3</a> provide a visual illustration of two-phase sampling. The difference between two-stage sampling and two-phase sampling is that: in <strong>two-stage sampling</strong>, psus are first selected and ssus are selected from the chosen psus, so the <strong>sampling units change</strong> over the two stages of sampling; in <strong>two-phase</strong> sampling, both phase I and phase II sample use the <strong>same sampling units</strong>, so that phase I sample provide inexpensive auxiliary information that can be used to modify or determine the phase II sample design or analysis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:others-twophase"></span>
+<img src="data/images/chap-others/twophase.png" alt="An illustration of two-phase sampling." width="80%" />
+<p class="caption">
+Figure 6.3: An illustration of two-phase sampling.
+</p>
+</div>
+</div>
+<div id="ht-estimator-2" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> HT estimator<a href="chap-others.html#ht-estimator-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let <span class="math inline">\(S^{(1)}\)</span> denote the <strong>phase I sample</strong>, let <span class="math inline">\(Z_i\)</span> be the indicator whether unit <span class="math inline">\(i\)</span> is included in the phase I sample. Let <span class="math inline">\(\pi^{(1)}_i = \Pr(Z_i = 1)\)</span>. We observe the auxiliary information <span class="math inline">\(x_i\)</span> for each <span class="math inline">\(i \in S^{(1)}\)</span>, so the population total can for <span class="math inline">\(X\)</span> can be estimated as
+<span class="math display">\[
+\widehat{T}_{HT,x}^{(1)} = \sum_{i\in S^{(1)}}\frac{x_i}{\pi_i^{(1)}} = \sum_{i=1}^N \frac{Z_ix_i}{\pi_i^{(1)}}
+\]</span></p>
+<p>Let <span class="math inline">\(S^{(2)}\)</span> denote the <strong>phase II sample</strong> and let <span class="math inline">\(D_i\)</span> be the indicator whether unit <span class="math inline">\(i\)</span> is included in phase II sample. Since the design of phase II sample may <strong>depend</strong> on the selection of phase I sample, we let <span class="math inline">\(\pi_i^{(2)} = \pi_i^{(2)}(\mathbf{Z}) = \Pr(D_i = 1 \mid \mathbf{Z})\)</span> be the <strong>conditional probability</strong> that unit <span class="math inline">\(i\)</span> is selected in phase II sample <strong>given</strong> the selection in phase I <span class="math inline">\(\mathbf{Z} = (Z_1, Z_2, ..., Z_N)\)</span>. Since the variable of interest <span class="math inline">\(Y\)</span> is measured on units of phase II sample only, the <strong>HT estimator for two-phase sampling</strong> is
+<span class="math display">\[
+\widehat{T}_{HT,y}^{(2)} = \sum_{i=1}^N \frac{Z_iD_iy_i}{\pi_i^{(1)}\pi_i^{(2)}}
+\]</span>
+Although this estimator is slightly different from a direct derivation from the general HT estimator<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>. Nevertheless, we can prove that this estimator is <strong>unbiased</strong>:
+<span class="math display">\[\begin{align*}
+\E\left[\widehat{T}_{HT,y}^{(2)}\right] &amp; = \E\left[\E\left[\widehat{T}_{HT,y}^{(2)} \mid \mathbf{Z}\right]\right] = \E\left[\E\left[\sum_{i=1}^N \frac{Z_iD_iy_i}{\pi_i^{(1)}\pi_i^{(2)}} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right] \right] \\
+&amp; = \E\left[\sum_{i=1}^N \frac{Z_iy_i\E[D_i \mid \mathbf{Z}]}{\pi_i^{(1)}\pi_i^{(2)}} \right] = \E\left[\sum_{i=1}^N \frac{Z_iy_i}{\pi_i^{(1)}} \right] \\
+&amp; = \sum_{i=1}^N \frac{\E[Z_i]y_i}{\pi_i^{(1)}} = \sum_{i=1}^N y_i = t_{U,y}.
+\end{align*}\]</span></p>
+<p>Similar to what we did in two-stage sampling in Equation <a href="chap-clus.html#eq:clus-two-stage-var">(5.5)</a>, the variance formula for the HT estimator for two-phase sampling can be derived using the law of total variation:
+<span class="math display">\[\begin{align*}
+Var(\widehat{T}_{HT,y}^{(2)}) &amp; = Var\left(\E\left[\widehat{T}_{HT,y}^{(2)}\mid \mathbf{Z}\right]\right) + \E\left[Var\left(\widehat{T}_{HT,y}^{(2)}\mid \mathbf{Z}\right)\right] \\
+&amp; = Var\left(\widehat{T}_{HT,y}^{(1)}\right) + \E\left[Var\left(\widehat{T}_{HT,y}^{(2)}\mid \mathbf{Z}\right)\right]
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(\widehat{T}_{HT,y}^{(1)} = \sum_{i=1}^N \frac{Z_iy_i}{\pi_i^{(1)}}\)</span>, whose realized value is not available to us since information about <span class="math inline">\(Y\)</span> is not collected in phase I, but this quantity can serve as a tool for analysis and variance estimation.</p>
+<div class="myExample">
+<div class="example">
+<p><span id="exm:ex-others-twophase-ht-strat" class="example"><strong>Example 6.2  </strong></span>Consider the case where an SRS is taken in phase I selecting <span class="math inline">\(n\)</span> units from a population of <span class="math inline">\(N\)</span> units. In this case, <span class="math inline">\(\pi_i^{(1)} = n/N\)</span>.</p>
+<p>Suppose stratified random sampling is used in phase II. However, we do not know stratum membership for a unit until it is selected in phase I. Let
+<span class="math display">\[
+x_{ih} = \begin{cases}1 &amp; \text{if unit } i \text{ is in stratum } h \\ 0 &amp; \text{otherwise} \end{cases}
+\]</span>
+We observe <span class="math inline">\(x_{ih}\)</span> for each unit in phase I sample, i.e., for each <span class="math inline">\(i \in S^{(1)}\)</span>. The number of units in phase I sample that belong to stratum <span class="math inline">\(h\)</span> is
+<span class="math display">\[
+n_h = \sum_{i=1}^NZ_ix_{ih}
+\]</span>
+which is a random, not fixed, quantity.</p>
+<p>For phase II sample, if I take a simple random sample of size <span class="math inline">\(m_h\)</span> in the <span class="math inline">\(h\)</span>th stratum, where <span class="math inline">\(m_h\)</span> may depend on the first phase of the sampling. The subsamples in different strata are selected independently and
+<span class="math display">\[
+\pi_i^{(2)}(\mathbf{Z}) = \Pr(D_i = 1 \mid \mathbf{Z}) = Z_i \sum_{h=1}^H x_{ih}\frac{m_h}{n_h}
+\]</span>
+See <span class="citation">Rao (<a href="references.html#ref-rao1973double">1973</a>)</span> for a variance estimation.</p>
+</div>
+</div>
+</div>
+<div id="ratio-estimator-2" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Ratio Estimator<a href="chap-others.html#ratio-estimator-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In two-phase sampling, we can obtain the HT estimates for the population total of <span class="math inline">\(X\)</span> in both phases:
+<span class="math display">\[
+\widehat{T}_{HT,x}^{(1)} = \sum_{i=1}^N \frac{Z_ix_i}{\pi_i^{(1)}} \hspace{5mm} \text{and} \hspace{5mm} \widehat{T}_{HT,x}^{(2)} = \sum_{i=1}^N \frac{Z_iD_ix_i}{\pi_i^{(1)}\pi_i^{(2)}}
+\]</span>
+However, we only get one HT estimate for the population total of <span class="math inline">\(Y\)</span> in phase II sample:
+<span class="math display">\[
+\widehat{T}_{HT,y}^{(2)} = \sum_{i=1}^N \frac{Z_iD_iy_i}{\pi_i^{(1)}\pi_i^{(2)}}
+\]</span>
+Using these information, we can construct a ratio estimator for the population of <span class="math inline">\(Y\)</span> using auxiliary information of <span class="math inline">\(X\)</span></p>
+<p><span class="math display">\[
+\widehat{T}_{r,y}^{(2)} = \widehat{T}_{HT,x}^{(1)}\frac{\widehat{T}_{HT,y}^{(2)}}{\widehat{T}_{HT,y}^{(x)}} = \widehat{T}_{HT,x}^{(1)}\widehat{B}_r^{(2)}
+\]</span></p>
+<p>Using <strong>Taylor’s linearization</strong> we obtain
+<span class="math display">\[
+\widehat{T}_{r,y}^{(2)} \approx t_{U,y} + \frac{t_{U,x}}{t_{U,x}}(\widehat{T}_{HT,y}^{(2)} - t_{U,y}) + \frac{t_{U,y}}{t_{U,x}}(\widehat{T}_{HT,x}^{(1)} - t_{U,x}) - \frac{t_{U,y}t_{U,x}}{t_{U,x}^2}(\widehat{T}_{HT,x}^{(2)} - t_{U,x})
+\]</span></p>
+<p>Then the variance can be derived as:
+<span class="math display" id="eq:others-twophase-ratio-var">\[\begin{align*}
+Var(\widehat{T}_{r,y}^{(2)}) &amp; \approx Var\left(\widehat{T}_{HT,y}^{(2)} + \frac{t_{U,y}}{t_{U,x}}(\widehat{T}_{HT,x}^{(1)}) - \widehat{T}_{HT,x}^{(2)}\right) \\
+&amp; = Var\left(\E\left[ \widehat{T}_{HT,y}^{(2)} + \frac{t_{U,y}}{t_{U,x}}(\widehat{T}_{HT,x}^{(1)}) - \widehat{T}_{HT,x}^{(2)} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right]\right) \\
+&amp;\qquad \qquad + \E\left[Var\left( \widehat{T}_{HT,y}^{(2)} + \frac{t_{U,y}}{t_{U,x}}(\widehat{T}_{HT,x}^{(1)}) - \widehat{T}_{HT,x}^{(2)} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right)\right] \\
+&amp; = Var(\widehat{T}_{HT,y}^{(1)}) + \E\left[Var\left(\widehat{T}_{HT,y}^{(2)} - \frac{t_{U,y}}{t_{U,x}}\widehat{T}_{HT,x}^{(2)} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right)\right] \\
+&amp; = Var(\widehat{T}_{HT,y}^{(1)}) + \E\left[Var\left( \widehat{T}_{HT,d}^{(2)}\hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right)\right], \tag{6.3}
+\end{align*}\]</span>
+where <span class="math inline">\(d_i = y_i - b_Ux_i\)</span> is the ratio estimation error and <span class="math inline">\(b_U = \frac{t_{U,y}}{t_{U,x}}\)</span> is the population ratio as we used in Section <a href="chap-rr.html#rr-ratio">4.2</a>.</p>
+<details>
+<summary>
+If an SRS of size <span class="math inline">\(n^{(1)}\)</span> units is taken for phase I and an SRS of size <span class="math inline">\(n^{(2)}\)</span> units is taken in phase II, then the variance becomes:
+<span class="math display">\[
+Var(\widehat{T}_{r,y}^{(2)}) \approx N^2\left(1-\frac{n^{(1)}}{N}\right)\frac{s_{U,y}^2}{n^{(1)}} + N^2 \left(1-\frac{n^{(2)}}{n^{(1)}}\right)\frac{s_{U,d}^2}{n^{(2)}}
+  \]</span>
+</summary>
+<div class="empty">
+
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="others-twophase-ratio-var-srs" class="proof"><em>Proof</em>. </span>In Equation <a href="chap-others.html#eq:others-twophase-ratio-var">(6.3)</a>, it is easy to see, from SRS results that the first component is
+<span class="math display">\[
+Var(\widehat{T}_{HT,y}^{(1)}) = N^2\left(1-\frac{n^{(1)}}{N}\right)\frac{s_{U,y}^2}{n^{(1)}}
+\]</span>
+For the second component, note that
+<span class="math display">\[\begin{align*}
+Var\left(\widehat{T}_{HT,d}^{(2)}\hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right) &amp; = Var\left( \sum_{i=1}^N \frac{Z_iD_id_i}{\pi_i^{(1)}\pi_i^{(2)}} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right) \\
+&amp; = Var\left( \sum_{i=1}^N \frac{D_iu_i}{\pi_i^{(2)}} \hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right) \\
+&amp; = \sum_{i=1}^N\frac{u_i^2}{(\pi_i^{(2)})^2}Var(D_i \mid \mathbf{Z}) + 2\sum_{i\ne j}\frac{u_iu_j}{\pi_i^{(2)}\pi_j^{(2)}}Cov(D_i, D_j \mid \mathbf{Z}) \\
+&amp; = \sum_{i=1}^N \frac{u_i^2}{(\pi_i^{(2)})^2} \pi_i^{(2)}(1-\pi_i^{(2)}) + 2\sum_{i\ne j}\frac{u_iu_j}{\pi_i^{(2)}\pi_j^{(2)}}(\pi_{ij}^{(2)} - \pi_i^{(2)}\pi_j^{(2)}) \\
+&amp; = \sum_{i=1}^N u_i^2 \frac{(n^{(1)})^2}{(n^{(2)})^2}\frac{n^{(2)}}{n^{(1)}}\left(1 - \frac{n^{(2)}}{n^{(1)}}\right) \\
+&amp; \qquad \qquad + 2\sum_{i\ne j}u_iu_j \frac{(n^{(1)})^2}{(n^{(2)})^2} \left(\frac{n^{(2)}(n^{(2)}-1)}{n^{(1)}(n^{(1)}-1)} - \frac{(n^{(2)})^2}{(n^{(1)})^2}\right) \\
+&amp; = \frac{n^{(1)}-n^{(2)}}{n^{(2)}}\sum_{i=1}^N u_i^2 - 2\frac{n^{(1)}-n^{(2)}}{n^{(2)}(n^{(1)}-1)}\sum_{i\ne j}u_iu_j \\
+\end{align*}\]</span>
+where <span class="math inline">\(u_i = \frac{Z_id_i}{\pi_i^{(1)}}\)</span> is fixed <strong>given</strong> <span class="math inline">\(\mathbf{Z}\)</span>. Now
+<span class="math display">\[\begin{align*}
+\E[u_i^2] &amp; = \E\left[\frac{Z_i^2d_i^2}{(\pi_i^{(1)})^2}\right] = \frac{d_i^2\E[Z_i^2]}{(\pi_i^{(1)})^2} = \frac{d_i^2}{\pi_i^{(1)}} = \frac{N}{n^{(1)}}d_i^2 \\
+\E[u_iu_j] &amp; = \E\left[\frac{Z_iZ_jd_id_j}{\pi_i^{(1)}\pi_j^{(1)}}\right] = \frac{d_id_j\E[Z_iZ_j]}{\pi_i^{(1)}\pi_j^{(1)}} = \frac{d_id_j}{\pi_i^{(1)}\pi_j^{(1)}}\pi_{ij}^{(1)}\\
+&amp; = d_id_j\frac{N^2}{(n^{(1)})^2}\frac{n^{(1)}(n^{(1)}-1)}{N(N-1)} = \frac{N(n^{(1)}-1)}{n^{(1)}(N-1)}d_id_j
+\end{align*}\]</span>
+Using these results we derive the second component:
+<span class="math display">\[\begin{align*}
+\E\left[Var\left(\widehat{T}_{HT,d}^{(2)}\hspace{1mm}\Big|\hspace{1mm} \mathbf{Z}\right)\right] &amp; = \frac{n^{(1)}-n^{(2)}}{n^{(2)}}\frac{N}{n^{(1)}}\sum_{i=1}^N d_i^2 - 2\frac{n^{(1)}-n^{(2)}}{n^{(2)}(n^{(1)}-1)}\frac{N(n^{(1)}-1)}{n^{(1)}(N-1)}\sum_{i\ne j}d_id_j \\
+&amp; = \frac{n^{(1)}-n^{(2)}}{n^{(1)}n^{(2)}}\frac{N}{N-1}\left\{(N-1)\sum_{i=1}^N d_i^2 - 2\sum_{i\ne j}d_id_j\right\} \\
+&amp; = \frac{n^{(1)}-n^{(2)}}{n^{(1)}n^{(2)}}\frac{N}{N-1}\left\{N\sum_{i=1}^N d_i^2 - \left(\sum_{i=1}^N d_i^2 + 2\sum_{i\ne j}d_id_j\right)\right\} \\
+&amp; = \frac{n^{(1)}-n^{(2)}}{n^{(1)}n^{(2)}}\frac{N}{N-1}N\sum_{i=1}^N (d_i - \overline{d}_U)^2 \\
+&amp; = N^2\left(1 - \frac{n^{(2)}}{n^{(1)}}\right)\frac{s_{U,d}^2}{n^{(2)}}
+\end{align*}\]</span>
+as required.</p>
+</div>
+</div>
+</details>
+</div>
 </div>
 <div id="capture-recapture-method" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Capture-Recapture Method<a href="chap-others.html#capture-recapture-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="motivation-and-procedure-1" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Motivation and Procedure<a href="chap-others.html#motivation-and-procedure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>capture-recapture method</strong> is often used by ecologists who want to estimate the <strong>population size</strong> <span class="math inline">\(N\)</span> of a species in an ecological area, especially as simply counting is impractical. The process is as follows:</p>
+<ul>
+<li><p><strong>Catch and mark</strong> <span class="math inline">\(n_1\)</span> animals from the species of interest, then release them.</p></li>
+<li><p>Allow the marked and released animals to mix with other animals in the the ecological area.</p></li>
+<li><p>Take an independent sample of <span class="math inline">\(n_2\)</span> animals, count the number of <strong>marked animals</strong> caught in the <strong>second sample</strong>, say <span class="math inline">\(m\)</span>.</p></li>
+<li><p>Using ratio estimator to obtain the estimate for the population size: <span class="math inline">\(\widehat{N}_r = \frac{n_1n_2}{m}\)</span>.</p></li>
+</ul>
+</div>
+<div id="estimation-2" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Estimation<a href="chap-others.html#estimation-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To see that <span class="math inline">\(\widehat{N}_r\)</span> is a ratio estimator, let <span class="math inline">\(y_i = 1\)</span> for every animal in the ecological area, and <span class="math inline">\(x_i\)</span> be the binary variable indicating the <span class="math inline">\(i\)</span>th animal is marked from the first catch and release.</p>
+<p>Then <span class="math inline">\(t_{U,y} = \sum_{i=1}^N y_i = N\)</span> and <span class="math inline">\(t_{U,x} = \sum_{i=1}^N x_i = n_1\)</span>. Using the ratio of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> in the second sample <span class="math inline">\(S\)</span>, we can estimate <span class="math inline">\(N\)</span> following what we learned in Section <a href="chap-rr.html#rr-ratio">4.2</a>:
+<span class="math display">\[
+\widehat{B}_r = \frac{\sum_{i\in S}y_i}{\sum_{i\in S}x_i} = \frac{n_2}{m}, \hspace{10mm} \text{therefore} \hspace{10mm} \widehat{N}_r = \widehat{T}_{r,y} = \widehat{B}_rt_{U,x} = \frac{n_2}{m}n_1
+\]</span></p>
+<details>
+<summary>
+Applying the variance formulas in Section <a href="chap-rr.html#rr-ratio-var">4.2.6</a>, and ignoring the fpc, we get
+<span class="math display">\[
+\widehat{Var}(\widehat{N}_r) = \left(\frac{n_1n_2}{m}\right)^2\frac{n_2-m}{m(n_2-1)} \approx \frac{n_1^2n_2(n_2-m)}{m^3}
+    \]</span>
+</summary>
+<div class="empty">
 
+</div>
+<div class="myDefinition">
+<div class="proof">
+<p><span id="others-caprecap-var" class="proof"><em>Proof</em>. </span>In Section <a href="chap-rr.html#rr-ratio-var">4.2.6</a>, when <span class="math inline">\(N\)</span> is unknown and we assume that <span class="math inline">\(N\)</span> is large, ignoring the fpc, the variance formula for the ratio estimator of the total is
+<span class="math display">\[
+\widehat{Var}_{SRS}(\widehat{T}_r) = \left(\frac{t_{U,x}}{\overline{X}_S}\right)^2 \frac{S_{S,y}^2 - 2\widehat{B}_rR_SS_{S,x}S_{S,y} + \widehat{B}_r^2S_{S,x}^2}{n}
+\]</span>
+In our case, <span class="math inline">\(n\)</span> = <span class="math inline">\(n_2\)</span>, <span class="math inline">\(t_{U,x} = n_1\)</span>, <span class="math inline">\(\widehat{B}_r = \frac{n_2}{m}\)</span> and <span class="math inline">\(\overline{X}_S = \frac{m}{n_2}\)</span>. We also know that <span class="math inline">\(S_{S,y} = 0\)</span> since <span class="math inline">\(y_i = 1\)</span> for all <span class="math inline">\(i\)</span>. Furthermore, <span class="math inline">\(X\)</span> is a binary indicator variable so
+<span class="math display">\[
+S_{S,x}^2 = \frac{n}{n-1}\overline{X}_S(1-\overline{X}_S) = \frac{n_2}{n_2-1}\frac{m}{n_2}\left(1 - \frac{m}{n_2}\right) = \frac{m(n_2-m)}{n_2(n_2-1)}
+\]</span>
+Plugging these in we have:
+<span class="math display">\[
+\widehat{Var}(\widehat{N}_r) = \left(\frac{t_{U,x}}{\overline{X}_S}\right)^2 \frac{\widehat{B}_r^2S_{S,x}^2}{n} = \left(\frac{n_1n_2}{m}\right)^2\frac{\frac{n_2^2}{m^2}\frac{m(n_2-m)}{n_2(n_2-1)}}{n_2} = \left(\frac{n_1n_2}{m}\right)^2\frac{n_2-m}{m(n_2-1)}
+\]</span></p>
+</div>
+</div>
+</details>
+<div class="empty">
+
+</div>
+<p>However, it can be possible that the second sample does not include any marked animal, that is, <span class="math inline">\(m = 0\)</span>. This makes the variance estimator above infinite. Furthermore, as discussed in Section <a href="chap-rr.html#rr-ratio">4.2</a>, the ratio estimator is biased, thus <span class="math inline">\(\widehat{N}_r\)</span> is biased. <span class="citation">Chapman (<a href="references.html#ref-chapman1951some">1951</a>)</span> suggested a less biased estimator
+<span class="math display">\[
+\widehat{N}_{C} = \frac{(n_1+1)(n_2+1)}{m+1}-1
+\]</span>
+and the variance estimator <span class="citation">(<a href="references.html#ref-seber1970effects">Seber 1970</a>)</span> for <span class="math inline">\(\widehat{N}_C\)</span> is
+<span class="math display">\[
+\widehat{Var}(\widehat{N}_C) = \frac{(n_1+1)(n_2+1)(n_1-m)(n_2-m)}{(m+1)^2(m+2)}.
+\]</span></p>
+
+</div>
 </div>
 </div>
 
@@ -709,6 +916,7 @@ Figure 6.2: An illustration of choosing the <span class="math inline">\(b\)</spa
 <hr />
 <ol start="17">
 <li id="fn17"><p>such as in causal inference applications<a href="chap-others.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>For the general HT estimator, we use the inverse of the probability <span class="math inline">\(\Pr(Z_i = 1, D_i = 1)\)</span> as weights since <span class="math inline">\(i\in S^{(2)}\)</span> if and only if <span class="math inline">\(Z_i = 1\)</span> and <span class="math inline">\(D_i = 1\)</span>. However, <span class="math inline">\(\Pr(Z_i = 1, D_i = 1) = \sum_{\mathbf{z}_{-i}}\Pr(D_i = 1 \mid \mathbf{Z}_{-i}=\mathbf{z}_{-i}, Z_i = 1)\Pr(\mathbf{Z}_{-i}=\mathbf{z}_{-i} \mid Z_i = 1)\Pr(Z_i = 1) \ne \pi_i^{(1)}\pi_i^{(2)}(\mathbf{Z})\)</span>.<a href="chap-others.html#fnref18" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -340,9 +340,9 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
 <li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
 <li class="chapter" data-level="4.2.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-2"><i class="fa fa-check"></i><b>4.2.3</b> Bias</a></li>
-<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
 <li class="chapter" data-level="4.2.5" data-path="chap-rr.html"><a href="chap-rr.html#compared-to-ht-estimator"><i class="fa fa-check"></i><b>4.2.5</b> Compared to HT estimator</a></li>
-<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#variance-estimation"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-var"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
 <li class="chapter" data-level="4.2.7" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-r"><i class="fa fa-check"></i><b>4.2.7</b> R Code</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification"><i class="fa fa-check"></i><b>4.3</b> Post-Stratification</a>
@@ -393,11 +393,20 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="chap-others.html"><a href="chap-others.html#variance-estimation-in-complex-surveys"><i class="fa fa-check"></i><b>6.2</b> Variance Estimation in Complex Surveys</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylor-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor Approximation)</a></li>
+<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylors-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor’s Approximation)</a></li>
 <li class="chapter" data-level="6.2.2" data-path="chap-others.html"><a href="chap-others.html#bootstrap"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a></li>
-<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure"><i class="fa fa-check"></i><b>6.3.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-others.html"><a href="chap-others.html#ht-estimator-2"><i class="fa fa-check"></i><b>6.3.2</b> HT estimator</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-others.html"><a href="chap-others.html#ratio-estimator-2"><i class="fa fa-check"></i><b>6.3.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure-1"><i class="fa fa-check"></i><b>6.4.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-others.html"><a href="chap-others.html#estimation-2"><i class="fa fa-check"></i><b>6.4.2</b> Estimation</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -461,6 +470,9 @@ Berger, Yves G. 1998. <span>“Rate of Convergence to Normal Distribution for th
 <div id="ref-chao1982general" class="csl-entry">
 Chao, Min-Te. 1982. <span>“A General Purpose Unequal Probability Sampling Plan.”</span> <em>Biometrika</em> 69 (3): 653–56.
 </div>
+<div id="ref-chapman1951some" class="csl-entry">
+Chapman, Douglas G. 1951. <span>“Some Properties of the Hypergeometric Distribution with Applications to Zoological Sample Censuses.”</span> <em>University of California Publications in Statistics</em> 1: 131–60.
+</div>
 <div id="ref-deming1940least" class="csl-entry">
 Deming, W Edwards, and Frederick F Stephan. 1940. <span>“On a Least Squares Adjustment of a Sampled Frequency Table When the Expected Marginal Totals Are Known.”</span> <em>The Annals of Mathematical Statistics</em> 11 (4): 427–44.
 </div>
@@ -491,11 +503,20 @@ Lahiri, Deba B. 1951. <span>“A Method of Sample Selection Providing Unbiased R
 <div id="ref-lohr2021sampling" class="csl-entry">
 Lohr, Sharon L. 2021. <em>Sampling: Design and Analysis</em>. Chapman; Hall/CRC.
 </div>
+<div id="ref-rao1973double" class="csl-entry">
+Rao, JNK. 1973. <span>“On Double Sampling for Stratification and Analytical Surveys.”</span> <em>Biometrika</em> 60 (1): 125–33.
+</div>
 <div id="ref-sampford1962methods" class="csl-entry">
 Sampford, MR. 1962. <span>“Methods of Cluster Sampling with and Without Replacement for Clusters of Unequal Sizes.”</span> <em>Biometrika</em> 49 (1/2): 27–40.
 </div>
 <div id="ref-sarndal2003model" class="csl-entry">
 Särndal, Carl-Erik, Bengt Swensson, and Jan Wretman. 2003. <em>Model Assisted Survey Sampling</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-seber1970effects" class="csl-entry">
+Seber, G. A. F. 1970. <span>“The Effects of Trap Response on Tag Recapture Estimates.”</span> <em>Biometrics</em>, 13–22.
+</div>
+<div id="ref-sen1953estimate" class="csl-entry">
+Sen, Amode R. 1953. <span>“On the Estimate of the Variance in Sampling with Varying Probabilities.”</span> <em>Journal of the Indian Society of Agricultural Statistics</em> 5 (1194): 127.
 </div>
 <div id="ref-stephan1942iterative" class="csl-entry">
 Stephan, Frederick F. 1942. <span>“An Iterative Method of Adjusting Sample Frequency Tables When Expected Marginal Totals Are Known.”</span> <em>The Annals of Mathematical Statistics</em> 13 (2): 166–78.
@@ -506,8 +527,12 @@ Tillé, Yves. 2006. <em>Sampling Algorithms</em>. Springer.
 <div id="ref-tille2023remarks" class="csl-entry">
 ———. 2023. <span>“Remarks on Some Misconceptions about Unequal Probability Sampling Without Replacement.”</span> <em>Computer Science Review</em> 47: 100533.
 </div>
+<div id="ref-yates1953selection" class="csl-entry">
+Yates, Frank, and P Michael Grundy. 1953. <span>“Selection Without Replacement from Within Strata with Probability Proportional to Size.”</span> <em>Journal of the Royal Statistical Society: Series B (Methodological)</em> 15 (2): 253–61.
 </div>
 </div>
+</div>
+
 
 
 

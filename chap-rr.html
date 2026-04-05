@@ -340,9 +340,9 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.1" data-path="chap-rr.html"><a href="chap-rr.html#motivating-example-and-definition"><i class="fa fa-check"></i><b>4.2.1</b> Motivating Example and Definition</a></li>
 <li class="chapter" data-level="4.2.2" data-path="chap-rr.html"><a href="chap-rr.html#why-ratio-estimator"><i class="fa fa-check"></i><b>4.2.2</b> Why Ratio Estimator?</a></li>
 <li class="chapter" data-level="4.2.3" data-path="chap-rr.html"><a href="chap-rr.html#bias-2"><i class="fa fa-check"></i><b>4.2.3</b> Bias</a></li>
-<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-mse"><i class="fa fa-check"></i><b>4.2.4</b> Mean Squared Error</a></li>
 <li class="chapter" data-level="4.2.5" data-path="chap-rr.html"><a href="chap-rr.html#compared-to-ht-estimator"><i class="fa fa-check"></i><b>4.2.5</b> Compared to HT estimator</a></li>
-<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#variance-estimation"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-var"><i class="fa fa-check"></i><b>4.2.6</b> Variance Estimation</a></li>
 <li class="chapter" data-level="4.2.7" data-path="chap-rr.html"><a href="chap-rr.html#rr-ratio-r"><i class="fa fa-check"></i><b>4.2.7</b> R Code</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="chap-rr.html"><a href="chap-rr.html#post-stratification"><i class="fa fa-check"></i><b>4.3</b> Post-Stratification</a>
@@ -393,11 +393,20 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="chap-others.html"><a href="chap-others.html#variance-estimation-in-complex-surveys"><i class="fa fa-check"></i><b>6.2</b> Variance Estimation in Complex Surveys</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylor-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor Approximation)</a></li>
+<li class="chapter" data-level="6.2.1" data-path="chap-others.html"><a href="chap-others.html#linearization-taylors-approximation"><i class="fa fa-check"></i><b>6.2.1</b> Linearization (Taylor’s Approximation)</a></li>
 <li class="chapter" data-level="6.2.2" data-path="chap-others.html"><a href="chap-others.html#bootstrap"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a></li>
-<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-others.html"><a href="chap-others.html#two-phase-sampling"><i class="fa fa-check"></i><b>6.3</b> Two-Phase Sampling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure"><i class="fa fa-check"></i><b>6.3.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-others.html"><a href="chap-others.html#ht-estimator-2"><i class="fa fa-check"></i><b>6.3.2</b> HT estimator</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-others.html"><a href="chap-others.html#ratio-estimator-2"><i class="fa fa-check"></i><b>6.3.3</b> Ratio Estimator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-others.html"><a href="chap-others.html#capture-recapture-method"><i class="fa fa-check"></i><b>6.4</b> Capture-Recapture Method</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-others.html"><a href="chap-others.html#motivation-and-procedure-1"><i class="fa fa-check"></i><b>6.4.1</b> Motivation and Procedure</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-others.html"><a href="chap-others.html#estimation-2"><i class="fa fa-check"></i><b>6.4.2</b> Estimation</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="app-dataset.html"><a href="app-dataset.html"><i class="fa fa-check"></i><b>A</b> Data Set</a></li>
@@ -759,8 +768,8 @@ Bias(\widehat{\overline{Y}}_r) &amp; = \E[\widehat{\overline{Y}}_r - \overline{y
 <li><p>when <span class="math inline">\(X\approx \propto Y\)</span> and <span class="math inline">\(\widehat{B}_r\)</span> is close to a constant.</p></li>
 </ul>
 </div>
-<div id="rr-mse" class="section level3 hasAnchor" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Mean Squared Error<a href="chap-rr.html#rr-mse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="rr-ratio-mse" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Mean Squared Error<a href="chap-rr.html#rr-ratio-mse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details>
 <summary>
 The Mean Squared Error of an estimator is defined as the expectation in distance between the estimator and the parameter of interest:
@@ -915,8 +924,8 @@ This is smaller or equal to 0 if and only if
 </div>
 <p>Therefore, the <strong>correlation coefficient</strong> <span class="math inline">\(r_U\)</span> needs to be <strong>large</strong> (i.e., <strong>strong linear correlation</strong> between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>) so that the <strong>mean squared error of the ratio estimator is smaller</strong> than the mean squared error of the HT estimator. That is, we may <strong>accept some bias</strong> by using the ratio estimator but overall, the errors of the estimator can still be smaller than using the <strong>unbiased HT estimator</strong>.</p>
 </div>
-<div id="variance-estimation" class="section level3 hasAnchor" number="4.2.6">
-<h3><span class="header-section-number">4.2.6</span> Variance Estimation<a href="chap-rr.html#variance-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="rr-ratio-var" class="section level3 hasAnchor" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> Variance Estimation<a href="chap-rr.html#rr-ratio-var" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details>
 <summary>
 We can use the MSE from Equation <a href="chap-rr.html#eq:rr-mse">(4.3)</a>, especially when the sample size <span class="math inline">\(n\)</span> is large and bias is small, to <strong>approximate the variance</strong> of the ratio estimator.
