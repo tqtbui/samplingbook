@@ -368,13 +368,15 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.2" data-path="chap-clus.html"><a href="chap-clus.html#notation"><i class="fa fa-check"></i><b>5.1.2</b> Notation</a></li>
 <li class="chapter" data-level="5.1.3" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator"><i class="fa fa-check"></i><b>5.1.3</b> HT Estimator</a></li>
 <li class="chapter" data-level="5.1.4" data-path="chap-clus.html"><a href="chap-clus.html#clus-one-compare"><i class="fa fa-check"></i><b>5.1.4</b> Comparing to SRS</a></li>
-<li class="chapter" data-level="5.1.5" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator"><i class="fa fa-check"></i><b>5.1.5</b> Ratio Estimator</a></li>
+<li class="chapter" data-level="5.1.5" data-path="chap-clus.html"><a href="chap-clus.html#clus-1stage-r"><i class="fa fa-check"></i><b>5.1.5</b> R Code</a></li>
+<li class="chapter" data-level="5.1.6" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator"><i class="fa fa-check"></i><b>5.1.6</b> Ratio Estimator</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="chap-clus.html"><a href="chap-clus.html#two-stage-cluster-sampling"><i class="fa fa-check"></i><b>5.2</b> Two-Stage Cluster Sampling</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="chap-clus.html"><a href="chap-clus.html#sampling-procedure-1"><i class="fa fa-check"></i><b>5.2.1</b> Sampling Procedure</a></li>
 <li class="chapter" data-level="5.2.2" data-path="chap-clus.html"><a href="chap-clus.html#ht-estimator-1"><i class="fa fa-check"></i><b>5.2.2</b> HT Estimator</a></li>
-<li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.3</b> Ratio Estimator</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-clus.html"><a href="chap-clus.html#clus-2stage-r"><i class="fa fa-check"></i><b>5.2.3</b> R Code</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chap-clus.html"><a href="chap-clus.html#ratio-estimator-1"><i class="fa fa-check"></i><b>5.2.4</b> Ratio Estimator</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="chap-clus.html"><a href="chap-clus.html#design-a-cluster-sample"><i class="fa fa-check"></i><b>5.3</b> Design a Cluster Sample</a>
 <ul>
@@ -998,8 +1000,39 @@ Furthermore, we can prove that
 </div>
 </div>
 </div>
-<div id="ratio-estimator" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="clus-1stage-r" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> R Code<a href="chap-clus.html#clus-1stage-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we have the population dataset <code>dat</code> (This is an example. In reality, you do not have population data):</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-clus.html#cb42-1" tabindex="-1"></a><span class="co">#load the dataset</span></span>
+<span id="cb42-2"><a href="chap-clus.html#cb42-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;fakeRentPop.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Suppose the sample data is taken by sampling 5 out of 16 colleges at USask. This is a one-stage cluster sampling design.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chap-clus.html#cb43-1" tabindex="-1"></a><span class="co">#one-stage cluster sampling</span></span>
+<span id="cb43-2"><a href="chap-clus.html#cb43-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb43-3"><a href="chap-clus.html#cb43-3" tabindex="-1"></a>colleges <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat<span class="sc">$</span>college)</span>
+<span id="cb43-4"><a href="chap-clus.html#cb43-4" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(colleges, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb43-5"><a href="chap-clus.html#cb43-5" tabindex="-1"></a>samp_dat <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>college <span class="sc">%in%</span> idx,]</span></code></pre></div>
+<p>We can use the <code>survey</code> package to conduct estimation for this one-stage cluster sampling data <code>samp_dat</code>. However, note that the <code>survey</code> package uses another variance formula <span class="citation">(<a href="references.html#ref-binder1983variances">Binder 1983</a>)</span>, which may give a different variance estimate compared to the formulas we learned in this chapter.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chap-clus.html#cb44-1" tabindex="-1"></a><span class="co">#specifying the fpc as the number of clusters that we select from</span></span>
+<span id="cb44-2"><a href="chap-clus.html#cb44-2" tabindex="-1"></a>samp_dat<span class="sc">$</span>fpc <span class="ot">&lt;-</span> <span class="fu">length</span>(colleges)</span>
+<span id="cb44-3"><a href="chap-clus.html#cb44-3" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="chap-clus.html#cb44-4" tabindex="-1"></a><span class="co">#specify survey design</span></span>
+<span id="cb44-5"><a href="chap-clus.html#cb44-5" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb44-6"><a href="chap-clus.html#cb44-6" tabindex="-1"></a>design<span class="fl">.1</span>clus <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>college, </span>
+<span id="cb44-7"><a href="chap-clus.html#cb44-7" tabindex="-1"></a>                          <span class="at">data =</span> samp_dat, </span>
+<span id="cb44-8"><a href="chap-clus.html#cb44-8" tabindex="-1"></a>                          <span class="at">fpc =</span> <span class="sc">~</span>fpc)</span>
+<span id="cb44-9"><a href="chap-clus.html#cb44-9" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="chap-clus.html#cb44-10" tabindex="-1"></a><span class="co">#estimate the mean</span></span>
+<span id="cb44-11"><a href="chap-clus.html#cb44-11" tabindex="-1"></a>est.mean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>rent, design<span class="fl">.1</span>clus)</span>
+<span id="cb44-12"><a href="chap-clus.html#cb44-12" tabindex="-1"></a>est.mean</span></code></pre></div>
+<pre><code>##        mean     SE
+## rent 778.49 1.9342</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chap-clus.html#cb46-1" tabindex="-1"></a><span class="co">#confidence interval</span></span>
+<span id="cb46-2"><a href="chap-clus.html#cb46-2" tabindex="-1"></a><span class="fu">confint</span>(est.mean)</span></code></pre></div>
+<pre><code>##         2.5 %   97.5 %
+## rent 774.6975 782.2793</code></pre>
+</div>
+<div id="ratio-estimator" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In Section <a href="chap-clus.html#clus-one-compare">5.1.4</a>, we considered the case where all the clusters are of equal sizes, that is: <span class="math inline">\(M_i = M\)</span> for all <span class="math inline">\(i \in U\)</span>. Now, consider the case where <strong>cluster sizes are unequal</strong>. This situation is more general and realistic. Imagine big hospitals having more patients than smaller hospitals, bigger counties having more residents than smaller counties.</p>
 <p>Recall from Equation <a href="chap-clus.html#eq:clus-1clus-ht-var">(5.2)</a>, the variance Horvitz-Thompson estimator for one-stage cluster sampling is
 <span class="math display">\[
@@ -1298,8 +1331,50 @@ where the second equation is because <span class="math inline">\(\sum_{i=1}^n (x
 </div>
 </div>
 </div>
-<div id="ratio-estimator-1" class="section level3 hasAnchor" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="clus-2stage-r" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> R Code<a href="chap-clus.html#clus-2stage-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We continue to work with the sample students’ rent data <code>samp_dat</code> that we created in Section <a href="chap-clus.html#clus-1stage-r">5.1.5</a>. Suppose now that we sample 20 observation units (students) from each selected college in <code>samp_dat</code> to obtain a two-stage sample data.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="chap-clus.html#cb48-1" tabindex="-1"></a><span class="co">#colleges selcted in the 1st stage sampling</span></span>
+<span id="cb48-2"><a href="chap-clus.html#cb48-2" tabindex="-1"></a>samp_colleges <span class="ot">&lt;-</span> <span class="fu">unique</span>(samp_dat<span class="sc">$</span>college)</span>
+<span id="cb48-3"><a href="chap-clus.html#cb48-3" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="chap-clus.html#cb48-4" tabindex="-1"></a><span class="co">#2nd stage sampling</span></span>
+<span id="cb48-5"><a href="chap-clus.html#cb48-5" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb48-6"><a href="chap-clus.html#cb48-6" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> samp_colleges) {</span>
+<span id="cb48-7"><a href="chap-clus.html#cb48-7" tabindex="-1"></a>  samp_indv <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">which</span>(samp_dat<span class="sc">$</span>college <span class="sc">==</span> col), <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb48-8"><a href="chap-clus.html#cb48-8" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">c</span>(idx, samp_indv)</span>
+<span id="cb48-9"><a href="chap-clus.html#cb48-9" tabindex="-1"></a>}</span>
+<span id="cb48-10"><a href="chap-clus.html#cb48-10" tabindex="-1"></a>samp_dat2 <span class="ot">&lt;-</span> samp_dat[idx,]</span></code></pre></div>
+<p>Now we can use the <code>survey</code> package to analyze this two-stage sample dataset <code>samp_dat2</code>. Again, the variance from the <code>survey</code> package will be different from what the formulas in this chapter gives.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="chap-clus.html#cb49-1" tabindex="-1"></a><span class="co">#specify fpc</span></span>
+<span id="cb49-2"><a href="chap-clus.html#cb49-2" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="chap-clus.html#cb49-3" tabindex="-1"></a><span class="co">#1st stage</span></span>
+<span id="cb49-4"><a href="chap-clus.html#cb49-4" tabindex="-1"></a>samp_dat2<span class="sc">$</span>fpc1 <span class="ot">&lt;-</span> <span class="fu">length</span>(colleges)</span>
+<span id="cb49-5"><a href="chap-clus.html#cb49-5" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="chap-clus.html#cb49-6" tabindex="-1"></a><span class="co">#2nd stage</span></span>
+<span id="cb49-7"><a href="chap-clus.html#cb49-7" tabindex="-1"></a>samp_dat2<span class="sc">$</span>fpc2 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb49-8"><a href="chap-clus.html#cb49-8" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> samp_colleges) {</span>
+<span id="cb49-9"><a href="chap-clus.html#cb49-9" tabindex="-1"></a>  samp_dat2<span class="sc">$</span>fpc2[samp_dat2<span class="sc">$</span>college <span class="sc">==</span> col] <span class="ot">&lt;-</span> <span class="fu">sum</span>(samp_dat<span class="sc">$</span>college <span class="sc">==</span> col)</span>
+<span id="cb49-10"><a href="chap-clus.html#cb49-10" tabindex="-1"></a>}</span>
+<span id="cb49-11"><a href="chap-clus.html#cb49-11" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="chap-clus.html#cb49-12" tabindex="-1"></a><span class="co">#specify survey design</span></span>
+<span id="cb49-13"><a href="chap-clus.html#cb49-13" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb49-14"><a href="chap-clus.html#cb49-14" tabindex="-1"></a>samp_dat2<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(samp_dat2)</span>
+<span id="cb49-15"><a href="chap-clus.html#cb49-15" tabindex="-1"></a>design<span class="fl">.2</span>clus <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>college<span class="sc">+</span>id, </span>
+<span id="cb49-16"><a href="chap-clus.html#cb49-16" tabindex="-1"></a>                          <span class="at">data =</span> samp_dat2, </span>
+<span id="cb49-17"><a href="chap-clus.html#cb49-17" tabindex="-1"></a>                          <span class="at">fpc =</span> <span class="sc">~</span>fpc1<span class="sc">+</span>fpc2)</span>
+<span id="cb49-18"><a href="chap-clus.html#cb49-18" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="chap-clus.html#cb49-19" tabindex="-1"></a><span class="co">#estimate the mean</span></span>
+<span id="cb49-20"><a href="chap-clus.html#cb49-20" tabindex="-1"></a>est.mean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>rent, design<span class="fl">.2</span>clus)</span>
+<span id="cb49-21"><a href="chap-clus.html#cb49-21" tabindex="-1"></a>est.mean</span></code></pre></div>
+<pre><code>##      mean     SE
+## rent  741 34.311</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="chap-clus.html#cb51-1" tabindex="-1"></a><span class="co">#confidence interval</span></span>
+<span id="cb51-2"><a href="chap-clus.html#cb51-2" tabindex="-1"></a><span class="fu">confint</span>(est.mean)</span></code></pre></div>
+<pre><code>##         2.5 %   97.5 %
+## rent 673.7537 808.2503</code></pre>
+</div>
+<div id="ratio-estimator-1" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Ratio Estimator<a href="chap-clus.html#ratio-estimator-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The ratio estimator for two-stage cluster sampling is similar to the ratio estimator for one-stage cluster sampling in Equation <a href="chap-clus.html#eq:clus-1clus-ratio">(5.4)</a>. The only difference is that, in one-stage cluster sampling, we collect data from every observation unit in the selected cluster <span class="math inline">\(i\)</span>, therefore, the <strong>population</strong> cluster total <span class="math inline">\(t_{U,i} = T_{S,i}\)</span> is known to us. In two-stage cluster sampling, we do not know <span class="math inline">\(t_{U,i}\)</span> and thus we have to <strong>estimate</strong> it using a Horvitz-Thompson estimator:
 <span class="math display">\[
 \widehat{T}_{HT,i} = M_i \overline{Y}_{S,i} = \frac{M_i}{m_i}\sum_{j\in S_i} y_{ij}

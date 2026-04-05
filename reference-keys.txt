@@ -244,10 +244,12 @@ ht-estimator
 clus-one-compare
 intraclass-correlation-coefficient
 adjusted-r-squared
+clus-1stage-r
 ratio-estimator
 two-stage-cluster-sampling
 sampling-procedure-1
 ht-estimator-1
+clus-2stage-r
 ratio-estimator-1
 design-a-cluster-sample
 equal-sized-clusters
