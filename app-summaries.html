@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-05" />
+<meta name="date" content="2026-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -810,8 +810,8 @@ R_{S} &amp; = \frac{\sum_{i\in S}(y_i - \overline{Y}_S)(x_i - \overline{X}_S)}{(
 </table>
 <p>where
 <span class="math display">\[\begin{align*}
-s_{U,t}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right) \\
-S_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \frac{\sum_{i\in S}t_i}{N}\right)
+s_{U,t}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right)^2 \\
+S_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(t_i - \frac{\sum_{i\in S}t_i}{n}\right)^2
 \end{align*}\]</span></p>
 <p><strong>Ratio Estimator:</strong></p>
 <p><span class="math display">\[\begin{align*}
@@ -823,11 +823,13 @@ Var_{1clus}(\widehat{\overline{Y}}_r) &amp; = \left(1 - \frac{n}{N}\right)\frac{
 <span class="math display">\[\begin{align*}
 d_i &amp; = t_i - \overline{y}_UM_i \\
 e_i &amp; = t_i - M_i\widehat{\overline{Y}}_r \\
+s_{U,d}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N d_i^2 \\
+S_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}e_i^2 \\
 \overline{M}_U &amp; = \frac{1}{N}\sum_{i=1}^N M_i \\
 \overline{M}_S &amp; = \frac{1}{n}\sum_{i\in S}^N M_i
 \end{align*}\]</span></p>
 <p><strong>Equal-sized clusters</strong>:</p>
-<p><em>Population version:</em></p>
+<p><em>Population quantities:</em></p>
 <table style="width:100%;">
 <colgroup>
 <col width="18%" />
@@ -869,7 +871,7 @@ e_i &amp; = t_i - M_i\widehat{\overline{Y}}_r \\
 </tr>
 </tbody>
 </table>
-<p><em>Sample version:</em></p>
+<p><em>Sample quantities:</em></p>
 <table style="width:100%;">
 <colgroup>
 <col width="18%" />
@@ -930,7 +932,7 @@ Var_{2clus}(\widehat{T}_{HT}) &amp; = N^2\left(1 - \frac{n}{N}\right)\frac{s_{U,
 \end{align*}\]</span></p>
 <p>where</p>
 <p><span class="math display">\[\begin{align*}
-s_{U,t}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right) \\
+s_{U,t}^2 &amp; = \frac{1}{N-1}\sum_{i=1}^N\left(t_i - \frac{t_U}{N}\right)^2 \\
 \widehat{S}_{S,t}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}\left(\widehat{T}_{HT,i} - \frac{1}{n}\sum_{i\in S}\widehat{T}_{HT,i}\right)^2 \\
 s_{U,i}^2 &amp; = \frac{1}{M_i-1}\sum_{j\in U_i}(y_{ij} - \overline{y}_{U,i})^2 \\
 S_{S,i}^2 &amp; = \frac{1}{m_i-1}\sum_{j\in S_i}(y_{ij} - \overline{Y}_{S,i})^2
