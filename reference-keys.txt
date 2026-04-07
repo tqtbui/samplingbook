@@ -175,7 +175,7 @@ unbiased-estimator
 bias-1
 bias-of-sample-total
 srs-ht
-sampling-weights
+srs-weights
 srs-probability-sampling
 srs-poisson
 the-design
@@ -225,7 +225,7 @@ rr-ratio-var
 rr-ratio-r
 post-stratification
 rr-post-stratification
-post-stratification-by-weight-adjustment
+rr-post-weights
 calibration-and-raking
 regression-estimator
 regression-estimator-as-prediction-estimator
@@ -255,7 +255,7 @@ design-a-cluster-sample
 equal-sized-clusters
 general-sample-size-determination
 chap-others
-sampling-with-unequal-probabilities
+others-unequal
 motivation
 sampling-algorithms
 sampling-with-replacement
@@ -264,6 +264,7 @@ estimation-1
 alternative-variance-formulas
 conservative-variance-formula
 with-replacement-approximation
+others-est
 variance-estimation-in-complex-surveys
 linearization-taylors-approximation
 bootstrap
