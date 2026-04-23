@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-06" />
+<meta name="date" content="2026-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -618,7 +618,8 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 </div>
 <div id="additional-formulas" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">B.2.2</span> Additional Formulas<a href="app-summaries.html#additional-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Sum of squares (population version):</p>
+<p><strong>Sum of squares</strong>:</p>
+<p><em>Population quantities</em>:</p>
 <table>
 <colgroup>
 <col width="33%" />
@@ -634,23 +635,23 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">SSW</td>
+<td align="center"><span class="math inline">\(SSW_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2\)</span></td>
-<td align="center"><span class="math inline">\(SSW = \sum_{h=1}^H(N_h - 1)s_{U,h}^2\)</span></td>
+<td align="center"><span class="math inline">\(SSW_U = \sum_{h=1}^H(N_h - 1)s_{U,h}^2\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">SSB</td>
+<td align="center"><span class="math inline">\(SSB_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H N_h (\overline{y}_{U,h} - \overline{y}_U)^2\)</span></td>
 <td align="center"><span class="math inline">\(\overline{y}_U = \sum_{h=1}^H\frac{N_h}{N}\overline{y}_{U,h}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center">SST = SSW + SSB</td>
+<td align="center"><span class="math inline">\(SST_U = SSW_U + SSB_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U})^2\)</span></td>
-<td align="center"><span class="math inline">\(SST = (N-1)s_{U}^2\)</span></td>
+<td align="center"><span class="math inline">\(SST_U = (N-1)s_{U}^2\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Sum of squares (sample version):</p>
+<p><em>Sample quantities</em>:</p>
 <table>
 <colgroup>
 <col width="33%" />
@@ -666,22 +667,23 @@ S_{S,h}^2 &amp; = \frac{1}{n_h-1}\sum_{i\in S_h}(y_i - \overline{Y}_{S,h})^2 \\
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\widehat{SSW}\)</span></td>
+<td align="center"><span class="math inline">\(SSW_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{n_h}(y_{h,i}-\overline{Y}_{S,h})^2\)</span></td>
-<td align="center"><span class="math inline">\(\widehat{SSW} = \sum_{h=1}^H(n_h - 1)S_{S,h}^2\)</span></td>
+<td align="center"><span class="math inline">\(SSW_S = \sum_{h=1}^H(n_h - 1)S_{S,h}^2\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(\widehat{SSB}\)</span></td>
+<td align="center"><span class="math inline">\(SSB_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H n_h (\overline{Y}_{S,h} - \overline{Y}_S)^2\)</span></td>
 <td align="center"><span class="math inline">\(\overline{Y}_S = \sum_{h=1}^H\frac{n_h}{n}\overline{Y}_{S,h}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\widehat{SST} = \widehat{SSW} + \widehat{SSB}\)</span></td>
+<td align="center"><span class="math inline">\(SST_S = SSW_S + SSB_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{n_h}(y_{h,i}-\overline{Y}_{S})^2\)</span></td>
-<td align="center"><span class="math inline">\(\widehat{SST} = (n-1)S_{S}^2\)</span></td>
+<td align="center"><span class="math inline">\(SST_S = (n-1)S_{S}^2\)</span></td>
 </tr>
 </tbody>
 </table>
+<p><strong>Others</strong></p>
 <p>Design effect: <span class="math inline">\(DE = \frac{Var_{complex}(\widehat{\theta}_n)}{Var_{SRS}(\widehat{\theta}_n)}\)</span></p>
 <p>Effective sample size: <span class="math inline">\(n_{eff} = \frac{n}{DE}\)</span></p>
 </div>
@@ -855,25 +857,25 @@ S_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}e_i^2 \\
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(SSB\)</span></td>
+<td align="center"><span class="math inline">\(SSB_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N M(\overline{y}_{U,i} - \overline{y}_U)^2\)</span></td>
 <td align="center"><span class="math inline">\(N-1\)</span></td>
-<td align="center"><span class="math inline">\(MSB = \frac{SSB}{N-1}\)</span></td>
-<td align="center"><span class="math inline">\(s_{U,t}^2 = M \times MSB\)</span></td>
+<td align="center"><span class="math inline">\(MSB_U = \frac{SSB_U}{N-1}\)</span></td>
+<td align="center"><span class="math inline">\(s_{U,t}^2 = M \times MSB_U\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(SSW\)</span></td>
+<td align="center"><span class="math inline">\(SSW_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i}(y_{ij} - \overline{y}_{U,i})^2\)</span></td>
 <td align="center"><span class="math inline">\(N(M-1)\)</span></td>
-<td align="center"><span class="math inline">\(MSW = \frac{SSW}{N(M-1)}\)</span></td>
-<td align="center"><span class="math inline">\(\sum_{i=1}^Ns_{U,i}^2 = N\times MSW\)</span></td>
+<td align="center"><span class="math inline">\(MSW_U = \frac{SSW_U}{N(M-1)}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i=1}^Ns_{U,i}^2 = N\times MSW_U\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(SST\)</span></td>
+<td align="center"><span class="math inline">\(SST_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i} (y_{ij} - \overline{y}_U)^2\)</span></td>
 <td align="center"><span class="math inline">\(NM - 1\)</span></td>
-<td align="center"><span class="math inline">\(MST = \frac{SST}{NM-1}\)</span></td>
-<td align="center"><span class="math inline">\(s_{U,y}^2 = MST\)</span></td>
+<td align="center"><span class="math inline">\(MST_U = \frac{SST_U}{NM-1}\)</span></td>
+<td align="center"><span class="math inline">\(s_{U,y}^2 = MST_U\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -897,33 +899,33 @@ S_{S,e}^2 &amp; = \frac{1}{n-1}\sum_{i\in S}e_i^2 \\
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\widehat{SSB}\)</span></td>
+<td align="center"><span class="math inline">\(SSB_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i\in S} M(\overline{Y}_{S,i} - \overline{Y}_S)^2\)</span></td>
 <td align="center"><span class="math inline">\(n-1\)</span></td>
-<td align="center"><span class="math inline">\(\widehat{MSB} = \frac{\widehat{SSB}}{n-1}\)</span></td>
-<td align="center"><span class="math inline">\(S_{S,t}^2 = M \times \widehat{MSB}\)</span></td>
+<td align="center"><span class="math inline">\(MSB_S = \frac{SSB_S}{n-1}\)</span></td>
+<td align="center"><span class="math inline">\(S_{S,t}^2 = M \times MSB_S\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(\widehat{SSW}\)</span></td>
+<td align="center"><span class="math inline">\(SSW_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i\in S}\sum_{j\in S_i}(y_{ij} - \overline{Y}_{S,i})^2\)</span></td>
 <td align="center"><span class="math inline">\(n(M-1)\)</span></td>
-<td align="center"><span class="math inline">\(\widehat{MSW} = \frac{\widehat{SSW}}{n(M-1)}\)</span></td>
-<td align="center"><span class="math inline">\(\sum_{i\in S}S_{S,i}^2 = n\times \widehat{MSW}\)</span></td>
+<td align="center"><span class="math inline">\(MSW_S = \frac{SSW_S}{n(M-1)}\)</span></td>
+<td align="center"><span class="math inline">\(\sum_{i\in S}S_{S,i}^2 = n\times MSW_S\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\widehat{SST}\)</span></td>
+<td align="center"><span class="math inline">\(SST_S\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i\in S}\sum_{j\in S_i} (y_{ij} - \overline{Y}_S)^2\)</span></td>
 <td align="center"><span class="math inline">\(nM - 1\)</span></td>
-<td align="center"><span class="math inline">\(\widehat{MST} = \frac{\widehat{SST}}{nM-1}\)</span></td>
-<td align="center"><span class="math inline">\(S_{S,y}^2 = \widehat{MST}\)</span></td>
+<td align="center"><span class="math inline">\(MST_S = \frac{SST_S}{nM-1}\)</span></td>
+<td align="center"><span class="math inline">\(S_{S,y}^2 = MST_S\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Additionally:
 <span class="math display">\[\begin{align*}
-ICC &amp; = 1 - \frac{M}{M-1}\frac{SSW}{SST} \\
-R_a^2 &amp; = 1 - \frac{MSW}{MST} \\
-DE &amp; = \frac{MSB}{MST} \\
+ICC &amp; = 1 - \frac{M}{M-1}\frac{SSW_U}{SST_U} \\
+R_a^2 &amp; = 1 - \frac{MSW_U}{MST_U} \\
+DE &amp; = \frac{MSB_U}{MST_U} \\
 &amp; = \frac{NM-1}{M(N-1)}[1 + (M-1)ICC] \\
 &amp; = 1 + \frac{N(M-1)}{N-1}(1-R_a^2)
 \end{align*}\]</span></p>
@@ -956,7 +958,7 @@ S_{S,i}^2 &amp; = \frac{1}{m_i-1}\sum_{j\in S_i}(y_{ij} - \overline{Y}_{S,i})^2
 </div>
 <div id="others-1" class="section level3 hasAnchor" number="8.4.3">
 <h3><span class="header-section-number">B.4.3</span> Others<a href="app-summaries.html#others-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Equal-sized clusters: <span class="math inline">\(Var_{2clus}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm}\)</span>.</p>
+<p>Equal-sized clusters: <span class="math inline">\(Var_{2clus}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{MSB_U}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW_U}{nm}\)</span>.</p>
 <p>General Sample Size Determination: <span class="math inline">\(e = z_{\alpha/2}\sqrt{DE \times Var_{SRS}(\widehat{\theta})}\)</span>.</p>
 
 </div>

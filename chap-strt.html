@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-06" />
+<meta name="date" content="2026-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1110,19 +1110,19 @@ Var_{strt,prop}(\widehat{T}_{HT}) &amp; = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT
 <tbody>
 <tr class="odd">
 <td align="center">Between</td>
-<td align="center"><span class="math inline">\(SSB\)</span></td>
+<td align="center"><span class="math inline">\(SSB_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^HN_h(\overline{y}_{U,h} - \overline{y}_U)^2\)</span></td>
 <td align="center">Between-strata variation</td>
 </tr>
 <tr class="even">
 <td align="center">Within</td>
-<td align="center"><span class="math inline">\(SSW\)</span></td>
+<td align="center"><span class="math inline">\(SSW_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2\)</span></td>
 <td align="center">Within-stratum variation</td>
 </tr>
 <tr class="odd">
 <td align="center">Total</td>
-<td align="center"><span class="math inline">\(SST\)</span></td>
+<td align="center"><span class="math inline">\(SST_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_U)^2\)</span></td>
 <td align="center">Total variation</td>
 </tr>
@@ -1139,7 +1139,7 @@ Var_{strt,prop}(\widehat{T}_{HT}) &amp; = \sum_{h=1}^H Var_{SRS}(\widehat{T}_{HT
 </div>
 <details>
 <summary>
-We can prove that <span class="math inline">\(SST = SSW + SSB\)</span>.
+We can prove that <span class="math inline">\(SST_U = SSW_U + SSB_U\)</span>.
 </summary>
 <div class="empty">
 
@@ -1148,15 +1148,15 @@ We can prove that <span class="math inline">\(SST = SSW + SSB\)</span>.
 <div class="proof">
 <p><span id="strt-ss" class="proof"><em>Proof</em>. </span>We have
 <span class="math display">\[\begin{align*}
-&amp; SST \\
+&amp; SST_U \\
 &amp; = \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_U)^2 \\
 &amp; = \sum_{h=1}^H\sum_{i=1}^{N_h}\left([y_{h,i}- \overline{y}_{U,h}] - [\overline{y}_U - \overline{y}_{U,h}] \right)^2 \\
 &amp; = \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}- \overline{y}_{U,h})^2 + \sum_{h=1}^H\sum_{i=1}^{N_h}(\overline{y}_U - \overline{y}_{U,h})^2 - 2\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}- \overline{y}_{U,h})(\overline{y}_U - \overline{y}_{U,h}) \\
 &amp; = \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}- \overline{y}_{U,h})^2 + \sum_{h=1}^HN_h(\overline{y}_U - \overline{y}_{U,h})^2 - 2\sum_{h=1}^H(\overline{y}_U - \overline{y}_{U,h})\sum_{i=1}^{N_h}(y_{h,i}- \overline{y}_{U,h}) \\
 &amp; = \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}- \overline{y}_{U,h})^2 + \sum_{h=1}^HN_h(\overline{y}_{U,h} - \overline{y}_U)^2 - 2\sum_{h=1}^H(\overline{y}_U - \overline{y}_{U,h})\left[\left(\sum_{i=1}^{N_h}y_{h,i}\right) - \left(N_h\overline{y}_{U,h}\right) \right] \\
-&amp; = SSW + SSB - 2\sum_{h=1}^H(\overline{y}_U - \overline{y}_{U,h})\left[t_{U,h} - t_{U,h} \right] \\
-&amp; = SSW + SSB - 0 \\
-&amp; = SSW + SSB
+&amp; = SSW_U + SSB_U - 2\sum_{h=1}^H(\overline{y}_U - \overline{y}_{U,h})\left[t_{U,h} - t_{U,h} \right] \\
+&amp; = SSW_U + SSB_U - 0 \\
+&amp; = SSW_U + SSB_U
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -1164,22 +1164,23 @@ We can prove that <span class="math inline">\(SST = SSW + SSB\)</span>.
 <div class="empty">
 
 </div>
-<p>Using the definitions of <span class="math inline">\(SST, SSB\)</span> and <span class="math inline">\(SSW\)</span>, we have</p>
+<p>Using the definitions of <span class="math inline">\(SST_U, SSB_U\)</span> and <span class="math inline">\(SSW_U\)</span>, we have</p>
 <p><span class="math display">\[
-Ns_U^2 = \frac{N}{N-1}\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_U)^2 = \frac{N}{N-1}SST = \frac{N}{N-1}(SSW + SSB)
+Ns_U^2 = \frac{N}{N-1}\sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_U)^2 = \frac{N}{N-1}SST_U = \frac{N}{N-1}(SSW_U + SSB_U)
 \]</span>
 and
 <span class="math display">\[\begin{align*}
 \sum_{h=1}^H N_hs_{U,h}^2 &amp; = \sum_{h=1}^H\frac{N_h}{N_h-1}\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 = \sum_{h=1}^H\left(1+\frac{1}{N_h-1}\right)\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 \\
-&amp; = SSW + \sum_{h=1}^H s_{U,h}^2
+&amp; = SSW_U + \sum_{h=1}^H s_{U,h}^2
 \end{align*}\]</span></p>
 <details>
 <summary>
 Plugging these into the formula of <a href="chap-strt.html#eq:strt-var-pa-compare-srs">(3.12)</a> and <a href="chap-strt.html#eq:strt-var-pa-compare-pa">(3.13)</a> we have
-<span class="math display" id="eq:strt-var-pa-compare">\[\begin{equation}
-  Var_{SRS}\left(\widehat{T}_{HT}\right) - Var_{strt,prop}\left(\widehat{T}_{HT}\right) = \frac{N}{n}\left(1-\frac{n}{N}\right) \frac{N}{N-1} \left[ SSB - \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2 \right].
+<span class="math display" id="eq:strt-var-pa-compare">\[\begin{align*}
+  &amp; Var_{SRS}\left(\widehat{T}_{HT}\right) - Var_{strt,prop}\left(\widehat{T}_{HT}\right) \\
+  &amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \frac{N}{N-1} \left[ SSB_U - \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2 \right].
   \tag{3.14}
-\end{equation}\]</span>
+\end{align*}\]</span>
 </summary>
 <div class="empty">
 
@@ -1188,12 +1189,12 @@ Plugging these into the formula of <a href="chap-strt.html#eq:strt-var-pa-compar
 <div class="proof">
 <p><span id="strt-compare" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
 &amp; Var_{SRS}\left(\widehat{T}_{HT}\right) - Var_{strt,prop}\left(\widehat{T}_{HT}\right) \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[  \frac{N}{N-1}(SSW + SSB) - \left(SSW + \sum_{h=1}^H s_{U,h}^2 \right) \right] \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB + \frac{1}{N-1}SSW - \sum_{h=1}^H s_{U,h}^2 \right] \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB + \frac{1}{N-1}SSW - \sum_{h=1}^H s_{U,h}^2 \right] \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB + \sum_{h=1}^H \frac{N_h-1}{N-1} s_{U,h}^2 - \sum_{h=1}^H s_{U,h}^2 \right] \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB - \sum_{h=1}^H \frac{N-N_h}{N-1} s_{U,h}^2 \right] \\
-&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \frac{N}{N-1} \left[ SSB - \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2 \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[  \frac{N}{N-1}(SSW_U + SSB_U) - \left(SSW_U + \sum_{h=1}^H s_{U,h}^2 \right) \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB_U + \frac{1}{N-1}SSW_U - \sum_{h=1}^H s_{U,h}^2 \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB_U + \frac{1}{N-1}SSW_U - \sum_{h=1}^H s_{U,h}^2 \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB_U + \sum_{h=1}^H \frac{N_h-1}{N-1} s_{U,h}^2 - \sum_{h=1}^H s_{U,h}^2 \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \left[ \frac{N}{N-1}SSB_U - \sum_{h=1}^H \frac{N-N_h}{N-1} s_{U,h}^2 \right] \\
+&amp; = \frac{N}{n}\left(1-\frac{n}{N}\right) \frac{N}{N-1} \left[ SSB_U - \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2 \right] \\
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -1203,9 +1204,9 @@ Plugging these into the formula of <a href="chap-strt.html#eq:strt-var-pa-compar
 </div>
 <p>This is greater or equal to 0, that is, the variance from SRS is <strong>larger</strong> than the variance from stratification under proportional allocation, <strong>if</strong>
 <span class="math display">\[
-SSB \ge \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2
+SSB_U \ge \sum_{h=1}^H \left(1-\frac{N_h}{N}\right) s_{U,h}^2
 \]</span>
-This happens if <span class="math inline">\(SSB\)</span> is large and <span class="math inline">\(s^2_{U,h}\)</span> are small, for <span class="math inline">\(h = 1, 2, ..., H\)</span>. Therefore, to reduce variance using stratification, we should <strong>choose a stratification variable</strong> so that</p>
+This happens if <span class="math inline">\(SSB_U\)</span> is large and <span class="math inline">\(s^2_{U,h}\)</span> are small, for <span class="math inline">\(h = 1, 2, ..., H\)</span>. Therefore, to reduce variance using stratification, we should <strong>choose a stratification variable</strong> so that</p>
 <ul>
 <li><p>it is closely related with (i.e., <strong>predictive</strong>) of the variable of interest <span class="math inline">\(Y\)</span></p></li>
 <li><p>so that stratum means <span class="math inline">\(\overline{y}_{U,h}\)</span> are <strong>as different as possible</strong>, and</p></li>
@@ -1222,13 +1223,13 @@ On another note, we also can prove that <strong>if <span class="math inline">\(N
 <div class="proof">
 <p><span id="strt-large" class="proof"><em>Proof</em>. </span>When <span class="math inline">\(N_h\)</span> and <span class="math inline">\(N\)</span> are large,
 <span class="math display">\[
-Ns^2_U = \frac{N}{N-1}SST \approx SST = SSB + SSW
+Ns^2_U = \frac{N}{N-1}SST_U \approx SST_U = SSB_U + SSW_U
 \]</span>
 and
 <span class="math display">\[
-\sum_{h=1}^H N_hs_{U,h}^2 = \sum_{h=1}^H\frac{N_h}{N_h-1}\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 \approx \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 = SSW
+\sum_{h=1}^H N_hs_{U,h}^2 = \sum_{h=1}^H\frac{N_h}{N_h-1}\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 \approx \sum_{h=1}^H\sum_{i=1}^{N_h}(y_{h,i}-\overline{y}_{U,h})^2 = SSW_U
 \]</span>
-Since <span class="math inline">\(SSB\)</span> is a sum of squares, it is always positive. Therefore, <span class="math inline">\(Ns^2_U \ge \sum_{h=1}^H N_hs_{U,h}^2\)</span>, and thus <span class="math inline">\(Var_{SRS}\left(\widehat{T}_{HT}\right) \ge Var_{strt,prop}\left(\widehat{T}_{HT}\right)\)</span> and we always gain efficiency.</p>
+Since <span class="math inline">\(SSB_U\)</span> is a sum of squares, it is always positive. Therefore, <span class="math inline">\(Ns^2_U \ge \sum_{h=1}^H N_hs_{U,h}^2\)</span>, and thus <span class="math inline">\(Var_{SRS}\left(\widehat{T}_{HT}\right) \ge Var_{strt,prop}\left(\widehat{T}_{HT}\right)\)</span> and we always gain efficiency.</p>
 </div>
 </div>
 </details>
@@ -1279,7 +1280,7 @@ Since <span class="math inline">\(SSB\)</span> is a sum of squares, it is always
 </table>
 <p>We can see that, in this case, <span class="math inline">\(\overline{y}_{U,1}\)</span> is very similar to <span class="math inline">\(\overline{y}_{U,2}\)</span>. At the same time, <span class="math inline">\(s_{U,1}^2\)</span> is large. We expect that stratification is hurting us. In fact, we have</p>
 <p><span class="math display">\[
-SSB = \sum_{h=1}^H N_h(\overline{y}_{U,h} - \overline{y}_U)^2 = 3\times (6-6.5)^2 + 3\times (7-6.5)^2 = 1.5,
+SSB_U = \sum_{h=1}^H N_h(\overline{y}_{U,h} - \overline{y}_U)^2 = 3\times (6-6.5)^2 + 3\times (7-6.5)^2 = 1.5,
 \]</span></p>
 <p>which is smaller than</p>
 <p><span class="math display">\[
@@ -1443,7 +1444,7 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 <p>Note that although it is better than proportional allocation since it is the optimizer, optimal allocation <strong>only</strong> works for <strong>one</strong> variable of interest because: the optimal allocation <span class="math inline">\(n_h\)</span>, as in Equation <a href="chap-strt.html#eq:strt-oa-condition">(3.16)</a>, depends on <span class="math inline">\(s_{U,h}\)</span>, which in turn depends on <span class="math inline">\(y_{h,i}\)</span>, the <strong>one specific</strong> variable of interest. Often, in survey sampling, we have more than one variable of interest. For example, not only we are interested in students’ rent payment, but we may also be interested in other types of expense as well. If <span class="math inline">\(s_{U,h}\)</span> and <span class="math inline">\(c_{U,h}\)</span> are almost the similar among clusters, the gain in doing optimal allocation is small and we <strong>better use proportional allocation</strong>.</p>
 <div class="myExample">
 <div class="example">
-<p><span id="exm:ex-strt-compare-three" class="example"><strong>Example 3.11  </strong></span>Suppose we want to sample <span class="math inline">\(n = 36\)</span> students for a survey about test scores. To design this year’s survey, we consider two strata of sizes 1200 and 800, respectively, and we take the means and standard deviations from last year’s survey and get</p>
+<p><span id="exm:ex-strt-compare-three" class="example"><strong>Example 3.11  </strong></span>Suppose we want to sample <span class="math inline">\(n = 36\)</span> students for a survey about test scores. To design this year’s survey, we consider two strata of sizes 1200 and 800, respectively, and we take the means and standard deviations from <strong>last year’s</strong> survey and get</p>
 <table style="width:100%;">
 <colgroup>
 <col width="16%" />
@@ -1504,9 +1505,9 @@ where <span class="math inline">\(\bar{s} = \sum_{h=1}^N\frac{N_h}{N}s_{U,h}\)</
 </ul>
 <p>If we use <strong>SRS</strong>,</p>
 <ul>
-<li><p><span class="math inline">\(Var_{SRS}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n} = N^2\left(1-\frac{n}{N}\right)\frac{(SSB+SSW)}{n(N-1)}\)</span></p></li>
-<li><p><span class="math inline">\(SSB = \sum_{h=1}^H N_h(\overline{y}_{h,U} - \overline{y}_U)^2 = 1,200 \times (60-68)^2 + 800 \times (80-68)^2 = 192,000\)</span>.</p></li>
-<li><p><span class="math inline">\(SSW = \sum_{h=1}^H (N_h - 1)s_h^2 = 350,000 - 15^2 - 10^2 = 349,675\)</span></p></li>
+<li><p><span class="math inline">\(Var_{SRS}(\widehat{T}_{HT}) = N^2\left(1-\frac{n}{N}\right)\frac{s_U^2}{n} = N^2\left(1-\frac{n}{N}\right)\frac{(SSB_U+SSW_U)}{n(N-1)}\)</span></p></li>
+<li><p><span class="math inline">\(SSB_U = \sum_{h=1}^H N_h(\overline{y}_{h,U} - \overline{y}_U)^2 = 1,200 \times (60-68)^2 + 800 \times (80-68)^2 = 192,000\)</span>.</p></li>
+<li><p><span class="math inline">\(SSW_U = \sum_{h=1}^H (N_h - 1)s_h^2 = 350,000 - 15^2 - 10^2 = 349,675\)</span></p></li>
 <li><p><span class="math inline">\(Var_{SRS}(\widehat{T}_{HT}) = 2000^2\times \left(1 - \frac{36}{2000}\right)\frac{192,000 + 349,675}{36\times 1999} = 29,566,164\)</span>.</p></li>
 <li><p><span class="math inline">\(Var_{SRS}(\widehat{\overline{Y}}_{HT}) = \frac{1}{N^2}Var_{SRS}(\widehat{T}_{HT}) = 7.3915\)</span>.</p></li>
 </ul>

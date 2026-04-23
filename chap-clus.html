@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2026-04-06" />
+<meta name="date" content="2026-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -733,21 +733,21 @@ Var_{1clus}(\widehat{T}_{HT}) &amp; = N^2\left(1-\frac{n}{N}\right)\frac{s_{U,t}
 &amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{1}{N-1}\sum_{i=1}^N M^2(\overline{y}_{U,i} - \overline{y}_U)^2 \\
 &amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M}{N-1}\sum_{i=1}^N M(\overline{y}_{U,i} - \overline{y}_U)^2 \\
 &amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M}{N-1}\sum_{i=1}^N\sum_{i\in U_i}(\overline{y}_{U,i} - \overline{y}_U)^2 \\
-&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB}{N-1}
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB_U}{N-1}
 \end{align*}\]</span></p>
 <p>Now consider SRS. We need to consider SRS where the <strong>sample sizes are equal</strong>. In one-stage cluster sampling, by sampling <span class="math inline">\(n\)</span> clusters, each of <span class="math inline">\(M\)</span> observation units, from a population of <span class="math inline">\(N\)</span> clusters, we effectively sample <span class="math inline">\(nM\)</span> observation units from a population of <span class="math inline">\(NM\)</span> units. So the variance of the HT estimator when sampling the same number of observation units under SRS, instead of one-stage cluster sampling is: (using SRS formula in Equation <a href="chap-srs.html#eq:srs-var-ht-srs">(2.14)</a>)</p>
 <p><span class="math display">\[\begin{align*}
 Var_{SRS}(\widehat{T}_{HT}) &amp; = (NM)^2\left(1-\frac{nM}{NM}\right)\frac{s_{U,y}^2}{nM} \\
 &amp; = N^2\left(1-\frac{n}{N}\right)\frac{Ms_{U,y}^2}{n} \\
 &amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M}{M_0 - 1}\sum_{i=1}^N\sum_{j\in U_i} (y_{ij} - \overline{y}_U)^2 \\
-&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}
+&amp; = \frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST_U}{NM - 1}
 \end{align*}\]</span></p>
 <p>Therefore, the <strong>design effect</strong> is:</p>
 <p><span class="math display" id="eq:clus-1clus-de">\[\begin{equation}
-DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB}{N-1}}{\frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}} = \frac{\frac{SSB}{N-1}}{\frac{SST}{NM-1}} = \frac{MSB}{MST}
+DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\frac{N^2}{n}\left(1-\frac{n}{N}\right)\frac{M \times SSB_U}{N-1}}{\frac{N^2}{n}\left(1-\frac{n}{N}\right) \frac{M \times SST}{NM - 1}} = \frac{\frac{SSB_U}{N-1}}{\frac{SST_U}{NM-1}} = \frac{MSB_U}{MST_U}
 \tag{5.3}
 \end{equation}\]</span></p>
-<p>where <span class="math inline">\(MSB\)</span> and <span class="math inline">\(MST\)</span> are defined based on the <strong>ANOVA table</strong> for <strong>equal-sized clusters</strong>:</p>
+<p>where <span class="math inline">\(MSB_U\)</span> and <span class="math inline">\(MST_U\)</span> are defined based on the <strong>ANOVA table</strong> for <strong>equal-sized clusters</strong>:</p>
 <table>
 <colgroup>
 <col width="22%" />
@@ -765,22 +765,22 @@ DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(SSB\)</span></td>
+<td align="center"><span class="math inline">\(SSB_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i}(\overline{y}_{U,i}-\overline{y}_U)^2\)</span> <span class="math inline">\(= \sum_{i=1}^N M(\overline{y}_{U,i} - \overline{y}_U)^2\)</span></td>
 <td align="center"><span class="math inline">\(N-1\)</span></td>
-<td align="center"><span class="math inline">\(MSB = \frac{SSB}{N-1}\)</span></td>
+<td align="center"><span class="math inline">\(MSB_U = \frac{SSB_U}{N-1}\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(SSW\)</span></td>
+<td align="center"><span class="math inline">\(SSW_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i}(y_{ij} - \overline{y}_{U,i})^2\)</span></td>
 <td align="center"><span class="math inline">\(M_0 - N = N(M-1)\)</span></td>
-<td align="center"><span class="math inline">\(MSW = \frac{SSW}{N(M-1)}\)</span></td>
+<td align="center"><span class="math inline">\(MSW_U = \frac{SSW_U}{N(M-1)}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(SST\)</span></td>
+<td align="center"><span class="math inline">\(SST_U\)</span></td>
 <td align="center"><span class="math inline">\(\sum_{i=1}^N\sum_{j\in U_i} (y_{ij} - \overline{y}_U)^2\)</span></td>
 <td align="center"><span class="math inline">\(M_0 - 1 = NM - 1\)</span></td>
-<td align="center"><span class="math inline">\(MST = \frac{SST}{NM-1}\)</span></td>
+<td align="center"><span class="math inline">\(MST_U = \frac{SST_U}{NM-1}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -868,23 +868,23 @@ DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\
 \]</span></p>
 <p>Now we can calculate the <strong>sample sums of squares</strong>:
 <span class="math display">\[\begin{align*}
-\widehat{SSB} &amp; = \sum_{i\in S}M(\overline{y}_{U,i}-\overline{y}_U)^2 \\
+SSB_S &amp; = \sum_{i\in S}M(\overline{y}_{U,i}-\overline{y}_U)^2 \\
 &amp; = 4 \times \Big\{(3.04 - 2.826)^2 + (2.84 - 2.826)^2 + (2.24 - 2.826)^2 \\
 &amp; \qquad \qquad + (3.24 - 2.826)^2 + (2.77 - 2.826)^2 \Big\} \\
 &amp; = 2.2557. \\
-\widehat{SST} &amp; = \sum_{i\in S}\sum_{j\in S_i} (y_{ij} - \overline{y}_U)^2 \\
+SST_S &amp; = \sum_{i\in S}\sum_{j\in S_i} (y_{ij} - \overline{y}_U)^2 \\
 &amp; = (3.08 - 2.826)^2 + (2.60 - 2.826)^2 + ... + (3.20 - 2.826)^2 \\
 &amp; = 5.0313.
 \end{align*}\]</span></p>
 <p>The <strong>sample means of squares</strong> are:
 <span class="math display">\[\begin{align*}
-\widehat{MSB} &amp; = \frac{\widehat{SSB}}{n-1} = \frac{2.2557}{5-1} = 0.5639. \\
-\widehat{MST} &amp; = \frac{\widehat{SST}}{nM-1} = \frac{5.0313}{5\times 4 - 1} = 0.2648.
+MSB_S &amp; = \frac{SSB_S}{n-1} = \frac{2.2557}{5-1} = 0.5639. \\
+MST_S &amp; = \frac{SST_S}{nM-1} = \frac{5.0313}{5\times 4 - 1} = 0.2648.
 \end{align*}\]</span></p>
-<p>Since <span class="math inline">\(\widehat{MSB} &gt; \widehat{MST}\)</span>, we <strong>lose efficiency</strong> due to cluster sampling. We can actually see this beforehand in the data table: the cluster means (<span class="math inline">\(\overline{y}_{U,i}\)</span>) are <strong>different</strong> from one another. Note that here, <span class="math inline">\(\overline{y}_{U,i} = \overline{Y}_{S,i}\)</span> because we include all units of the cluster into the sample so <strong>population</strong> cluster total/mean is <strong>equal</strong> to <strong>sample</strong> cluster total/mean.</p>
+<p>Since <span class="math inline">\(MSB_S &gt; MST_S\)</span>, we <strong>lose efficiency</strong> due to cluster sampling. We can actually see this beforehand in the data table: the cluster means (<span class="math inline">\(\overline{y}_{U,i}\)</span>) are <strong>different</strong> from one another. Note that here, <span class="math inline">\(\overline{y}_{U,i} = \overline{Y}_{S,i}\)</span> because we include all units of the cluster into the sample so <strong>population</strong> cluster total/mean is <strong>equal</strong> to <strong>sample</strong> cluster total/mean.</p>
 <p>The design effect is</p>
 <p><span class="math display">\[
-\widehat{DE} = \frac{\widehat{MSB}}{\widehat{MST}} = \frac{0.5639}{0.2648} = 2.1295
+\widehat{DE} = \frac{MSB_S}{MST_S} = \frac{0.5639}{0.2648} = 2.1295
 \]</span></p>
 <p>In fact, we are losing <span class="math inline">\(100 \times (2.1295-1)\% = 112.95\%\)</span> efficiency.</p>
 </div>
@@ -902,18 +902,18 @@ DE = \frac{Var_{1clus}(\widehat{T}_{HT})}{Var_{SRS}(\widehat{T}_{HT})} = \frac{\
 <h4><span class="header-section-number">5.1.4.1</span> Intraclass Correlation Coefficient<a href="chap-clus.html#intraclass-correlation-coefficient" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <strong>ICC</strong> is defined as</p>
 <p><span class="math display">\[
-ICC = 1-\frac{M}{M-1}\frac{SSW}{SST}.
+ICC = 1-\frac{M}{M-1}\frac{SSW_U}{SST_U}.
 \]</span></p>
-<p>Since <span class="math inline">\(SST = SSW + SSB\)</span> and the SS’s are sum of squares so they are greater or equal to 0, so <span class="math inline">\(SSW \le SST\)</span>, <span class="math inline">\(0 \le \frac{SSW}{SST} \le 1\)</span> and</p>
+<p>Since <span class="math inline">\(SST_U = SSW_U + SSB_U\)</span> and the SS’s are sum of squares so they are greater or equal to 0, so <span class="math inline">\(SSW_U \le SST_U\)</span>, <span class="math inline">\(0 \le \frac{SSW_U}{SST_U} \le 1\)</span> and</p>
 <p><span class="math display">\[
 -\frac{1}{M-1} \le ICC \le 1
 \]</span></p>
-<p>If clusters are perfectly <strong>homogeneous</strong>, then all units in a cluster have the same respond, so <span class="math inline">\(SSW = 0\)</span>, and <span class="math inline">\(ICC = 1\)</span>.</p>
+<p>If clusters are perfectly <strong>homogeneous</strong>, then all units in a cluster have the same respond, so <span class="math inline">\(SSW_U = 0\)</span>, and <span class="math inline">\(ICC = 1\)</span>.</p>
 <details>
 <summary>
 We can prove that
 <span class="math display">\[
-  DE = \frac{MSB}{MST} = \frac{NM-1}{M(N-1)}[1+(M-1)ICC]
+  DE = \frac{MSB_U}{MST_U} = \frac{NM-1}{M(N-1)}[1+(M-1)ICC]
   \]</span>
 </summary>
 <div class="empty">
@@ -923,12 +923,12 @@ We can prove that
 <div class="proof">
 <p><span id="clus-ht-icc" class="proof"><em>Proof</em>. </span>We have
 <span class="math display">\[\begin{align*}
-\frac{NM-1}{M(N-1)}[1+(M-1)ICC] &amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1)\left(1 - \frac{M}{M-1}\frac{SSW}{SST}\right)\right] \\
-&amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1) \frac{(M-1)SST - M\times SSW}{(M-1)SST}\right] \\
-&amp; = \frac{NM-1}{M(N-1)} \left[1 + \frac{(M-1)SST - M\times SSW}{SST}\right] \\
-&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SST - M\times SSW}{SST} \\
-&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SSB}{SST} \\
-&amp; = \frac{\frac{SSB}{N-1}}{\frac{SST}{NM-1}} = DE.
+\frac{NM-1}{M(N-1)}[1+(M-1)ICC] &amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1)\left(1 - \frac{M}{M-1}\frac{SSW_U}{SST_U}\right)\right] \\
+&amp; = \frac{NM-1}{M(N-1)}\left[1 + (M-1) \frac{(M-1)SST_U - M\times SSW_U}{(M-1)SST_U}\right] \\
+&amp; = \frac{NM-1}{M(N-1)} \left[1 + \frac{(M-1)SST_U - M\times SSW_U}{SST_U}\right] \\
+&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SST_U - M\times SSW_U}{SST_U} \\
+&amp; = \frac{NM-1}{M(N-1)}\frac{M\times SSB_U}{SST_U} \\
+&amp; = \frac{\frac{SSB_U}{N-1}}{\frac{SST_U}{NM-1}} = DE.
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -941,8 +941,8 @@ We can prove that
 <div class="example">
 <p><span id="exm:ex-clus-1clus-anova-icc" class="example"><strong>Example 5.4  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-anova">5.3</a>, the ICC can be calculated as</p>
 <p><span class="math display">\[\begin{align*}
-\widehat{ICC} &amp; = 1-\frac{M}{M-1}\frac{\widehat{SSW}}{\widehat{SST}} \\
-&amp; = 1-\frac{M}{M-1}\frac{\widehat{SST}-\widehat{SSB}}{\widehat{SST}} \\
+\widehat{ICC} &amp; = 1-\frac{M}{M-1}\frac{SSW_S}{SST_S} \\
+&amp; = 1-\frac{M}{M-1}\frac{SST_S-SSB_S}{SST_S} \\
 &amp; = 1-\frac{4}{4-1}\frac{5.0313 - 2.2557}{5.0313} \\
 &amp; = 0.2644.
 \end{align*}\]</span></p>
@@ -954,14 +954,14 @@ We can prove that
 <h4><span class="header-section-number">5.1.4.2</span> Adjusted R Squared<a href="chap-clus.html#adjusted-r-squared" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <strong>adjusted R squared</strong> is defined as</p>
 <p><span class="math display">\[
-R_a^2 = 1 - \frac{MSW}{MST}
+R_a^2 = 1 - \frac{MSW_U}{MST_U}
 \]</span></p>
-<p>The adjusted R squared represents the relative amount of <strong>variability</strong> in the population <strong>explained</strong> by cluster means, adjusted for degree of freedom. If clusters are perfectly <strong>homogeneous</strong>, then <span class="math inline">\(SSW = 0\)</span>, and <span class="math inline">\(R_a^2 = 1\)</span>. Large <span class="math inline">\(R_a^2\)</span> means that most of the variability of the data is explained by the cluster means, so cluster means are different among each other and between-cluster variation is high.</p>
+<p>The adjusted R squared represents the relative amount of <strong>variability</strong> in the population <strong>explained</strong> by cluster means, adjusted for degree of freedom. If clusters are perfectly <strong>homogeneous</strong>, then <span class="math inline">\(SSW_U = 0\)</span>, and <span class="math inline">\(R_a^2 = 1\)</span>. Large <span class="math inline">\(R_a^2\)</span> means that most of the variability of the data is explained by the cluster means, so cluster means are different among each other and between-cluster variation is high.</p>
 <details>
 <summary>
 Furthermore, we can prove that
 <span class="math display">\[
-  DE = \frac{MSB}{MST} = 1 + \frac{N(M-1)}{N-1}(1-R_a^2)
+  DE = \frac{MSB_U}{MST_U} = 1 + \frac{N(M-1)}{N-1}(1-R_a^2)
   \]</span>
 </summary>
 <div class="empty">
@@ -972,12 +972,12 @@ Furthermore, we can prove that
 <p><span id="clus-ht-r2" class="proof"><em>Proof</em>. </span>We have
 <span class="math display">\[\begin{align*}
 &amp; 1 + \frac{N(M-1)}{N-1}R_a^2 \\
-&amp; = 1 + \frac{N(M-1)}{N-1}\left(1 - \frac{MSW}{MST}\right) \\
-&amp; = 1 + \frac{N(M-1)}{N-1} \left(1 - \frac{NM-1}{N(M-1)}\frac{SSW}{SST}\right) \\
-&amp; = 1 + \frac{N(M-1)}{N-1} \frac{N(M-1)SST - (NM-1)SSW}{N(M-1)SST} \\
-&amp; = \frac{(N-1)N(M-1)SST + N^2(M-1)^2SST - N(M-1)(NM-1)SSW}{(N-1)N(M-1)SST} \\
-&amp; = \frac{N(M-1)\{(N-1)SST + N(M-1)SST - (NM-1)SSW\}}{(N-1)N(M-1)SST} \\
-&amp; = \frac{(NM-1)SSB}{(N-1)SST} = DE.
+&amp; = 1 + \frac{N(M-1)}{N-1}\left(1 - \frac{MSW_U}{MST_U}\right) \\
+&amp; = 1 + \frac{N(M-1)}{N-1} \left(1 - \frac{NM-1}{N(M-1)}\frac{SSW_U}{SST_U}\right) \\
+&amp; = 1 + \frac{N(M-1)}{N-1} \frac{N(M-1)SST_U - (NM-1)SSW_U}{N(M-1)SST_U} \\
+&amp; = \frac{(N-1)N(M-1)SST_U + N^2(M-1)^2SST_U - N(M-1)(NM-1)SSW_U}{(N-1)N(M-1)SST_U} \\
+&amp; = \frac{N(M-1)\{(N-1)SST_U + N(M-1)SST_U - (NM-1)SSW_U\}}{(N-1)N(M-1)SST_U} \\
+&amp; = \frac{(NM-1)SSB_U}{(N-1)SST_U} = DE.
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -990,9 +990,9 @@ Furthermore, we can prove that
 <div class="example">
 <p><span id="exm:ex-clus-1clus-anova-r2" class="example"><strong>Example 5.5  </strong></span>Continue with Example <a href="chap-clus.html#exm:ex-clus-1clus-anova">5.3</a>, the adjusted R squared can be calculated as</p>
 <p><span class="math display">\[\begin{align*}
-\widehat{R}_a^2 &amp; = 1-\frac{\widehat{MSW}}{\widehat{MST}} \\
-&amp; = 1-\frac{nM-1}{n(M-1)}\frac{\widehat{SSW}}{\widehat{SST}} \\
-&amp; = 1-\frac{nM-1}{n(M-1)}\frac{\widehat{SST}-\widehat{SSB}}{\widehat{SST}} \\
+\widehat{R}_a^2 &amp; = 1-\frac{MSW_S}{MST_S} \\
+&amp; = 1-\frac{nM-1}{n(M-1)}\frac{SSW_S}{SST_S} \\
+&amp; = 1-\frac{nM-1}{n(M-1)}\frac{SST_S-SSB_S}{SST_S} \\
 &amp; = 1-\frac{5\times 4-1}{5\times(4-1)}\frac{5.0313 - 2.2557}{5.0313} \\
 &amp; = 0.3012.
 \end{align*}\]</span></p>
@@ -1449,7 +1449,7 @@ To obtain a variance estimation from <strong>sample</strong> data, we replace po
 <summary>
 Suppose we need to design a two-stage cluster sampling scheme where <span class="math inline">\(M_i = M\)</span> and <span class="math inline">\(m_i = m\)</span> for all clusters <span class="math inline">\(i\)</span>, we can substitute this into the variance formula in Equation <a href="chap-clus.html#eq:clus-two-stage-var">(5.5)</a> to derive that
 <span class="math display" id="eq:clus-equal-size-2stage">\[\begin{equation}
-  Var_{2clus}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm}
+  Var_{2clus}(\widehat{\overline{Y}}_{HT}) = \left(1-\frac{n}{N}\right)\frac{MSB_U}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW_U}{nm}
   \tag{5.6}
   \end{equation}\]</span>
 </summary>
@@ -1463,10 +1463,10 @@ Suppose we need to design a two-stage cluster sampling scheme where <span class=
 Var_{2clus}(\widehat{\overline{Y}}_{HT}) &amp; = \frac{N^2}{M_0^2}\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} + \frac{N}{nM_0^2}\sum_{i=1}^N M_i^2\left(1 - \frac{m_i}{M_i}\right)\frac{s_{U,i}^2}{m_i} \\
 &amp; = \frac{N^2}{N^2M^2}\left(1-\frac{n}{N}\right)\frac{s_{U,t}^2}{n} + \frac{N}{nN^2M^2}\sum_{i=1}^N M^2\left(1 - \frac{m}{M}\right)\frac{s_{U,i}^2}{m} \\
 &amp; = \frac{1}{nM^2}\left(1-\frac{n}{N}\right)s_{U,t}^2 + \frac{1}{nmN}\left(1 - \frac{m}{M}\right)\sum_{i=1}^N s_{U,i}^2 \\
-&amp; = \frac{1}{nM^2}\left(1-\frac{n}{N}\right)\frac{M\times SSB}{N-1} + \frac{1}{nmN}\left(1 - \frac{m}{M}\right)\frac{SSW}{M-1} \\
-&amp; = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm},
+&amp; = \frac{1}{nM^2}\left(1-\frac{n}{N}\right)\frac{M\times SSB_U}{N-1} + \frac{1}{nmN}\left(1 - \frac{m}{M}\right)\frac{SSW_U}{M-1} \\
+&amp; = \left(1-\frac{n}{N}\right)\frac{MSB_U}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW_U}{nm},
 \end{align*}\]</span>
-where <span class="math inline">\(s_{U,t}^2 = \frac{M\times SSB}{N-1}\)</span> as in Section <a href="chap-clus.html#clus-one-compare">5.1.4</a> and <span class="math inline">\(\sum_{i=1}^N s_{U,i}^2 = \frac{SSW}{M-1}\)</span>.</p>
+where <span class="math inline">\(s_{U,t}^2 = \frac{M\times SSB_U}{N-1}\)</span> as in Section <a href="chap-clus.html#clus-one-compare">5.1.4</a> and <span class="math inline">\(\sum_{i=1}^N s_{U,i}^2 = \frac{SSW_U}{M-1}\)</span>.</p>
 </div>
 </div>
 </details>
@@ -1493,20 +1493,20 @@ We can prove that the optimal values for <span class="math inline">\(n\)</span> 
 <div class="proof">
 <p><span id="clus-optimal-alloc" class="proof"><em>Proof</em>. </span>We can form a Lagrangian:
 <span class="math display">\[
-f(n,m, \lambda) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW}{nm} - \lambda \left(C - c_1n - c_2nm\right)
+f(n,m, \lambda) = \left(1-\frac{n}{N}\right)\frac{MSB_U}{nM} + \left(1-\frac{m}{M}\right)\frac{MSW_U}{nm} - \lambda \left(C - c_1n - c_2nm\right)
 \]</span></p>
 <p>Taking derivatives we get
 <span class="math display">\[\begin{align}
 \frac{\partial f}{\partial \lambda} &amp; = C - c_1n - c_2nm = 0 \\
 \Leftrightarrow \hspace{5mm} n &amp; = \frac{C}{c_1 + c_2m} \\
-\frac{\partial f}{\partial m} &amp; = -\frac{MSW}{nm^2} + \lambda c_2n = 0 \\
-\Leftrightarrow \hspace{5mm} \lambda &amp; = \frac{MSW}{c_2 n^2m^2} \\
-\frac{\partial f}{\partial n} &amp; = -\frac{MSB}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW}{n^2m} + \lambda(c_1 + c_2m)\\
-&amp; = -\frac{MSB}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW}{n^2m} + \frac{MSW}{c_2 n^2m^2}(c_1 + c_2m) \\
-&amp; = -\frac{MSB}{n^2M} - \frac{MSW}{n^2m} + \frac{MSW}{n^2M} + \frac{c_1 MSW}{c_2 n^2m^2} + \frac{MSW}{n^2m} \\
-&amp; = \frac{-m\times MSB + m \times MSW}{n^2mM} + \frac{c_1 MSW}{c_2 n^2m^2} \\
-&amp; = \frac{MSW - MSB}{n^2M} + \frac{c_1 MSW}{c_2 n^2m^2} \\
-\frac{1}{MST}\frac{\partial f}{\partial n} &amp; = \frac{(1-R_a^2) - (1 + \frac{N(M-1)}{N-1}R_a^2)}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
+\frac{\partial f}{\partial m} &amp; = -\frac{MSW_U}{nm^2} + \lambda c_2n = 0 \\
+\Leftrightarrow \hspace{5mm} \lambda &amp; = \frac{MSW_U}{c_2 n^2m^2} \\
+\frac{\partial f}{\partial n} &amp; = -\frac{MSB_U}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW_U}{n^2m} + \lambda(c_1 + c_2m)\\
+&amp; = -\frac{MSB_U}{n^2M} - \left(1 - \frac{m}{M}\right)\frac{MSW_U}{n^2m} + \frac{MSW_U}{c_2 n^2m^2}(c_1 + c_2m) \\
+&amp; = -\frac{MSB_U}{n^2M} - \frac{MSW_U}{n^2m} + \frac{MSW_U}{n^2M} + \frac{c_1 MSW_U}{c_2 n^2m^2} + \frac{MSW_U}{n^2m} \\
+&amp; = \frac{-m\times MSB_U + m \times MSW_U}{n^2mM} + \frac{c_1 MSW_U}{c_2 n^2m^2} \\
+&amp; = \frac{MSW_U - MSB_U}{n^2M} + \frac{c_1 MSW_U}{c_2 n^2m^2} \\
+\frac{1}{MST_U}\frac{\partial f}{\partial n} &amp; = \frac{(1-R_a^2) - (1 + \frac{N(M-1)}{N-1}R_a^2)}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
 &amp; =  \frac{-R_a^2(1 + \frac{N(M-1)}{N-1})}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
 &amp; = \frac{-R_a^2\frac{NM-1}{N-1}}{n^2M} + \frac{c_1(1-R_a^2)}{c_2 n^2m^2} \\
 \Leftrightarrow \hspace{5mm} m^2 &amp; = \frac{c_1M(N-1)(1-R_a^2)}{c_2(NM-1)R_a^2}
@@ -1520,7 +1520,7 @@ f(n,m, \lambda) = \left(1-\frac{n}{N}\right)\frac{MSB}{nM} + \left(1-\frac{m}{M}
 <p>So if we know <span class="math inline">\(R_a^2\)</span>, possibly from previous surveys, we can choose <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> accordingly.</p>
 <p><strong>Approach 2</strong>: (Tolerable Margin of Error) Suppose we ignore the psu-level fpc, Equation <a href="chap-clus.html#eq:clus-equal-size-2stage">(5.6)</a> implies that
 <span class="math display">\[
-Var_{2clus}(\widehat{\overline{Y}}_{HT}) \le \frac{1}{n}\left[\frac{MSB}{M} + \left(1-\frac{m}{M}\right)\frac{MSW}{m}\right] := \frac{1}{n}v
+Var_{2clus}(\widehat{\overline{Y}}_{HT}) \le \frac{1}{n}\left[\frac{MSB_U}{M} + \left(1-\frac{m}{M}\right)\frac{MSW_U}{m}\right] := \frac{1}{n}v
 \]</span>
 We can set <span class="math inline">\(e = z_{\alpha/2}\pm\sqrt{\frac{1}{n}v}\)</span> and solve to obtain <span class="math inline">\(n = z_{\alpha/2}^2v/e^2\)</span>. This approach requires that you have an estimate of <span class="math inline">\(v\)</span>, possibly from prior surveys.</p>
 <div class="empty">
